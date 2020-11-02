@@ -56,7 +56,7 @@ class _wellcomeState extends State<wellcome> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-          var url= await "https://06a5b01b0c76.ngrok.io/my_store/updatenickname.php";
+          var url= await "https://57d7e1fd1264.ngrok.io/my_store/updatenickname.php";
           http.post(url,body:{
             'username' : username,
             'name': name.text,
