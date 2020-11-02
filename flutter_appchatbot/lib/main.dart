@@ -311,7 +311,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Sign In555555555',
+                        'Sign In',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'OpenSans',
