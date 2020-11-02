@@ -11,7 +11,7 @@ class wellcome2 extends StatefulWidget {
 class _wellcome2State extends State<wellcome2> {
   Future<List> _read() async {
     final response = await http.post(
-        "http://192.168.64.2/my_store/read.php", body: {
+        "http://06a5b01b0c76.ngrok.io/my_store/read.php", body: {
       "username": username,
     });
 
