@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   Future<List> _login() async {
-    final response = await http.post("http://192.168.64.2/my_store/login.php", body: {
+    final response = await http.post("http://06a5b01b0c76.ngrok.io/my_store/login.php", body: {
       "username": user.text,
       "password": pass.text,
     });
