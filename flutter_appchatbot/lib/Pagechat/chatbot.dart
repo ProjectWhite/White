@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/Pagechat/Milestone.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:intl/intl.dart';
 import '../main.dart';
@@ -70,6 +71,17 @@ class _chatbotState extends State<chatbot> {
                 Navigator.push(context,
                     new MaterialPageRoute(
                       builder: (BuildContext context) => new AboutPage(),
+                    ));
+              },
+            ),
+            new ListTile(
+              title: new Text('Milestone Lite ver.'),
+              onTap: (){
+                // ignore: unnecessary_statements
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new Milestone(),
                     ));
               },
             ),
