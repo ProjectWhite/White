@@ -59,9 +59,7 @@ class _chatbotState extends State<chatbot> {
             new UserAccountsDrawerHeader(
               accountName: new Text('$name'),
               accountEmail: new Text('aoy35085@hotmail.com'),
-              currentAccountPicture: new CircleAvatar(
-                backgroundImage: new AssetImage("assets/aoy.jpg"),
-              ),
+
             ),
             new ListTile(
               title: new Text('Profile'),
@@ -233,9 +231,6 @@ class _chatbotState extends State<chatbot> {
           data == 0 ? Container(
             height: 60,
             width: 60,
-            child: CircleAvatar(
-              backgroundImage: AssetImage("assets/bright.jpg"),
-            ),
           ) : Container(),
 
           Padding(
@@ -270,9 +265,7 @@ class _chatbotState extends State<chatbot> {
           data == 1? Container(
             height: 60,
             width: 60,
-            child: CircleAvatar(
-              backgroundImage: AssetImage("assets/aoy.jpg"),
-            ),
+
           ) : Container(),
         ],
       ),
