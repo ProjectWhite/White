@@ -17,7 +17,7 @@ class _RegisterState extends State<Register> {
   TextEditingController pass = TextEditingController();
 
   Future register() async {
-    var url = "https://c4bf8159981e.ngrok.io/my_store/register.php";
+    var url = "https://aac4cf39108a.ngrok.io/my_store/register.php";
     var response = await http.post(url, body: {
       "username": user.text,
       "password": pass.text,
