@@ -15,7 +15,7 @@ void main() => runApp(new MyApp());
 
 String username='';
 String name='';
-
+String uml='https://aac4cf39108a.ngrok.io';
 
 class MyApp extends StatelessWidget {
 
@@ -47,9 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String msg='';
 
-
   Future<List> _login() async {
-    final response = await http.post("https://aac4cf39108a.ngrok.io/my_store/login.php", body: {
+    final response = await http.post("$uml/my_store/login.php", body: {
       "username": user.text,
       "password": pass.text,
     });

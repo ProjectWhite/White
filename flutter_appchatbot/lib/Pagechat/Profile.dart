@@ -115,13 +115,13 @@ class _AboutPageState extends State<AboutPage> {
                     "Delete Account"
                 ),
                 onPressed: (){
-                  var url="http://192.168.64.2/my_store/delete.php";
+                  var url="$uml/my_store/delete.php";
                   print(username);
                   http.post(url,body:{
                     'username' : username,
                   });
                   Navigator.pushReplacementNamed(context, '/MyHomePage');
-                }, // Navigator.pushReplacementNamed(context, '/MyHomePage')
+                },
               ),
             ),
           ],

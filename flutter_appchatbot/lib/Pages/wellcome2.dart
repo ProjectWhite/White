@@ -11,7 +11,7 @@ class wellcome2 extends StatefulWidget {
 class _wellcome2State extends State<wellcome2> {
   Future<List> _read() async {
     final response = await http.post(
-        "https://aac4cf39108a.ngrok.io/my_store/read.php", body: {
+        "$uml/my_store/read.php", body: {
       "username": username,
     });
 
@@ -40,7 +40,7 @@ class _wellcome2State extends State<wellcome2> {
               "Next"
           ),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, '/chat');
+            _read();
           },
         ),
       ),
