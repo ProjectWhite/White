@@ -40,8 +40,8 @@ class _wellcome2State extends State<wellcome2> {
               "Next"
           ),
           onPressed: () {
-            _read();
-          }, // Navigator.pushReplacementNamed(context, '/MyHomePage')
+            Navigator.pushReplacementNamed(context, '/chat');
+          },
         ),
       ),
     );
