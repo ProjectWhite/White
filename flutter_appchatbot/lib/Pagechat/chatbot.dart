@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Pagechat/Milestone.dart';
+import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:intl/intl.dart';
 import '../main.dart';
@@ -73,6 +74,7 @@ class _chatbotState extends State<chatbot> {
         title: Text("Chat bot",),
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
+
       ),
       drawer : new Drawer(
         child: ListView(
@@ -100,7 +102,7 @@ class _chatbotState extends State<chatbot> {
                 Navigator.of(context).pop();
                 Navigator.push(context,
                     new MaterialPageRoute(
-                      builder: (BuildContext context) => new SettingPage(),
+                      builder: (BuildContext context) => SettingUI(),
                     ));
               },
             ),
