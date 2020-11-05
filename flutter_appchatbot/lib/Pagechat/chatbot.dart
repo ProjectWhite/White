@@ -19,11 +19,31 @@ class chatbot extends StatefulWidget {
   final String username;
   final String name;
   final String title;
+  bool bot = false;
   @override
   _chatbotState createState() => _chatbotState();
 }
 
 class _chatbotState extends State<chatbot> {
+
+
+  Future<List> _insertai(String ms) async {
+    print(ms);
+    await http.post(
+        "$uml/my_store/insertAI.php", body: {
+      "username": username,
+      "message": ms,
+    });
+  }
+
+  Future<List> _insertmsg() async {
+    print(messageInsert.text);
+    await http.post(
+        "$uml/my_store/insertmessage.php", body: {
+      "username": username,
+      "message": messageInsert.text,
+    });
+  }
 
   void response(query) async {
     AuthGoogle authGoogle = await AuthGoogle(
@@ -38,8 +58,9 @@ class _chatbotState extends State<chatbot> {
         "message": aiResponse.getListMessage()[0]["text"]["text"][0].toString()
       });
     });
+    String ms = aiResponse.getListMessage()[0]["text"]["text"][0].toString();
+    _insertai(ms);
 
-    print(aiResponse.getListMessage()[0]["text"]["text"][0].toString());
   }
 
   final messageInsert = TextEditingController();
@@ -75,17 +96,6 @@ class _chatbotState extends State<chatbot> {
               },
             ),
             new ListTile(
-              title: new Text('Milestone Lite ver.'),
-              onTap: (){
-                // ignore: unnecessary_statements
-                Navigator.of(context).pop();
-                Navigator.push(context,
-                    new MaterialPageRoute(
-                      builder: (BuildContext context) => new Milestone(),
-                    ));
-              },
-            ),
-            new ListTile(
               title: new Text('Setting'),
               onTap: (){
                 // ignore: unnecessary_statements
@@ -117,7 +127,18 @@ class _chatbotState extends State<chatbot> {
                       builder: (BuildContext context) => new HelpCenterPage(),
                     ));
               },
-            )
+            ),
+            new ListTile(
+              title: new Text('Milestone'),
+              onTap: (){
+                // ignore: unnecessary_statements
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new Milestone(),
+                    ));
+              },
+            ),
           ],
         ),
       ),
@@ -201,6 +222,7 @@ class _chatbotState extends State<chatbot> {
                           messsages.insert(0,
                               {"data": 1, "message": messageInsert.text});
                         });
+                        _insertmsg();
                         response(messageInsert.text);
                         messageInsert.clear();
                       }
@@ -280,9 +302,3 @@ class _chatbotState extends State<chatbot> {
   }
 
 }
-
-
-
-
-
-
