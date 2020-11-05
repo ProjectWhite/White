@@ -12,6 +12,8 @@ import 'SettingPage.dart';
 import 'HelpCenterPage.dart';
 import 'package:http/http.dart' as http;
 
+import 'emotiontest.dart';
+
 
 
 class chatbot extends StatefulWidget {
@@ -90,6 +92,17 @@ class _chatbotState extends State<chatbot> {
                 Navigator.push(context,
                     new MaterialPageRoute(
                       builder: (BuildContext context) => new AboutPage(),
+                    ));
+              },
+            ),
+            new ListTile(
+              title: new Text('emotion test.'),
+              onTap: (){
+                // ignore: unnecessary_statements
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new Emotiontest(),
                     ));
               },
             ),

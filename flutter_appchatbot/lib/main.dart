@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-
+import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'Pagechat/chatbot.dart';
@@ -10,9 +10,8 @@ import 'constrants.dart';
 import 'package:flutter/services.dart';
 import 'register.dart';
 import 'package:flutter_appchatbot/Pages/wellcome1.dart';
-//Frankypykrajai5555555
-void main() => runApp(new MyApp());
 
+void main() => runApp(new MyApp());
 String username='';
 String name='';
 String uml='https://aac4cf39108a.ngrok.io';
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login PHP My Admin',
-      home: new MyHomePage(),
+      home: new chatbot(),
       routes: <String,WidgetBuilder>{
         '/wellcome1': (BuildContext context)=> new wellcome(),
         '/wellcome2': (BuildContext context)=> new wellcome2(),
