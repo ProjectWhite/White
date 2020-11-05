@@ -14,7 +14,7 @@ import 'package:flutter_appchatbot/Pages/wellcome1.dart';
 void main() => runApp(new MyApp());
 String username='';
 String name='';
-String uml='https://aac4cf39108a.ngrok.io';
+String uml='https://0b70cd760895.ngrok.io';
 
 class MyApp extends StatelessWidget {
 
