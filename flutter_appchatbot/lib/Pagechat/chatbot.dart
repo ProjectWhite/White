@@ -3,10 +3,13 @@ import 'dart:convert';
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Pagechat/Milestone.dart';
-import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:intl/intl.dart';
 import '../main.dart';
+import 'Profile.dart';
+import 'SecurityPage.dart';
+import 'SettingPage.dart';
+import 'HelpCenterPage.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -70,19 +73,72 @@ class _chatbotState extends State<chatbot> {
         title: Text("Chat bot",),
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
-        actions: [
-          Positioned(
-            right: 0,
-            top: 0,
-            child: IconButton(
-              onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => SettingPage()));
-            },
-              icon: Icon(Icons.settings, color: Colors.white),
+      ),
+      drawer : new Drawer(
+        child: ListView(
+          children:<Widget> [
+            new UserAccountsDrawerHeader(
+              accountName: new Text('$name'),
+              accountEmail: new Text('aoy35085@hotmail.com'),
+
             ),
-          ),
-        ],
+            new ListTile(
+              title: new Text('Profile'),
+              onTap: (){
+                // ignore: unnecessary_statements
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new AboutPage(),
+                    ));
+              },
+            ),
+            new ListTile(
+              title: new Text('Setting'),
+              onTap: (){
+                // ignore: unnecessary_statements
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new SettingPage(),
+                    ));
+              },
+            ),
+            new ListTile(
+              title: new Text('Security'),
+              onTap: (){
+                // ignore: unnecessary_statements
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new SecurityPage(),
+                    ));
+              },
+            ),
+            new ListTile(
+              title: new Text('Help center'),
+              onTap: (){
+                // ignore: unnecessary_statements
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new HelpCenterPage(),
+                    ));
+              },
+            ),
+            new ListTile(
+              title: new Text('Milestone'),
+              onTap: (){
+                // ignore: unnecessary_statements
+                Navigator.of(context).pop();
+                Navigator.push(context,
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new Milestone(),
+                    ));
+              },
+            ),
+          ],
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
