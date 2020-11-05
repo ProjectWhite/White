@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login PHP My Admin',
-      home: new chatbot(),
+      home: new MyHomePage(),
       routes: <String,WidgetBuilder>{
         '/wellcome1': (BuildContext context)=> new wellcome(),
         '/wellcome2': (BuildContext context)=> new wellcome2(),
