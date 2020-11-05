@@ -9,16 +9,6 @@ import 'security.dart';
 import 'rate_us.dart';
 import 'help_center.dart';
 
-class SettingUI extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Setting UI',
-      home: SettingPage(),
-    );
-  }
-}
 
 class SettingPage extends StatefulWidget {
   @override
@@ -36,6 +26,13 @@ class _SettingPageState extends State<SettingPage> {
           children: [
             Row(
               children: [
+                IconButton(
+                    icon: Icon(Icons.arrow_back, size: 30, color: Colors.black),
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                    },
+                ),
+                SizedBox(width: 8),
                 Text(
                   'Settings',
                   style: TextStyle(
