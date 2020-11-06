@@ -131,7 +131,7 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  Widget buildLoginBtn() {
+  Widget buildregisterBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
@@ -212,7 +212,7 @@ class _RegisterState extends State<Register> {
                       ),
                       buildPasswordTF(),
                       SizedBox(height: 30.0,),
-                      buildLoginBtn(),
+                      buildregisterBtn(),
                     ],
                   ),
                 ),

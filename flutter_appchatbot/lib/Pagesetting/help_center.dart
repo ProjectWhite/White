@@ -77,7 +77,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
         ),
         bottomSheet: InkWell(
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 25.0),
+            padding: EdgeInsets.symmetric(vertical: 15.0),
             width: double.infinity,
             child: RaisedButton(
               elevation: 5.0,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -24,6 +25,21 @@ class _chathelpState extends State<chathelp> {
       "username": username,
       "message": message.text,
     });
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Report are already sent it'),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('ok'),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => chathelp(),),);
+                },
+              )
+            ],
+          );
+        });
   }
 
   Widget buildmessage() {
@@ -48,7 +64,7 @@ class _chathelpState extends State<chathelp> {
                 Icons.report_gmailerrorred_outlined,
                 color: Colors.white,
               ),
-              hintText: 'Enter your report',
+              hintText: 'Enter your detail',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -59,7 +75,7 @@ class _chathelpState extends State<chathelp> {
 
   Widget buildsentBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
+      padding: EdgeInsets.symmetric(vertical: 15.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
@@ -117,7 +133,7 @@ class _chathelpState extends State<chathelp> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 120.0,
+                    vertical: 100.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
