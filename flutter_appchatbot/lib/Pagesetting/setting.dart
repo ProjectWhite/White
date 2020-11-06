@@ -43,7 +43,7 @@ class _SettingPageState extends State<SettingPage> {
             buildListTile('Account & Password', Icons.vpn_key, AccountPasswordPage()),
             buildListTile('Theme', Icons.color_lens, ThemePage()),
             SwitchListTile(
-              title: Text('Nontification', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+              title: Text('Notification', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
               secondary: Icon(Icons.notifications, color: Colors.blue[300]),
               value: _notification,
               onChanged: (value){
@@ -52,7 +52,7 @@ class _SettingPageState extends State<SettingPage> {
                 });
               },
             ),
-            buildListTile('Prefered Hours', Icons.access_time, PreferedHoursPage()),
+            buildListTile('Preferred Hours', Icons.access_time, PreferedHoursPage()),
             buildListTile('Security', Icons.lock, SecurityPage()),
             buildListTile('Rate Us', Icons.star, RatePage()),
             buildListTile('Help Center', Icons.help, HelpCenterPage()),

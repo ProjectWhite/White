@@ -1,79 +1,53 @@
-
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'constrants.dart';
-import 'main.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
+import 'package:flutter_appchatbot/main.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 
-class Register extends StatefulWidget {
+import '../constrants.dart';
+
+
+class chathelp extends StatefulWidget {
   @override
-  _RegisterState createState() => _RegisterState();
+  _chathelpState createState() => _chathelpState();
 }
 
-class _RegisterState extends State<Register> {
+class _chathelpState extends State<chathelp> {
 
-  TextEditingController user = TextEditingController();
-  TextEditingController pass = TextEditingController();
+  TextEditingController message = TextEditingController();
 
-  Future register() async {
-    var url = "$uml/my_store/register.php";
+  Future _insertreport() async {
+    var url = "$uml/my_store/insertreport.php";
+    print(username);
+    print(message.text);
     var response = await http.post(url, body: {
-      "username": user.text,
-      "password": pass.text,
+      "username": username,
+      "message": message.text,
     });
-    var data = json.decode(response.body);
-    if (data == "Error") {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text('username already use'),
-              actions: <Widget>[
-                new FlatButton(
-                  child: new Text('ok'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
-            );
-          });
-    } else {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text('Register Success'),
-              actions: <Widget>[
-                new FlatButton(
-                  child: new Text('ok'),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
-                  },
-                )
-              ],
-            );
-          });
-      // Fluttertoast.showToast(
-      //   msg: "Register Success",
-      //   toastLength: Toast.LENGTH_SHORT,
-      //   gravity: ToastGravity.CENTER,
-      //   timeInSecForIosWeb: 1,
-      //   backgroundColor: Colors.green,
-      //   textColor: Colors.white,
-      //   fontSize: 16.0,
-      // );
-      // Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
-    }
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Report are already sent it'),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('ok'),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => chathelp(),),);
+                },
+              )
+            ],
+          );
+        });
   }
 
-  Widget buildEmailTF() {
+  Widget buildmessage() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Username',
+          'Report',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -82,15 +56,15 @@ class _RegisterState extends State<Register> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: user,
+            controller: message,
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.account_box,
+                Icons.report_gmailerrorred_outlined,
                 color: Colors.white,
               ),
-              hintText: 'Enter your Username',
+              hintText: 'Enter your detail',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -99,46 +73,14 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  Widget buildPasswordTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Password',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            controller: pass,
-            obscureText: true,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.lock,
-                color: Colors.white,
-              ),
-              hintText: 'Enter your Password',
-              hintStyle: kHintTextStyle,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget buildregisterBtn() {
+  Widget buildsentBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
+      padding: EdgeInsets.symmetric(vertical: 15.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          register();
+          _insertreport();
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -146,7 +88,7 @@ class _RegisterState extends State<Register> {
         ),
         color: Colors.white,
         child: Text(
-          'Register',
+          'sent report',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -191,13 +133,13 @@ class _RegisterState extends State<Register> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 120.0,
+                    vertical: 100.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Sign In',
+                        'Report',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'OpenSans',
@@ -206,13 +148,11 @@ class _RegisterState extends State<Register> {
                         ),
                       ),
                       SizedBox(height: 30.0),
-                      buildEmailTF(),
+                      buildmessage(),
                       SizedBox(
                         height: 30.0,
                       ),
-                      buildPasswordTF(),
-                      SizedBox(height: 30.0,),
-                      buildregisterBtn(),
+                      buildsentBtn(),
                     ],
                   ),
                 ),
