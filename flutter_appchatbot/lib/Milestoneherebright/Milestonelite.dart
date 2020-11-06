@@ -8,6 +8,7 @@ class MileStoneLite extends StatefulWidget {
 }
 
 class _MileStoneLiteState extends State<MileStoneLite> {
+  static int frank=10;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +25,7 @@ class _MileStoneLiteState extends State<MileStoneLite> {
       ),
       body: Container(
         child: new ListView.builder(itemBuilder: (_,int index) => AddMileStone(),
-        itemCount: 10,
+        itemCount: frank,
         ),
       ),
     );

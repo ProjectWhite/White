@@ -11,7 +11,7 @@ import '../main.dart';
 import 'package:http/http.dart' as http;
 
 
-
+int counter=0;
 class chatbot extends StatefulWidget {
   chatbot({Key key, this.title, this.username,this.name}): super(key: key);
   final String username;
