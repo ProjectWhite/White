@@ -26,13 +26,6 @@ class _SettingPageState extends State<SettingPage> {
           children: [
             Row(
               children: [
-                IconButton(
-                    icon: Icon(Icons.arrow_back, size: 30, color: Colors.black),
-                    onPressed: (){
-                      Navigator.of(context).pop();
-                    },
-                ),
-                SizedBox(width: 8),
                 Text(
                   'Settings',
                   style: TextStyle(
