@@ -233,7 +233,6 @@ class _chatbotState extends State<chatbot> {
           data == 1? Container(
             height: 60,
             width: 60,
-
           ) : Container(),
         ],
       ),
