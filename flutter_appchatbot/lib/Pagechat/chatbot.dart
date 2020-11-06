@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Pagechat/Milestone.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:intl/intl.dart';
@@ -118,6 +118,10 @@ class _chatbotState extends State<chatbot> {
               child: ListTile(
                 leading: IconButton(
                   icon: Icon(Icons.add, color: Colors.purple, size: 35,),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => Milestone()));
+                  },
                 ),
                 title: Container(
                   height: 35,
