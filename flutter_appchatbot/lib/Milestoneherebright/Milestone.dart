@@ -59,88 +59,28 @@ class _MilestoneState extends State<Milestone> {
         controller: ctrl,
         children: [
           Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text('Date',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),),
-                ),
-                CircleAvatar(
-                  backgroundColor: Colors.red,
-                  radius: 100,
-                  child: Center(
-                    child: Text('angry',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            child: new PageView.builder(itemBuilder: (context, position){
+              return AddPages();
+            },itemCount: 3,
             ),
-          ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text('Date',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),),
-                ),
-                CircleAvatar(
-                  backgroundColor: Colors.green,
-                  radius: 100,
-                  child: Center(
-                    child: Text('happy',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
             ),
-          ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text('Date',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),),
-                ),
-                CircleAvatar(
-                  backgroundColor: Colors.blue,
-                  radius: 100,
-                  child: Center(
-                    child: Text('sad',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
         ],
+        physics: BouncingScrollPhysics(),
       ),
     );
   }
 }
+
+class AddPages extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+          child: CircleAvatar(
+            radius: 50,
+            child: Text('test5'),
+          ),
+        );
+  }
+}
+
+
