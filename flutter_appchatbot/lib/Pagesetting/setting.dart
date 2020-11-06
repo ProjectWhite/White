@@ -55,7 +55,7 @@ class _SettingPageState extends State<SettingPage> {
                 });
               },
             ),
-            buildListTile('Prefered Hours', Icons.access_time, PreferedHoursPage()),
+            buildListTile('Preferred Hours', Icons.access_time, PreferedHoursPage()),
             buildListTile('Security', Icons.lock, SecurityPage()),
             buildListTile('Rate Us', Icons.star, RatePage()),
             buildListTile('Help Center', Icons.help, HelpCenterPage()),

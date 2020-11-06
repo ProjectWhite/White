@@ -3,6 +3,7 @@ import 'package:animate_icons/animate_icons.dart';
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import '../main.dart';
 import 'package:http/http.dart' as http;
 
 
-
+int counter=0;
 class chatbot extends StatefulWidget {
   chatbot({Key key, this.title, this.username,this.name}): super(key: key);
   final String username;
@@ -104,7 +105,7 @@ class _chatbotState extends State<chatbot> {
                   icon: Icon(Icons.add, color: Colors.purple, size: 35,),
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) => Milestone()));
+                        builder: (BuildContext context) => MileStoneLite()));
                   },
                 ),
                 title: Container(
@@ -218,7 +219,6 @@ class _chatbotState extends State<chatbot> {
           data == 1? Container(
             height: 60,
             width: 60,
-
           ) : Container(),
         ],
       ),
