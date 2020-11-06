@@ -31,6 +31,14 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
           },
         ),
       ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/secure.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
     );
   }
 }
