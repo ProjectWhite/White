@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter_appchatbot/Milestoneherebright/testm.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
+import 'package:flutter_appchatbot/Pagechat/SettingPage.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -23,12 +26,13 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login PHP My Admin',
-      home: new MyHomePage(),
+      home: new Nav(),
       routes: <String,WidgetBuilder>{
         '/wellcome1': (BuildContext context)=> new wellcome(),
         '/wellcome2': (BuildContext context)=> new wellcome2(),
         '/MyHomePage': (BuildContext context)=> new MyHomePage(),
         '/chat' : (BuildContext context)=> new chatbot(username: username),
+        '/setting' : (BuildContext context)=> new SettingPage(),
       },
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
+import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
 import 'edit_profile.dart';
 import 'white_profile.dart';
 import 'account_password.dart';
@@ -16,6 +18,7 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  int _currentIndex=0;
   bool _notification = false;
   @override
   Widget build(BuildContext context) {
@@ -85,6 +88,8 @@ class _SettingPageState extends State<SettingPage> {
           ],
         ),
       ),
+
+
     );
   }
 

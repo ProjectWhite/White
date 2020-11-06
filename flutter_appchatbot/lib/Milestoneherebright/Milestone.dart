@@ -49,11 +49,6 @@ class _MilestoneState extends State<Milestone> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.greenAccent,
-      appBar: AppBar(
-        title: Text('Milestone Lite Version'),
-        centerTitle: true,
-        backgroundColor: Colors.amber,
-      ),
       body: PageView(
         scrollDirection: Axis.horizontal,
         controller: ctrl,

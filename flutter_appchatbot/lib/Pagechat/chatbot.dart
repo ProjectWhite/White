@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:animate_icons/animate_icons.dart';
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
@@ -65,38 +65,22 @@ class _chatbotState extends State<chatbot> {
 
   @override
   Widget build(BuildContext context){
+    int _currentIndex=0;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Chat bot",),
-        backgroundColor: Colors.blueGrey,
-        centerTitle: true,
-        actions: [
-          IconButton(
-              icon: Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => SettingPage()));
-              }),
-        ],
-      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
-              stops: [0.1, 0.5, 0.8, 0.9],
-              colors: [Colors.yellow[400], Colors.yellow[100], Colors.purple[100], Colors.purple]
+              colors: [Colors.red, Colors.orange]
           ),
         ),
         child: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(top: 15, bottom: 10),
-              child: Text("$name : Today, ${DateFormat("Hm").format(DateTime.now())}", style: TextStyle(
-                fontSize: 20, color: Colors.black,
+              padding: EdgeInsets.only(top: 35, bottom: 10),
+              child: Text("$name ${DateFormat("Hm").format(DateTime.now())}", style: TextStyle(
+                fontSize: 20, color: Colors.black,fontFamily: 'RobotoCondensed',
               ),),
             ),
             Flexible(
@@ -183,6 +167,7 @@ class _chatbotState extends State<chatbot> {
           ],
         ),
       ),
+
     );
   }
 
