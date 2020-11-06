@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/main.dart';
 
 
 class EditProfilePage extends StatefulWidget {
@@ -88,7 +89,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               SizedBox(
                 height: 35,
               ),
-              buildTextField('Username','Aoyly Peelaek', false),
+              buildTextField('Username', username, false),
               buildTextField('Email','Aoylyeieiza@gmail.com', false),
               buildTextField('Password','********', true),
               SizedBox(
