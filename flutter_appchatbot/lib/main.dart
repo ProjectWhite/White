@@ -16,7 +16,7 @@ import 'package:flutter_appchatbot/Pages/wellcome1.dart';
 void main() => runApp(new MyApp());
 String username='';
 String name='';
-String uml='https://78564a60a4aa.ngrok.io';
+String uml='https://dafae923469f.ngrok.io';
 
 class MyApp extends StatelessWidget {
 
@@ -24,13 +24,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Login PHP My Admin',
-      home: new Nav(),
+      title: 'White',
+      home: MyHomePage(),
       routes: <String,WidgetBuilder>{
         '/wellcome1': (BuildContext context)=> new wellcome(),
         '/wellcome2': (BuildContext context)=> new wellcome2(),
         '/MyHomePage': (BuildContext context)=> new MyHomePage(),
         '/chat' : (BuildContext context)=> new chatbot(username: username),
+        '/Navi' : (BuildContext context)=> new Nav(),
       },
     );
   }

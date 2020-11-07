@@ -35,16 +35,19 @@ class _NavState extends State<Nav> {
           BottomNavigationBarItem(
               label: 'Milestone',
               icon: Icon(Icons.line_style_rounded),
+              activeIcon: Icon(Icons.line_weight_rounded),
               backgroundColor: Colors.green
           ),
           BottomNavigationBarItem(
               label: 'Chat',
-              icon: Icon(Icons.hdr_strong_rounded),
-              backgroundColor: Colors.red
+              icon: Icon(Icons.hdr_weak_rounded),
+            activeIcon: Icon(Icons.hdr_strong_rounded),
+              backgroundColor: Colors.purple,
           ),
           BottomNavigationBarItem(
               label: 'Account',
               icon: Icon(Icons.supervisor_account_outlined),
+              activeIcon: Icon(Icons.supervised_user_circle),
               backgroundColor: Colors.blue
           ),
         ],

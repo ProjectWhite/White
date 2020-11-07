@@ -6,6 +6,7 @@ import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 import '../main.dart';
 import 'package:http/http.dart' as http;
@@ -73,7 +74,7 @@ class _chatbotState extends State<chatbot> {
           gradient: LinearGradient(
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
-              colors: [Colors.red, Colors.orange]
+              colors: [HexColor('#FFFFFF'), HexColor('#FFFFFF')]
           ),
         ),
         child: Column(
@@ -81,7 +82,7 @@ class _chatbotState extends State<chatbot> {
             Container(
               padding: EdgeInsets.only(top: 35, bottom: 10),
               child: Text("$name ${DateFormat("Hm").format(DateTime.now())}", style: TextStyle(
-                fontSize: 20, color: Colors.black,fontFamily: 'RobotoCondensed',
+                fontSize: 20, color: Colors.black,fontFamily: 'RobotoCondensed',fontWeight: FontWeight.bold,
               ),),
             ),
             Flexible(
@@ -97,7 +98,10 @@ class _chatbotState extends State<chatbot> {
 
             Divider(
               height: 5.0,
-              color: Colors.greenAccent,
+              color: Colors.grey,
+            ),
+            SizedBox(
+              height: 5,
             ),
             Container(
               child: ListTile(
@@ -109,7 +113,7 @@ class _chatbotState extends State<chatbot> {
                   },
                 ),
                 title: Container(
-                  height: 35,
+                  height: 40,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(
                         15)),
@@ -121,7 +125,7 @@ class _chatbotState extends State<chatbot> {
                     decoration: InputDecoration(
                       hintText: "Enter a Message...",
                       hintStyle: TextStyle(
-                          color: Colors.black26
+                          color: Colors.black26,fontFamily: 'RobotoCondensed',
                       ),
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
@@ -131,7 +135,8 @@ class _chatbotState extends State<chatbot> {
                     ),
                     style: TextStyle(
                         fontSize: 16,
-                        color: Colors.black
+                        color: Colors.black,
+                      fontFamily: 'RobotoCondensed',
                     ),
                     onChanged: (value) {
                     },
@@ -141,7 +146,7 @@ class _chatbotState extends State<chatbot> {
                     icon: Icon(
                       Icons.send,
                       size: 30.0,
-                      color: Colors.red,
+                      color: Colors.deepPurple,
                     ),
                     onPressed: () {
                       if (messageInsert.text.isEmpty) {
@@ -163,7 +168,7 @@ class _chatbotState extends State<chatbot> {
               ),
             ),
             SizedBox(
-              height: 15.0,
+              height: 7,
             )
           ],
         ),
@@ -172,29 +177,27 @@ class _chatbotState extends State<chatbot> {
     );
   }
 
-  //for better one i have use the bubble package check out the pubspec.yaml
-
   Widget chat(String message, int data) {
     return Container(
-      padding: EdgeInsets.only(left: 20, right: 20),
+      padding: EdgeInsets.only(left: 0 ,right: 0),
 
       child: Row(
         mainAxisAlignment: data == 1 ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: [
 
           data == 0 ? Container(
-            height: 60,
-            width: 60,
+            height: 10,
+            width: 10,
           ) : Container(),
 
           Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.only(top: 10, bottom: 10),
             child: Bubble(
                 radius: Radius.circular(15.0),
                 color: data == 0 ? Color.fromRGBO(23, 157, 139, 1) : Colors.orangeAccent,
                 elevation: 0.0,
                 child: Padding(
-                  padding: EdgeInsets.all(2.0),
+                  padding: EdgeInsets.only(top:2,left:0,right:10,bottom:2),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -217,8 +220,8 @@ class _chatbotState extends State<chatbot> {
 
 
           data == 1? Container(
-            height: 60,
-            width: 60,
+            height: 10,
+            width: 10,
           ) : Container(),
         ],
       ),

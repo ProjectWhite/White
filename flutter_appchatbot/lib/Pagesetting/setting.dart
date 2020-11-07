@@ -24,29 +24,34 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(left: 16, top: 40, right: 16),
+        padding: EdgeInsets.only(left: 10, top: 40, right: 16),
         child: ListView(
           children: [
             Row(
               children: [
+                SizedBox(
+                  width: 10,
+                ),
+                SizedBox(width: 10),
                 Text(
                   'Settings',
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w500,
+                    fontFamily: 'RobotoCondensed',
                   ),
                 ),
-                SizedBox(width: 8),
-                Icon(Icons.settings, size: 35, color: Colors.black),
+
+
               ],
             ),
-            SizedBox(height: 34),
+            SizedBox(height: 25),
             buildListTile('My Profile', Icons.person, EditProfilePage()),
             buildListTile('White Profile', Icons.favorite, WhiteProfilePage()),
             buildListTile('Account & Password', Icons.vpn_key, AccountPasswordPage()),
             buildListTile('Theme', Icons.color_lens, ThemePage()),
             SwitchListTile(
-              title: Text('Notification', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+              title: Text('Notification', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,fontFamily: 'RobotoCondensed',),),
               secondary: Icon(Icons.notifications, color: Colors.blue[300]),
               value: _notification,
               onChanged: (value){
@@ -70,12 +75,16 @@ class _SettingPageState extends State<SettingPage> {
                   width: 120,
                   child: Row(
                     children: [
+                      SizedBox(
+                        width: 10,
+                      ),
                       Text(
                         ' LOG OUT',
                         style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
+                        fontFamily: 'RobotoCondensed',
                         ),
                       ),
                       SizedBox(width: 8),
@@ -100,6 +109,7 @@ class _SettingPageState extends State<SettingPage> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
+                  fontFamily: 'RobotoCondensed',
               ),
             ),
             leading: Icon(icon, color: Colors.blue[300],),
