@@ -26,6 +26,10 @@ class _MileStoneLiteState extends State<MileStoneLite> {
         ],
       ),
       body: Container(
+        decoration: BoxDecoration(
+          color: Colors.black, //อยากใส่รูปพื้นหลัง แต่งงทำไมใส่ไม่ได้
+          image: DecorationImage(image: AssetImage("assets/Wallpaper.png"), fit: BoxFit.cover), //ไม่ขึ้นอิสัส
+        ),
         child: new ListView.builder(itemBuilder: (_,int index) => AddMileStone(),
         itemCount: frank,
         ),
@@ -49,18 +53,17 @@ class AddMileStone extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.fromLTRB(10,0,0,0),
           child: Container(
-            height: 20,
-            width: 100,
-            color: Colors.white,
+            height: 40,
+            width: 200,
+
             child: Column(
               children: [
                 Text('20/19/2000',
                   style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      backgroundColor: Colors.white
                   ),),
               ],
             ),
@@ -68,7 +71,7 @@ class AddMileStone extends StatelessWidget {
         ),
         Container(
           child: CircleAvatar(
-            radius: 50,
+            radius: 80,
             child: Text('test'),
             backgroundColor: HexColor(x.colors),
           ),
