@@ -37,7 +37,7 @@ class _NavState extends State<Nav> {
               label: 'Milestone',
               icon: Icon(Icons.line_style_rounded),
               activeIcon: Icon(Icons.line_weight_rounded),
-              backgroundColor: Colors.amber
+              backgroundColor: Colors.deepOrange
           ),
           BottomNavigationBarItem(
               label: 'Chat',

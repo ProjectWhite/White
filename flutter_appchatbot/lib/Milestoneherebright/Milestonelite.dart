@@ -17,7 +17,7 @@ class _MileStoneLiteState extends State<MileStoneLite> {
       appBar:  AppBar(
         title: Text('MileStone Lite View'),
         centerTitle: true,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.deepOrange,
         actions: [
           FlatButton.icon(onPressed:() {
             Navigator.of(context).push(MaterialPageRoute(
