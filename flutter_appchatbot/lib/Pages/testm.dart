@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
 
@@ -12,7 +13,7 @@ class Nav extends StatefulWidget {
 class _NavState extends State<Nav> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
-    Milestone(),
+    MileStoneLite(),
     chatbot(),
     SettingPage()
   ];
@@ -36,7 +37,7 @@ class _NavState extends State<Nav> {
               label: 'Milestone',
               icon: Icon(Icons.line_style_rounded),
               activeIcon: Icon(Icons.line_weight_rounded),
-              backgroundColor: Colors.green
+              backgroundColor: Colors.amber
           ),
           BottomNavigationBarItem(
               label: 'Chat',

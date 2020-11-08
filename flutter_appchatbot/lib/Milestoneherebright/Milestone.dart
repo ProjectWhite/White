@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
 import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'dart:convert';
@@ -23,16 +24,12 @@ class _MilestoneState extends State<Milestone> {
   @override
   final angry = Colors.red;
   final PageController ctrl = PageController();
-   int counter=0;
 
-  AddCounter(){
-    counter++;
-  }
+   int counter=5;
 
 
   String msg='';
   var dataus;
-
   Future<List> _readdiary() async {
     final response = await http.post("$uml/my_store/readdiary.php", body: {
       "username": username,
@@ -50,6 +47,7 @@ class _MilestoneState extends State<Milestone> {
     for(int i=0;;i++){
       if(dataus[i]['text']==null)break;
       else{
+        counter++;
         print(dataus[i]['username']);
         print(dataus[i]['text']);
         print(dataus[i]['date']);
@@ -63,35 +61,11 @@ class _MilestoneState extends State<Milestone> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Milestone Lite Version'),
+        title: Text('Milestone View'),
         centerTitle: true,
-        backgroundColor: Colors.amber,
-        actions: [
-          Container(child: FlatButton.icon(
-            onPressed: () {
-              AddCounter();
-              print(counter);
-              AddPages1();
-            },
-            icon: Icon(Icons.add),
-            label: Text('Add'),
-          ),
-          ),
-          Container(child: FlatButton.icon(
-            onPressed: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => super.widget));
-              print('$counter');
-            },
-            icon: Icon(Icons.add),
-            label: Text('Re'),
-          ),
-          ),
-        ],
+        backgroundColor: Colors.red[500],
       ),
       body: PageView(
         scrollDirection: Axis.horizontal,
@@ -99,9 +73,14 @@ class _MilestoneState extends State<Milestone> {
         children: [
 
           Container(
+            decoration: BoxDecoration(
+              color: Colors.black, //อยากใส่รูปพื้นหลัง แต่งงทำไมใส่ไม่ได้
+              image: DecorationImage(image: AssetImage("assets/Wallpaper.png"), fit: BoxFit.cover), //ไม่ขึ้นอิสัส
+            ),
+
             child: PageView.builder(itemBuilder: (context, position){
               return AddPages1();
-            },itemCount: counter+1,
+            },itemCount: counter,
             ),
             ),
 
@@ -125,16 +104,59 @@ class _AddPages1State extends State<AddPages1> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-    Container(
-    child: CircleAvatar(
-    radius: 200,
-      backgroundColor: HexColor(x.colors),
-    ),
-    ),
-    ],
+
+          Container(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0.0,0,0,20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('11/11/2020',style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        letterSpacing: 2,
+                        color: Colors.black,
+                      ),),
+                    ],
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: 350,
+                    minHeight: 550,
+                    maxWidth: double.infinity,
+                    maxHeight: double.infinity,
+                  ),
+                  child: Container(
+                      color: Colors.grey[900],
+                      width: 10,
+                      height: 10,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('YourDiary',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),),
+                      ),
+                  ),
+                )
+              ],
+            ),
+          ),
+      ],
     );
   }
 }
+
+
+// child: Text('Your Diary',style: TextStyle(
+// fontSize: 15,
+// fontWeight: FontWeight.w500,
+// letterSpacing: 1
+// ),),
 
 
 
