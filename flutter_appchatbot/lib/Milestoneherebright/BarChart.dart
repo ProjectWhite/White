@@ -104,7 +104,7 @@ class BarChartSample1State extends State<BarChartSample1> {
       double y, {
         bool isTouched = false,
         Color barColor = Colors.white,
-        double width = 22,
+        double width = 15,
         List<int> showTooltips = const [],
       }) {
     return BarChartGroupData(

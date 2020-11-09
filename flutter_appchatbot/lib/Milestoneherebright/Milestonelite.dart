@@ -36,9 +36,12 @@ class _MileStoneLiteState extends State<MileStoneLite> {
           SizedBox(
             height: 20,
           ),
-          Container(
+      InkWell(
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) => Milestone())),
+         child: Container(
             height: 250,
-            width: 350,
+            width: 370,
             child: LineChartSample1(),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(
@@ -47,6 +50,7 @@ class _MileStoneLiteState extends State<MileStoneLite> {
               // color: Color.fromRGBO(220, 220, 220, 1),
             ),
           ),
+      ),
           SizedBox(
             height: 20,
           ),
@@ -54,7 +58,7 @@ class _MileStoneLiteState extends State<MileStoneLite> {
 
             children: [
               SizedBox(
-                width: 20,
+                width: 10,
               ),
               Container(
 
@@ -70,8 +74,8 @@ class _MileStoneLiteState extends State<MileStoneLite> {
                 ),
               ),
               Container(
-                height: 290,
-                width: 180  ,
+                height: 300,
+                width: 192  ,
                 child: BarChartSample1(),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(
@@ -80,6 +84,9 @@ class _MileStoneLiteState extends State<MileStoneLite> {
                   // color: Color.fromRGBO(220, 220, 220, 1),
 
                 ),
+              ),
+              SizedBox(
+                width: 10,
               ),
             ],
           ),
