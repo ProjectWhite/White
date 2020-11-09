@@ -109,7 +109,7 @@ class _AddPages1State extends State<AddPages1> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0.0,0,0,20),
+                  padding: const EdgeInsets.fromLTRB(0.0,0,0,40),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,26 +123,36 @@ class _AddPages1State extends State<AddPages1> {
                     ],
                   ),
                 ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minWidth: 350,
-                    minHeight: 550,
-                    maxWidth: double.infinity,
-                    maxHeight: double.infinity,
-                  ),
-                  child: Container(
-                      color: Colors.grey[900],
-                      width: 10,
-                      height: 10,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('YourDiary',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),),
-                      ),
-                  ),
-                )
+                Container(
+                  height: 500,
+                  width: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(
+                      15)),
+                  color: Colors.white,
+                  // color: Color.fromRGBO(220, 220, 220, 1),
+                ),
+    ),
+                // ConstrainedBox(
+                //   constraints: BoxConstraints(
+                //     minWidth: 350,
+                //     minHeight: 550,
+                //     maxWidth: double.infinity,
+                //     maxHeight: double.infinity,
+                //   ),
+                //   child: Container(
+                //       color: Colors.grey[900],
+                //       width: 10,
+                //       height: 10,
+                //       child: Padding(
+                //         padding: const EdgeInsets.all(8.0),
+                //         child: Text('YourDiary',
+                //         style: TextStyle(
+                //           color: Colors.white,
+                //         ),),
+                //       ),
+                //   ),
+                // )
               ],
             ),
           ),
