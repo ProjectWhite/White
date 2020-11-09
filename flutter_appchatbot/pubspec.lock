@@ -139,6 +139,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.3"
+  flutter_gradient_colors:
+    dependency: "direct main"
+    description:
+      name: flutter_gradient_colors
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   flutter_sparkline:
     dependency: "direct main"
     description:

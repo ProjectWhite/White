@@ -42,6 +42,7 @@ dependencies:
   font_awesome_flutter: ^8.10.0
   fl_animated_linechart: ^1.1.4
   fl_chart: ^0.12.0
+  flutter_gradient_colors: ^1.0.0
 
 dev_dependencies:
   flutter_test:

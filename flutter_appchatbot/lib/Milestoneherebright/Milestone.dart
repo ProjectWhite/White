@@ -24,7 +24,6 @@ class _MilestoneState extends State<Milestone> {
   @override
   final angry = Colors.red;
   final PageController ctrl = PageController();
-
    int counter=5;
 
 
@@ -126,6 +125,7 @@ class _AddPages1State extends State<AddPages1> {
                 Container(
                   height: 500,
                   width: 300,
+
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(
                       15)),

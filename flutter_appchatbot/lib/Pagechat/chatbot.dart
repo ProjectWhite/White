@@ -4,6 +4,7 @@ import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -110,7 +111,7 @@ class _chatbotState extends State<chatbot> {
                   icon: Icon(Icons.add, color: Colors.purple, size: 35,),
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) => graphmile()));
+                        builder: (BuildContext context) => PieChartSample2()));
                   },
                 ),
                 title: Container(
