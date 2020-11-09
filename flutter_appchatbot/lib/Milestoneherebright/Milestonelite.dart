@@ -7,6 +7,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_appchatbot/class/Emotion/Anger.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/BarChart.dart';
 class MileStoneLite extends StatefulWidget {
   @override
   _MileStoneLiteState createState() => _MileStoneLiteState();
@@ -29,48 +30,62 @@ class _MileStoneLiteState extends State<MileStoneLite> {
           }, icon: Icon(Icons.zoom_in), label: Text('Zoom In')),
         ],
       ),
-      body: Column(
+      body: Expanded(
+        child: Column(
 
-        children: [
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            height: 250,
-            width: 350,
-            child: LineChartSample1(),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(
-                  15)),
-              color: Colors.white,
-              // color: Color.fromRGBO(220, 220, 220, 1),
+          children: [
+            SizedBox(
+              height: 20,
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-
-            children: [
-              SizedBox(
-                width: 20,
+            Container(
+              height: 250,
+              width: 350,
+              child: LineChartSample1(),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(
+                    15)),
+                color: Colors.white,
+                // color: Color.fromRGBO(220, 220, 220, 1),
               ),
-              Container(
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
 
-                height: 290,
-                width: 195,
-                child: PieChartSample2(),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(
-                      18)),
-                  color: Colors.red,
-                  // color: Color.fromRGBO(220, 220, 220, 1),
-
+              children: [
+                SizedBox(
+                  width: 20,
                 ),
-              ),
-            ],
-          ),
-        ],
+                Container(
+
+                  height: 290,
+                  width: 180,
+                  child: PieChartSample2(),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(
+                        18)),
+
+                    // color: Color.fromRGBO(220, 220, 220, 1),
+
+                  ),
+                ),
+                Container(
+                  height: 290,
+                  width: 180  ,
+                  child: BarChartSample1(),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(
+                        18)),
+                    color: Colors.white,
+                    // color: Color.fromRGBO(220, 220, 220, 1),
+
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
 
       // Container(
