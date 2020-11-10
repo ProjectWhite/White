@@ -1,12 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class LineChartSample1 extends StatefulWidget {
+class LineChartEmotion extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => LineChartSample1State();
+  State<StatefulWidget> createState() => LineChartEmotionState();
 }
 
-class LineChartSample1State extends State<LineChartSample1> {
+class LineChartEmotionState extends State<LineChartEmotion> {
   bool isShowingMainData;
 
   @override

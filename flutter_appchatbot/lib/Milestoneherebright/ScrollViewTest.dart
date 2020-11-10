@@ -16,12 +16,17 @@ class _SvtState extends State<Svt> {
         child: Row(
           children: [
             Container(
-              color: Colors.red,
+
               height: 300,
               width: 500,
               child: Center(
                 child: Text('Scroll'),
               ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(
+                18)),
+            color: Colors.red,
+          ),
             ),
           ],
         ),

@@ -24,19 +24,19 @@ class _MileStoneLiteState extends State<MileStoneLite> {
 
         children: [
           SizedBox(
-            height: 20,
+            height: 30,
           ),
       InkWell(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
             builder: (BuildContext context) => Milestone())),
          child: Padding(
-           padding: const EdgeInsets.fromLTRB(10.0,0,0,0),
+           padding: const EdgeInsets.fromLTRB(10,0,0,0),
            child: SingleChildScrollView(
              scrollDirection: Axis.horizontal,
              child: Container(
               height: 250,
               width: 1000,
-              child: LineChartSample1(),
+              child: LineChartEmotion(),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(
                     15)),
@@ -60,7 +60,7 @@ class _MileStoneLiteState extends State<MileStoneLite> {
 
                 height: 290,
                 width: 180,
-                child: PieChartSample2(),
+                child: PieChartEmotion(),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(
                       18)),
@@ -74,8 +74,8 @@ class _MileStoneLiteState extends State<MileStoneLite> {
               ),
               Container(
                 height: 290,
-                width: 180  ,
-                child: BarChartSample1(),
+                width: 180,
+                child: BarChartEmotion(),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(
                       18)),
@@ -90,17 +90,35 @@ class _MileStoneLiteState extends State<MileStoneLite> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0,12,12,0),
             child: Container(
-              height: 140,
+              height: 100,
               width: 400,
-              child: Svt(),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(
                     18)),
-                color: Colors.white,
+                color: Colors.black,
                 // color: Color.fromRGBO(220, 220, 220, 1),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8,8,0,0),
+                      child: Container(
+                        height: 20,
+                        width: 20,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              7)),
+                          color: Colors.deepPurple[500],
+                          // color: Color.fromRGBO(220, 220, 220, 1),
+                        ),
+                      ),
+                    ),
 
+                  ],
               ),
             ),
           ),
@@ -120,47 +138,47 @@ class _MileStoneLiteState extends State<MileStoneLite> {
   }
 }
 
-class AddMileStone extends StatelessWidget {
-  @override
-  Anger x = new Anger(tone.annoyed);
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Container(
-            height: 80,
-            width: 5,
-            color: Colors.black,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10,0,0,0),
-          child: Container(
-            height: 40,
-            width: 200,
-
-            child: Column(
-              children: [
-                Text('20/19/2000',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                  ),),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          child: CircleAvatar(
-            radius: 80,
-            child: Text('test'),
-            backgroundColor: HexColor(x.colors),
-          ),
-        ),
-      ],
-    );
-  }
-}
+// class AddMileStone extends StatelessWidget {
+//   @override
+//   Anger x = new Anger(tone.annoyed);
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.symmetric(vertical: 10),
+//           child: Container(
+//             height: 80,
+//             width: 5,
+//             color: Colors.black,
+//           ),
+//         ),
+//         Padding(
+//           padding: const EdgeInsets.fromLTRB(10,0,0,0),
+//           child: Container(
+//             height: 40,
+//             width: 200,
+//
+//             child: Column(
+//               children: [
+//                 Text('20/19/2000',
+//                   style: TextStyle(
+//                       fontSize: 18,
+//                       fontWeight: FontWeight.bold,
+//                   ),),
+//               ],
+//             ),
+//           ),
+//         ),
+//         Container(
+//           child: CircleAvatar(
+//             radius: 80,
+//             child: Text('test'),
+//             backgroundColor: HexColor(x.colors),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
 

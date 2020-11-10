@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_appchatbot/Milestoneherebright/Indicator.dart';
 
-class PieChartSample2 extends StatefulWidget {
+class PieChartEmotion extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => PieChart2State();
 }
@@ -145,7 +145,8 @@ class PieChart2State extends State {
       switch (i) {
         case 0:
           return PieChartSectionData(
-            color: const Color(0xff0293ee),
+            // color: const Color(0xff0293ee),
+            color: Colors.deepPurple[500],
             value: 40,
             title: '40%',
             radius: radius,
@@ -154,7 +155,8 @@ class PieChart2State extends State {
           );
         case 1:
           return PieChartSectionData(
-            color: const Color(0xfff8b250),
+            // color: const Color(0xfff8b250),
+            color: Colors.indigo[500],
             value: 30,
             title: '30%',
             radius: radius,
@@ -163,7 +165,8 @@ class PieChart2State extends State {
           );
         case 2:
           return PieChartSectionData(
-            color: const Color(0xff845bef),
+            // color: const Color(0xff845bef),
+            color: Colors.blue[500],
             value: 15,
             title: '15%',
             radius: radius,
@@ -172,7 +175,8 @@ class PieChart2State extends State {
           );
         case 3:
           return PieChartSectionData(
-            color: const Color(0xff13d38e),
+            // color: const Color(0xff13d38e),
+            color: Colors.green[500],
             value: 15,
             title: '15%',
             radius: radius,
@@ -181,7 +185,8 @@ class PieChart2State extends State {
           );
         case 4:
           return PieChartSectionData(
-            color: const Color(0xff13d38e),
+            // color: const Color(0xff13d38e),
+            color: Colors.yellow[500],
             value: 15,
             title: '15%',
             radius: radius,
@@ -190,7 +195,8 @@ class PieChart2State extends State {
           );
         case 5:
           return PieChartSectionData(
-            color: const Color(0xff13d38e),
+            // color: const Color(0xff13d38e),
+            color: Colors.orange[700],
             value: 15,
             title: '15%',
             radius: radius,
@@ -199,7 +205,8 @@ class PieChart2State extends State {
           );
         case 6:
           return PieChartSectionData(
-            color: const Color(0xff13d38e),
+            // color: const Color(0xff13d38e),
+            color: Colors.red[500],
             value: 15,
             title: '15%',
             radius: radius,

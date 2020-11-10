@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class BarChartSample1 extends StatefulWidget {
+class BarChartEmotion extends StatefulWidget {
   final List<Color> availableColors = [
     Colors.purpleAccent,
     Colors.yellow,
@@ -15,10 +15,10 @@ class BarChartSample1 extends StatefulWidget {
   ];
 
   @override
-  State<StatefulWidget> createState() => BarChartSample1State();
+  State<StatefulWidget> createState() => BarChartEmotionState();
 }
 
-class BarChartSample1State extends State<BarChartSample1> {
+class BarChartEmotionState extends State<BarChartEmotion> {
   final Color barBackgroundColor = const Color(0xff72d8bf);
   final Duration animDuration = const Duration(milliseconds: 250);
 
@@ -43,9 +43,9 @@ class BarChartSample1State extends State<BarChartSample1> {
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   Text(
-                    'Play =>',
+                    'Push To Play',
                     style: TextStyle(
-                        color: const Color(0xff0f4a3c), fontSize: 24, fontWeight: FontWeight.bold),
+                        color: const Color(0xff0f4a3c), fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 4,
@@ -80,7 +80,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                 child: IconButton(
                   icon: Icon(
                     isPlaying ? Icons.pause : Icons.play_arrow,
-                    color: const Color(0xff0f4a3c),
+                    color: Colors.red ,
                   ),
                   onPressed: () {
                     setState(() {
