@@ -25,7 +25,7 @@ class chatbot extends StatefulWidget {
 }
 
 class _chatbotState extends State<chatbot> {
-  static int i;
+  int i = 0;
 
   Future<List> _insertai(String ms) async {
     print(ms);
@@ -42,10 +42,16 @@ class _chatbotState extends State<chatbot> {
       "username": username,
       "message": messageInsert.text,
     });
-    await http.post("$uml/my_store/insertdiary.php", body: {
-      "username": username,
-      "message" : messageInsert.text
-    });
+    // if(i==1){
+    //   await http.post("$uml/my_store/insertdiary.php", body: {
+    //     "username": username,
+    //     "message" : messageInsert.text
+    //   });
+    //   i=0;
+    // }
+  }
+
+  Future<List> _insertdiary() async{
     if(i==1){
       await http.post("$uml/my_store/insertdiary.php", body: {
         "username": username,
@@ -83,7 +89,7 @@ class _chatbotState extends State<chatbot> {
     });
     String ms = aiResponse.getListMessage()[0]["text"]["text"][0].toString();
     if(diary=='Diarycommand'){
-      i=i+1;
+      i=1;
       print(i);
     }
     _insertai(ms);
@@ -184,6 +190,8 @@ class _chatbotState extends State<chatbot> {
                               {"data": 1, "message": messageInsert.text});
                         });
                         _insertmsg();
+                        print(i);
+                        _insertdiary();
                         response(messageInsert.text);
                         messageInsert.clear();
                       }
