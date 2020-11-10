@@ -56,9 +56,7 @@ class _MileStoneLiteState extends State<MileStoneLite> {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              SizedBox(
-                width: 12,
-              ),
+
               Container(
 
                 height: 290,
