@@ -30,9 +30,6 @@ class _wellcome2State extends State<wellcome2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('wellcome2'),
-      ),
       body: Container(
         alignment: Alignment.center,
         child: FlatButton(
