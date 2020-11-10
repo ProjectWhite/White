@@ -74,17 +74,23 @@ class _MileStoneLiteState extends State<MileStoneLite> {
               SizedBox(
                 width: 10,
               ),
-              Container(
-                height: 290,
-                width: 180,
-                child: BarChartEmotion(),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(
-                      18)),
-                  color: Colors.white,
-                  // color: Color.fromRGBO(220, 220, 220, 1),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                    height: 290,
+                    width: 180,
+                    child: BarChartEmotion(),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(
+                          18)),
+                      color: Colors.white,
+                      // color: Color.fromRGBO(220, 220, 220, 1),
 
-                ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 width: 10,
