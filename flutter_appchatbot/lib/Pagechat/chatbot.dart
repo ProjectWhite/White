@@ -13,21 +13,19 @@ import '../main.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
 
-
 int counter=0;
 class chatbot extends StatefulWidget {
   chatbot({Key key, this.title, this.username,this.name}): super(key: key);
   final String username;
   final String name;
   final String title;
-  String x;
   bool bot = false;
   @override
   _chatbotState createState() => _chatbotState();
 }
 
 class _chatbotState extends State<chatbot> {
-
+  int i;
 
   Future<List> _insertai(String ms) async {
     print(ms);
@@ -45,6 +43,21 @@ class _chatbotState extends State<chatbot> {
       "username": username,
       "message": messageInsert.text,
     });
+    print(i);
+    if(i==1){
+      _insertdiary();
+      i=0;
+    }
+  }
+
+  var dataus;
+
+  Future<List> _insertdiary() async{
+    print('insert diary');
+        final res = await http.post("$uml/my_store/insertdiary.php", body: {
+          "username": username,
+          "message" : messageInsert.text
+        });
   }
 
   void response(query) async {
@@ -54,8 +67,8 @@ class _chatbotState extends State<chatbot> {
     Dialogflow dialogflow =
     Dialogflow(authGoogle: authGoogle, language: Language.english);
     AIResponse aiResponse = await dialogflow.detectIntent(query);
-    String x = aiResponse.queryResult.intent.displayName;
-    print (x);
+    String diary = aiResponse.queryResult.intent.displayName;
+    print (diary);
     setState(() {
       messsages.insert(0, {
         "data": 0,
@@ -63,6 +76,10 @@ class _chatbotState extends State<chatbot> {
       });
     });
     String ms = aiResponse.getListMessage()[0]["text"]["text"][0].toString();
+    if(diary=='Diarycommand'){
+      i++;
+      print(i);
+    }
     _insertai(ms);
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/main.dart';
+import 'package:http/http.dart' as http;
 
 
 class EditProfilePage extends StatefulWidget {
@@ -102,8 +103,23 @@ class _EditProfilePageState extends State<EditProfilePage> {
               buildTextField('Email','Aoylyeieiza@gmail.com', false),
               buildTextField('Password','********', true),
               SizedBox(
-                height: 75,
+                height: 25,
               ),
+              RaisedButton(
+                onPressed: (){},
+                color: Colors.blue[400],
+                padding: EdgeInsets.symmetric(horizontal: 50),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                child: Text(
+                  ' Delete Account ',
+                  style: TextStyle(
+                    fontSize: 16,
+                    letterSpacing: 2.2,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              SizedBox(height: 40,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
