@@ -7,6 +7,7 @@ class Disgust extends Emotion{
 
   Disgust(tone category) : super.empty(){
     this._category = category;
+    this.mothercolors = 'gggg';
     this.type = emotion.disgust;
     if (_category == tone.resentful) {
       this.colors = '#1b4332';
