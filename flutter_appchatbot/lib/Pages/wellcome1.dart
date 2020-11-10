@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/Pages/wellcome2.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'package:flutter/services.dart';
 import '../constrants.dart';
@@ -62,7 +63,7 @@ class _wellcomeState extends State<wellcome> {
             'name': name.text,
 
           });
-          Navigator.pushReplacementNamed(context, '/wellcome2');
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
           setState(() {
           });
         },

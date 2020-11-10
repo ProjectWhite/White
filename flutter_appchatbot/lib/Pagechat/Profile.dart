@@ -120,7 +120,7 @@ class _AboutPageState extends State<AboutPage> {
                   http.post(url,body:{
                     'username' : username,
                   });
-                  Navigator.pushReplacementNamed(context, '/MyHomePage');
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(),),);
                 },
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/main.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -75,7 +76,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: NetworkImage('https://lh3.googleusercontent.com/proxy/Q4NaPAEQ_dNvSParOnNGEADJoeyGPsNVAB2HYmCAgUC2JjWZAGpwkHUXpP7iHupq7K2uE99NdvJ7s2oFDmoV-ulHBYI-j7Cvm84n9Ft5k_82ap7rCjK0W5HoBJtsbqvGXkn1uZrvBvIAxfMPmKHNcURRG9-H-Hxp'),
+                          image: new ExactAssetImage('assets/aoy.jpg'),
                         )
                       ),
                     ),
@@ -100,26 +101,42 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 height: 35,
               ),
               buildTextField('Username', username, false),
-              buildTextField('Email','Aoylyeieiza@gmail.com', false),
+              buildTextField('Email','', false),
               buildTextField('Password','********', true),
-              SizedBox(
-                height: 25,
-              ),
-              RaisedButton(
-                onPressed: (){},
-                color: Colors.blue[400],
-                padding: EdgeInsets.symmetric(horizontal: 50),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                child: Text(
-                  ' Delete Account ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    letterSpacing: 2.2,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              SizedBox(height: 40,),
+              // SizedBox(
+              //   height: 25,
+              // ),
+              // RaisedButton(
+              //   onPressed: (){
+              //     var url="$uml/my_store/delete.php";
+              //     print(username);
+              //     http.post(url,body:{
+              //       'username' : username,
+              //     });
+              //     Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(),),);
+              //     Fluttertoast.showToast(
+              //         msg: "Delete Successful",
+              //         toastLength: Toast.LENGTH_SHORT,
+              //         gravity: ToastGravity.BOTTOM,
+              //         timeInSecForIosWeb: 1,
+              //         backgroundColor: Colors.black,
+              //         textColor: Colors.white,
+              //         fontSize: 16.0
+              //     );
+              //   },
+              //   color: Colors.blue[400],
+              //   padding: EdgeInsets.symmetric(horizontal: 50),
+              //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              //   child: Text(
+              //     ' Delete Account ',
+              //     style: TextStyle(
+              //       fontSize: 16,
+              //       letterSpacing: 2.2,
+              //       color: Colors.white,
+              //     ),
+              //   ),
+              // ),
+              // SizedBox(height: 40,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -154,6 +171,52 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ),
                   )
                 ],
+              ),
+              SizedBox(height: 40,),
+              Center(
+                child: RaisedButton(
+                  onPressed: (){
+                    var url="$uml/my_store/delete.php";
+                    print(username);
+                    http.post(url,body:{
+                      'username' : username,
+                    });
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(),),);
+                    Fluttertoast.showToast(
+                        msg: "Delete Successful",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.black,
+                        textColor: Colors.white,
+                        fontSize: 16.0
+                    );
+                  },
+                  color: Colors.blue[400],
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: SizedBox(
+                    width: 130,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Delete Account',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontFamily: 'RobotoCondensed',
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Icon(Icons.logout, color: Colors.white,size: 20,),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
