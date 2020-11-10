@@ -208,13 +208,13 @@ class LineChartSample1State extends State<LineChartSample1> {
     // );
     final LineChartBarData lineChartBarData3 = LineChartBarData(
       spots: [
-        FlSpot(0, 2.8),
-        FlSpot(3, 1.9),
-        FlSpot(6, 3),
-        FlSpot(10, 1.3),
-        FlSpot(13, 2.5),
-        FlSpot(30, 2),
-        FlSpot(50, 6),
+        FlSpot(1, 2.8),
+        FlSpot(2, 1.9),
+        FlSpot(3, 3),
+        FlSpot(4, 1.3),
+        FlSpot(5, 2.5),
+        FlSpot(6, 2),
+        FlSpot(7, 6),
       ],
       isCurved: true,
       colors: const [
@@ -371,11 +371,13 @@ class LineChartSample1State extends State<LineChartSample1> {
       // ),
       LineChartBarData(
         spots: [
-          FlSpot(1, 3.8),
-          FlSpot(3, 1.9),
-          FlSpot(6, 5),
-          FlSpot(10, 3.3),
-          FlSpot(13, 4.5),
+          FlSpot(1, 2.8),
+          FlSpot(2, 1.9),
+          FlSpot(3, 3),
+          FlSpot(4, 1.3),
+          FlSpot(5, 2.5),
+          FlSpot(6, 2),
+          FlSpot(7, 6),
         ],
         isCurved: true,
         curveSmoothness: 0,

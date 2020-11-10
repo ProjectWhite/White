@@ -20,17 +20,6 @@ class _MileStoneLiteState extends State<MileStoneLite> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar:  AppBar(
-        title: Text('MileStone Lite View'),
-        centerTitle: true,
-        backgroundColor: Colors.deepOrange,
-        actions: [
-          FlatButton.icon(onPressed:() {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => Milestone()));
-          }, icon: Icon(Icons.zoom_in), label: Text('Zoom In')),
-        ],
-      ),
       body: Column(
 
         children: [
@@ -59,13 +48,13 @@ class _MileStoneLiteState extends State<MileStoneLite> {
          ),
       ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Row(
 
             children: [
               SizedBox(
-                width: 10,
+                width: 12,
               ),
               Container(
 
@@ -80,9 +69,12 @@ class _MileStoneLiteState extends State<MileStoneLite> {
 
                 ),
               ),
+              SizedBox(
+                width: 10,
+              ),
               Container(
-                height: 300,
-                width: 192  ,
+                height: 290,
+                width: 180  ,
                 child: BarChartSample1(),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(
@@ -96,6 +88,21 @@ class _MileStoneLiteState extends State<MileStoneLite> {
                 width: 10,
               ),
             ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Container(
+              height: 140,
+              width: 400,
+              child: Svt(),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(
+                    18)),
+                color: Colors.white,
+                // color: Color.fromRGBO(220, 220, 220, 1),
+
+              ),
+            ),
           ),
         ],
       ),
