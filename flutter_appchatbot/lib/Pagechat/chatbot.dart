@@ -25,7 +25,7 @@ class chatbot extends StatefulWidget {
 }
 
 class _chatbotState extends State<chatbot> {
-  int i;
+  static int i;
 
   Future<List> _insertai(String ms) async {
     print(ms);
@@ -37,28 +37,34 @@ class _chatbotState extends State<chatbot> {
   }
 
   Future<List> _insertmsg() async {
-    print(messageInsert.text);
     await http.post(
         "$uml/my_store/insertmessage.php", body: {
       "username": username,
       "message": messageInsert.text,
     });
-    print(i);
+    await http.post("$uml/my_store/insertdiary.php", body: {
+      "username": username,
+      "message" : messageInsert.text
+    });
     if(i==1){
-      _insertdiary();
+      await http.post("$uml/my_store/insertdiary.php", body: {
+        "username": username,
+        "message" : messageInsert.text
+      });
       i=0;
     }
   }
 
   var dataus;
 
-  Future<List> _insertdiary() async{
-    print('insert diary');
-        final res = await http.post("$uml/my_store/insertdiary.php", body: {
-          "username": username,
-          "message" : messageInsert.text
-        });
-  }
+  // Future<List> _insertdiary(String m) async{
+  //   print('insert diary');
+  //   print(messageInsert.text);
+  //       final res = await http.post("$uml/my_store/insertdiary.php", body: {
+  //         "username": username,
+  //         "diary" : messageInsert.text
+  //       });
+  // }
 
   void response(query) async {
     AuthGoogle authGoogle = await AuthGoogle(
@@ -77,7 +83,7 @@ class _chatbotState extends State<chatbot> {
     });
     String ms = aiResponse.getListMessage()[0]["text"]["text"][0].toString();
     if(diary=='Diarycommand'){
-      i++;
+      i=i+1;
       print(i);
     }
     _insertai(ms);
