@@ -15,7 +15,7 @@ class _AboutPageState extends State<AboutPage> {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text('Profile'),
+        title: Text('$username'),
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,

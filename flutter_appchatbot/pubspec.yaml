@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  shared_preferences:
   fluttertoast:
   hexcolor: ^1.0.6
   animate_icons: ^0.0.4

@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../main.dart';
 import 'edit_profile.dart';
 import 'white_profile.dart';
 import 'account_password.dart';
@@ -18,6 +21,22 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+
+  Future logOut(BuildContext context)async{
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.remove('us');
+    Fluttertoast.showToast(
+        msg: "Logout Successful",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.amber,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(),),);
+  }
+  
   int _currentIndex=0;
   bool _notification = false;
   @override
@@ -67,7 +86,9 @@ class _SettingPageState extends State<SettingPage> {
             SizedBox(height: 20),
             Center(
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  logOut(context);
+                },
                 color: Colors.blue[400],
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 padding: EdgeInsets.symmetric(horizontal: 20),
@@ -120,4 +141,6 @@ class _SettingPageState extends State<SettingPage> {
             },
           );
   }
+  
+  
 }
