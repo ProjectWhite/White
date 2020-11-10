@@ -20,6 +20,7 @@ class chatbot extends StatefulWidget {
   final String username;
   final String name;
   final String title;
+  String x;
   bool bot = false;
   @override
   _chatbotState createState() => _chatbotState();
@@ -53,10 +54,12 @@ class _chatbotState extends State<chatbot> {
     Dialogflow dialogflow =
     Dialogflow(authGoogle: authGoogle, language: Language.english);
     AIResponse aiResponse = await dialogflow.detectIntent(query);
+    String x = aiResponse.queryResult.intent.displayName;
+    print (x);
     setState(() {
       messsages.insert(0, {
         "data": 0,
-        "message": aiResponse.getListMessage()[0]["text"]["text"][0].toString()
+        "message": aiResponse.getListMessage()[0]["text"]["text"][0].toString(),
       });
     });
     String ms = aiResponse.getListMessage()[0]["text"]["text"][0].toString();
@@ -166,6 +169,7 @@ class _chatbotState extends State<chatbot> {
                       if (!currentFocus.hasPrimaryFocus) {
                         currentFocus.unfocus();
                       }
+                      print (messsages);
                     }),
               ),
             ),
