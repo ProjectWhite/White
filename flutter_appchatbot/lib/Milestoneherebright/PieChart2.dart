@@ -31,7 +31,6 @@ class PieChart2State extends State {
                       18)),
                   gradient: LinearGradient(
                     colors: [
-                      Colors.lightBlue,
                       Color(0xff2c284c),
                       Color(0xff46426c),
                     ],
