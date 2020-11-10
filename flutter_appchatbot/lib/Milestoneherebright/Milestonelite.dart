@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/LineChart.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/ScrollViewTest.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_appchatbot/class/Emotion/Anger.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
@@ -39,17 +40,23 @@ class _MileStoneLiteState extends State<MileStoneLite> {
       InkWell(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
             builder: (BuildContext context) => Milestone())),
-         child: Container(
-            height: 250,
-            width: 370,
-            child: LineChartSample1(),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(
-                  15)),
-              color: Colors.white,
-              // color: Color.fromRGBO(220, 220, 220, 1),
+         child: Padding(
+           padding: const EdgeInsets.fromLTRB(10.0,0,0,0),
+           child: SingleChildScrollView(
+             scrollDirection: Axis.horizontal,
+             child: Container(
+              height: 250,
+              width: 1000,
+              child: LineChartSample1(),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(
+                    15)),
+                color: Colors.white,
+                // color: Color.fromRGBO(220, 220, 220, 1),
+              ),
             ),
-          ),
+           ),
+         ),
       ),
           SizedBox(
             height: 20,
