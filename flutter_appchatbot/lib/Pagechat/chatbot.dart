@@ -61,7 +61,6 @@ class _chatbotState extends State<chatbot> {
     });
     String ms = aiResponse.getListMessage()[0]["text"]["text"][0].toString();
     _insertai(ms);
-
   }
 
   final messageInsert = TextEditingController();

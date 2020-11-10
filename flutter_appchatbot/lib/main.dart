@@ -4,6 +4,7 @@ import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Pagechat/chatbot.dart';
 import 'Pages/wellcome1.dart';
 import 'Pages/wellcome2.dart';
@@ -12,7 +13,14 @@ import 'package:flutter/services.dart';
 import 'register.dart';
 import 'package:flutter_appchatbot/Pages/wellcome1.dart';
 
-void main() => runApp(new MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  var u = preferences.getString('us');
+  username = u;
+  runApp(MaterialApp(home: u == null ? MyHomePage() : Nav(),));
+}
+
 String username='';
 String name='';
 String uml='https://436ade53496e.ngrok.io';
@@ -23,8 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'White',
-      home: new MyHomePage(),
+      title: 'Login PHP My Admin',
       routes: <String,WidgetBuilder>{
         '/wellcome1': (BuildContext context)=> new wellcome(),
         '/wellcome2': (BuildContext context)=> new wellcome2(),
@@ -48,6 +55,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String msg='';
 
+  Future save() async{
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString('us', user.text);
+  }
+
   Future<List> _login() async {
     final response = await http.post("$uml/my_store/login.php", body: {
       "username": user.text,
@@ -62,13 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }else{
       if(datauser[0]['nickname']==null) {
-        Navigator.pushReplacementNamed(context, '/wellcome1');
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>wellcome(),),);
         setState(() {
           username = datauser[0]['username'];
         });
       }
       else{
-        Navigator.pushReplacementNamed(context, '/wellcome2');
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
         setState(() {
           username = datauser[0]['username'];
           name = datauser[0]['nickname'];
@@ -169,6 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
               checkColor: Colors.green,
               activeColor: Colors.white,
               onChanged: (value) {
+                save();
                 setState(() {
                   _rememberMe = value;
                 });

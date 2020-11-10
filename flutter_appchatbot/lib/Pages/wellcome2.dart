@@ -19,7 +19,7 @@ class _wellcome2State extends State<wellcome2> {
     var data = json.decode(response.body);
     print(data[0]['nickname']);
 
-    Navigator.pushReplacementNamed(context, '/Navi');
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>Nav(),),);
     setState(() {
       name = data[0]['nickname'];
     });
