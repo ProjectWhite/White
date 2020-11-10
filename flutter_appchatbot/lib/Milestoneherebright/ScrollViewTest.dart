@@ -10,11 +10,7 @@ class _SvtState extends State<Svt> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('test'),
-        centerTitle: true,
 
-      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(

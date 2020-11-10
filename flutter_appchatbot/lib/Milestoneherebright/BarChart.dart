@@ -43,7 +43,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   Text(
-                    'Mingguan',
+                    'Play =>',
                     style: TextStyle(
                         color: const Color(0xff0f4a3c), fontSize: 24, fontWeight: FontWeight.bold),
                   ),
@@ -51,7 +51,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                     height: 4,
                   ),
                   Text(
-                    'Grafik konsumsi kalori',
+                    'Bar Chart',
                     style: TextStyle(
                         color: const Color(0xff379982), fontSize: 18, fontWeight: FontWeight.bold),
                   ),
@@ -155,25 +155,25 @@ class BarChartSample1State extends State<BarChartSample1> {
               String weekDay;
               switch (group.x.toInt()) {
                 case 0:
-                  weekDay = 'Monday';
+                  weekDay = 'Anger';
                   break;
                 case 1:
-                  weekDay = 'Tuesday';
+                  weekDay = 'Disgust';
                   break;
                 case 2:
-                  weekDay = 'Wednesday';
+                  weekDay = 'Fear';
                   break;
                 case 3:
-                  weekDay = 'Thursday';
+                  weekDay = 'Happy';
                   break;
                 case 4:
-                  weekDay = 'Friday';
+                  weekDay = 'Love';
                   break;
                 case 5:
-                  weekDay = 'Saturday';
+                  weekDay = 'Sad';
                   break;
                 case 6:
-                  weekDay = 'Sunday';
+                  weekDay = 'Surprise';
                   break;
               }
               return BarTooltipItem(
@@ -201,19 +201,19 @@ class BarChartSample1State extends State<BarChartSample1> {
           getTitles: (double value) {
             switch (value.toInt()) {
               case 0:
-                return 'M';
+                return 'A';
               case 1:
-                return 'T';
+                return 'D';
               case 2:
-                return 'W';
-              case 3:
-                return 'T';
-              case 4:
                 return 'F';
+              case 3:
+                return 'H';
+              case 4:
+                return 'L';
               case 5:
                 return 'S';
               case 6:
-                return 'S';
+                return 'Sur';
               default:
                 return '';
             }
@@ -245,19 +245,19 @@ class BarChartSample1State extends State<BarChartSample1> {
           getTitles: (double value) {
             switch (value.toInt()) {
               case 0:
-                return 'M';
+                return 'A';
               case 1:
-                return 'T';
+                return 'D';
               case 2:
-                return 'W';
-              case 3:
-                return 'T';
-              case 4:
                 return 'F';
+              case 3:
+                return 'H';
+              case 4:
+                return 'L';
               case 5:
                 return 'S';
               case 6:
-                return 'S';
+                return 'Sur';
               default:
                 return '';
             }

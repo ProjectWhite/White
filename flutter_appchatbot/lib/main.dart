@@ -18,7 +18,8 @@ void main() async{
   SharedPreferences preferences = await SharedPreferences.getInstance();
   var u = preferences.getString('us');
   username = u;
-  runApp(MaterialApp(home: u == null ? MyHomePage() : Nav(),));
+  runApp(MaterialApp(home: u == null ? MyHomePage() : Nav(),
+    debugShowCheckedModeBanner: false,));
 }
 
 String username='';
