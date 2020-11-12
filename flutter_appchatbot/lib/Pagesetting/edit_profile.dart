@@ -20,6 +20,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.white,
+            fontFamily: 'RobotoCondensed',
           ),
         ),
         centerTitle: true,
@@ -48,6 +49,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w500,
+                  fontFamily: 'RobotoCondensed',
                 ),
               ),
               SizedBox(
@@ -99,9 +101,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               SizedBox(
                 height: 35,
               ),
-              buildTextField('Username', username, false),
-              buildTextField('Email','Aoylyeieiza@gmail.com', false),
-              buildTextField('Password','********', true),
+              buildInkWell('Nickname', ChangeNickname(), name),
               SizedBox(
                 height: 25,
               ),
@@ -116,6 +116,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     fontSize: 16,
                     letterSpacing: 2.2,
                     color: Colors.white,
+                    fontFamily: 'RobotoCondensed',
                   ),
                 ),
               ),
@@ -136,6 +137,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 2.2,
                         color: Colors.black,
+                        fontFamily: 'RobotoCondensed',
                       ),
                     ),
                   ),
@@ -150,6 +152,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         fontSize: 16,
                         letterSpacing: 2.2,
                         color: Colors.white,
+                        fontFamily: 'RobotoCondensed',
                       ),
                     ),
                   )
@@ -161,34 +164,74 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ),
     );
   }
-
-  Widget buildTextField(String labelText, String placeholder, bool isPasswordTextfield) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 35.0),
-      child: TextField(
-        obscureText: isPasswordTextfield ? showPassword : false,
-        decoration: InputDecoration(
-          suffixIcon: isPasswordTextfield ? IconButton(
-            onPressed: () {
-              setState(() {
-                showPassword = !showPassword;
-              });
-            },
-            icon : Icon(
-              Icons.remove_red_eye_outlined,
-              color: Colors.grey,
+  InkWell buildInkWell(String textTitle, page, textBehide) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) => page));
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10, bottom: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(textTitle, style: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.w400,fontFamily: 'RobotoCondensed',
+            ),),
+            Row(
+              children: [
+                Text(textBehide, style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w300,
+                    fontStyle: FontStyle.italic
+                ),),
+                SizedBox(width: 10),
+                Icon(Icons.arrow_forward_ios_rounded, color: Colors.grey[600],
+                    size: 18)
+              ],
             ),
-          ): null,
-          contentPadding: EdgeInsets.only(bottom: 3),
-          labelText: labelText,
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          hintText: placeholder,
-          hintStyle: TextStyle(
-            fontSize: 16,
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class ChangeNickname extends StatefulWidget {
+  @override
+  _ChangeNicknameState createState() => _ChangeNicknameState();
+}
+
+class _ChangeNicknameState extends State<ChangeNickname> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Nickname',
+          style: TextStyle(
+            fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.white,
+            fontFamily: 'RobotoCondensed',
           ),
         ),
+        centerTitle: true,
+        backgroundColor: Colors.blue[400],
+        elevation: 15,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Colors.blue[100],
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+      body: Container(
+
       ),
     );
   }

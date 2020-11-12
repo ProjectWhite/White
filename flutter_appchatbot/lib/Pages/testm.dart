@@ -15,7 +15,7 @@ class _NavState extends State<Nav> {
   List<Widget> _widgetOptions = <Widget>[
     MileStoneLite(),
     chatbot(),
-    SettingPage()
+    SettingUI()
   ];
 
   void _onItemTap(int index) {
