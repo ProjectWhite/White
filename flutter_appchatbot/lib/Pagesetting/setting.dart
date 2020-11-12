@@ -54,7 +54,7 @@ class _SettingPageState extends State<SettingPage> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.black,
         textColor: Colors.white,
         fontSize: 16.0
     );
