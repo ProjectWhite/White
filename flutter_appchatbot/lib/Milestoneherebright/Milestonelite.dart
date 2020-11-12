@@ -53,43 +53,71 @@ class _MileStoneLiteState extends State<MileStoneLite> {
             height: 10,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
 
-              Container(
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12,0,0,0),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
 
-                height: 290,
-                width: 180,
-                child: PieChartEmotion(),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(
-                      18)),
+                          height: 290,
+                          width: 180,
+                          child: PieChartEmotion(),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                18)),
 
-                  // color: Color.fromRGBO(220, 220, 220, 1),
+                            // color: Color.fromRGBO(220, 220, 220, 1),
 
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
               SizedBox(
-                width: 10,
+                width: 5,
               ),
-              Container(
-                height: 290,
-                width: 180,
-                child: BarChartEmotion(),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(
-                      18)),
-                  color: Colors.white,
-                  // color: Color.fromRGBO(220, 220, 220, 1),
 
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,0,10,0),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          height: 296,
+                          width: 180,
+                          child: BarChartEmotion(),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                18)),
+                            color: Colors.white,
+                            // color: Color.fromRGBO(220, 220, 220, 1),
+
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(
-                width: 10,
-              ),
+              // SizedBox(
+              //   width: 10,
+              // ),
             ],
           ),
+
           Padding(
             padding: const EdgeInsets.fromLTRB(12.0,12,12,0),
             child: Container(

@@ -147,7 +147,7 @@ class PieChart2State extends State {
             // color: const Color(0xff0293ee),
             color: Colors.deepPurple[500],
             value: 40,
-            title: '40%',
+            title: '40',
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
