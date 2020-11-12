@@ -130,8 +130,8 @@ class LineChartEmotionState extends State<LineChartEmotion> {
             }
             return '';
           },
-          margin: 8,
-          reservedSize: 30,
+          margin: 10,
+          reservedSize: 25,
         ),
       ),
       borderData: FlBorderData(
@@ -153,7 +153,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
         ),
       ),
       minX: 0,
-      maxX: 100,
+      maxX: 50,
       maxY: 7,
       minY: 0,
       lineBarsData: linesBarData1(),
@@ -220,10 +220,10 @@ class LineChartEmotionState extends State<LineChartEmotion> {
       colors: const [
         Color(0xff27b6fc),
       ],
-      barWidth: 8,
+      barWidth: 1,
       isStrokeCapRound: true,
       dotData: FlDotData(
-        show: false,
+        show: true,
       ),
       belowBarData: BarAreaData(
         show: false,
@@ -293,7 +293,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
             return '';
           },
           margin: 10,
-          reservedSize: 20,
+          reservedSize: 25,
         ),
       ),
       borderData: FlBorderData(
@@ -384,11 +384,13 @@ class LineChartEmotionState extends State<LineChartEmotion> {
         colors: const [
           Color(0x4427b6fc),
         ],
-        barWidth: 2,
+        barWidth: 8,
         isStrokeCapRound: true,
-        dotData: FlDotData(show: true),
+        dotData: FlDotData(
+            show: false,
+        ),
         belowBarData: BarAreaData(
-          show: false,
+          show: true,
         ),
       ),
     ];

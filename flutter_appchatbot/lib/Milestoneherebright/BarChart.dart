@@ -259,6 +259,7 @@ class BarChartEmotionState extends State<BarChartEmotion> {
           const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
           margin: 16,
           getTitles: (double value) {
+
             switch (value.toInt()) {
               case 0:
                 return 'A';
@@ -306,6 +307,7 @@ class BarChartEmotionState extends State<BarChartEmotion> {
             return null;
         }
       }),
+
     );
   }
   // makeGroupData(3, Random().nextInt(15).toDouble() + 6,
