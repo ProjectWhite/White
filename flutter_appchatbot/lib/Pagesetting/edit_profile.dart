@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/Pagesetting/checkpassword.dart';
+import 'package:flutter_appchatbot/Pagesetting/editpassword.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -233,12 +235,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
         decoration: InputDecoration(
           suffixIcon: isPasswordTextfield ? IconButton(
             onPressed: () {
+
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>checkpass(),),);
               setState(() {
                 showPassword = !showPassword;
               });
             },
             icon : Icon(
-              Icons.remove_red_eye_outlined,
+              Icons.edit,
               color: Colors.grey,
             ),
           ): null,
