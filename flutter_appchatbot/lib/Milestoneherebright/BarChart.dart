@@ -289,33 +289,27 @@ class BarChartEmotionState extends State<BarChartEmotion> {
       barGroups: List.generate(7, (i) {
         switch (i) {
           case 0:
-            return makeGroupData(0, Random().nextInt(15).toDouble() + 6,
-                barColor: widget.availableColors[Random().nextInt(widget.availableColors.length)]);
+            return makeGroupData(0,5/*เยดแม่แทนได้*/,barColor: Colors.deepPurple[500]);
           case 1:
-            return makeGroupData(1, Random().nextInt(15).toDouble() + 6,
-                barColor: widget.availableColors[Random().nextInt(widget.availableColors.length)]);
+            return makeGroupData(1,6.5,barColor: Colors.indigo[500]);
           case 2:
-            return makeGroupData(2, Random().nextInt(15).toDouble() + 6,
-                barColor: widget.availableColors[Random().nextInt(widget.availableColors.length)]);
+            return makeGroupData(2,5,barColor: Colors.blue[500]);
           case 3:
-            return makeGroupData(3, Random().nextInt(15).toDouble() + 6,
-                barColor: widget.availableColors[Random().nextInt(widget.availableColors.length)]);
+            return makeGroupData(3,7.5,barColor: Colors.green[500]);
           case 4:
-            return makeGroupData(4, Random().nextInt(15).toDouble() + 6,
-                barColor: widget.availableColors[Random().nextInt(widget.availableColors.length)]);
+            return makeGroupData(4,9,barColor: Colors.yellow[500]);
           case 5:
-            return makeGroupData(5, Random().nextInt(15).toDouble() + 6,
-                barColor: widget.availableColors[Random().nextInt(widget.availableColors.length)]);
+            return makeGroupData(5,11.5,barColor: Colors.orange[500]);
           case 6:
-            return makeGroupData(6, Random().nextInt(15).toDouble() + 6,
-                barColor: widget.availableColors[Random().nextInt(widget.availableColors.length)]);
+            return makeGroupData(6,6.5,barColor: Colors.red[500]);
           default:
             return null;
         }
       }),
     );
   }
-
+  // makeGroupData(3, Random().nextInt(15).toDouble() + 6,
+  // barColor: widget.availableColors[Random().nextInt(widget.availableColors.length)])
   Future<dynamic> refreshState() async {
     setState(() {});
     await Future<dynamic>.delayed(animDuration + const Duration(milliseconds: 50));
