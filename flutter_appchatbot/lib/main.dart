@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_appchatbot/Pages/testm.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -25,7 +24,7 @@ void main() async{
 
 String username='';
 String name='';
-String uml='http://192.168.64.2';
+String uml='https://7fad5d69810e.ngrok.io';
 
 class MyApp extends StatelessWidget {
 
@@ -71,45 +70,18 @@ class _MyHomePageState extends State<MyHomePage> {
     var datauser = json.decode(response.body);
 
     if(datauser.length==0){
-      Fluttertoast.showToast(
-          msg: "Invalid username & password",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.black,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
       setState(() {
         msg="Login Fail";
       });
     }else{
       if(datauser[0]['nickname']==null) {
         Navigator.push(context, MaterialPageRoute(builder: (context)=>wellcome(),),);
-        Fluttertoast.showToast(
-            msg: "Login Successful",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.black,
-            textColor: Colors.white,
-            fontSize: 16.0
-        );
         setState(() {
           username = datauser[0]['username'];
         });
       }
       else{
         Navigator.push(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
-        Fluttertoast.showToast(
-            msg: "Login Successful",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.black,
-            textColor: Colors.white,
-            fontSize: 16.0
-        );
         setState(() {
           username = datauser[0]['username'];
           name = datauser[0]['nickname'];

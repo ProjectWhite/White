@@ -1,3 +1,4 @@
+import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
@@ -14,6 +15,29 @@ import 'security.dart';
 import 'rate_us.dart';
 import 'help_center.dart';
 
+class SettingUI extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BackGestureWidthTheme(
+      backGestureWidth: BackGestureWidth.fraction(0.4),
+      child: MaterialApp(
+        theme: ThemeData(
+            pageTransitionsTheme: PageTransitionsTheme(
+                builders: {
+                  TargetPlatform.android : CupertinoPageTransitionsBuilderCustomBackGestureWidth(),
+                  TargetPlatform.iOS : CupertinoPageTransitionsBuilderCustomBackGestureWidth(),
+
+                },
+            ),
+        ),
+        debugShowCheckedModeBanner: false,
+        title: 'Setting UI',
+        home: SettingPage(),
+
+      ),
+    );
+  }
+}
 
 class SettingPage extends StatefulWidget {
   @override
@@ -36,7 +60,6 @@ class _SettingPageState extends State<SettingPage> {
     );
     Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(),),);
   }
-  
   int _currentIndex=0;
   bool _notification = false;
   @override

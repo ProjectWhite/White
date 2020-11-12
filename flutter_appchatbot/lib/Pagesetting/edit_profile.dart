@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Pagesetting/checkpassword.dart';
-import 'package:flutter_appchatbot/Pagesetting/editpassword.dart';
 import 'package:flutter_appchatbot/main.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -23,6 +20,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.white,
+            fontFamily: 'RobotoCondensed',
           ),
         ),
         centerTitle: true,
@@ -51,6 +49,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w500,
+                  fontFamily: 'RobotoCondensed',
                 ),
               ),
               SizedBox(
@@ -78,7 +77,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: new ExactAssetImage('assets/aoy.jpg'),
+                          image: NetworkImage('https://lh3.googleusercontent.com/proxy/Q4NaPAEQ_dNvSParOnNGEADJoeyGPsNVAB2HYmCAgUC2JjWZAGpwkHUXpP7iHupq7K2uE99NdvJ7s2oFDmoV-ulHBYI-j7Cvm84n9Ft5k_82ap7rCjK0W5HoBJtsbqvGXkn1uZrvBvIAxfMPmKHNcURRG9-H-Hxp'),
                         )
                       ),
                     ),
@@ -102,43 +101,26 @@ class _EditProfilePageState extends State<EditProfilePage> {
               SizedBox(
                 height: 35,
               ),
-              buildTextField('Username', username, false),
-              buildTextField('Email','', false),
-              buildTextField('Password','********', true),
-              // SizedBox(
-              //   height: 25,
-              // ),
-              // RaisedButton(
-              //   onPressed: (){
-              //     var url="$uml/my_store/delete.php";
-              //     print(username);
-              //     http.post(url,body:{
-              //       'username' : username,
-              //     });
-              //     Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(),),);
-              //     Fluttertoast.showToast(
-              //         msg: "Delete Successful",
-              //         toastLength: Toast.LENGTH_SHORT,
-              //         gravity: ToastGravity.BOTTOM,
-              //         timeInSecForIosWeb: 1,
-              //         backgroundColor: Colors.black,
-              //         textColor: Colors.white,
-              //         fontSize: 16.0
-              //     );
-              //   },
-              //   color: Colors.blue[400],
-              //   padding: EdgeInsets.symmetric(horizontal: 50),
-              //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-              //   child: Text(
-              //     ' Delete Account ',
-              //     style: TextStyle(
-              //       fontSize: 16,
-              //       letterSpacing: 2.2,
-              //       color: Colors.white,
-              //     ),
-              //   ),
-              // ),
-              // SizedBox(height: 40,),
+              buildInkWell('Nickname', ChangeNickname(), name),
+              SizedBox(
+                height: 25,
+              ),
+              RaisedButton(
+                onPressed: (){},
+                color: Colors.blue[400],
+                padding: EdgeInsets.symmetric(horizontal: 50),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                child: Text(
+                  ' Delete Account ',
+                  style: TextStyle(
+                    fontSize: 16,
+                    letterSpacing: 2.2,
+                    color: Colors.white,
+                    fontFamily: 'RobotoCondensed',
+                  ),
+                ),
+              ),
+              SizedBox(height: 40,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -155,6 +137,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 2.2,
                         color: Colors.black,
+                        fontFamily: 'RobotoCondensed',
                       ),
                     ),
                   ),
@@ -169,56 +152,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         fontSize: 16,
                         letterSpacing: 2.2,
                         color: Colors.white,
+                        fontFamily: 'RobotoCondensed',
                       ),
                     ),
                   )
                 ],
-              ),
-              SizedBox(height: 40,),
-              Center(
-                child: RaisedButton(
-                  onPressed: (){
-                    var url="$uml/my_store/delete.php";
-                    print(username);
-                    http.post(url,body:{
-                      'username' : username,
-                    });
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(),),);
-                    Fluttertoast.showToast(
-                        msg: "Delete Successful",
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.black,
-                        textColor: Colors.white,
-                        fontSize: 16.0
-                    );
-                  },
-                  color: Colors.blue[400],
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: SizedBox(
-                    width: 130,
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Delete Account',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontFamily: 'RobotoCondensed',
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Icon(Icons.logout, color: Colors.white,size: 20,),
-                      ],
-                    ),
-                  ),
-                ),
               ),
             ],
           ),
@@ -226,36 +164,74 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ),
     );
   }
-
-  Widget buildTextField(String labelText, String placeholder, bool isPasswordTextfield) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 35.0),
-      child: TextField(
-        obscureText: isPasswordTextfield ? showPassword : false,
-        decoration: InputDecoration(
-          suffixIcon: isPasswordTextfield ? IconButton(
-            onPressed: () {
-
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>checkpass(),),);
-              setState(() {
-                showPassword = !showPassword;
-              });
-            },
-            icon : Icon(
-              Icons.edit,
-              color: Colors.grey,
+  InkWell buildInkWell(String textTitle, page, textBehide) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) => page));
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10, bottom: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(textTitle, style: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.w400,fontFamily: 'RobotoCondensed',
+            ),),
+            Row(
+              children: [
+                Text(textBehide, style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w300,
+                    fontStyle: FontStyle.italic
+                ),),
+                SizedBox(width: 10),
+                Icon(Icons.arrow_forward_ios_rounded, color: Colors.grey[600],
+                    size: 18)
+              ],
             ),
-          ): null,
-          contentPadding: EdgeInsets.only(bottom: 3),
-          labelText: labelText,
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          hintText: placeholder,
-          hintStyle: TextStyle(
-            fontSize: 16,
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class ChangeNickname extends StatefulWidget {
+  @override
+  _ChangeNicknameState createState() => _ChangeNicknameState();
+}
+
+class _ChangeNicknameState extends State<ChangeNickname> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Nickname',
+          style: TextStyle(
+            fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.white,
+            fontFamily: 'RobotoCondensed',
           ),
         ),
+        centerTitle: true,
+        backgroundColor: Colors.blue[400],
+        elevation: 15,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Colors.blue[100],
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+      body: Container(
+
       ),
     );
   }
