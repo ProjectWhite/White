@@ -24,7 +24,7 @@ void main() async{
 
 String username='';
 String name='';
-String uml='https://436ade53496e.ngrok.io';
+String uml='https://7fad5d69810e.ngrok.io';
 
 class MyApp extends StatelessWidget {
 
