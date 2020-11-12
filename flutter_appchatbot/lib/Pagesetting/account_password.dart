@@ -2,10 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_appchatbot/Pagesetting/checkpassword.dart';
 import 'package:flutter_appchatbot/main.dart';
-import 'account_changepass.dart';
 import 'account_username.dart';
 import 'account_verify.dart';
+import 'package:http/http.dart' as http;
 
 class AccountPasswordPage extends StatefulWidget {
   @override
@@ -80,10 +81,48 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
             ),
             SizedBox(height: 8),
             Divider(thickness: 2),
-            buildInkWell('Change Password', ChangePassword(), '')
+            buildInkWell('Change Password', checkpass(), ''),
+            SizedBox(height: 40,),
+            RaisedButton(
+              onPressed: () async {
+                var url = "$uml/my_store/delete.php";
+                print(username);
+                await http.post(url, body: {
+                  "username": username,
+                });
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text('Delete account'),
+                        actions: <Widget>[
+                          new FlatButton(
+                            child: new Text('ok'),
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+                            },
+                          )
+                        ],
+                      );
+                    });
+              },
+              color: Colors.blue[400],
+              padding: EdgeInsets.symmetric(horizontal: 50),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              child: Text(
+                ' Delete Account ',
+                style: TextStyle(
+                  fontSize: 16,
+                  letterSpacing: 2.2,
+                  color: Colors.white,
+                  fontFamily: 'RobotoCondensed',
+                ),
+              ),
+            ),
           ],
         ),
       ),
+
     );
   }
 

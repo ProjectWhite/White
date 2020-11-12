@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_appchatbot/Pagesetting/edit_profile.dart';
+import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../constrants.dart';
 import '../main.dart';
 import 'package:http/http.dart' as http;
+
+import 'account_password.dart';
 
 class editpassword extends StatefulWidget {
   @override
@@ -33,7 +36,7 @@ class _editpasswordState extends State<editpassword> {
               new FlatButton(
                 child: new Text('ok'),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage(),),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SettingUI(),),);
                 },
               )
             ],
