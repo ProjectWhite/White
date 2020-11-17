@@ -86,6 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }else{
       if(datauser[0]['nickname']==null) {
+        save();
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>wellcome(),),);
         Fluttertoast.showToast(
             msg: "Login Successful",
@@ -101,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       }
       else{
+        save();
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
         Fluttertoast.showToast(
             msg: "Login Successful",
@@ -212,7 +214,7 @@ class _MyHomePageState extends State<MyHomePage> {
               checkColor: Colors.green,
               activeColor: Colors.white,
               onChanged: (value) {
-                save();
+                // save();
                 setState(() {
                   _rememberMe = value;
                 });
@@ -253,32 +255,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildSignInWithText() {
-    return Column(
-      children: <Widget>[
-        Text(
-          '- OR -',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        SizedBox(height: 20.0),
-        FlatButton(
-        onPressed: () {
-          Navigator.push(context,
-          MaterialPageRoute(builder: (context) => Register(),),);
-           },
-          padding: EdgeInsets.only(right: 0.0),
-          child: Text(
-            'Sign in with',
-            style: kLabelStyle,
-          ),
-        ),
-      ],
     );
   }
 
@@ -370,7 +346,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       _buildPasswordTF(),
                       _buildForgotPasswordBtn(),
-                      _buildRememberMeCheckbox(),
                       SizedBox(height: 10.0,),
                       _buildLoginBtn(),
                       SizedBox(height: 30.0,),

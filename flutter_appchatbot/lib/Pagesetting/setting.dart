@@ -49,16 +49,21 @@ class _SettingPageState extends State<SettingPage> {
   Future logOut(BuildContext context)async{
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.remove('us');
-    Fluttertoast.showToast(
-        msg: "Logout Successful",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.black,
-        textColor: Colors.white,
-        fontSize: 16.0
-    );
-    Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Are you sure to logout'),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('Yes'),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+                },
+              )
+            ],
+          );
+        });
   }
   int _currentIndex=0;
   bool _notification = false;
