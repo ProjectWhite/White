@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }else{
       if(datauser[0]['nickname']==null) {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>wellcome(),),);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>wellcome(),),);
         Fluttertoast.showToast(
             msg: "Login Successful",
             toastLength: Toast.LENGTH_SHORT,
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       }
       else{
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
         Fluttertoast.showToast(
             msg: "Login Successful",
             toastLength: Toast.LENGTH_SHORT,
@@ -113,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
         setState(() {
           username = datauser[0]['username'];
           name = datauser[0]['nickname'];
+          print('How\'s trick');
         });
       }
     }

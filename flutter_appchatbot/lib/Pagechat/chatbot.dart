@@ -26,7 +26,6 @@ class chatbot extends StatefulWidget {
 
 class _chatbotState extends State<chatbot> {
   int i = 0;
-
   Future<List> _insertai(String ms) async {
     print(ms);
     await http.post(
@@ -36,11 +35,11 @@ class _chatbotState extends State<chatbot> {
     });
   }
 
-  Future<List> _insertmsg() async {
+  Future<List> _insertmsg(query) async {
     await http.post(
         "$uml/my_store/insertmessage.php", body: {
       "username": username,
-      "message": messageInsert.text,
+      "message": query,
     });
     // if(i==1){
     //   await http.post("$uml/my_store/insertdiary.php", body: {
@@ -80,6 +79,10 @@ class _chatbotState extends State<chatbot> {
   // }
 
   void response(query) async {
+    query = query.toString().replaceAll("\'", "\\\'");
+    _insertmsg(query);
+    // String a = "'";
+    // print (x.replaceAll('\'', "\\\'") + "here");
     AuthGoogle authGoogle = await AuthGoogle(
         fileJson: "assets/newagent-akoy-6c17e9e97bf2.json")
         .build();
@@ -94,7 +97,7 @@ class _chatbotState extends State<chatbot> {
         "message": aiResponse.getListMessage()[0]["text"]["text"][0].toString(),
       });
     });
-    String ms = aiResponse.getListMessage()[0]["text"]["text"][0].toString();
+    String ms = aiResponse.getListMessage()[0]["text"]["text"][0].toString().replaceAll("\'", "\\\'");
     if(diary=='Diarycommand'){
       i=1;
       print(i);
@@ -196,7 +199,6 @@ class _chatbotState extends State<chatbot> {
                           messsages.insert(0,
                               {"data": 1, "message": messageInsert.text});
                         });
-                        _insertmsg();
                         print(i);
                         _insertdiary();
                         response(messageInsert.text);

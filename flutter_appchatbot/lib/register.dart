@@ -49,7 +49,7 @@ class _RegisterState extends State<Register> {
                 new FlatButton(
                   child: new Text('ok'),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
                   },
                 )
               ],
