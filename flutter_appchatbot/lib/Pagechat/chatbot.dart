@@ -12,6 +12,7 @@ import 'package:intl/intl.dart';
 import '../main.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
+import 'package:flutter_appchatbot/Pages/testm.dart';
 
 int counter=0;
 class chatbot extends StatefulWidget {
@@ -26,6 +27,8 @@ class chatbot extends StatefulWidget {
 
 class _chatbotState extends State<chatbot> {
   int i = 0;
+  int j = 0;
+
   Future<List> _insertai(String ms) async {
     print(ms);
     await http.post(
@@ -51,10 +54,36 @@ class _chatbotState extends State<chatbot> {
   }
 
   Future<List> _readmsg() async{
-    await http.post(
-        "$uml/my_store/readchat.php", body: {
+    final response = await http.post("$uml/my_store/readchat.php", body: {
       "username": username,
     });
+    var datauser = json.decode(response.body);
+    print(datauser);
+
+    for(j=0;;j++){
+      try{
+        //ignore exception
+        if(datauser[j]["text"]==null)break;
+      }catch (Exception){
+        print(Exception);
+        break;
+      }
+      print(j);
+      print(datauser[j]["text"]);
+      msg.text = datauser[j]["text"];
+      if(j%2==0){
+        setState(() {
+          messsages.insert(0,
+              {"data": 1, "message": msg.text});});
+      }
+      if(j%2==1){
+        setState(() {
+          messsages.insert(0,
+              {"data": 0, "message": msg.text});});
+      }
+    }
+
+
   }
 
   Future<List> _insertdiary() async{
@@ -106,10 +135,15 @@ class _chatbotState extends State<chatbot> {
   }
 
   final messageInsert = TextEditingController();
+  final msg = TextEditingController();
   List<Map> messsages = List();
 
   @override
   Widget build(BuildContext context){
+    if(k==1){
+      _readmsg();
+      k=2;
+    }
     int _currentIndex=0;
     return Scaffold(
       body: Container(
@@ -151,6 +185,7 @@ class _chatbotState extends State<chatbot> {
                 leading: IconButton(
                   icon: Icon(Icons.add, color: Colors.purple, size: 35,),
                   onPressed: () {
+                    _readmsg();
                     // Navigator.of(context).push(MaterialPageRoute(
                     //     builder: (BuildContext context) => ));
                   },

@@ -164,7 +164,6 @@ class _MileStoneLiteState extends State<MileStoneLite> {
                             SizedBox(width: 50,),
                           ],
                         ),
-
                         Row(
                           children: [
                             SizedBox(height: 34,),

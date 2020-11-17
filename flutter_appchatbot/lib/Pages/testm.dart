@@ -4,8 +4,10 @@ import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
+import 'package:flutter_appchatbot/main.dart';
 
 class Nav extends StatefulWidget {
+
   @override
   _NavState createState() => _NavState();
 }
@@ -26,6 +28,7 @@ class _NavState extends State<Nav> {
 
   @override
   Widget build(BuildContext context) {
+    k=1;
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
