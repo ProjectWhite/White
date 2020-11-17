@@ -51,6 +51,13 @@ class _chatbotState extends State<chatbot> {
     // }
   }
 
+  Future<List> _readmsg() async{
+    await http.post(
+        "$uml/my_store/readchat.php", body: {
+      "username": username,
+    });
+  }
+
   Future<List> _insertdiary() async{
     if(i==1){
       await http.post("$uml/my_store/insertdiary.php", body: {
