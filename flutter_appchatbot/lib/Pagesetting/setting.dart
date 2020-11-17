@@ -58,7 +58,7 @@ class _SettingPageState extends State<SettingPage> {
         textColor: Colors.white,
         fontSize: 16.0
     );
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(),),);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
   }
   int _currentIndex=0;
   bool _notification = false;
