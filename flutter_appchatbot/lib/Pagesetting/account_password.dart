@@ -84,21 +84,21 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
             buildInkWell('Change Password', checkpass(), ''),
             SizedBox(height: 40,),
             RaisedButton(
-              onPressed: () async {
-                var url = "$uml/my_store/delete.php";
-                print(username);
-                await http.post(url, body: {
-                  "username": username,
-                });
+              onPressed: () {
                 showDialog(
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: Text('Delete account'),
+                        title: Text('Are you sure to delete account'),
                         actions: <Widget>[
                           new FlatButton(
-                            child: new Text('ok'),
-                            onPressed: () {
+                            child: new Text('yes'),
+                            onPressed: ()  async {
+                              var url = "$uml/my_store/delete.php";
+                              print(username);
+                              await http.post(url, body: {
+                                "username": username,
+                              });
                               Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
                             },
                           )
