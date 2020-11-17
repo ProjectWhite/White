@@ -1,13 +1,12 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-enum tone {
-  annoyed,frustrated,offended,mad,threatened
-}
+
 class Anger extends Emotion{
   tone _category;
 
   Anger(tone category) : super.empty(){
     this._category = category;
     this.type = emotion.anger;
+    this.mothercolors = '#B40000';
     if (_category == tone.annoyed) {
       this.colors = '#1b4332';
     }

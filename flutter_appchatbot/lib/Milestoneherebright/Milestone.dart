@@ -98,7 +98,7 @@ class AddPages1 extends StatefulWidget {
 
 class _AddPages1State extends State<AddPages1> {
   @override
-  Anger x = new Anger(tone.annoyed);
+  // Anger x = new Anger(tone.annoyed);
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,

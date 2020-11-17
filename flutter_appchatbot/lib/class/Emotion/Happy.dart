@@ -1,7 +1,4 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-enum tone {
-  confident,grateful,peaceful,excited,playful,relief,pride,satisfaction,triumph
-}
 class Happy extends Emotion{
   tone _category;
   Happy(tone category) : super.empty(){
