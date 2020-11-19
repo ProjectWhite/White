@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/class/Emotion.dart';
 
 class LineChartEmotion extends StatefulWidget {
   @override
@@ -8,6 +9,23 @@ class LineChartEmotion extends StatefulWidget {
 
 class LineChartEmotionState extends State<LineChartEmotion> {
   bool isShowingMainData;
+  double count = 7;
+  List<FlSpot> allSpots = [
+    FlSpot(0, 1),
+    FlSpot(1, 2),
+    FlSpot(2, 1.5),
+    FlSpot(3, 3),
+    FlSpot(4, 3.5),
+    FlSpot(5, 5),
+    FlSpot(6, 8),
+  ];
+
+
+  void append(double x){
+    for(int i=1;i<3;i++){
+    allSpots.add(FlSpot(count,x));
+    count ++;}
+  }
 
   @override
   void initState() {
@@ -60,6 +78,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
             ),
             onPressed: () {
               setState(() {
+                append(3);
                 isShowingMainData =! isShowingMainData;
               });
             },
@@ -215,6 +234,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
         FlSpot(5, 2.5),
         FlSpot(6, 2),
         FlSpot(7, 6),
+
       ],
       isCurved: true,
       colors: const [
@@ -370,15 +390,8 @@ class LineChartEmotionState extends State<LineChartEmotion> {
       //   ]),
       // ),
       LineChartBarData(
-        spots: [
-          FlSpot(1, 2.8),
-          FlSpot(2, 1.9),
-          FlSpot(3, 3),
-          FlSpot(4, 1.3),
-          FlSpot(5, 2.5),
-          FlSpot(6, 2),
-          FlSpot(7, 6),
-        ],
+        spots: allSpots,
+
         isCurved: true,
         curveSmoothness: 0,
         colors: const [
@@ -387,7 +400,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
         barWidth: 8,
         isStrokeCapRound: true,
         dotData: FlDotData(
-            show: false,
+            show: true,
         ),
         belowBarData: BarAreaData(
           show: true,
