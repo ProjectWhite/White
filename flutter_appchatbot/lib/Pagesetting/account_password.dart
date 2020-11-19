@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_appchatbot/Pagesetting/checkpassword.dart';
 import 'package:flutter_appchatbot/main.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'account_username.dart';
 import 'account_verify.dart';
 import 'package:http/http.dart' as http;
@@ -14,6 +16,8 @@ class AccountPasswordPage extends StatefulWidget {
 }
 
 class _AccountPasswordPageState extends State<AccountPasswordPage> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,6 +123,7 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
                 ),
               ),
             ),
+
           ],
         ),
       ),

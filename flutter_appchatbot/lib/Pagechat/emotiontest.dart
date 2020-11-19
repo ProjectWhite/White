@@ -9,8 +9,8 @@ class Emotiontest extends StatefulWidget {
 class _EmotiontestState extends State<Emotiontest> {
   @override
   Widget build(BuildContext context) {
-    Happy x = Happy(tone.confident);
-    print(x.type);
+    // Happy x = Happy(tone.confident);
+    // print(x.type);
     return Scaffold(
     );
   }
