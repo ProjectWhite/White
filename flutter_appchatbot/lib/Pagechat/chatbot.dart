@@ -6,13 +6,14 @@ import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
+import 'package:flutter_appchatbot/class/Facade.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 import '../main.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
-import 'package:flutter_appchatbot/Pages/testm.dart';
+import 'package:flutter_appchatbot/class/Emotion.dart';
 
 int counter=0;
 class chatbot extends StatefulWidget {
@@ -27,8 +28,6 @@ class chatbot extends StatefulWidget {
 
 class _chatbotState extends State<chatbot> {
   int i = 0;
-  int j = 0;
-
   Future<List> _insertai(String ms) async {
     print(ms);
     await http.post(
@@ -54,36 +53,10 @@ class _chatbotState extends State<chatbot> {
   }
 
   Future<List> _readmsg() async{
-    final response = await http.post("$uml/my_store/readchat.php", body: {
+    await http.post(
+        "$uml/my_store/readchat.php", body: {
       "username": username,
     });
-    var datauser = json.decode(response.body);
-    print(datauser);
-
-    for(j=0;;j++){
-      try{
-        //ignore exception
-        if(datauser[j]["text"]==null)break;
-      }catch (Exception){
-        print(Exception);
-        break;
-      }
-      print(j);
-      print(datauser[j]["text"]);
-      msg.text = datauser[j]["text"];
-      if(j%2==0){
-        setState(() {
-          messsages.insert(0,
-              {"data": 1, "message": msg.text});});
-      }
-      if(j%2==1){
-        setState(() {
-          messsages.insert(0,
-              {"data": 0, "message": msg.text});});
-      }
-    }
-
-
   }
 
   Future<List> _insertdiary() async{
@@ -135,16 +108,13 @@ class _chatbotState extends State<chatbot> {
   }
 
   final messageInsert = TextEditingController();
-  final msg = TextEditingController();
   List<Map> messsages = List();
 
   @override
   Widget build(BuildContext context){
-    if(k==1){
-      _readmsg();
-      k=2;
-    }
     int _currentIndex=0;
+    Facade y = new Facade();
+    y.start(1,tone.annoyed);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -185,7 +155,6 @@ class _chatbotState extends State<chatbot> {
                 leading: IconButton(
                   icon: Icon(Icons.add, color: Colors.purple, size: 35,),
                   onPressed: () {
-                    _readmsg();
                     // Navigator.of(context).push(MaterialPageRoute(
                     //     builder: (BuildContext context) => ));
                   },
