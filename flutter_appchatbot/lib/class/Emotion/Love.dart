@@ -1,7 +1,4 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-enum tone {
-  accepted,gentle,affectionate,passionate,trusted,pride,contentment
-}
 class Love extends Emotion{
   tone _category;
 

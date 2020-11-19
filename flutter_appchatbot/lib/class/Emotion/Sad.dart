@@ -1,7 +1,4 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-enum tone {
-  inadequate,uninterested,lonely,guilty,hurt
-}
 class Sad extends Emotion{
   tone _category;
 

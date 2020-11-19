@@ -1,7 +1,4 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-enum tone {
-  resentful,shameful,bitter,disappointed,averse,contempt
-}
 class Disgust extends Emotion{
   tone _category;
 

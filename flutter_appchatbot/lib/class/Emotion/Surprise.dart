@@ -1,7 +1,4 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-enum tone {
-  startled,overwhelmed,confused,amazed,shocked
-}
 class Surprise extends Emotion{
   tone _category;
 
