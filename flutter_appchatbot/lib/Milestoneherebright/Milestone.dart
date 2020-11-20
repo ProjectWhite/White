@@ -30,7 +30,6 @@ class _MilestoneState extends State<Milestone> {
   String msg='';
   var dataus;
   Future<List> _readdiary() async {
-    print(username);
     final response = await http.post("$uml/my_store/readdiary.php", body: {
       "username": username,
     });
@@ -38,7 +37,7 @@ class _MilestoneState extends State<Milestone> {
     dataus = json.decode(response.body);
 
     print(dataus);
-    print(dataus[0]['diary']);
+    print(dataus[0]['text']);
 
     return dataus;
   }
@@ -66,11 +65,6 @@ class _MilestoneState extends State<Milestone> {
         title: Text('Milestone View'),
         centerTitle: true,
         backgroundColor: Colors.red[500],
-        actions: [
-          FloatingActionButton(onPressed: () {
-            print(dataus[0]['diary']);
-          }),
-        ],
       ),
       body: PageView(
         scrollDirection: Axis.horizontal,
@@ -106,23 +100,6 @@ class _AddPages1State extends State<AddPages1> {
   @override
   // Anger x = new Anger(tone.annoyed);
   Widget build(BuildContext context) {
-
-    String msg='';
-    var dataus;
-    Future<List> _readdiary() async {
-      print(username);
-      final response = await http.post("$uml/my_store/readdiary.php", body: {
-        "username": username,
-      });
-
-      dataus = json.decode(response.body);
-
-      // print(dataus);
-      // print(dataus[0]['diary']);
-
-      return dataus;
-    }
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -133,15 +110,9 @@ class _AddPages1State extends State<AddPages1> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0,0,0,40),
                   child: Column(
-
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      RaisedButton(onPressed: () {
-                        print(dataus[0]['diary']);
-                      },
-                        child: Text('test'),
-                      ),
                       Text('11/11/2020',style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -162,6 +133,26 @@ class _AddPages1State extends State<AddPages1> {
                   // color: Color.fromRGBO(220, 220, 220, 1),
                 ),
     ),
+                // ConstrainedBox(
+                //   constraints: BoxConstraints(
+                //     minWidth: 350,
+                //     minHeight: 550,
+                //     maxWidth: double.infinity,
+                //     maxHeight: double.infinity,
+                //   ),
+                //   child: Container(
+                //       color: Colors.grey[900],
+                //       width: 10,
+                //       height: 10,
+                //       child: Padding(
+                //         padding: const EdgeInsets.all(8.0),
+                //         child: Text('YourDiary',
+                //         style: TextStyle(
+                //           color: Colors.white,
+                //         ),),
+                //       ),
+                //   ),
+                // )
               ],
             ),
           ),
