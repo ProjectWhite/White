@@ -58,7 +58,7 @@ class _SettingPageState extends State<SettingPage> {
               new FlatButton(
                 child: new Text('Yes'),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MyHomePage()),(Route<dynamic> route) => false,);
                 },
               )
             ],

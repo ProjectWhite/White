@@ -42,6 +42,9 @@ class _NavState extends State<Nav> {
               activeIcon: Icon(Icons.line_weight_rounded),
               backgroundColor: Colors.black,
           ),
+          // BottomNavigationBarItem(
+          //
+          // ),
           BottomNavigationBarItem(
               label: 'Chat',
               icon: Icon(Icons.hdr_weak_rounded),
