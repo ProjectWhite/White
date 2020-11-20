@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PreferedHoursPage extends StatefulWidget {
@@ -6,6 +7,11 @@ class PreferedHoursPage extends StatefulWidget {
 }
 
 class _PreferedHoursPageState extends State<PreferedHoursPage> {
+
+  DateTime _setTime = DateTime.now();
+  DateTime newTime;
+  Duration initialtimer = new Duration();
+  int selectitem = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +34,18 @@ class _PreferedHoursPageState extends State<PreferedHoursPage> {
           ),
           onPressed: () {
             Navigator.of(context).pop();
+          },
+        ),
+      ),
+      body: Container(
+        padding: EdgeInsets.only(top: 25, left: 16, right: 16),
+        height: MediaQuery.of(context).copyWith().size.height/3,
+        child: CupertinoDatePicker(
+          mode: CupertinoDatePickerMode.time,
+          initialDateTime: _setTime,
+          onDateTimeChanged: (DateTime newtime){
+            print(newTime);
+            _setTime = newtime;
           },
         ),
       ),

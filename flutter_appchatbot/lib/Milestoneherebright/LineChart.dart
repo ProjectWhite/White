@@ -234,6 +234,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
         FlSpot(5, 2.5),
         FlSpot(6, 2),
         FlSpot(7, 6),
+        FlSpot(8, 6),
 
       ],
       isCurved: true,
