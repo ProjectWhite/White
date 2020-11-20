@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../main.dart';
 import 'edit_profile.dart';
+import 'white_profile.dart';
 import 'account_password.dart';
 import 'theme.dart';
 import 'prefered_hours.dart';
@@ -93,6 +94,7 @@ class _SettingPageState extends State<SettingPage> {
             ),
             SizedBox(height: 25),
             buildListTile('My Profile', Icons.person, EditProfilePage()),
+            buildListTile('White Profile', Icons.favorite, WhiteProfilePage()),
             buildListTile('Account & Password', Icons.vpn_key, AccountPasswordPage()),
             buildListTile('Theme', Icons.color_lens, ThemePage()),
             SwitchListTile(
