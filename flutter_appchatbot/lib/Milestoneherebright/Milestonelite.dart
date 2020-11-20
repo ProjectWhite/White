@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_appchatbot/main.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_appchatbot/Milestoneherebright/LineChart.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
@@ -12,16 +10,12 @@ import 'package:flutter_appchatbot/class/Emotion/Anger.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/BarChart.dart';
-import 'dart:convert';
-
 class MileStoneLite extends StatefulWidget {
   @override
   _MileStoneLiteState createState() => _MileStoneLiteState();
 }
 
 class _MileStoneLiteState extends State<MileStoneLite> {
-
-
   static int frank=10;
   @override
   Widget build(BuildContext context) {
@@ -35,12 +29,8 @@ class _MileStoneLiteState extends State<MileStoneLite> {
             height: 30,
           ),
       InkWell(
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => Milestone()
-          )
-          );
-        },
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) => Milestone())),
          child: Padding(
            padding: const EdgeInsets.fromLTRB(10,0,0,0),
            child: SingleChildScrollView(
