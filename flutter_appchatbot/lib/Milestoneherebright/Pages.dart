@@ -13,6 +13,7 @@ home: FirstScreen(),
 int j = 0;
 String t = "$j";
 String nametest;
+String date;
 
 class FirstScreen extends StatefulWidget {
 
@@ -24,18 +25,17 @@ class _FirstScreenState extends State<FirstScreen> {
 @override
 Widget build (BuildContext ctxt) {
 
-
   void addcoutner(){
-setState(() {
-j=j+1;
-});
-}
+    setState(() {
+      j=j+1;
+    });
+  }
 
 void delcoutner(){
-setState(() {
-j=j-1;
-});
-}
+    setState(() {
+      j=j-1;
+    });
+  }
 
 String msg='';
 var dataus;
@@ -50,6 +50,8 @@ var dataus;
 // print(dataus);
 // print(dataus[j]['diary'].toString());
     nametest = dataus[j]['diary'];
+    date = dataus[j]['date'];
+    print(date);
     print(nametest);
     return dataus;
   }
@@ -114,7 +116,7 @@ var dataus;
                                  );
                                  },
                                  icon: Icon(Icons.backspace_outlined), label: Text('First'),),
-                               Text('11/11/2020',style: TextStyle(
+                               Text(date.toString().substring(0,10),style: TextStyle(
                                  fontWeight: FontWeight.bold,
                                  fontSize: 20,
                                  letterSpacing: 2,
@@ -131,7 +133,7 @@ var dataus;
                              child: Column(
                                children: [
                                  Text(
-                                     nametest.toString() + '$j'
+                                     nametest.toString() + ' $j'
                                  ),
                                ],
                              ),
