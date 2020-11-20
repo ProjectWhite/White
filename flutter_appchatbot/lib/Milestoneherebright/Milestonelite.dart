@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'indicator.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/LineChart.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
@@ -16,7 +17,7 @@ class MileStoneLite extends StatefulWidget {
 }
 
 class _MileStoneLiteState extends State<MileStoneLite> {
-  static int frank=10;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,26 +29,22 @@ class _MileStoneLiteState extends State<MileStoneLite> {
           SizedBox(
             height: 30,
           ),
-      InkWell(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => Milestone())),
-         child: Padding(
-           padding: const EdgeInsets.fromLTRB(10,0,0,0),
-           child: SingleChildScrollView(
-             scrollDirection: Axis.horizontal,
-             child: Container(
-              height: 250,
-              width: 1000,
-              child: LineChartEmotion(),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(
-                    15)),
-                color: Colors.white,
-                // color: Color.fromRGBO(220, 220, 220, 1),
-              ),
-            ),
+      Padding(
+        padding: const EdgeInsets.fromLTRB(10,0,0,0),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Container(
+           height: 250,
+           width: 1000,
+           child: LineChartEmotion(),
+           decoration: BoxDecoration(
+             borderRadius: BorderRadius.all(Radius.circular(
+                 15)),
+             color: Colors.white,
+             // color: Color.fromRGBO(220, 220, 220, 1),
            ),
          ),
+        ),
       ),
           SizedBox(
             height: 10,
@@ -256,8 +253,10 @@ class _MileStoneLiteState extends State<MileStoneLite> {
                             SizedBox(height: 34,),
                             Container(
                               child: Text('Happy',style: TextStyle(
-                                  color: Colors.white
-                              ),),
+                                  color: Colors.white,
+
+                              ),
+                              ),
                             ),
                           ],
                         ),
@@ -359,7 +358,19 @@ class _MileStoneLiteState extends State<MileStoneLite> {
                           ),
                         ],
                       ),
-
+                      Row(
+                        children: [
+                          SizedBox(height: 34,),
+                          Container(
+                            child: IconButton(onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (BuildContext context) => Svt()));
+                            },
+                              icon: Icon(Icons.settings),
+                            ),
+                          ),
+                        ],
+                      ),
 
                     ],
                   ),

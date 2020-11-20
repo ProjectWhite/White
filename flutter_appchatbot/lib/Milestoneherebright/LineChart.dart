@@ -96,7 +96,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
           tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
         ),
         touchCallback: (LineTouchResponse touchResponse) {},
-        handleBuiltInTouches: true,
+        handleBuiltInTouches: false,
       ),
       gridData: FlGridData(
         show: false,
