@@ -4,6 +4,7 @@ import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/Pages.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_chat_bubble/bubble_type.dart';
@@ -191,8 +192,8 @@ class _chatbotState extends State<chatbot> {
                   icon: Icon(Icons.add, color: Colors.purple, size: 35,),
                   onPressed: () {
                     _readmsg();
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //     builder: (BuildContext context) => ));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => FirstScreen()));
                   },
                 ),
                 title: Container(
