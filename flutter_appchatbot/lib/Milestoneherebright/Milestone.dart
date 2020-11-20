@@ -71,7 +71,6 @@ class _MilestoneState extends State<Milestone> {
         scrollDirection: Axis.horizontal,
         controller: ctrl,
         children: [
-
           Container(
             decoration: BoxDecoration(
               color: Colors.black, //อยากใส่รูปพื้นหลัง แต่งงทำไมใส่ไม่ได้
