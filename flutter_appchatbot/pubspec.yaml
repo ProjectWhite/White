@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_chat_bubble:
+  dash_chat:
   shared_preferences:
   fluttertoast:
   hexcolor: ^1.0.6

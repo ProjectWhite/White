@@ -6,6 +6,11 @@ import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
+import 'package:flutter_chat_bubble/bubble_type.dart';
+import 'package:flutter_chat_bubble/chat_bubble.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_1.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_7.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_8.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
@@ -265,47 +270,77 @@ class _chatbotState extends State<chatbot> {
         mainAxisAlignment: data == 1 ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: [
 
-          data == 0 ? Container(
-            height: 10,
-            width: 10,
-          ) : Container(),
+          // data == 0 ? Container(
+          //   height: 10,
+          //   width: 10,
+          // ) : Container(),
 
           Padding(
             padding: EdgeInsets.only(top: 10, bottom: 10),
-            child: Bubble(
-                radius: Radius.circular(15.0),
-                color: data == 0 ? Color.fromRGBO(23, 157, 139, 1) : Colors.orangeAccent,
-                elevation: 0.0,
-                child: Padding(
-                  padding: EdgeInsets.only(top:2,left:0,right:10,bottom:2),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Flexible(
-                          child: Container(
-                            constraints: BoxConstraints( maxWidth: 200),
-                            child: Text(
-                              message,
-                              style: TextStyle(
-                                  color: Colors.white, fontWeight: FontWeight.bold),
-                            ),
-                          ))
-                    ],
+            child:
+            data == 1 ?
+            ChatBubble(
+                clipper: ChatBubbleClipper8(type: BubbleType.sendBubble),
+                alignment: Alignment.topRight,
+                margin: EdgeInsets.only(top: 8,right: 20),
+                backGroundColor: Colors.blue,
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.7,
                   ),
-                )),
+                  child: Text(
+                    message,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+            )
+                : ChatBubble(
+                  clipper: ChatBubbleClipper8(type: BubbleType.receiverBubble),
+                  backGroundColor: Color(0xffE7E7ED),
+                  margin: EdgeInsets.only(top: 8,left: 20),
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width * 0.7,
+                    ),
+                    child: Text(
+                      message,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                )
           ),
-
-
-          data == 1? Container(
-            height: 10,
-            width: 10,
-          ) : Container(),
+          // data == 1? Container(
+          //   height: 10,
+          //   width: 10,
+          // ) : Container(),
         ],
       ),
     );
   }
 
 }
+
+// color: data == 0 ? Color.fromRGBO(23, 157, 139, 1) : Colors.blue,
+// elevation: 0.0,
+// child: Padding(
+//   padding: EdgeInsets.only(top:2,left:0,right:10,bottom:2),
+//   child: Row(
+//     mainAxisSize: MainAxisSize.min,
+//     children: <Widget>[
+//       SizedBox(
+//         width: 10.0,
+//       ),
+//       Flexible(
+//           child: Container(
+//             constraints: BoxConstraints(
+//               maxWidth: MediaQuery.of(context).size.width * 0.7,
+//             ),
+//             child: Text(
+//               message,
+//               style: TextStyle(
+//                   color: Colors.white, fontWeight: FontWeight.bold),
+//             ),
+//           ))
+//     ],
+//   ),
+// )
