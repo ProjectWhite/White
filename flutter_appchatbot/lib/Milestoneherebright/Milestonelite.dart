@@ -17,6 +17,8 @@ class MileStoneLite extends StatefulWidget {
 }
 
 class _MileStoneLiteState extends State<MileStoneLite> {
+  double count =10;
+  bool isShowingMainData;
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +35,11 @@ class _MileStoneLiteState extends State<MileStoneLite> {
         padding: const EdgeInsets.fromLTRB(10,0,0,0),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Container(
-           height: 250,
-           width: 1000,
-           child: LineChartEmotion(),
-           decoration: BoxDecoration(
-             borderRadius: BorderRadius.all(Radius.circular(
-                 15)),
-             color: Colors.white,
-             // color: Color.fromRGBO(220, 220, 220, 1),
-           ),
-         ),
+          child: SizedBox(
+            height: 300,
+            width: 10*count*count,
+            child: LineChartEmotion(),
+          ),
         ),
       ),
           SizedBox(

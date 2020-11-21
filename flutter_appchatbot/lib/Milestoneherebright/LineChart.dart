@@ -1,4 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/class/Emotion.dart';
 
@@ -172,7 +173,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
         ),
       ),
       minX: 0,
-      maxX: 50,
+      maxX: count+20,
       maxY: 7,
       minY: 0,
       lineBarsData: linesBarData1(),
@@ -180,51 +181,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
   }
 
   List<LineChartBarData> linesBarData1() {
-    // final LineChartBarData lineChartBarData1 = LineChartBarData(
-    //   spots: [
-    //     FlSpot(1, 1),
-    //     FlSpot(3, 1.5),
-    //     FlSpot(5, 1.4),
-    //     FlSpot(7, 3.4),
-    //     FlSpot(10, 2),
-    //     FlSpot(12, 2.2),
-    //     FlSpot(13, 1.8),
-    //   ],
-    //   isCurved: true,
-    //   colors: [
-    //     const Color(0xff4af699),
-    //   ],
-    //   barWidth: 8,
-    //   isStrokeCapRound: true,
-    //   dotData: FlDotData(
-    //     show: false,
-    //   ),
-    //   belowBarData: BarAreaData(
-    //     show: false,
-    //   ),
-    // );
-    // final LineChartBarData lineChartBarData2 = LineChartBarData(
-    //   spots: [
-    //     FlSpot(1, 1),
-    //     FlSpot(3, 2.8),
-    //     FlSpot(7, 1.2),
-    //     FlSpot(10, 2.8),
-    //     FlSpot(12, 2.6),
-    //     FlSpot(13, 3.9),
-    //   ],
-    //   isCurved: true,
-    //   colors: [
-    //     const Color(0xffaa4cfc),
-    //   ],
-    //   barWidth: 8,
-    //   isStrokeCapRound: true,
-    //   dotData: FlDotData(
-    //     show: false,
-    //   ),
-    //   belowBarData: BarAreaData(show: false, colors: [
-    //     const Color(0x00aa4cfc),
-    //   ]),
-    // );
+
     final LineChartBarData lineChartBarData3 = LineChartBarData(
       spots: [
         FlSpot(1, 2.8),
@@ -234,7 +191,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
         FlSpot(5, 2.5),
         FlSpot(6, 2),
         FlSpot(7, 6),
-        FlSpot(8, 6),
+
 
       ],
       isCurved: true,
@@ -251,8 +208,6 @@ class LineChartEmotionState extends State<LineChartEmotion> {
       ),
     );
     return [
-      // lineChartBarData1,
-      // lineChartBarData2,
       lineChartBarData3,
     ];
   }
@@ -344,52 +299,7 @@ class LineChartEmotionState extends State<LineChartEmotion> {
 
   List<LineChartBarData> linesBarData2() {
     return [
-      // LineChartBarData(
-      //   spots: [
-      //     FlSpot(1, 1),
-      //     FlSpot(3, 4),
-      //     FlSpot(5, 1.8),
-      //     FlSpot(7, 5),
-      //     FlSpot(10, 2),
-      //     FlSpot(12, 2.2),
-      //     FlSpot(13, 1.8),
-      //   ],
-      //   isCurved: true,
-      //   curveSmoothness: 0,
-      //   colors: const [
-      //     Color(0x444af699),
-      //   ],
-      //   barWidth: 4,
-      //   isStrokeCapRound: true,
-      //   dotData: FlDotData(
-      //     show: false,
-      //   ),
-      //   belowBarData: BarAreaData(
-      //     show: false,
-      //   ),
-      // ),
-      // LineChartBarData(
-      //   spots: [
-      //     FlSpot(1, 1),
-      //     FlSpot(3, 2.8),
-      //     FlSpot(7, 1.2),
-      //     FlSpot(10, 2.8),
-      //     FlSpot(12, 2.6),
-      //     FlSpot(13, 3.9),
-      //   ],
-      //   isCurved: true,
-      //   colors: const [
-      //     Color(0x99aa4cfc),
-      //   ],
-      //   barWidth: 4,
-      //   isStrokeCapRound: true,
-      //   dotData: FlDotData(
-      //     show: false,
-      //   ),
-      //   belowBarData: BarAreaData(show: true, colors: [
-      //     const Color(0x33aa4cfc),
-      //   ]),
-      // ),
+
       LineChartBarData(
         spots: allSpots,
 
