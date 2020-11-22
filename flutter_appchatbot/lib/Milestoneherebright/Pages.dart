@@ -85,10 +85,7 @@ var dataus;
                       IconButton(icon: Icon(Icons.arrow_forward), onPressed: () {
                         addcoutner();
                         _readdiary();
-                        Navigator.push(
-                          ctxt,
-                          new MaterialPageRoute(builder: (ctxt) => new FirstScreen()),
-                        );
+                        Navigator.pushAndRemoveUntil(ctxt, new MaterialPageRoute(builder: (ctxt) => new FirstScreen()),(Route<dynamic> route) => false,);
                       }),
                     ],
                   ),

@@ -28,87 +28,93 @@ class BarChartEmotionState extends State<BarChartEmotion> {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1,
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+    return Container(
+      height: 100,
+      width: 100,
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: Card(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
 
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(
-                18)),
-            gradient: LinearGradient(
-              colors: [
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(
+                  18)),
+              gradient: LinearGradient(
+                colors: [
 
-                Color(0xff2c274c),
-                Color(0xff46426c),
-              ],
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
+                  Color(0xff2c274c),
+                  Color(0xff46426c),
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+              // color: Color.fromRGBO(220, 220, 220, 1),
             ),
-            // color: Color.fromRGBO(220, 220, 220, 1),
-          ),
-          child: Stack(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Text(
-                      'Push To Play',
-                      style: TextStyle(
-                          color: const Color(0xff72d8bf), fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      'Bar Chart',
-                      style: TextStyle(
-                          color: const Color(0xff379982), fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(
-                      height: 38,
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: BarChart(
-                          isPlaying ? randomData() : mainBarData(),
-                          swapAnimationDuration: animDuration,
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        'Push to see Emo Colors',
+                        style: TextStyle(
+                            color: const Color(0xff72d8bf), fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        'Bar Chart',
+                        style: TextStyle(
+                            color: const Color(0xff379982), fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 38,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: BarChart(
+                            isPlaying ? randomData() : mainBarData(),
+                            swapAnimationDuration: animDuration,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: IconButton(
-                    icon: Icon(
-                      isPlaying ? Icons.pause : Icons.play_arrow,
-                      color: Colors.red ,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isPlaying = !isPlaying;
-                        if (isPlaying) {
-                          refreshState();
-                        }
-                      });
-                    },
+                      const SizedBox(
+                        height: 12,
+                      ),
+                    ],
                   ),
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: IconButton(
+                      icon: Icon(
+                        isPlaying ? Icons.pause : Icons.play_arrow,
+                        color: Colors.red ,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isPlaying = !isPlaying;
+                          if (isPlaying) {
+                            refreshState();
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
