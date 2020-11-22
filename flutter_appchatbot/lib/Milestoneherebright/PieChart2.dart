@@ -65,71 +65,7 @@ class PieChart2State extends State {
               ),
             ],
           ),
-          // Column(
-          //   mainAxisSize: MainAxisSize.max,
-          //   mainAxisAlignment: MainAxisAlignment.end,
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: const <Widget>[
-          //     Indicator(
-          //       color: Color(0xff0293ee),
-          //       text: 'First',
-          //       isSquare: true,
-          //     ),
-          //     SizedBox(
-          //       height: 4,
-          //     ),
-          //     Indicator(
-          //       color: Color(0xfff8b250),
-          //       text: 'Second',
-          //       isSquare: true,
-          //     ),
-          //     SizedBox(
-          //       height: 4,
-          //     ),
-          //     Indicator(
-          //       color: Color(0xff845bef),
-          //       text: 'Third',
-          //       isSquare: true,
-          //     ),
-          //     SizedBox(
-          //       height: 4,
-          //     ),
-          //     Indicator(
-          //       color: Color(0xff13d38e),
-          //       text: 'Fourth',
-          //       isSquare: true,
-          //     ),
-          //     SizedBox(
-          //       height: 4,
-          //     ),
-          //     Indicator(
-          //       color: Color(0xff13d38e),
-          //       text: 'Five',
-          //       isSquare: true,
-          //     ),
-          //     SizedBox(
-          //       height: 4,
-          //     ),
-          //     Indicator(
-          //       color: Color(0xff13d38e),
-          //       text: 'Six',
-          //       isSquare: true,
-          //     ),
-          //     SizedBox(
-          //       height: 4,
-          //     ),
-          //     Indicator(
-          //       color: Color(0xff13d38e),
-          //       text: 'Seven',
-          //       isSquare: true,
-          //     ),
-          //
-          //     SizedBox(
-          //       height: 18,
-          //     ),
-          //
-          //   ],
-          // ),
+
 
         ],
       ),

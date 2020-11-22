@@ -7,6 +7,10 @@ import 'dart:async';
 import 'indicator.dart';
 import 'package:flutter_appchatbot/class/Facade.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/LineChart.dart';
+import 'package:flutter_appchatbot/Pages/testm.dart';
+import 'package:flutter_appchatbot/main.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Svt extends StatefulWidget {
   final List<Color> availableColors = [
@@ -17,6 +21,7 @@ class Svt extends StatefulWidget {
     Colors.pink,
     Colors.redAccent,
   ];
+
   @override
   State<StatefulWidget> createState() => PieChartSample1State();
 }
@@ -25,27 +30,23 @@ class PieChartSample1State extends State {
   final Color barBackgroundColor = const Color(0xff72d8bf);
   final Duration animDuration = const Duration(milliseconds: 250);
 
-  void setColor(){
-    Facade color1 = new Facade();
-    color1.start(1,tone.annoyed);
-    Facade color2 = new Facade();
-    color1.start(1,tone.annoyed);
-    Facade color3 = new Facade();
-    color1.start(1,tone.annoyed);
-    Facade color4 = new Facade();
-    color1.start(1,tone.annoyed);
-    Facade color5 = new Facade();
-    color1.start(1,tone.annoyed);
-    Facade color6 = new Facade();
-    color1.start(1,tone.annoyed);
-    Facade color7 = new Facade();
-    color1.start(1,tone.annoyed);
+  // void setColor(){
+  //   Facade color1 = new Facade();
+  //   color1.start(1,tone.annoyed);
+  //   Facade color2 = new Facade();
+  //   color1.start(1,tone.annoyed);
+  //   Facade color3 = new Facade();
+  //   color1.start(1,tone.annoyed);
+  //   Facade color4 = new Facade();
+  //   color1.start(1,tone.annoyed);
+  //   Facade color5 = new Facade();
+  //   color1.start(1,tone.annoyed);
+  //   Facade color6 = new Facade();
+  //   color1.start(1,tone.annoyed);
+  //   Facade color7 = new Facade();
+  //   color1.start(1,tone.annoyed);
+  // }
 
-
-
-
-
-  }
 
 
   void push0(){
@@ -83,12 +84,8 @@ class PieChartSample1State extends State {
       touchedIndex = 6 ;
     });
   }
-  int touchedIndex;
 
-  bool isPlaying = false;
 
-  bool isShowingMainData;
-  double count = 7;
   List<FlSpot> allSpots = [
     FlSpot(0, 1),
     FlSpot(1, 2),
@@ -111,220 +108,208 @@ class PieChartSample1State extends State {
   }
 
 
+  String msg='';
+  var dataus;
+  Future<List> _readEmotion() async {
+    final response = await http.post("$uml/my_store/readCountEmo.php", body: { //ตัวอ่านจำนวนอารม
+      "username": username,
+    });
+
+    dataus = json.decode(response.body);
+    // double countAnger = 1; //ตัวนับจำนวนโกรฑ = dataus[0]['Emotion']
+    // double countDisgust = 2; //ตัวนับจำนวนขยะแขยง
+    // double countFear = 3; //ตัวนับจำนวนกลัว
+    // double countHappy = 4; //ตัวนับจำนวนมีความสุข
+    // double countLove = 5; //ตัวนับจำนวนรัก
+    // double countSad = 6; //ตัวนับจำนวนเศร้า
+    // double countSurprise = 7; //ตัวนับจำนวนตกใจ
+    // var countAllEmo = 1+2+3+4+5+6+7;
+
+    return dataus;
+  }
+
+  double countAnger = 1; //ตัวนับจำนวนโกรฑ = dataus[0]['Emotion'] //test
+  double countDisgust = 2; //ตัวนับจำนวนขยะแขยง
+  double countFear = 3; //ตัวนับจำนวนกลัว
+  double countHappy = 4; //ตัวนับจำนวนมีความสุข
+  double countLove = 5; //ตัวนับจำนวนรัก
+  double countSad = 6; //ตัวนับจำนวนเศร้า
+  double countSurprise = 7; //ตัวนับจำนวนตกใจ
+  var countAllEmo = 1+2+3+4+5+6+7;
+
+  int touchedIndex;
+  bool isPlaying = false;
+  bool isShowingMainData;
+  double count = 7;
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         children: [
-      SizedBox(height: 40,),
-      SingleChildScrollView(
-        child: Container(
-          height: 250,
-          width: 10000,
-          child: LineChartEmotion(),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(
-                15)),
-
-            // color: Color.fromRGBO(220, 220, 220, 1),
-          ),
+      SizedBox(height: 50,),
+      Padding(
+        padding: const EdgeInsets.fromLTRB(5,0,0,0),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: SizedBox(
+             height: 300,
+              width: 10*count*count,
+              child: LineChartEmotion()),
         ),
       ),
       Row(
         children: [
-          Container(
-            height: 300,
-            width: 192.5,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(5,10,0,0),
+            child: Container(
+              height: 300,
+              width: 188.5,
 
-            child: AspectRatio(
-              aspectRatio: 1.3,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(
-                      18)),
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xff2c284c),
-                      Color(0xff46426c),
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                  ),
-                  // color: Color.fromRGBO(220, 220, 220, 1),
-                ),
-                child: Column(
-                  children: <Widget>[
+              child: AspectRatio(
+                aspectRatio: 1.3,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(
+                        18)),
+                    gradient: LinearGradient(
+                      colors: [
 
-                    // Padding(
-                    //   padding: const EdgeInsets.all(20.0),
-                    //   child: Row(
-                    //     mainAxisSize: MainAxisSize.max,
-                    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //     children: <Widget>[
-                    //       Indicator(
-                    //         color: const Color(0xff0293ee),
-                    //         text: 'One',
-                    //         isSquare: false,
-                    //         size: touchedIndex == 0 ? 18 : 16,
-                    //         textColor: touchedIndex == 0 ? Colors.black : Colors.grey,
-                    //       ),
-                    //       Indicator(
-                    //         color: const Color(0xfff8b250),
-                    //         text: 'Two',
-                    //         isSquare: false,
-                    //         size: touchedIndex == 1 ? 18 : 16,
-                    //         textColor: touchedIndex == 1 ? Colors.black : Colors.grey,
-                    //       ),
-                    //       Indicator(
-                    //         color: const Color(0xff845bef),
-                    //         text: 'Three',
-                    //         isSquare: false,
-                    //         size: touchedIndex == 2 ? 18 : 16,
-                    //         textColor: touchedIndex == 2 ? Colors.black : Colors.grey,
-                    //       ),
-                    //       Indicator(
-                    //         color: const Color(0xff13d38e),
-                    //         text: 'Four',
-                    //         isSquare: false,
-                    //         size: touchedIndex == 3 ? 18 : 16,
-                    //         textColor: touchedIndex == 3 ? Colors.black : Colors.grey,
-                    //       ),
-                    //       Text(
-                    //         'frank',
-                    //         style: TextStyle(
-                    //           fontSize: touchedIndex == 2 ? 18 : 16,
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-
-                    Expanded(
-                      child: AspectRatio(
-                        aspectRatio: 1,
-                        child: PieChart(
-                          PieChartData(
-                              pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
-                                setState(() {
-                                  if (pieTouchResponse.touchInput is FlLongPressEnd ||
-                                      pieTouchResponse.touchInput is FlPanEnd) {
-                                    touchedIndex = -1;
-                                  } else {
-                                    touchedIndex = pieTouchResponse.touchedSectionIndex;
-                                  }
-                                });
-                              }),
-                              startDegreeOffset: 180,
-                              borderData: FlBorderData(
-                                show: false,
-                              ),
-                              sectionsSpace: 12,
-                              centerSpaceRadius: 0,
-                              sections: showingSections()),
-                        ),
-                      ),
+                        Color(0xff2c284c),
+                        Color(0xff46426c),
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
                     ),
-                  ],
+                    // color: Color.fromRGBO(220, 220, 220, 1),
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: PieChart(
+                            PieChartData(
+                                pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
+                                  setState(() {
+                                    if (pieTouchResponse.touchInput is FlLongPressEnd ||
+                                        pieTouchResponse.touchInput is FlPanEnd) {
+                                      touchedIndex = -1;
+                                    } else {
+                                      touchedIndex = pieTouchResponse.touchedSectionIndex;
+                                    }
+                                  });
+                                }),
+                                borderData: FlBorderData(
+                                  show: false,
+                                ),
+                                sectionsSpace: 5,
+                                centerSpaceRadius: 30,
+                                sections: showingSections()),
+                          ),
+                        ),
+
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-      SizedBox(width: 5,),
-      Container(
-      height: 300,
-      width: 192.5,
-      child: AspectRatio(
-      aspectRatio: 1,
-      child: Container(
-      height: 50,
-      width: 50,
-      decoration: BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(
-      18)),
-      gradient: LinearGradient(
-      colors: [
-
-      Color(0xff2c274c),
-      Color(0xff46426c),
-      ],
-      begin: Alignment.bottomCenter,
-      end: Alignment.topCenter,
-      ),
-      // color: Color.fromRGBO(220, 220, 220, 1),
-      ),
-      child: Stack(
-      children: <Widget>[
-      Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-      Text(
-      'Push to see Emo Colors',
-      style: TextStyle(
-      color: const Color(0xff72d8bf), fontSize: 18, fontWeight: FontWeight.bold),
-      ),
-      const SizedBox(
-      height: 4,
-      ),
-      Text(
-      'Bar Chart',
-      style: TextStyle(
-      color: const Color(0xff379982), fontSize: 18, fontWeight: FontWeight.bold),
-      ),
-      const SizedBox(
-      height: 38,
-      ),
-      Expanded(
-      child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: BarChart(
-      isPlaying ? randomData() : mainBarData(),
-      swapAnimationDuration: animDuration,
-      ),
-      ),
-      ),
-      const SizedBox(
-      height: 12,
-      ),
-      ],
-      ),
-      ),
-      Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Align(
-      alignment: Alignment.topRight,
-      child: IconButton(
-      icon: Icon(
-      isPlaying ? Icons.pause : Icons.play_arrow,
-      color: Colors.red ,
-      ),
-      onPressed: () {
-      setState(() {
-      isPlaying = !isPlaying;
-      if (isPlaying) {
-      refreshState();
-      }
-      });
-      },
-      ),
-      ),
-      )
-      ],
-      ),
-      ),
-      ),
-      ),
-
-
+          SizedBox(width: 5,),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0,10,5,0),
+            child: Container(
+              height: 300,
+              width: 188.5,
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(18)),
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xff2c274c),
+                        Color(0xff46426c),
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                    // color: Color.fromRGBO(220, 220, 220, 1),
+                    ),
+                  child: Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            Text('Change Color',
+                              style: TextStyle(
+                                  color: const Color(0xff72d8bf), fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              'Bar Chart',
+                              style: TextStyle(
+                                  color: const Color(0xff379982), fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(
+                              height: 38,
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: BarChart(
+                                  isPlaying ? randomData() : mainBarData(),
+                                  swapAnimationDuration: animDuration,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: IconButton(
+                            icon: Icon(
+                              isPlaying ? Icons.pause : Icons.play_arrow,
+                              color: Colors.red ,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                isPlaying = !isPlaying;
+                                if (isPlaying) {
+                                  refreshState();
+                                }
+                              });
+                              },
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
       Padding(
-        padding: const EdgeInsets.fromLTRB(12.0,12,12,0),
+        padding: const EdgeInsets.fromLTRB(5,10,5,0),
         child: Container(
           height: 100,
           width: 400,
@@ -621,87 +606,85 @@ class PieChartSample1State extends State {
 
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(
-      7,
-          (i) {
-        final isTouched = i == touchedIndex;
-        final double opacity = isTouched ? 1 : 0.6;
-        switch (i) {
-          case 0:
-            return PieChartSectionData(
-              color: const Color(0xff0293ee).withOpacity(opacity),
-              value: touchedIndex == 2 ? 18 : 16,
-              title: '1',
-              radius: 80,
-              titleStyle: TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: const Color(0xff044d7c)),
-              titlePositionPercentageOffset: 0.55,
-            );
-          case 1:
-            return PieChartSectionData(
-              color: const Color(0xfff8b250).withOpacity(opacity),
-              value: 25,
-              title: '2',
-              radius: 65,
-              titleStyle: TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: const Color(0xff90672d)),
-              titlePositionPercentageOffset: 0.55,
-            );
-          case 2:
-            return PieChartSectionData(
-              color: const Color(0xff845bef).withOpacity(opacity),
-              value: 25,
-              title: '3',
-              radius: 60,
-              titleStyle: TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: const Color(0xff4c3788)),
-              titlePositionPercentageOffset: 0.6,
-            );
-          case 3:
-            return PieChartSectionData(
-              color: const Color(0xff13d38e).withOpacity(opacity),
-              value: 25,
-              title: '4',
-              radius: 70,
-              titleStyle: TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: const Color(0xff0c7f55)),
-              titlePositionPercentageOffset: 0.55,
-            );
-          case 4:
-            return PieChartSectionData(
-              color: const Color(0xff13d38e).withOpacity(opacity),
-              value: 25,
-              title: '5',
-              radius: 70,
-              titleStyle: TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: const Color(0xff0c7f55)),
-              titlePositionPercentageOffset: 0.55,
-            );
-          case 5:
-            return PieChartSectionData(
-              color: const Color(0xff13d38e).withOpacity(opacity),
-              value: 25,
-              title: '6',
-              radius: 70,
-              titleStyle: TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: const Color(0xff0c7f55)),
-              titlePositionPercentageOffset: 0.55,
-            );
-          case 6:
-            return PieChartSectionData(
-              color: const Color(0xff13d38e).withOpacity(opacity),
-              value: 25,
-              title: '7',
-              radius: 70,
-              titleStyle: TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: const Color(0xff0c7f55)),
-              titlePositionPercentageOffset: 0.55,
-            );
-          default:
-            return null;
-        }
-      },
-    );
+    return List.generate(7, (i) {
+      final isTouched = i == touchedIndex;
+      final double fontSize = isTouched ? 25 : 16;
+      final double radius = isTouched ? 60 : 50;
+      switch (i) {
+        case 0:
+          return PieChartSectionData(
+            // color: const Color(0xff0293ee),
+            color: Colors.deepPurple[500],
+            value: countAnger/countAllEmo,
+            title: '$countAnger',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        case 1:
+          return PieChartSectionData(
+            // color: const Color(0xfff8b250),
+            color: Colors.indigo[500],
+            value: countDisgust/countAllEmo,
+            title: '$countDisgust',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        case 2:
+          return PieChartSectionData(
+            // color: const Color(0xff845bef),
+            color: Colors.blue[500],
+            value: countFear/countAllEmo,
+            title: '$countFear',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        case 3:
+          return PieChartSectionData(
+            // color: const Color(0xff13d38e),
+            color: Colors.green[500],
+            value: countHappy/countAllEmo,
+            title: '$countHappy',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        case 4:
+          return PieChartSectionData(
+            // color: const Color(0xff13d38e),
+            color: Colors.yellow[500],
+            value: countLove/countAllEmo,
+            title: '$countLove',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        case 5:
+          return PieChartSectionData(
+            // color: const Color(0xff13d38e),
+            color: Colors.orange[700],
+            value: countSad/countAllEmo,
+            title: '$countSad',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        case 6:
+          return PieChartSectionData(
+            // color: const Color(0xff13d38e),
+            color: Colors.red[500],
+            value: countSurprise/countAllEmo,
+            title: '$countSurprise',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        default:
+          return null;
+      }
+    });
   }
 
   BarChartGroupData makeGroupData(
@@ -733,19 +716,19 @@ class PieChartSample1State extends State {
   List<BarChartGroupData> showingGroups() => List.generate(7, (i) {
     switch (i) {
       case 0:
-        return makeGroupData(0, 5, isTouched: i == touchedIndex);
+        return makeGroupData(0, countAnger, isTouched: i == touchedIndex);
       case 1:
-        return makeGroupData(1, 6.5, isTouched: i == touchedIndex);
+        return makeGroupData(1, countDisgust, isTouched: i == touchedIndex);
       case 2:
-        return makeGroupData(2, 5, isTouched: i == touchedIndex);
+        return makeGroupData(2, countFear, isTouched: i == touchedIndex);
       case 3:
-        return makeGroupData(3, 7.5, isTouched: i == touchedIndex);
+        return makeGroupData(3, countHappy, isTouched: i == touchedIndex);
       case 4:
-        return makeGroupData(4, 9, isTouched: i == touchedIndex);
+        return makeGroupData(4, countLove, isTouched: i == touchedIndex);
       case 5:
-        return makeGroupData(5, 11.5, isTouched: i == touchedIndex);
+        return makeGroupData(5, countSad, isTouched: i == touchedIndex);
       case 6:
-        return makeGroupData(6, 6.5, isTouched: i == touchedIndex);
+        return makeGroupData(6, countSurprise, isTouched: i == touchedIndex);
       default:
         return null;
     }
@@ -881,19 +864,19 @@ class PieChartSample1State extends State {
       barGroups: List.generate(7, (i) {
         switch (i) {
           case 0:
-            return makeGroupData(0,5/*เยดแม่แทนได้*/,barColor: Colors.deepPurple[500]);
+            return makeGroupData(0,countAnger,barColor: Colors.deepPurple[500]);
           case 1:
-            return makeGroupData(1,6.5,barColor: Colors.indigo[500]);
+            return makeGroupData(1,countDisgust,barColor: Colors.indigo[500]);
           case 2:
-            return makeGroupData(2,5,barColor: Colors.blue[500]);
+            return makeGroupData(2,countFear,barColor: Colors.blue[500]);
           case 3:
-            return makeGroupData(3,7.5,barColor: Colors.green[500]);
+            return makeGroupData(3,countHappy,barColor: Colors.green[500]);
           case 4:
-            return makeGroupData(4,9,barColor: Colors.yellow[500]);
+            return makeGroupData(4,countLove,barColor: Colors.yellow[500]);
           case 5:
-            return makeGroupData(5,11.5,barColor: Colors.orange[500]);
+            return makeGroupData(5,countSad,barColor: Colors.orange[500]);
           case 6:
-            return makeGroupData(6,6.5,barColor: Colors.red[500]);
+            return makeGroupData(6,countSurprise,barColor: Colors.red[500]);
           default:
             return null;
         }
