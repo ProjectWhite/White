@@ -11,10 +11,19 @@ import 'Pages/wellcome1.dart';
 import 'Pages/wellcome2.dart';
 import 'constrants.dart';
 import 'package:flutter/services.dart';
+import 'login/dashboard_screen.dart';
+import 'login/login_screen.dart';
+import 'login/transition_route_observer.dart';
 import 'register.dart';
 import 'package:flutter_appchatbot/Pages/wellcome1.dart';
 
 void main() async{
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      systemNavigationBarColor:
+      SystemUiOverlayStyle.dark.systemNavigationBarColor,
+    ),
+  );
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();
   var u = preferences.getString('us');
@@ -25,7 +34,7 @@ void main() async{
 
 String username='';
 String name='';
-String uml='https://7aae9096eca3.ngrok.io';
+String uml='https://332f214aa490.ngrok.io';
 int k;
 
 class MyApp extends StatelessWidget {
@@ -63,66 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
     preferences.setString('us', user.text);
   }
 
-  Future<List> _login() async {
-    final response = await http.post("$uml/my_store/login.php", body: {
-      "username": user.text,
-      "password": pass.text,
-    });
 
-    var datauser = json.decode(response.body);
-
-    if(datauser.length==0){
-      Fluttertoast.showToast(
-          msg: "Invalid username & password",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.black,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
-      setState(() {
-        msg="Login Fail";
-      });
-    }else{
-      if(datauser[0]['nickname']==null) {
-        save();
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>wellcome(),),);
-        Fluttertoast.showToast(
-            msg: "Login Successful",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.black,
-            textColor: Colors.white,
-            fontSize: 16.0
-        );
-        setState(() {
-          username = datauser[0]['username'];
-        });
-      }
-      else{
-        save();
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
-        Fluttertoast.showToast(
-            msg: "Login Successful",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.black,
-            textColor: Colors.white,
-            fontSize: 16.0
-        );
-        setState(() {
-          username = datauser[0]['username'];
-          name = datauser[0]['nickname'];
-          print('How\'s trick');
-        });
-      }
-    }
-
-    return datauser;
-  }
   bool _rememberMe = false;
 
   Widget _buildEmailTF() {
@@ -237,7 +187,6 @@ class _MyHomePageState extends State<MyHomePage> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: (){
-          _login();
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -295,73 +244,118 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFF73AEF5),
-                      Color(0xFF61A4F1),
-                      Color(0xFF478DE0),
-                      Color(0xFF398AE5),
-                    ],
-                    stops: [0.1, 0.4, 0.7, 0.9],
-                  ),
-                ),
-              ),
-              Container(
-                height: double.infinity,
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 120.0,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Sign In',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'OpenSans',
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 30.0),
-                      _buildEmailTF(),
-                      SizedBox(
-                        height: 30.0,
-                      ),
-                      _buildPasswordTF(),
-                      _buildForgotPasswordBtn(),
-                      SizedBox(height: 10.0,),
-                      _buildLoginBtn(),
-                      SizedBox(height: 30.0,),
-                      _buildtext(),
-                      SizedBox(
-                        height: 30.0,
-                      ),
-                      _buildSignupBtn(),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+     return MaterialApp(
+       title: 'Login Demo',
+       theme: ThemeData(
+         // brightness: Brightness.dark,
+         primarySwatch: Colors.deepPurple,
+         accentColor: Colors.orange,
+         cursorColor: Colors.orange,
+         // fontFamily: 'SourceSansPro',
+         textTheme: TextTheme(
+           display2: TextStyle(
+             fontFamily: 'OpenSans',
+             fontSize: 45.0,
+             // fontWeight: FontWeight.w400,
+             color: Colors.orange,
+           ),
+           button: TextStyle(
+             // OpenSans is similar to NotoSans but the uppercases look a bit better IMO
+             fontFamily: 'OpenSans',
+           ),
+           caption: TextStyle(
+             fontFamily: 'NotoSans',
+             fontSize: 12.0,
+             fontWeight: FontWeight.normal,
+             color: Colors.deepPurple[300],
+           ),
+           display4: TextStyle(fontFamily: 'Quicksand'),
+           display3: TextStyle(fontFamily: 'Quicksand'),
+           display1: TextStyle(fontFamily: 'Quicksand'),
+           headline: TextStyle(fontFamily: 'NotoSans'),
+           title: TextStyle(fontFamily: 'NotoSans'),
+           subhead: TextStyle(fontFamily: 'NotoSans'),
+           body2: TextStyle(fontFamily: 'NotoSans'),
+           body1: TextStyle(fontFamily: 'NotoSans'),
+           subtitle: TextStyle(fontFamily: 'NotoSans'),
+           overline: TextStyle(fontFamily: 'NotoSans'),
+         ),
+       ),
+       home: LoginScreen(),
+       // navigatorObservers: [TransitionRouteObserver()],
+       routes: {
+         LoginScreen.routeName: (context) => LoginScreen(),
+         DashboardScreen.routeName: (context) => DashboardScreen(),
+       },
+     );
   }
 }
+
+// Scaffold(
+//   body: AnnotatedRegion<SystemUiOverlayStyle>(
+//     value: SystemUiOverlayStyle.light,
+//     child: GestureDetector(
+//       onTap: () => FocusScope.of(context).unfocus(),
+//       child: Stack(
+//         children: <Widget>[
+//           Container(
+//             height: double.infinity,
+//             width: double.infinity,
+//             decoration: BoxDecoration(
+//               gradient: LinearGradient(
+//                 begin: Alignment.topCenter,
+//                 end: Alignment.bottomCenter,
+//                 colors: [
+//                   Color(0xFF73AEF5),
+//                   Color(0xFF61A4F1),
+//                   Color(0xFF478DE0),
+//                   Color(0xFF398AE5),
+//                 ],
+//                 stops: [0.1, 0.4, 0.7, 0.9],
+//               ),
+//             ),
+//           ),
+//           Container(
+//             height: double.infinity,
+//             child: SingleChildScrollView(
+//               physics: AlwaysScrollableScrollPhysics(),
+//               padding: EdgeInsets.symmetric(
+//                 horizontal: 40.0,
+//                 vertical: 120.0,
+//               ),
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: <Widget>[
+//                   Text(
+//                     'Sign In',
+//                     style: TextStyle(
+//                       color: Colors.white,
+//                       fontFamily: 'OpenSans',
+//                       fontSize: 30.0,
+//                       fontWeight: FontWeight.bold,
+//                     ),
+//                   ),
+//                   SizedBox(height: 30.0),
+//                   _buildEmailTF(),
+//                   SizedBox(
+//                     height: 30.0,
+//                   ),
+//                   _buildPasswordTF(),
+//                   _buildForgotPasswordBtn(),
+//                   SizedBox(height: 10.0,),
+//                   _buildLoginBtn(),
+//                   SizedBox(height: 30.0,),
+//                   _buildtext(),
+//                   SizedBox(
+//                     height: 30.0,
+//                   ),
+//                   _buildSignupBtn(),
+//                 ],
+//               ),
+//             ),
+//           )
+//         ],
+//       ),
+//     ),
+//   ),
+// );

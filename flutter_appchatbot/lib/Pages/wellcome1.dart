@@ -63,7 +63,7 @@ class _wellcomeState extends State<wellcome> {
             'name': name.text,
 
           });
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
           setState(() {
           });
         },
