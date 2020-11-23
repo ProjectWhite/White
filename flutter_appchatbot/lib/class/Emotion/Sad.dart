@@ -1,33 +1,27 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
 class Sad extends Emotion{
-  tone _category;
+  tone category;
 
   Sad(tone category) : super.empty(){
-    this._category = category;
+    super.category = category;
     this.type = emotion.sad;
-    if (_category == tone.inadequate) {
+    if (category == tone.inadequate) {
       this.colors = '#1b4332';
     }
-    else if (_category == tone.uninterested) {
+    else if (category == tone.uninterested) {
       this.colors = '#2d6a4f';
     }
-    else if (_category == tone.lonely) {
+    else if (category == tone.lonely) {
       this.colors = '#40916c';
     }
-    else if (_category == tone.guilty) {
+    else if (category == tone.guilty) {
       this.colors = '#52b788';
     }
-    else if (_category == tone.hurt) {
+    else if (category == tone.hurt) {
       this.colors = '#74c69d';
     }
   }
 
-
-  tone get category => _category;
-
-  set category(tone value) {
-    _category = value;
-  }
 
   @override
   String CalculateColor() {

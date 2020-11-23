@@ -32,9 +32,7 @@ dependencies:
   cupertino_back_gesture: ^0.0.3
   flutter_chat_bubble: ^1.0.2
   dash_chat: ^1.1.15
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  emojis:
   cupertino_icons: ^1.0.0
   bubble: ^1.1.9+1
   intl:
@@ -73,11 +71,17 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/aoy.jpg
-    - assets/bright.jpg
     - assets/google.png
     - assets/Wallpaper.png
     - assets/newagent-akoy-6c17e9e97bf2.json
+    - assets/beaming_face_with_smiling_eyes.gif
+    - assets/crying_face.gif
+    - assets/face_screaming_in_fear.gif
+    - assets/face_vomiting.gif
+    - assets/face_with_steam_from_nose.gif
+    - assets/smiling_face_with_heart_eyes.gif
+    - assets/winking_face.gif
+    - assets/hushed_face.gif
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

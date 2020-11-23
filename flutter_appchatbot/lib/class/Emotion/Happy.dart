@@ -1,32 +1,38 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
 class Happy extends Emotion{
-  tone _category;
+  tone category;
   Happy(tone category) : super.empty(){
-    this._category = category;
+    super.category = category;
     this.type = emotion.happy;
-    if (_category == tone.confident) {
+    if (category == tone.confident) {
       this.colors = '#1b4332';
     }
-    else if (_category == tone.grateful) {
+    else if (category == tone.grateful) {
       this.colors = '#2d6a4f';
     }
-    else if (_category == tone.peaceful) {
+    else if (category == tone.peaceful) {
       this.colors = '#40916c';
     }
-    else if (_category == tone.excited) {
+    else if (category == tone.excited) {
       this.colors = '#52b788';
     }
-    else if (_category == tone.playful) {
+    else if (category == tone.playful) {
+      this.colors = '#74c69d';
+    }
+    else if (category == tone.relief) {
+      this.colors = '#74c69d';
+    }
+    else if (category == tone.pride) {
+      this.colors = '#74c69d';
+    }
+    else if (category == tone.satisfaction) {
+      this.colors = '#74c69d';
+    }
+    else if (category == tone.triumph) {
       this.colors = '#74c69d';
     }
   }
 
-
-  tone get category => _category;
-
-  set category(tone value) {
-    _category = value;
-  }
 
   @override
   String CalculateColor() {

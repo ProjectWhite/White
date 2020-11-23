@@ -43,4 +43,18 @@ abstract class Emotion implements EmotionMet{
   set colors(String value) {
     _colors = value ;
   }
+
+  tone get category => _category;
+
+  set category(tone value) {
+    _category = value;
+  }
+
+  String toString1() {
+    return '$_type';
+  }
+
+  String toString2() {
+    return '$_category';
+  }
 }

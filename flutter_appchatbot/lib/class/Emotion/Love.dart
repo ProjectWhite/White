@@ -1,33 +1,27 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
 class Love extends Emotion{
-  tone _category;
+  tone category;
 
   Love(tone category) : super.empty(){
-    this._category = category;
+    super.category = category;
     this.type = emotion.love;
-    if (_category == tone.accepted) {
+    if (category == tone.accepted) {
       this.colors = '#1b4332';
     }
-    else if (_category == tone.gentle) {
+    else if (category == tone.gentle) {
       this.colors = '#2d6a4f';
     }
-    else if (_category == tone.affectionate) {
+    else if (category == tone.affectionate) {
       this.colors = '#40916c';
     }
-    else if (_category == tone.passionate) {
+    else if (category == tone.passionate) {
       this.colors = '#52b788';
     }
-    else if (_category == tone.trusted) {
+    else if (category == tone.trusted) {
       this.colors = '#74c69d';
     }
   }
 
-
-  tone get category => _category;
-
-  set category(tone value) {
-    _category = value;
-  }
 
   @override
   String CalculateColor() {

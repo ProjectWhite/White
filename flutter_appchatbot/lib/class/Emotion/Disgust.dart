@@ -1,33 +1,26 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
 class Disgust extends Emotion{
-  tone _category;
+  tone category;
 
   Disgust(tone category) : super.empty(){
-    this._category = category;
+    super.category = category;
     this.mothercolors = 'gggg';
     this.type = emotion.disgust;
-    if (_category == tone.resentful) {
+    if (category == tone.resentful) {
       this.colors = '#1b4332';
     }
-    else if (_category == tone.shameful) {
+    else if (category == tone.shameful) {
       this.colors = '#2d6a4f';
     }
-    else if (_category == tone.bitter) {
+    else if (category == tone.bitter) {
       this.colors = '#40916c';
     }
-    else if (_category == tone.disappointed) {
+    else if (category == tone.disappointed) {
       this.colors = '#52b788';
     }
-    else if (_category == tone.averse) {
+    else if (category == tone.averse) {
       this.colors = '#74c69d';
     }
-  }
-
-
-  tone get category => _category;
-
-  set category(tone value) {
-    _category = value;
   }
 
   @override

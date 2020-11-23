@@ -1,35 +1,29 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
 
 class Anger extends Emotion{
-  tone _category;
+  tone category;
 
   Anger(tone category) : super.empty(){
-    this._category = category;
+    super.category = category;
     this.type = emotion.anger;
     this.mothercolors = '#B40000';
-    if (_category == tone.annoyed) {
+    if (category == tone.annoyed) {
       this.colors = '#1b4332';
     }
-    else if (_category == tone.frustrated) {
+    else if (category == tone.frustrated) {
       this.colors = '#2d6a4f';
     }
-    else if (_category == tone.offended) {
+    else if (category == tone.offended) {
       this.colors = '#40916c';
     }
-    else if (_category == tone.mad) {
+    else if (category == tone.mad) {
       this.colors = '#52b788';
     }
-    else if (_category == tone.threatened) {
+    else if (category == tone.threatened) {
       this.colors = '#74c69d';
     }
   }
 
-
-  tone get category => _category;
-
-  set category(tone value) {
-    _category = value;
-  }
 
   @override
   String CalculateColor() {
