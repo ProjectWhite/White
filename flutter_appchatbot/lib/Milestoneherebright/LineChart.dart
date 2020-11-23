@@ -114,12 +114,12 @@ class LineChartEmotionState extends State<LineChartEmotion> {
           margin: 10,
           getTitles: (value) {
             switch (value.toInt()) {
+              case 0:
+                return 'S';
+              case 1:
+                return 'O';
               case 2:
-                return 'SEPT';
-              case 7:
-                return 'OCT';
-              case 12:
-                return 'DEC';
+                return 'D';
             }
             return '';
           },
