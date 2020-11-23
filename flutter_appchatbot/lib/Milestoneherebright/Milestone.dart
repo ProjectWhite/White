@@ -30,6 +30,21 @@ class _MilestoneState extends State<Milestone> {
 
   String msg='';
   var dataus;
+  var dataus2;
+
+  Future<List> _readcountdiary() async{
+    final response = await http.post("$uml/my_store/countdiary.php", body: {
+      "username": username,
+    });
+    dataus2 = json.decode(response.body);
+
+    print(dataus2);
+    print(dataus2[0]['emotion']);
+    print(dataus2[0]['count(emotion)']);
+
+    return dataus2;
+  }
+
   Future<List> _readdiary() async {
     final response = await http.post("$uml/my_store/readdiary.php", body: {
       "username": username,
@@ -43,22 +58,22 @@ class _MilestoneState extends State<Milestone> {
     return dataus;
   }
 
-  Future<List> _insertdiary() async{
-    for(int i=0;;i++){
-      if(dataus[i]['text']==null)break;
-      else{
-        counter++;
-        print(dataus[i]['username']);
-        print(dataus[i]['text']);
-        print(dataus[i]['date']);
-        final res = await http.post("$uml/my_store/insertdiary.php", body: {
-          "username": username,
-          "date" : dataus[i]['date'],
-          "diary" : dataus[i]['text']
-        });
-      }
-    }
-  }
+  // Future<List> _insertdiary() async{
+  //   for(int i=0;;i++){
+  //     if(dataus[i]['text']==null)break;
+  //     else{
+  //       counter++;
+  //       print(dataus[i]['username']);
+  //       print(dataus[i]['text']);
+  //       print(dataus[i]['date']);
+  //       final res = await http.post("$uml/my_store/insertdiary.php", body: {
+  //         "username": username,
+  //         "date" : dataus[i]['date'],
+  //         "diary" : dataus[i]['text']
+  //       });
+  //     }
+  //   }
+  // }
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,

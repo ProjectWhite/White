@@ -34,6 +34,21 @@ class chatbot extends StatefulWidget {
 class _chatbotState extends State<chatbot> {
   int i = 0;
   int j = 0;
+  var dataus2;
+
+  Future<List> _readcountdiary() async{
+    print('count diary');
+    final response = await http.post("$uml/my_store/countdiary.php", body: {
+      "username": username,
+    });
+    dataus2 = json.decode(response.body);
+
+    print(dataus2);
+    print(dataus2[0]['emotion']);
+    print(dataus2[0]['count(emotion)']);
+
+    return dataus2;
+  }
 
   Future<List> _insertai(String ms) async {
     print(ms);
@@ -147,6 +162,7 @@ class _chatbotState extends State<chatbot> {
   @override
   Widget build(BuildContext context){
     if(k==1){
+      _readcountdiary();
       _readmsg();
       k=2;
     }
