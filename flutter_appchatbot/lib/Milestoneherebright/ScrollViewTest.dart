@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
 import 'package:flutter_appchatbot/class/Emotion.dart';
+import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:async';
 import 'indicator.dart';
@@ -11,24 +12,19 @@ import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'dart:math' as math;
 
 class Svt extends StatefulWidget {
-  final List<Color> availableColors = [
-    Colors.purpleAccent,
-    Colors.yellow,
-    Colors.lightBlue,
-    Colors.orange,
-    Colors.pink,
-    Colors.redAccent,
-  ];
-
   @override
-  State<StatefulWidget> createState() => PieChartSample1State();
+  State<StatefulWidget> createState() => MilestonepageState();
 }
 
-class PieChartSample1State extends State {
+
+class MilestonepageState extends State {
   final Color barBackgroundColor = const Color(0xff72d8bf);
   final Duration animDuration = const Duration(milliseconds: 250);
+
 
   // void setColor(){
   //   Facade color1 = new Facade();
@@ -84,27 +80,21 @@ class PieChartSample1State extends State {
       touchedIndex = 6 ;
     });
   }
-
+  double count = 1;
 
   List<FlSpot> allSpots = [
-    FlSpot(0, 1),
-    FlSpot(1, 2),
-    FlSpot(2, 1.5),
-    FlSpot(3, 3),
-    FlSpot(4, 3.5),
-    FlSpot(5, 5),
-    FlSpot(6, 8),
+    FlSpot(0, 0),
   ];
 
   void append(double x){
-    for(int i=1;i<3;i++){
       allSpots.add(FlSpot(count,x));
-      count ++;}
+      count ++;
   }
   @override
   void initState() {
     super.initState();
     isShowingMainData = true;
+   final _future = _readcountdiary();
   }
 
 
@@ -118,518 +108,895 @@ class PieChartSample1State extends State {
 
     print(dataus2);
     print(dataus2[0]['emotion']);
+    for(int i=0;i<7;i++){
+      try{
+        //ignore exception
+        if(dataus2[i]['emotion']==null) {
+          break;
+        }
+      }catch (Exception){
+        print(Exception);
+        break;
+      }
+      if(dataus2[i]['emotion']=='emotion.anger'){
+        setState(() {
+          countAnger = double.parse(dataus2[i]['count(emotion)']);
+
+        });
+      }
+      else if(dataus2[i]['emotion']=='emotion.disgust'){
+        setState(() {
+          countDisgust = double.parse(dataus2[i]['count(emotion)']);
+
+        });
+      }
+      else if(dataus2[i]['emotion']=='emotion.fear'){
+        setState(() {
+          countFear = double.parse(dataus2[i]['count(emotion)']);
+        });
+      }
+      else if(dataus2[i]['emotion']=='emotion.happy'){
+        setState(() {
+          countHappy = double.parse(dataus2[i]['count(emotion)']);
+        });
+      }
+      else if(dataus2[i]['emotion']=='emotion.love'){
+        setState(() {
+          countLove = double.parse(dataus2[i]['count(emotion)']);
+        });
+      }
+      else if(dataus2[i]['emotion']=='emotion.sad'){
+        setState(() {
+          countSad = double.parse(dataus2[i]['count(emotion)']);
+        });
+      }
+      else if(dataus2[i]['emotion']=='emotion.surprise'){
+        setState(() {
+          countSurprise = double.parse(dataus2[i]['count(emotion)']);
+        });
+      }
+    }
+    // var countHappy = double.parse(dataus2[2]['count(emotion)']);
+    countAllEmo = countAnger+countDisgust+countFear+countHappy+countLove+countSad+countSurprise;
+    print(countAllEmo);
+    return dataus2;
+  }
+  int j=1;
+ var dataus3;
+  Future<List> _readLine() async{
+    print('read line');
+    final response = await http.post("$uml/my_store/countdiary.php", body: {
+      "username": username,
+    });
+    dataus3 = json.decode(response.body);
+
+    // print(dataus2);
+    // print(dataus2[0]['emotion']);
     for(int i=0;;i++){
       try{
         //ignore exception
-        if(dataus2[i]['emotion']==null)break;
+        if(dataus3[i]['emotion']==null)
+          break;
       }catch (Exception){
         print(Exception);
         break;
       }
 
-      // if(dataus2[i]['emotion']=='emotion.anger'){
-      //   countAnger = double.parse(dataus2[i]['count(emotion)']);
-      // }
-      // else if(dataus2[i]['emotion']=='emotion.disgust'){
-      //   countDisgust = double.parse(dataus2[i]['count(emotion)']);
-      // }
-      // else if(dataus2[i]['emotion']=='emotion.fear'){
-      //   countFear = double.parse(dataus2[i]['count(emotion)']);
-      // }
-      // else if(dataus2[i]['emotion']=='emotion.happy'){
-      //   countHappy = double.parse(dataus2[i]['count(emotion)']);
-      // }
-      // else if(dataus2[i]['emotion']=='emotion.love'){
-      //   countLove = double.parse(dataus2[i]['count(emotion)']);
-      // }
-      // else if(dataus2[i]['emotion']=='emotion.sad'){
-      //   countSad = double.parse(dataus2[i]['count(emotion)']);
-      // }
-      // else if(dataus2[i]['emotion']=='emotion.surprise'){
-      //   countSurprise = double.parse(dataus2[i]['count(emotion)']);
-      // }
+      if(dataus3[i]['emotion']=='emotion.anger'){
+        setState(() {
+          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
+            append(0.8);
+          };
+
+        });
+      }
+      else if(dataus3[i]['emotion']=='emotion.disgust'){
+        setState(() {
+          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
+            append(1.8);
+          };
+        });
+      }
+      else if(dataus3[i]['emotion']=='emotion.fear'){
+        setState(() {
+          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
+            append(2.8);
+          };
+        });
+      }
+      else if(dataus3[i]['emotion']=='emotion.happy'){
+        setState(() {
+          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
+            append(3.8);
+          };
+        });
+      }
+      else if(dataus3[i]['emotion']=='emotion.love'){
+        setState(() {
+          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
+            append(4.8);
+          };
+        });
+      }
+      else if(dataus3[i]['emotion']=='emotion.sad'){
+        setState(() {
+          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
+            append(5.8);
+          };
+        });
+      }
+      else if(dataus3[i]['emotion']=='emotion.surprise'){
+        setState(() {
+          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
+            append(6.8);
+          };
+        });
+      }
     }
-    // var countHappy = double.parse(dataus2[2]['count(emotion)']);
-
-    return dataus2;
+    return dataus3;
   }
-
-  double countAnger = 1; //ตัวนับจำนวนโกรฑ = dataus[0]['Emotion'] //test
-  double countDisgust = 1; //ตัวนับจำนวนขยะแขยง
-  double countFear = 1; //ตัวนับจำนวนกลัว
-  double countHappy  = 1;//ตัวนับจำนวนมีความสุข
-  double countLove = 1; //ตัวนับจำนวนรัก
-  double countSad = 1; //ตัวนับจำนวนเศร้า
-  double countSurprise = 1; //ตัวนับจำนวนตกใจ
-  var countAllEmo = 1;
+  double countAnger = 0; //ตัวนับจำนวนโกรฑ = dataus[0]['Emotion'] //test
+  double countDisgust = 0; //ตัวนับจำนวนขยะแขยง
+  double countFear = 0; //ตัวนับจำนวนกลัว
+  double countHappy  = 0;//ตัวนับจำนวนมีความสุข
+  double countLove = 0; //ตัวนับจำนวนรัก
+  double countSad = 0; //ตัวนับจำนวนเศร้า
+  double countSurprise = 0; //ตัวนับจำนวนตกใจ
+  double countAllEmo = 0;
   int touchedIndex;
   bool isPlaying = false;
   bool isShowingMainData;
-  double count = 7;
 
   @override
   Widget build(BuildContext context) {
+    if(j==1){
+      _readLine();
+      j++;
+    }
+    return FutureBuilder(
+        future: _readcountdiary(), // the function to get your data from firebase or firestore
+        builder : (BuildContext context, AsyncSnapshot snap){
+          if(snap.data == null){
+            return SpinKitRotatingCircle(color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
+              size: 100.0);
+          }
+          else{
+            return Scaffold(
+              backgroundColor: Colors.white,
+              body: Container(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
 
-      _readcountdiary();
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-        SizedBox(height: 50,),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(5,0,0,0),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: SizedBox(
-               height: 300,
-                width: 10*count*count,
-                child: LineChartEmotion()),
-          ),
-        ),
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(5,10,0,0),
-              child: Container(
-                height: 300,
-                width: 188.5,
-
-                child: AspectRatio(
-                  aspectRatio: 1.3,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          18)),
-                      gradient: LinearGradient(
-                        colors: [
-
-                          Color(0xff2c284c),
-                          Color(0xff46426c),
-                        ],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                      ),
-                      // color: Color.fromRGBO(220, 220, 220, 1),
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        Expanded(
-                          child: AspectRatio(
-                            aspectRatio: 1,
-                            child: PieChart(
-                              PieChartData(
-                                  pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
-                                    setState(() {
-                                      if (pieTouchResponse.touchInput is FlLongPressEnd ||
-                                          pieTouchResponse.touchInput is FlPanEnd) {
-                                        touchedIndex = -1;
-                                      } else {
-                                        touchedIndex = pieTouchResponse.touchedSectionIndex;
-                                      }
-                                    });
-                                  }),
-                                  borderData: FlBorderData(
-                                    show: false,
+                      SizedBox(height: 50,),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(5,0,0,0),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: SizedBox(
+                              height: 300,
+                              width: 50*count,
+                              child: AspectRatio(
+                                aspectRatio: 1.23,
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(18)),
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xff2c274c),
+                                        Color(0xff46426c),
+                                      ],
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                    ),
                                   ),
-                                  sectionsSpace: 5,
-                                  centerSpaceRadius: 30,
-                                  sections: showingSections()),
-                            ),
-                          ),
-
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(width: 5,),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0,10,5,0),
-              child: Container(
-                height: 300,
-                width: 188.5,
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(18)),
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0xff2c274c),
-                          Color(0xff46426c),
-                        ],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                      ),
-                      // color: Color.fromRGBO(220, 220, 220, 1),
-                      ),
-                    child: Stack(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              Text('Change Color',
-                                style: TextStyle(
-                                    color: const Color(0xff72d8bf), fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              Text(
-                                'Bar Chart',
-                                style: TextStyle(
-                                    color: const Color(0xff379982), fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                height: 38,
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: BarChart(
-                                    isPlaying ? randomData() : mainBarData(),
-                                    swapAnimationDuration: animDuration,
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                                        children: <Widget>[
+                                          const SizedBox(
+                                            height: 57,
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(right: 16.0, left: 6.0),
+                                              child: LineChart(
+                                                isShowingMainData ? sampleData1() : sampleData2(),
+                                                swapAnimationDuration: const Duration(milliseconds: 250),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                        ],
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.refresh,
+                                          color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            isShowingMainData =! isShowingMainData;
+                                          });
+                                        },
+                                      )
+                                    ],
                                   ),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 12,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(5,10,0,0),
+                            child: Container(
+                              height: 300,
+                              width: 188.5,
+
+                              child: AspectRatio(
+                                aspectRatio: 1.3,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(
+                                        18)),
+                                    gradient: LinearGradient(
+                                      colors: [
+
+                                        Color(0xff2c284c),
+                                        Color(0xff46426c),
+                                      ],
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                    ),
+                                    // color: Color.fromRGBO(220, 220, 220, 1),
+                                  ),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: AspectRatio(
+                                          aspectRatio: 1,
+                                          child: PieChart(
+                                            PieChartData(
+                                                pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
+                                                  setState(() {
+                                                    if (pieTouchResponse.touchInput is FlLongPressEnd ||
+                                                        pieTouchResponse.touchInput is FlPanEnd) {
+                                                      touchedIndex = -1;
+                                                    } else {
+                                                      touchedIndex = pieTouchResponse.touchedSectionIndex;
+                                                    }
+                                                  });
+                                                }),
+                                                borderData: FlBorderData(
+                                                  show: false,
+                                                ),
+                                                sectionsSpace: 5,
+                                                centerSpaceRadius: 30,
+                                                sections: showingSections()),
+                                          ),
+                                        ),
+
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 5,),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0,10,5,0),
+                            child: Container(
+                              height: 300,
+                              width: 188.5,
+                              child: AspectRatio(
+                                aspectRatio: 1,
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(18)),
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xff2c274c),
+                                        Color(0xff46426c),
+                                      ],
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                    ),
+                                    // color: Color.fromRGBO(220, 220, 220, 1),
+                                  ),
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.all(16),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: <Widget>[
+                                            Text('Change Color',
+                                              style: TextStyle(
+                                                  color: const Color(0xff72d8bf), fontSize: 18, fontWeight: FontWeight.bold),
+                                            ),
+                                            const SizedBox(
+                                              height: 4,
+                                            ),
+                                            Text(
+                                              'Bar Chart',
+                                              style: TextStyle(
+                                                  color: const Color(0xff379982), fontSize: 18, fontWeight: FontWeight.bold),
+                                            ),
+                                            const SizedBox(
+                                              height: 38,
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                                child: BarChart(
+                                                  isPlaying ? randomData() : mainBarData(),
+                                                  swapAnimationDuration: animDuration,
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 12,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Align(
+                                          alignment: Alignment.topRight,
+                                          child: IconButton(
+                                            icon: Icon(
+                                              isPlaying ? Icons.pause : Icons.play_arrow,
+                                              color: Colors.red ,
+                                            ),
+                                            onPressed: () {
+                                              setState(() {
+                                                isPlaying = !isPlaying;
+                                                if (isPlaying) {
+                                                  refreshState();
+                                                }
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(5,10,5,0),
+                        child: Container(
+                          height: 100,
+                          width: 400,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                18)),
+                            gradient: LinearGradient(
+                              colors: [
+
+                                Color(0xff2c274c),
+                                Color(0xff46426c),
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                            ),
+                            // color: Color.fromRGBO(220, 220, 220, 1),
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(height: 15,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(20,0,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push0();
+                                          },
+                                          ),
+                                          height: touchedIndex == 0 ? 10 : 25,
+                                          width: touchedIndex == 0 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.deepPurple[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 55,),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 34,),
+                                      Container(
+                                        child: Text('Anger',style: TextStyle(
+
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 0 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 20,),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(8,0,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push1();
+                                          },),
+                                          height: touchedIndex == 1 ? 10 : 25,
+                                          width: touchedIndex == 1 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.indigo[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 34,),
+                                      Container(
+                                        child: Text('Disgust',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 1 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 16,),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(8,0,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push2();
+                                          },
+                                          ),
+                                          height: touchedIndex == 2 ? 10 : 25,
+                                          width: touchedIndex == 2 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.blue[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 34,),
+                                      Container(
+                                        child: Text('Fear',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 2 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 20,),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(8,0,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push3();
+                                          },
+                                          ),
+                                          height: touchedIndex == 3 ? 10 : 25,
+                                          width: touchedIndex == 3 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.green[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 34,),
+                                      Container(
+                                        child: Text('Happy',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 3 ? 14 : 10
+
+                                        ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(width: 19,),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(8,8,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push4();
+                                          },
+                                          ),
+                                          height: touchedIndex == 4 ? 10 : 25,
+                                          width: touchedIndex == 4 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.yellow[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 50,),
+                                      Container(
+                                        child: Text('Love',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 4 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 24,),
+                                  Column(
+                                    children: [
+                                      Padding(
+
+                                        padding: const EdgeInsets.fromLTRB(8,8,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push5();
+                                          },
+                                          ),
+                                          height: touchedIndex == 5 ? 10 : 25,
+                                          width: touchedIndex == 5 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.orange[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 50,),
+                                      Container(
+                                        child: Text('Sad',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 5 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 32,),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(8,8,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push6();
+                                          },
+                                          ),
+                                          height: touchedIndex == 6 ? 10 : 25,
+                                          width: touchedIndex == 6 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.red[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 50,),
+                                      Container(
+                                        child: Text('Surprise',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 6 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+
+
+                                ],
                               ),
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Align(
-                            alignment: Alignment.topRight,
-                            child: IconButton(
-                              icon: Icon(
-                                isPlaying ? Icons.pause : Icons.play_arrow,
-                                color: Colors.red ,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  isPlaying = !isPlaying;
-                                  if (isPlaying) {
-                                    refreshState();
-                                  }
-                                });
-                                },
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(5,10,5,0),
-          child: Container(
-            height: 100,
-            width: 400,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(
-                  18)),
-              gradient: LinearGradient(
-                colors: [
+            );
 
-                  Color(0xff2c274c),
-                  Color(0xff46426c),
-                ],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-              ),
-              // color: Color.fromRGBO(220, 220, 220, 1),
-            ),
-            child: Column(
-              children: [
-                SizedBox(height: 15,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20,0,0,0),
-                          child: Container(
-                            child: FlatButton(onPressed: () {
-                              push0();
-                            },
-                            ),
-                            height: touchedIndex == 0 ? 10 : 25,
-                            width: touchedIndex == 0 ? 10 : 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  7)),
-                              color: Colors.deepPurple[500],
-                              // color: Color.fromRGBO(220, 220, 220, 1),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 55,),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(height: 34,),
-                        Container(
-                          child: Text('Anger',style: TextStyle(
-
-                              color: Colors.white,
-                            fontSize: touchedIndex == 0 ? 14 : 10
-                          ),),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 20,),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8,0,0,0),
-                          child: Container(
-                            child: FlatButton(onPressed: () {
-                              push1();
-                            },),
-                            height: touchedIndex == 1 ? 10 : 25,
-                            width: touchedIndex == 1 ? 10 : 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  7)),
-                              color: Colors.indigo[500],
-                              // color: Color.fromRGBO(220, 220, 220, 1),
-                            ),
-                          ),
-                        ),
-                      ],
-
-                    ),
-                    SizedBox(width: 5,),
-                    Row(
-                      children: [
-                        SizedBox(height: 34,),
-                        Container(
-                          child: Text('Disgust',style: TextStyle(
-                              color: Colors.white,
-                              fontSize: touchedIndex == 1 ? 14 : 10
-                          ),),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 16,),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8,0,0,0),
-                          child: Container(
-                            child: FlatButton(onPressed: () {
-                              push2();
-                            },
-                            ),
-                            height: touchedIndex == 2 ? 10 : 25,
-                            width: touchedIndex == 2 ? 10 : 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  7)),
-                              color: Colors.blue[500],
-                              // color: Color.fromRGBO(220, 220, 220, 1),
-                            ),
-                          ),
-                        ),
-
-                      ],
-                    ),
-                    SizedBox(width: 5,),
-                    Row(
-                      children: [
-                        SizedBox(height: 34,),
-                        Container(
-                          child: Text('Fear',style: TextStyle(
-                              color: Colors.white,
-                              fontSize: touchedIndex == 2 ? 14 : 10
-                          ),),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 20,),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8,0,0,0),
-                          child: Container(
-                            child: FlatButton(onPressed: () {
-                              push3();
-                            },
-                            ),
-                            height: touchedIndex == 3 ? 10 : 25,
-                            width: touchedIndex == 3 ? 10 : 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  7)),
-                              color: Colors.green[500],
-                              // color: Color.fromRGBO(220, 220, 220, 1),
-                            ),
-                          ),
-                        ),
-
-                      ],
-                    ),
-                    SizedBox(width: 5,),
-                    Row(
-                      children: [
-                        SizedBox(height: 34,),
-                        Container(
-                          child: Text('Happy',style: TextStyle(
-                            color: Colors.white,
-                              fontSize: touchedIndex == 3 ? 14 : 10
-
-                          ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(width: 19,),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8,8,0,0),
-                          child: Container(
-                            child: FlatButton(onPressed: () {
-                              push4();
-                            },
-                            ),
-                            height: touchedIndex == 4 ? 10 : 25,
-                            width: touchedIndex == 4 ? 10 : 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  7)),
-                              color: Colors.yellow[500],
-                              // color: Color.fromRGBO(220, 220, 220, 1),
-                            ),
-                          ),
-                        ),
-
-                      ],
-                    ),
-                    SizedBox(width: 5,),
-                    Row(
-                      children: [
-                        SizedBox(height: 50,),
-                        Container(
-                          child: Text('Love',style: TextStyle(
-                              color: Colors.white,
-                              fontSize: touchedIndex == 4 ? 14 : 10
-                          ),),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 24,),
-                    Column(
-                      children: [
-                        Padding(
-
-                          padding: const EdgeInsets.fromLTRB(8,8,0,0),
-                          child: Container(
-                            child: FlatButton(onPressed: () {
-                              push5();
-                            },
-                            ),
-                            height: touchedIndex == 5 ? 10 : 25,
-                            width: touchedIndex == 5 ? 10 : 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  7)),
-                              color: Colors.orange[500],
-                              // color: Color.fromRGBO(220, 220, 220, 1),
-                            ),
-                          ),
-                        ),
-
-                      ],
-                    ),
-                    SizedBox(width: 5,),
-                    Row(
-                      children: [
-                        SizedBox(height: 50,),
-                        Container(
-                          child: Text('Sad',style: TextStyle(
-                              color: Colors.white,
-                              fontSize: touchedIndex == 5 ? 14 : 10
-                          ),),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 32,),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8,8,0,0),
-                          child: Container(
-                            child: FlatButton(onPressed: () {
-                              push6();
-                            },
-                            ),
-                            height: touchedIndex == 6 ? 10 : 25,
-                            width: touchedIndex == 6 ? 10 : 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  7)),
-                              color: Colors.red[500],
-                              // color: Color.fromRGBO(220, 220, 220, 1),
-                            ),
-                          ),
-                        ),
-
-                      ],
-                    ),
-                    SizedBox(width: 5,),
-                    Row(
-                      children: [
-                        SizedBox(height: 50,),
-                        Container(
-                          child: Text('Surprise',style: TextStyle(
-                              color: Colors.white,
-                              fontSize: touchedIndex == 6 ? 14 : 10
-                          ),),
-                        ),
-                      ],
-                    ),
-
-
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-          ],
-        ),
-      ),
+          }
+        }
     );
   }
 
 
+  LineChartData sampleData1() {
+    return LineChartData(
+      lineTouchData: LineTouchData(
+        touchTooltipData: LineTouchTooltipData(
+          tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
+        ),
+        touchCallback: (LineTouchResponse touchResponse) {},
+        handleBuiltInTouches: false,
+      ),
+      gridData: FlGridData(
+        show: false,
+      ),
+      titlesData: FlTitlesData(
+        bottomTitles: SideTitles(
+          showTitles: true,
+          reservedSize: 22,
+          getTextStyles: (value) => const TextStyle(
+            color: Color(0xff72719b),
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          margin: 10,
+          getTitles: (value) {
+            switch (value.toInt()) {
+              case 0:
+                return 'S';
+              case 1:
+                return 'O';
+              case 2:
+                return 'D';
+            }
+            return '';
+          },
+        ),
+        leftTitles: SideTitles(
+          showTitles: true,
+          getTextStyles: (value) => const TextStyle(
+            color: Color(0xff75729e),
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+          ),
+          getTitles: (value) {
+            switch (value.toInt()) {
+              case 1:
+                return 'A';
+              case 2:
+                return 'D';
+              case 3:
+                return 'F';
+              case 4:
+                return 'H';
+              case 5:
+                return 'L';
+              case 6:
+                return 'S';
+              case 7:
+                return 'Sur';
+            }
+            return '';
+          },
+          margin: 10,
+          reservedSize: 25,
+        ),
+      ),
+      borderData: FlBorderData(
+        show: true,
+        border: const Border(
+          bottom: BorderSide(
+            color: Color(0xff4e4965),
+            width: 4,
+          ),
+          left: BorderSide(
+            color: Colors.transparent,
+          ),
+          right: BorderSide(
+            color: Colors.transparent,
+          ),
+          top: BorderSide(
+            color: Colors.transparent,
+          ),
+        ),
+      ),
+      minX: 0,
+      maxX: count,
+      maxY: 7,
+      minY: 0,
+      lineBarsData: linesBarData1(),
+    );
+  }
+
+  List<LineChartBarData> linesBarData1() {
+
+    final LineChartBarData lineChartBarData3 = LineChartBarData(
+      spots: allSpots,
+      isCurved: true,
+      colors: const [
+        Color(0xff27b6fc),
+      ],
+      barWidth: 1,
+      isStrokeCapRound: true,
+      dotData: FlDotData(
+        show: true,
+      ),
+      belowBarData: BarAreaData(
+        show: false,
+      ),
+    );
+    return [
+      lineChartBarData3,
+    ];
+  }
+
+  LineChartData sampleData2() {
+    return LineChartData(
+      lineTouchData: LineTouchData(
+        enabled: false,
+      ),
+      gridData: FlGridData(
+        show: false,
+      ),
+      titlesData: FlTitlesData(
+        bottomTitles: SideTitles(
+          showTitles: true,
+          reservedSize: 22,
+          getTextStyles: (value) => const TextStyle(
+            color: Color(0xff72719b),
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          margin: 10,
+          getTitles: (value) {
+            switch (value.toInt()) {
+              case 2:
+                return 'SEPT';
+              case 7:
+                return 'OCT';
+              case 12:
+                return 'DEC';
+            }
+            return '';
+          },
+        ),
+        leftTitles: SideTitles(
+          showTitles: true,
+          getTextStyles: (value) => const TextStyle(
+            color: Color(0xff75729e),
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          ),
+          getTitles: (value) {
+            switch (value.toInt()) {
+              case 1:
+                return 'N';
+              case 2:
+                return 'O';
+              case 3:
+                return 'I';
+              case 4:
+                return 'T';
+              case 5:
+                return 'O';
+              case 6:
+                return 'M';
+              case 7:
+                return 'E ';
+            }
+            return '';
+          },
+          margin: 10,
+          reservedSize: 25,
+        ),
+      ),
+      borderData: FlBorderData(
+          show: true,
+          border: const Border(
+            bottom: BorderSide(
+              color: Color(0xff4e4965),
+              width: 4,
+            ),
+            left: BorderSide(
+              color: Colors.transparent,
+            ),
+            right: BorderSide(
+              color: Colors.transparent,
+            ),
+            top: BorderSide(
+              color: Colors.transparent,
+            ),
+          )),
+      minX: 0,
+      maxX: 50,
+      maxY: 7,
+      minY: 0,
+      lineBarsData: linesBarData2(),
+    );
+  }
+
+  List<LineChartBarData> linesBarData2() {
+    return [
+
+      LineChartBarData(
+        spots: allSpots,
+
+        isCurved: true,
+        curveSmoothness: 0,
+        colors: const [
+          Color(0x4427b6fc),
+        ],
+        barWidth: 8,
+        isStrokeCapRound: true,
+        dotData: FlDotData(
+          show: true,
+        ),
+        belowBarData: BarAreaData(
+          show: true,
+        ),
+      ),
+    ];
+  }
 
   List<PieChartSectionData> showingSections() {
     return List.generate(7, (i) {
@@ -646,8 +1013,8 @@ class PieChartSample1State extends State {
           return PieChartSectionData(
             // color: const Color(0xff0293ee),
             color: Colors.deepPurple[500],
-            value: countAnger/countAllEmo,
-            title: '$countAnger',
+            value: countAnger.toDouble(),
+            title: countAnger.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -656,8 +1023,8 @@ class PieChartSample1State extends State {
           return PieChartSectionData(
             // color: const Color(0xfff8b250),
             color: Colors.indigo[500],
-            value: countDisgust/countAllEmo,
-            title: '$countDisgust',
+            value: countDisgust.toDouble(),
+            title: countDisgust.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -666,8 +1033,8 @@ class PieChartSample1State extends State {
           return PieChartSectionData(
             // color: const Color(0xff845bef),
             color: Colors.blue[500],
-            value: countFear/countAllEmo,
-            title: '$countFear',
+            value: countFear.toDouble(),
+            title: countFear.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -676,8 +1043,8 @@ class PieChartSample1State extends State {
           return PieChartSectionData(
             // color: const Color(0xff13d38e),
             color: Colors.green[500],
-            value: count/countAllEmo,
-            title: '1',
+            value: countHappy.toDouble(),
+            title: countHappy.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -686,8 +1053,8 @@ class PieChartSample1State extends State {
           return PieChartSectionData(
             // color: const Color(0xff13d38e),
             color: Colors.yellow[500],
-            value: countLove/countAllEmo,
-            title: '$countLove',
+            value: countLove.toDouble(),
+            title: countLove.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -696,8 +1063,8 @@ class PieChartSample1State extends State {
           return PieChartSectionData(
             // color: const Color(0xff13d38e),
             color: Colors.orange[700],
-            value: countSad/countAllEmo,
-            title: '$countSad',
+            value: countSad.toDouble(),
+            title: countSad.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -706,15 +1073,105 @@ class PieChartSample1State extends State {
           return PieChartSectionData(
             // color: const Color(0xff13d38e),
             color: Colors.red[500],
-            value: countSurprise/countAllEmo,
-            title: '$countSurprise',
+            value: countSurprise.toDouble(),
+            title: countSurprise.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
           );
         default:
-          return null;
+          return PieChartSectionData(
+            // color: const Color(0xff13d38e),
+            color: Colors.red[500],
+            value: 1,
+            title: 'No data',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
       }
+      // switch (i) {
+      //   case 0:
+      //     return PieChartSectionData(
+      //       // color: const Color(0xff0293ee),
+      //       color: Colors.deepPurple[500],
+      //       value: 1,
+      //       title: countAnger.toString(),
+      //       radius: radius,
+      //       titleStyle: TextStyle(
+      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+      //     );
+      //   case 1:
+      //     return PieChartSectionData(
+      //       // color: const Color(0xfff8b250),
+      //       color: Colors.indigo[500],
+      //       value: 2,
+      //       title: countDisgust.toString(),
+      //       radius: radius,
+      //       titleStyle: TextStyle(
+      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+      //     );
+      //   case 2:
+      //     return PieChartSectionData(
+      //       // color: const Color(0xff845bef),
+      //       color: Colors.blue[500],
+      //       value: 3,
+      //       title: countFear.toString(),
+      //       radius: radius,
+      //       titleStyle: TextStyle(
+      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+      //     );
+      //   case 3:
+      //     return PieChartSectionData(
+      //       // color: const Color(0xff13d38e),
+      //       color: Colors.green[500],
+      //       value: 4,
+      //       title: countHappy.toString(),
+      //       radius: radius,
+      //       titleStyle: TextStyle(
+      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+      //     );
+      //   case 4:
+      //     return PieChartSectionData(
+      //       // color: const Color(0xff13d38e),
+      //       color: Colors.yellow[500],
+      //       value: 5,
+      //       title: countLove.toString(),
+      //       radius: radius,
+      //       titleStyle: TextStyle(
+      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+      //     );
+      //   case 5:
+      //     return PieChartSectionData(
+      //       // color: const Color(0xff13d38e),
+      //       color: Colors.orange[700],
+      //       value: 6,
+      //       title: countSad.toString(),
+      //       radius: radius,
+      //       titleStyle: TextStyle(
+      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+      //     );
+      //   case 6:
+      //     return PieChartSectionData(
+      //       // color: const Color(0xff13d38e),
+      //       color: Colors.red[500],
+      //       value: 7,
+      //       title: countSurprise.toString(),
+      //       radius: radius,
+      //       titleStyle: TextStyle(
+      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+      //     );
+      //   default:
+      //     return PieChartSectionData(
+      //       // color: const Color(0xff13d38e),
+      //       color: Colors.red[500],
+      //       value: 1,
+      //       title: 'No data',
+      //       radius: radius,
+      //       titleStyle: TextStyle(
+      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+      //     );
+      // }
     });
   }
 
@@ -753,7 +1210,7 @@ class PieChartSample1State extends State {
       case 2:
         return makeGroupData(2, countFear, isTouched: i == touchedIndex);
       case 3:
-        return makeGroupData(3, 4, isTouched: i == touchedIndex);
+        return makeGroupData(3, countLove, isTouched: i == touchedIndex);
       case 4:
         return makeGroupData(4, countLove, isTouched: i == touchedIndex);
       case 5:
@@ -926,3 +1383,4 @@ class PieChartSample1State extends State {
     }
   }
 }
+
