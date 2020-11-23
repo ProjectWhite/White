@@ -43,6 +43,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        textTheme: TextTheme(
+          headline: TextStyle(
+              fontFamily: 'RobotoCondensed',
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              fontSize: 24),
+          body1: TextStyle(
+              fontFamily: 'RobotoCondensed',
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              fontSize: 20),
+          body2: TextStyle(
+              fontFamily: 'RobotoCondensed',
+              fontWeight: FontWeight.normal,
+              color: Colors.black,
+              fontSize: 18),
+          subtitle: TextStyle(
+              fontFamily: 'RobotoCondensed',
+              fontWeight: FontWeight.normal,
+              color: Colors.black,
+              fontSize: 14),
+        ),
+      ),
       title: 'White',
       routes: <String,WidgetBuilder>{
         '/wellcome1': (BuildContext context)=> new wellcome(),

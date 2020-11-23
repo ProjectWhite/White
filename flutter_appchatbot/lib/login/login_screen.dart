@@ -20,9 +20,7 @@ import 'package:flutter_appchatbot/Pages/wellcome2.dart';
 import 'package:flutter_appchatbot/main.dart';
 
 class LoginScreen extends StatelessWidget {
-
-
-
+  
   static const routeName = '/auth';
 
   Duration get loginTime => Duration(milliseconds: timeDilation.ceil() * 2250);
