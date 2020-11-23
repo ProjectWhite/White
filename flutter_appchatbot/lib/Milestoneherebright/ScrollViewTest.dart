@@ -117,21 +117,51 @@ class PieChartSample1State extends State {
     dataus2 = json.decode(response.body);
 
     print(dataus2);
-    print(dataus2[3]['emotion']);
-    print(dataus2[3]['count(emotion)']);
+    print(dataus2[0]['emotion']);
+    for(int i=0;;i++){
+      try{
+        //ignore exception
+        if(dataus2[i]['emotion']==null)break;
+      }catch (Exception){
+        print(Exception);
+        break;
+      }
+
+      // if(dataus2[i]['emotion']=='emotion.anger'){
+      //   countAnger = double.parse(dataus2[i]['count(emotion)']);
+      // }
+      // else if(dataus2[i]['emotion']=='emotion.disgust'){
+      //   countDisgust = double.parse(dataus2[i]['count(emotion)']);
+      // }
+      // else if(dataus2[i]['emotion']=='emotion.fear'){
+      //   countFear = double.parse(dataus2[i]['count(emotion)']);
+      // }
+      // else if(dataus2[i]['emotion']=='emotion.happy'){
+      //   countHappy = double.parse(dataus2[i]['count(emotion)']);
+      // }
+      // else if(dataus2[i]['emotion']=='emotion.love'){
+      //   countLove = double.parse(dataus2[i]['count(emotion)']);
+      // }
+      // else if(dataus2[i]['emotion']=='emotion.sad'){
+      //   countSad = double.parse(dataus2[i]['count(emotion)']);
+      // }
+      // else if(dataus2[i]['emotion']=='emotion.surprise'){
+      //   countSurprise = double.parse(dataus2[i]['count(emotion)']);
+      // }
+    }
+    // var countHappy = double.parse(dataus2[2]['count(emotion)']);
 
     return dataus2;
   }
 
   double countAnger = 1; //ตัวนับจำนวนโกรฑ = dataus[0]['Emotion'] //test
-  double countDisgust = 2; //ตัวนับจำนวนขยะแขยง
-  double countFear = 3; //ตัวนับจำนวนกลัว
-  double countHappy = 4; //ตัวนับจำนวนมีความสุข
-  double countLove = 5; //ตัวนับจำนวนรัก
-  double countSad = 6; //ตัวนับจำนวนเศร้า
-  double countSurprise = 7; //ตัวนับจำนวนตกใจ
-  var countAllEmo = 1+2+3+4+5+6+7;
-
+  double countDisgust = 1; //ตัวนับจำนวนขยะแขยง
+  double countFear = 1; //ตัวนับจำนวนกลัว
+  double countHappy  = 1;//ตัวนับจำนวนมีความสุข
+  double countLove = 1; //ตัวนับจำนวนรัก
+  double countSad = 1; //ตัวนับจำนวนเศร้า
+  double countSurprise = 1; //ตัวนับจำนวนตกใจ
+  var countAllEmo = 1;
   int touchedIndex;
   bool isPlaying = false;
   bool isShowingMainData;
@@ -140,7 +170,7 @@ class PieChartSample1State extends State {
   @override
   Widget build(BuildContext context) {
 
-    _readcountdiary();
+      _readcountdiary();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -606,6 +636,11 @@ class PieChartSample1State extends State {
       final isTouched = i == touchedIndex;
       final double fontSize = isTouched ? 25 : 16;
       final double radius = isTouched ? 60 : 50;
+      // try{
+      //   var countHappy = double.parse(dataus2[2]['count(emotion)']);
+      // }catch (e){
+      //   var countHappy =0.0;
+      // }
       switch (i) {
         case 0:
           return PieChartSectionData(
@@ -641,8 +676,8 @@ class PieChartSample1State extends State {
           return PieChartSectionData(
             // color: const Color(0xff13d38e),
             color: Colors.green[500],
-            value: countHappy/countAllEmo,
-            title: '$countHappy',
+            value: count/countAllEmo,
+            title: '1',
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -718,7 +753,7 @@ class PieChartSample1State extends State {
       case 2:
         return makeGroupData(2, countFear, isTouched: i == touchedIndex);
       case 3:
-        return makeGroupData(3, countHappy, isTouched: i == touchedIndex);
+        return makeGroupData(3, 4, isTouched: i == touchedIndex);
       case 4:
         return makeGroupData(4, countLove, isTouched: i == touchedIndex);
       case 5:
@@ -858,6 +893,7 @@ class PieChartSample1State extends State {
         show: false,
       ),
       barGroups: List.generate(7, (i) {
+        var countHappy = dataus2[2]['count(emotion)'];
         switch (i) {
           case 0:
             return makeGroupData(0,countAnger,barColor: Colors.deepPurple[500]);
@@ -866,7 +902,7 @@ class PieChartSample1State extends State {
           case 2:
             return makeGroupData(2,countFear,barColor: Colors.blue[500]);
           case 3:
-            return makeGroupData(3,countHappy,barColor: Colors.green[500]);
+            return makeGroupData(3,4,barColor: Colors.green[500]);
           case 4:
             return makeGroupData(4,countLove,barColor: Colors.yellow[500]);
           case 5:
