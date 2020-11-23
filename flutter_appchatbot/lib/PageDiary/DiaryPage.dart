@@ -11,6 +11,7 @@ import 'Diary_Detail.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'package:http/http.dart' as http;
 
+
 class DiaryPage extends StatefulWidget {
   @override
   _DiaryPageState createState() => _DiaryPageState();
@@ -39,10 +40,12 @@ class _DiaryPageState extends State<DiaryPage> {
     return dataus;
   }
 
+
   @override
 
   Widget build(BuildContext context) {
     _readdiary();
+
     if (diaryList == null) {
       diaryList = List<Diary>();
       updateListView();

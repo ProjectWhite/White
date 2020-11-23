@@ -48,12 +48,37 @@ class DatabaseHelper {
     return diarysDatabase;
   }
 
+  Future<List> _readdiary() async {
+    print('read');
+    final response = await http.post("$uml/my_store/readdiary.php", body: {
+      "username": username,
+    });
+    var dataus;
+
+    dataus = json.decode(response.body);
+
+    print(dataus);
+    print(dataus[0]['diary']);
+    print(dataus[0]['date']);
+
+    return dataus;
+  }
+
   void _createDb(Database db, int newVersion) async {
     await db.execute(
         'CREATE TABLE $diaryTable($colId INTEGER PRIMARY KEY,'
             '$colDescription TEXT, '
             // '$colPriority INTEGER, $colColor INTEGER,'
             '$colDate TEXT)');
+    // final response = await http.post("$uml/my_store/readdiary.php", body: {
+    //   "username": username,
+    // });
+    // var dataus;
+    // dataus = json.decode(response.body);
+    // db.insert(diaryTable, colId = (dataus[0]['milestondeID']) );
+    // db.insert(diaryTable, colDate = (dataus[0]['date']) );
+    // db.insert(diaryTable, colDescription = (dataus[0]['diary']) );
+
   }
 
 
@@ -70,6 +95,16 @@ class DatabaseHelper {
   Future<int> insertDiary(Diary diary) async {
     Database db = await this.database;
     var result = await db.insert(diaryTable, diary.toMap());
+    // final response = await http.post("$uml/my_store/readdiary.php", body: {
+    //   "username": username,
+    // });
+    // var dataus;
+    // dataus = json.decode(response.body);
+    // var result =
+    // db.insert(diaryTable, colId = (dataus[0]['milestondeID']) );
+    // db.insert(diaryTable, colDate = (dataus[0]['date']) );
+    // db.insert(diaryTable, colDescription = (dataus[0]['diary']) );
+
     return result;
   }
 
