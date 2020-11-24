@@ -154,6 +154,7 @@ class _HomeState extends State<Diary> {
       return emotion.values.firstWhere((e) => e.toString().split('.')[1]==value);
     }
     Facade obj = new Facade();
+    obj.find(emotionfromstring(emotionxx),tonefromstring(type));
     // print(x);
     // var emoji = 'assets/smiling_face_with_heart_eyes.gif';
     // if(emotion == 'emotion.love'){
@@ -195,7 +196,9 @@ class _HomeState extends State<Diary> {
                   title: emotionxx,
                   // ignore: missing_return
                   description: message,
-                  buttonText: 'cAancel',
+                  date: date,
+                  type: type,
+                  emotions: emotionxx,
 
                 ),
                 );
@@ -218,7 +221,7 @@ class _HomeState extends State<Diary> {
                     // ),
                     flex: 1,
                   ),
-                  SizedBox(width: 5,),
+
                   Expanded(
                     flex: 4,
                     child: Column(
@@ -235,7 +238,7 @@ class _HomeState extends State<Diary> {
                       ],
                     ),
                   ),
-                  SizedBox(width: 5,),
+                  SizedBox(width: 10,),
                   Expanded(
                     flex: 2,
                     child: Column(

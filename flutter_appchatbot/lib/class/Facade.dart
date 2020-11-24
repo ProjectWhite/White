@@ -11,6 +11,7 @@ class Facade {
   String theEmotion;
   String theType;
   String typecolor;
+  String Emo;
   String start(int type,tone categoryin) {
     if (type==1) {
       Anger x = new Anger(categoryin);
@@ -60,30 +61,37 @@ class Facade {
   String find(emotion emotionin,tone categoryin) {
     if (emotionin==emotion.anger) {
       Anger x = new Anger(categoryin);
+      Emo = x.EmotionAmi();
       return x.Typecolor();
     }
     if (emotionin==emotion.disgust){
       Disgust x = new Disgust(categoryin);
+      Emo = x.EmotionAmi();
       return x.Typecolor();
     }
     if (emotionin==emotion.fear){
       Fear x = new Fear(categoryin);
+      Emo = x.EmotionAmi();
       return x.Typecolor();
     }
     if (emotionin==emotion.happy){
       Happy x = new Happy(categoryin);
+      Emo = x.EmotionAmi();
       return x.Typecolor();
     }
     if (emotionin==emotion.love){
       Love x = new Love(categoryin);
+      Emo = x.EmotionAmi();
       return x.Typecolor();
     }
     if (emotionin==emotion.sad){
       Sad x = new Sad(categoryin);
+      Emo = x.EmotionAmi();
       return x.Typecolor();
     }
     if (emotionin==emotion.surprise){
       Surprise x = new Surprise(categoryin);
+      Emo = x.EmotionAmi();
       return x.Typecolor();
     }
     if (emotionin==emotion.fine){

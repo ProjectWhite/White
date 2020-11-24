@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_appchatbot/class/Emotion.dart';
+import 'package:flutter_appchatbot/class/Facade.dart';
 import 'package:flutter_appchatbot/login/constants.dart';
 
 class CustomDialog extends StatelessWidget {
-  final String title, description, buttonText, Color;
+  final String title, description, buttonText, date,emotions,type;
 
 
-  CustomDialog({this.title, this.description, this.buttonText, this.Color});
+  CustomDialog({this.title, this.description, this.buttonText, this.date,this.emotions,this.type});
 
 
 
@@ -23,10 +25,19 @@ class CustomDialog extends StatelessWidget {
   }
 
   dialogContent(BuildContext context){
+    tone tonefromstring(String value){
+      return tone.values.firstWhere((e) => e.toString().split('.')[1]==value);
+    }
+    emotion emotionfromstring(String value){
+      return emotion.values.firstWhere((e) => e.toString().split('.')[1]==value);
+    }
+    Facade obj = new Facade();
+    obj.find(emotionfromstring(emotions),tonefromstring(type));
+    print(obj.Emo);
     return Stack(
       children: [
         Container(
-          padding:  EdgeInsets.only(top: 100, bottom: 16, right: 16, left: 16),
+          padding:  EdgeInsets.only(top: 80, bottom: 16, right: 16, left: 16),
           margin: EdgeInsets.only(top: 16),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -50,9 +61,12 @@ class CustomDialog extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(height: 24),
+              SizedBox(height: 4),
+              Text(date, style: TextStyle(fontSize: 16),),
+              SizedBox(height: 20,),
               Text(description, style: TextStyle(fontSize: 16),),
               SizedBox(height: 24,),
+
              Row(
                children: [
                  Align(
@@ -96,7 +110,7 @@ class CustomDialog extends StatelessWidget {
           child: CircleAvatar(
             radius: 50,
             backgroundColor: Colors.transparent,
-            child: Image.asset('assets/face_with_steam_from_nose.gif'),
+            child: Image.asset(obj.Emo),
           )
         )
       ],
