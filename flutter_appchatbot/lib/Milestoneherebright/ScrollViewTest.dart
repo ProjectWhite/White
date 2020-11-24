@@ -180,39 +180,39 @@ class MilestonepageState extends State {
         print(Exception);
         break;
       }
-      if(dataus2[i]['emotion']=='emotion.anger'){
+      if(dataus2[i]['emotion']=='anger'){
         setState(() {
           countAnger = double.parse(dataus2[i]['count(emotion)']);
 
         });
       }
-      else if(dataus2[i]['emotion']=='emotion.disgust'){
+      else if(dataus2[i]['emotion']=='disgust'){
         setState(() {
           countDisgust = double.parse(dataus2[i]['count(emotion)']);
 
         });
       }
-      else if(dataus2[i]['emotion']=='emotion.fear'){
+      else if(dataus2[i]['emotion']=='fear'){
         setState(() {
           countFear = double.parse(dataus2[i]['count(emotion)']);
         });
       }
-      else if(dataus2[i]['emotion']=='emotion.happy'){
+      else if(dataus2[i]['emotion']=='happy'){
         setState(() {
           countHappy = double.parse(dataus2[i]['count(emotion)']);
         });
       }
-      else if(dataus2[i]['emotion']=='emotion.love'){
+      else if(dataus2[i]['emotion']=='love'){
         setState(() {
           countLove = double.parse(dataus2[i]['count(emotion)']);
         });
       }
-      else if(dataus2[i]['emotion']=='emotion.sad'){
+      else if(dataus2[i]['emotion']=='sad'){
         setState(() {
           countSad = double.parse(dataus2[i]['count(emotion)']);
         });
       }
-      else if(dataus2[i]['emotion']=='emotion.surprise'){
+      else if(dataus2[i]['emotion']=='surprise'){
         setState(() {
           countSurprise = double.parse(dataus2[i]['count(emotion)']);
         });
@@ -226,6 +226,7 @@ class MilestonepageState extends State {
         dPieShow = '';
       });
     }
+    print(countAllEmo);
     return dataus2;
   }
   int j=1;
