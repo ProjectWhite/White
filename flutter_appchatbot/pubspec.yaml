@@ -47,6 +47,8 @@ dependencies:
   fl_chart: ^0.12.0
   flutter_gradient_colors: ^1.0.0
   flutter_launcher_icons: ^0.8.1
+  flutter_splash_screen: ^0.1.0
+  flutter_spinkit: ^4.1.2
 
 
 dev_dependencies:
