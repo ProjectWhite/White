@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/DiaryNew/PageDiary.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Pages.dart';
@@ -19,7 +20,7 @@ class _NavState extends State<Nav> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     Svt(),
-    DiaryPage(),
+    Diary(),
     chatbot(),
     SettingUI()
   ];
