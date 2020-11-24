@@ -97,23 +97,6 @@ class MilestonepageState extends State {
     print(dataus[0]['type']);
     return dataus;
   }
-  // void setColor(){
-  //   Facade color1 = new Facade();
-  //   color1.start(1,tone.annoyed);
-  //   Facade color2 = new Facade();
-  //   color1.start(1,tone.annoyed);
-  //   Facade color3 = new Facade();
-  //   color1.start(1,tone.annoyed);
-  //   Facade color4 = new Facade();
-  //   color1.start(1,tone.annoyed);
-  //   Facade color5 = new Facade();
-  //   color1.start(1,tone.annoyed);
-  //   Facade color6 = new Facade();
-  //   color1.start(1,tone.annoyed);
-  //   Facade color7 = new Facade();
-  //   color1.start(1,tone.annoyed);
-  // }
-
 
 
   void push0(){
@@ -151,15 +134,18 @@ class MilestonepageState extends State {
       touchedIndex = 6 ;
     });
   }
-  double count = 1;
-
+  double count = 2;
+  double delc= 20;
   List<FlSpot> allSpots = [
-    FlSpot(0, 0),
+    FlSpot(0, 0.0),
   ];
 
   void append(double x){
       allSpots.add(FlSpot(count,x));
       count ++;
+      if(delc!= 0){
+        delc--;
+      }
   }
 
   Future<List<dynamic>> _future;
@@ -172,6 +158,9 @@ class MilestonepageState extends State {
 
 
   var dataus2;
+  double dPie=1;
+  String dPieShow = 'No Data';
+
   Future<List> _readcountdiary() async{
     print('count diary');
     final response = await http.post("$uml/my_store/countdiary.php", body: {
@@ -229,8 +218,14 @@ class MilestonepageState extends State {
         });
       }
     }
-    // var countHappy = double.parse(dataus2[2]['count(emotion)']);
+
     countAllEmo = countAnger+countDisgust+countFear+countHappy+countLove+countSad+countSurprise;
+    if(countAllEmo>0){
+      setState(() {
+        dPie = 0;
+        dPieShow = '';
+      });
+    }
     return dataus2;
   }
   int j=1;
@@ -256,9 +251,520 @@ class MilestonepageState extends State {
     return FutureBuilder(
         future: _future, // the function to get your data from firebase or firestore
         builder : (BuildContext context, AsyncSnapshot snap){
-          if(snap.data == null){
+          if(dPie == 1){
+            return Scaffold(
+              backgroundColor: Colors.white,
+              body: Container(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+
+                      SizedBox(height: 50,),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(5,0,0,0),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: SizedBox(
+                            height: 300,
+                            width: 50*(count+delc),
+                            child: AspectRatio(
+                              aspectRatio: 1.23,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(18)),
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Color(0xff2c274c),
+                                      Color(0xff46426c),
+                                    ],
+                                    begin: Alignment.bottomCenter,
+                                    end: Alignment.topCenter,
+                                  ),
+                                ),
+                                child: Stack(
+                                  children: <Widget>[
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      children: <Widget>[
+                                        const SizedBox(
+                                          height: 57,
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(right: 16.0, left: 6.0),
+                                            child: LineChart(
+                                              isShowingMainData ? sampleData1() : sampleData2(),
+                                              swapAnimationDuration: const Duration(milliseconds: 250),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                      ],
+                                    ),
+                                    IconButton(
+                                      icon: Icon(
+                                        Icons.refresh,
+                                        color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          isShowingMainData =! isShowingMainData;
+                                        });
+                                      },
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(5,10,0,0),
+                            child: Container(
+                              height: 300,
+                              width: 188.5,
+
+                              child: AspectRatio(
+                                aspectRatio: 1.3,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(
+                                        18)),
+                                    gradient: LinearGradient(
+                                      colors: [
+
+                                        Color(0xff2c284c),
+                                        Color(0xff46426c),
+                                      ],
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                    ),
+                                    // color: Color.fromRGBO(220, 220, 220, 1),
+                                  ),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: AspectRatio(
+                                          aspectRatio: 1,
+                                          child: PieChart(
+                                            PieChartData(
+                                                pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
+                                                  setState(() {
+                                                    if (pieTouchResponse.touchInput is FlLongPressEnd ||
+                                                        pieTouchResponse.touchInput is FlPanEnd) {
+                                                      touchedIndex = -1;
+                                                    } else {
+                                                      touchedIndex = pieTouchResponse.touchedSectionIndex;
+                                                    }
+                                                  });
+                                                }),
+                                                borderData: FlBorderData(
+                                                  show: false,
+                                                ),
+                                                sectionsSpace: 5,
+                                                centerSpaceRadius: 30,
+                                                sections: showingSections()),
+                                          ),
+                                        ),
+
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 5,),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0,10,5,0),
+                            child: Container(
+                              height: 300,
+                              width: 188.5,
+                              child: AspectRatio(
+                                aspectRatio: 1,
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(18)),
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xff2c274c),
+                                        Color(0xff46426c),
+                                      ],
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                    ),
+                                    // color: Color.fromRGBO(220, 220, 220, 1),
+                                  ),
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.all(16),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: <Widget>[
+                                            Text('Change Color',
+                                              style: TextStyle(
+                                                  color: const Color(0xff72d8bf), fontSize: 18, fontWeight: FontWeight.bold),
+                                            ),
+                                            const SizedBox(
+                                              height: 4,
+                                            ),
+                                            Text(
+                                              'Bar Chart',
+                                              style: TextStyle(
+                                                  color: const Color(0xff379982), fontSize: 18, fontWeight: FontWeight.bold),
+                                            ),
+                                            const SizedBox(
+                                              height: 38,
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                                child: BarChart(
+                                                  isPlaying ? randomData() : mainBarData(),
+                                                  swapAnimationDuration: animDuration,
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 12,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Align(
+                                          alignment: Alignment.topRight,
+                                          child: IconButton(
+                                            icon: Icon(
+                                              isPlaying ? Icons.pause : Icons.play_arrow,
+                                              color: Colors.red ,
+                                            ),
+                                            onPressed: () {
+                                              setState(() {
+                                                isPlaying = !isPlaying;
+                                                if (isPlaying) {
+                                                  refreshState();
+                                                }
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(5,10,5,0),
+                        child: Container(
+                          height: 100,
+                          width: 400,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                18)),
+                            gradient: LinearGradient(
+                              colors: [
+
+                                Color(0xff2c274c),
+                                Color(0xff46426c),
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                            ),
+                            // color: Color.fromRGBO(220, 220, 220, 1),
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(height: 15,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(20,0,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push0();
+                                          },
+                                          ),
+                                          height: touchedIndex == 0 ? 10 : 25,
+                                          width: touchedIndex == 0 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.deepPurple[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 55,),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 34,),
+                                      Container(
+                                        child: Text('Love',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 0 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 32,),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(8,0,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push1();
+                                          },),
+                                          height: touchedIndex == 1 ? 10 : 25,
+                                          width: touchedIndex == 1 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.indigo[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 34,),
+                                      Container(
+                                        child: Text('Fear',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 1 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 35,),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(8,0,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push2();
+                                          },
+                                          ),
+                                          height: touchedIndex == 2 ? 10 : 25,
+                                          width: touchedIndex == 2 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.blue[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 34,),
+                                      Container(
+                                        child: Text('Sad',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 2 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 20,),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(8,0,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push3();
+                                          },
+                                          ),
+                                          height: touchedIndex == 3 ? 10 : 25,
+                                          width: touchedIndex == 3 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.green[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 34,),
+                                      Container(
+                                        child: Text('Disgust',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 3 ? 14 : 10
+
+                                        ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(width: 19,),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(8,8,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push4();
+                                          },
+                                          ),
+                                          height: touchedIndex == 4 ? 10 : 25,
+                                          width: touchedIndex == 4 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.yellow[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 50,),
+                                      Container(
+                                        child: Text('Happy',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 4 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 24,),
+                                  Column(
+                                    children: [
+                                      Padding(
+
+                                        padding: const EdgeInsets.fromLTRB(8,8,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push5();
+                                          },
+                                          ),
+                                          height: touchedIndex == 5 ? 10 : 25,
+                                          width: touchedIndex == 5 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.orange[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 50,),
+                                      Container(
+                                        child: Text('Surprise',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 5 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 18,),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(8,8,0,0),
+                                        child: Container(
+                                          child: FlatButton(onPressed: () {
+                                            push6();
+                                          },
+                                          ),
+                                          height: touchedIndex == 6 ? 10 : 25,
+                                          width: touchedIndex == 6 ? 10 : 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(
+                                                7)),
+                                            color: Colors.red[500],
+                                            // color: Color.fromRGBO(220, 220, 220, 1),
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 50,),
+                                      Container(
+                                        child: Text('Angry',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: touchedIndex == 6 ? 14 : 10
+                                        ),),
+                                      ),
+                                    ],
+                                  ),
+
+
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+          else if(snap.data == null){
             return SpinKitRotatingCircle(color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
-              size: 100.0);
+              size: 80.0);
           }
           else{
             return Scaffold(
@@ -275,7 +781,7 @@ class MilestonepageState extends State {
                           scrollDirection: Axis.horizontal,
                           child: SizedBox(
                               height: 300,
-                              width: 50*count,
+                              width: 50*(count+delc),
                               child: AspectRatio(
                                 aspectRatio: 1.23,
                                 child: Container(
@@ -799,17 +1305,20 @@ class MilestonepageState extends State {
             fontSize: 16,
           ),
           margin: 10,
-          getTitles: (value) {
-            switch (value.toInt()) {
-              case 0:
-                return 'S';
-              case 1:
-                return 'O';
-              case 2:
-                return 'D';
-            }
-            return '';
-          },
+          // getTitles: (value) {
+          //   // switch (value.toInt()) {
+          //   //   case 0:
+          //   //     return 'S';
+          //   //   case 1:
+          //   //     return 'O';
+          //   //   case 2:
+          //   //     return 'D';
+          //   // }
+          //   for(int o = 0 ;o<2;o++){
+          //     return 'b';
+          //   }
+          //   return 'a';
+          // },
         ),
         leftTitles: SideTitles(
           showTitles: true,
@@ -860,7 +1369,7 @@ class MilestonepageState extends State {
         ),
       ),
       minX: 0,
-      maxX: count,
+      maxX: count+delc,
       maxY: 7,
       minY: 0,
       lineBarsData: linesBarData1(),
@@ -909,12 +1418,8 @@ class MilestonepageState extends State {
           margin: 10,
           getTitles: (value) {
             switch (value.toInt()) {
-              case 2:
-                return 'SEPT';
-              case 7:
-                return 'OCT';
-              case 12:
-                return 'DEC';
+              case 0:
+                return 'Area';
             }
             return '';
           },
@@ -998,15 +1503,10 @@ class MilestonepageState extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(7, (i) {
+    return List.generate(8, (i) {
       final isTouched = i == touchedIndex;
       final double fontSize = isTouched ? 25 : 16;
       final double radius = isTouched ? 60 : 50;
-      // try{
-      //   var countHappy = double.parse(dataus2[2]['count(emotion)']);
-      // }catch (e){
-      //   var countHappy =0.0;
-      // }
       switch (i) {
         case 0:
           return PieChartSectionData(
@@ -1080,11 +1580,12 @@ class MilestonepageState extends State {
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
           );
         default:
-          return PieChartSectionData(
+          return
+            PieChartSectionData(
             // color: const Color(0xff13d38e),
-            color: HexColor(facade.ecolorget(1)),
-            value: 1,
-            title: 'No data',
+            color: HexColor(facade.ecolorget(2)),
+            value: dPie,
+            title: dPieShow,
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
