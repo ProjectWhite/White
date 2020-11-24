@@ -5,13 +5,13 @@ enum emotion {
 }
 enum tone {
   fine,
-  annoyed,frustrated,offended,mad,threatened,
-  confident,grateful,peaceful,excited,playful,relief,pride,satisfaction,triumph,
-  embarrassed,vulnerable,rejected,insecure,worried,
-  accepted,gentle,affectionate,passionate,trusted,contentment,
-  inadequate,uninterested,lonely,guilty,hurt,
-  startled,overwhelmed,confused,amazed,shocked,
-  resentful,shameful,bitter,disappointed,averse,contempt
+  annoyed,frustrated,offended,mad,threatened, //anger
+  confident,grateful,peaceful,excited,playful,relief,pride,satisfaction,triumph, //happy
+  embarrassed,vulnerable,rejected,insecure,worried, //fear
+  accepted,gentle,affectionate,passionate,trusted,contentment, //love
+  inadequate,uninterested,lonely,guilty,hurt, //sad
+  startled,overwhelmed,confused,amazed,shocked, //surprise
+  resentful,shameful,bitter,disappointed,averse,contempt //disgust
 }
 
 abstract class Emotion implements EmotionMet{

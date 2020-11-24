@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
@@ -14,6 +16,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:math' as math;
+import 'package:flutter_appchatbot/class/Facade.dart';
+
 
 class Svt extends StatefulWidget {
   @override
@@ -25,7 +29,75 @@ class MilestonepageState extends State {
   final Color barBackgroundColor = const Color(0xff72d8bf);
   final Duration animDuration = const Duration(milliseconds: 250);
 
+  Facade facade = new Facade();
 
+  var dataus;
+  Future<List> _readdiary() async {
+    print('read diary');
+    final response = await http.post("$uml/my_store/readdiary.php", body: {
+      "username": username,
+    });
+
+    dataus = json.decode(response.body);
+  print(dataus);
+// print(dataus[j]['diary'].toString());
+    for(int i=0;;i++){
+      try{
+        //ignore exception
+        if(dataus[i]['type']==null)
+          break;
+      }catch (Exception){
+        print(Exception);
+        break;
+      }
+
+      if(dataus[i]['type']=='tone.annoyed'||dataus[i]['type']=='tone.frustrated'||dataus[i]['type']=='tone.offended'
+          ||dataus[i]['type']=='tone.mad'||dataus[i]['type']=='tone.threatened'){
+        setState(() {
+            append(0.8);
+        });
+      }
+      else if(dataus[i]['type']=='tone.resentful'||dataus[i]['type']=='tone.shameful'||dataus[i]['type']=='tone.bitter'
+          ||dataus[i]['type']=='tone.disappointed'||dataus[i]['type']=='tone.averse'||dataus[i]['type']=='tone.contempt'){
+        setState(() {
+          append(1.8);
+        });
+      }
+      else if(dataus[i]['type']=='tone.embarrassed'||dataus[i]['type']=='tone.vulnerable' ||dataus[i]['type']=='tone.rejected'
+          ||dataus[i]['type']=='tone.insecure'||dataus[i]['type']=='tone.worried'){
+        setState(() {
+            append(2.8);
+        });
+      }
+      else if(dataus[i]['type']=='tone.confident'||dataus[i]['type']=='tone.grateful'||dataus[i]['type']=='tone.peaceful'
+          ||dataus[i]['type']=='tone.excited' ||dataus[i]['type']=='tone.playful'||dataus[i]['type']=='tone.relief'
+          ||dataus[i]['type']=='tone.pride' ||dataus[i]['type']=='tone.satisfaction'||dataus[i]['type']=='tone.triumph'){
+        setState(() {
+          append(3.8);
+        });
+      }
+      else if(dataus[i]['type']=='tone.accepted'||dataus[i]['type']=='tone.gentle'||dataus[i]['type']=='tone.affectionate'
+          ||dataus[i]['type']=='tone.passionate' ||dataus[i]['type']=='tone.trusted'||dataus[i]['type']=='tone.contentment'){
+        setState(() {
+          append(4.8);
+        });
+      }
+      else if(dataus[i]['type']=='tone.inadequate'||dataus[i]['type']=='tone.uninterested'||dataus[i]['type']=='tone.lonely'
+          ||dataus[i]['type']=='tone.guilty'||dataus[i]['type']=='tone.hurt'){
+        setState(() {
+          append(5.8);
+        });
+      }
+      else if(dataus[i]['type']=='tone.startled'||dataus[i]['type']=='tone.overwhelmed'||dataus[i]['type']=='tone.confused'
+          ||dataus[i]['type']=='tone.amazed'||dataus[i]['type']=='tone.shocked'){
+        setState(() {
+          append(6.8);
+        });
+      }
+    }
+    print(dataus[0]['type']);
+    return dataus;
+  }
   // void setColor(){
   //   Facade color1 = new Facade();
   //   color1.start(1,tone.annoyed);
@@ -158,83 +230,10 @@ class MilestonepageState extends State {
     }
     // var countHappy = double.parse(dataus2[2]['count(emotion)']);
     countAllEmo = countAnger+countDisgust+countFear+countHappy+countLove+countSad+countSurprise;
-    print(countAllEmo);
     return dataus2;
   }
   int j=1;
- var dataus3;
-  Future<List> _readLine() async{
-    print('read line');
-    final response = await http.post("$uml/my_store/countdiary.php", body: {
-      "username": username,
-    });
-    dataus3 = json.decode(response.body);
 
-    // print(dataus2);
-    // print(dataus2[0]['emotion']);
-    for(int i=0;;i++){
-      try{
-        //ignore exception
-        if(dataus3[i]['emotion']==null)
-          break;
-      }catch (Exception){
-        print(Exception);
-        break;
-      }
-
-      if(dataus3[i]['emotion']=='emotion.anger'){
-        setState(() {
-          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
-            append(0.8);
-          };
-
-        });
-      }
-      else if(dataus3[i]['emotion']=='emotion.disgust'){
-        setState(() {
-          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
-            append(1.8);
-          };
-        });
-      }
-      else if(dataus3[i]['emotion']=='emotion.fear'){
-        setState(() {
-          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
-            append(2.8);
-          };
-        });
-      }
-      else if(dataus3[i]['emotion']=='emotion.happy'){
-        setState(() {
-          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
-            append(3.8);
-          };
-        });
-      }
-      else if(dataus3[i]['emotion']=='emotion.love'){
-        setState(() {
-          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
-            append(4.8);
-          };
-        });
-      }
-      else if(dataus3[i]['emotion']=='emotion.sad'){
-        setState(() {
-          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
-            append(5.8);
-          };
-        });
-      }
-      else if(dataus3[i]['emotion']=='emotion.surprise'){
-        setState(() {
-          for(int a = 0 ; a< double.parse(dataus3[i]['count(emotion)']);a++){
-            append(6.8);
-          };
-        });
-      }
-    }
-    return dataus3;
-  }
   double countAnger = 0; //ตัวนับจำนวนโกรฑ = dataus[0]['Emotion'] //test
   double countDisgust = 0; //ตัวนับจำนวนขยะแขยง
   double countFear = 0; //ตัวนับจำนวนกลัว
@@ -250,7 +249,7 @@ class MilestonepageState extends State {
   @override
   Widget build(BuildContext context) {
     if(j==1){
-      _readLine();
+      _readdiary();
       j++;
     }
     return FutureBuilder(
@@ -530,15 +529,14 @@ class MilestonepageState extends State {
                                     children: [
                                       SizedBox(height: 34,),
                                       Container(
-                                        child: Text('Anger',style: TextStyle(
-
+                                        child: Text('Love',style: TextStyle(
                                             color: Colors.white,
                                             fontSize: touchedIndex == 0 ? 14 : 10
                                         ),),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(width: 20,),
+                                  SizedBox(width: 32,),
                                   Column(
                                     children: [
                                       Padding(
@@ -565,14 +563,14 @@ class MilestonepageState extends State {
                                     children: [
                                       SizedBox(height: 34,),
                                       Container(
-                                        child: Text('Disgust',style: TextStyle(
+                                        child: Text('Fear',style: TextStyle(
                                             color: Colors.white,
                                             fontSize: touchedIndex == 1 ? 14 : 10
                                         ),),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(width: 16,),
+                                  SizedBox(width: 35,),
                                   Column(
                                     children: [
                                       Padding(
@@ -600,7 +598,7 @@ class MilestonepageState extends State {
                                     children: [
                                       SizedBox(height: 34,),
                                       Container(
-                                        child: Text('Fear',style: TextStyle(
+                                        child: Text('Sad',style: TextStyle(
                                             color: Colors.white,
                                             fontSize: touchedIndex == 2 ? 14 : 10
                                         ),),
@@ -635,7 +633,7 @@ class MilestonepageState extends State {
                                     children: [
                                       SizedBox(height: 34,),
                                       Container(
-                                        child: Text('Happy',style: TextStyle(
+                                        child: Text('Disgust',style: TextStyle(
                                             color: Colors.white,
                                             fontSize: touchedIndex == 3 ? 14 : 10
 
@@ -680,7 +678,7 @@ class MilestonepageState extends State {
                                     children: [
                                       SizedBox(height: 50,),
                                       Container(
-                                        child: Text('Love',style: TextStyle(
+                                        child: Text('Happy',style: TextStyle(
                                             color: Colors.white,
                                             fontSize: touchedIndex == 4 ? 14 : 10
                                         ),),
@@ -716,14 +714,14 @@ class MilestonepageState extends State {
                                     children: [
                                       SizedBox(height: 50,),
                                       Container(
-                                        child: Text('Sad',style: TextStyle(
+                                        child: Text('Surprise',style: TextStyle(
                                             color: Colors.white,
                                             fontSize: touchedIndex == 5 ? 14 : 10
                                         ),),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(width: 32,),
+                                  SizedBox(width: 18,),
                                   Column(
                                     children: [
                                       Padding(
@@ -751,7 +749,7 @@ class MilestonepageState extends State {
                                     children: [
                                       SizedBox(height: 50,),
                                       Container(
-                                        child: Text('Surprise',style: TextStyle(
+                                        child: Text('Angry',style: TextStyle(
                                             color: Colors.white,
                                             fontSize: touchedIndex == 6 ? 14 : 10
                                         ),),
@@ -1011,40 +1009,40 @@ class MilestonepageState extends State {
       switch (i) {
         case 0:
           return PieChartSectionData(
-            // color: const Color(0xff0293ee),
-            color: Colors.deepPurple[500],
-            value: countAnger.toDouble(),
-            title: countAnger.toString(),
+            // color: const Color(0xff13d38e),
+            color: HexColor(facade.ecolorget(5)),
+            value: countLove.toDouble(),
+            title: countLove.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
           );
         case 1:
           return PieChartSectionData(
-            // color: const Color(0xfff8b250),
-            color: Colors.indigo[500],
-            value: countDisgust.toDouble(),
-            title: countDisgust.toString(),
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-          );
-        case 2:
-          return PieChartSectionData(
             // color: const Color(0xff845bef),
-            color: Colors.blue[500],
+            color: HexColor(facade.ecolorget(3)),
             value: countFear.toDouble(),
             title: countFear.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
           );
-        case 3:
+        case 2:
           return PieChartSectionData(
             // color: const Color(0xff13d38e),
-            color: Colors.green[500],
-            value: countHappy.toDouble(),
-            title: countHappy.toString(),
+            color: HexColor(facade.ecolorget(6)),
+            value: countSad.toDouble(),
+            title: countSad.toString().substring(0,3),
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        case 3:
+          return PieChartSectionData(
+            // color: const Color(0xfff8b250),
+            color: HexColor(facade.ecolorget(2)),
+            value: countDisgust.toDouble(),
+            title: countDisgust.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -1052,29 +1050,30 @@ class MilestonepageState extends State {
         case 4:
           return PieChartSectionData(
             // color: const Color(0xff13d38e),
-            color: Colors.yellow[500],
-            value: countLove.toDouble(),
-            title: countLove.toString(),
+            color: HexColor(facade.ecolorget(4)),
+            value: countHappy.toDouble(),
+            title: countHappy.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
           );
+
         case 5:
           return PieChartSectionData(
             // color: const Color(0xff13d38e),
-            color: Colors.orange[700],
-            value: countSad.toDouble(),
-            title: countSad.toString(),
+            color: HexColor(facade.ecolorget(7)),
+            value: countSurprise.toDouble(),
+            title: countSurprise.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
           );
         case 6:
           return PieChartSectionData(
-            // color: const Color(0xff13d38e),
-            color: Colors.red[500],
-            value: countSurprise.toDouble(),
-            title: countSurprise.toString(),
+            // color: const Color(0xff0293ee),
+            color: HexColor(facade.ecolorget(1)),
+            value: countAnger.toDouble(),
+            title: countAnger.toString(),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -1082,7 +1081,7 @@ class MilestonepageState extends State {
         default:
           return PieChartSectionData(
             // color: const Color(0xff13d38e),
-            color: Colors.red[500],
+            color: HexColor(facade.ecolorget(1)),
             value: 1,
             title: 'No data',
             radius: radius,
@@ -1090,88 +1089,6 @@ class MilestonepageState extends State {
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
           );
       }
-      // switch (i) {
-      //   case 0:
-      //     return PieChartSectionData(
-      //       // color: const Color(0xff0293ee),
-      //       color: Colors.deepPurple[500],
-      //       value: 1,
-      //       title: countAnger.toString(),
-      //       radius: radius,
-      //       titleStyle: TextStyle(
-      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-      //     );
-      //   case 1:
-      //     return PieChartSectionData(
-      //       // color: const Color(0xfff8b250),
-      //       color: Colors.indigo[500],
-      //       value: 2,
-      //       title: countDisgust.toString(),
-      //       radius: radius,
-      //       titleStyle: TextStyle(
-      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-      //     );
-      //   case 2:
-      //     return PieChartSectionData(
-      //       // color: const Color(0xff845bef),
-      //       color: Colors.blue[500],
-      //       value: 3,
-      //       title: countFear.toString(),
-      //       radius: radius,
-      //       titleStyle: TextStyle(
-      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-      //     );
-      //   case 3:
-      //     return PieChartSectionData(
-      //       // color: const Color(0xff13d38e),
-      //       color: Colors.green[500],
-      //       value: 4,
-      //       title: countHappy.toString(),
-      //       radius: radius,
-      //       titleStyle: TextStyle(
-      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-      //     );
-      //   case 4:
-      //     return PieChartSectionData(
-      //       // color: const Color(0xff13d38e),
-      //       color: Colors.yellow[500],
-      //       value: 5,
-      //       title: countLove.toString(),
-      //       radius: radius,
-      //       titleStyle: TextStyle(
-      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-      //     );
-      //   case 5:
-      //     return PieChartSectionData(
-      //       // color: const Color(0xff13d38e),
-      //       color: Colors.orange[700],
-      //       value: 6,
-      //       title: countSad.toString(),
-      //       radius: radius,
-      //       titleStyle: TextStyle(
-      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-      //     );
-      //   case 6:
-      //     return PieChartSectionData(
-      //       // color: const Color(0xff13d38e),
-      //       color: Colors.red[500],
-      //       value: 7,
-      //       title: countSurprise.toString(),
-      //       radius: radius,
-      //       titleStyle: TextStyle(
-      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-      //     );
-      //   default:
-      //     return PieChartSectionData(
-      //       // color: const Color(0xff13d38e),
-      //       color: Colors.red[500],
-      //       value: 1,
-      //       title: 'No data',
-      //       radius: radius,
-      //       titleStyle: TextStyle(
-      //           fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-      //     );
-      // }
     });
   }
 
@@ -1204,19 +1121,19 @@ class MilestonepageState extends State {
   List<BarChartGroupData> showingGroups() => List.generate(7, (i) {
     switch (i) {
       case 0:
-        return makeGroupData(0, countAnger, isTouched: i == touchedIndex);
+        return makeGroupData(0, countLove, isTouched: i == touchedIndex);
       case 1:
-        return makeGroupData(1, countDisgust, isTouched: i == touchedIndex);
+        return makeGroupData(1, countFear, isTouched: i == touchedIndex);
       case 2:
-        return makeGroupData(2, countFear, isTouched: i == touchedIndex);
+        return makeGroupData(2, countSad, isTouched: i == touchedIndex);
       case 3:
-        return makeGroupData(3, countLove, isTouched: i == touchedIndex);
+        return makeGroupData(3, countDisgust, isTouched: i == touchedIndex);
       case 4:
-        return makeGroupData(4, countLove, isTouched: i == touchedIndex);
+        return makeGroupData(4, countHappy, isTouched: i == touchedIndex);
       case 5:
-        return makeGroupData(5, countSad, isTouched: i == touchedIndex);
+        return makeGroupData(5, countSurprise, isTouched: i == touchedIndex);
       case 6:
-        return makeGroupData(6, countSurprise, isTouched: i == touchedIndex);
+        return makeGroupData(6, countAnger, isTouched: i == touchedIndex);
       default:
         return null;
     }
@@ -1232,26 +1149,25 @@ class MilestonepageState extends State {
               String emocolor;
               switch (group.x.toInt()) {
                 case 0:
-                  emotionShow = 'Anger';
-                  emocolor = 'red';
-                  break;
-                case 1:
-                  emotionShow = 'Disgust';
-                  break;
-                case 2:
-                  emotionShow = 'Fear';
-                  break;
-                case 3:
-                  emotionShow = 'Happy';
-                  break;
-                case 4:
                   emotionShow = 'Love';
                   break;
-                case 5:
+                case 1:
+                  emotionShow = 'Fear';
+                  break;
+                case 2:
                   emotionShow = 'Sad';
                   break;
-                case 6:
+                case 3:
+                  emotionShow = 'Disgust';
+                  break;
+                case 4:
+                  emotionShow = 'Happy';
+                  break;
+                case 5:
                   emotionShow = 'Surprise';
+                  break;
+                case 6:
+                  emotionShow = 'Angry';
                   break;
               }
               return BarTooltipItem(
@@ -1279,19 +1195,19 @@ class MilestonepageState extends State {
           getTitles: (double value) {
             switch (value.toInt()) {
               case 0:
-                return 'A';
-              case 1:
-                return 'D';
-              case 2:
-                return 'F';
-              case 3:
-                return 'H';
-              case 4:
                 return 'L';
-              case 5:
+              case 1:
+                return 'F';
+              case 2:
                 return 'S';
-              case 6:
+              case 3:
+                return 'D';
+              case 4:
+                return 'H';
+              case 5:
                 return 'Sur';
+              case 6:
+                return 'A';
               default:
                 return '';
             }
@@ -1350,22 +1266,21 @@ class MilestonepageState extends State {
         show: false,
       ),
       barGroups: List.generate(7, (i) {
-        var countHappy = dataus2[2]['count(emotion)'];
         switch (i) {
           case 0:
-            return makeGroupData(0,countAnger,barColor: Colors.deepPurple[500]);
+            return makeGroupData(0,countLove,barColor: Colors.deepPurple[500]);
           case 1:
-            return makeGroupData(1,countDisgust,barColor: Colors.indigo[500]);
+            return makeGroupData(1,countFear,barColor: Colors.indigo[500]);
           case 2:
-            return makeGroupData(2,countFear,barColor: Colors.blue[500]);
+            return makeGroupData(2,countSad,barColor: Colors.blue[500]);
           case 3:
-            return makeGroupData(3,4,barColor: Colors.green[500]);
+            return makeGroupData(3,countDisgust,barColor: Colors.green[500]);
           case 4:
-            return makeGroupData(4,countLove,barColor: Colors.yellow[500]);
+            return makeGroupData(4,countHappy,barColor: Colors.yellow[500]);
           case 5:
-            return makeGroupData(5,countSad,barColor: Colors.orange[500]);
+            return makeGroupData(5,countSurprise,barColor: Colors.orange[500]);
           case 6:
-            return makeGroupData(6,countSurprise,barColor: Colors.red[500]);
+            return makeGroupData(6,countAnger,barColor: Colors.red[500]);
           default:
             return null;
         }
