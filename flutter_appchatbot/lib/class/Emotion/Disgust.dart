@@ -47,5 +47,11 @@ class Disgust extends Emotion{
     throw UnimplementedError();
   }
 
+  @override
+  String EmotionAmi() {
+    // TODO: implement EmotionAmi
+    return 'assets/face_vomiting.gif';
+  }
+
 
 }

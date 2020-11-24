@@ -44,6 +44,11 @@ class Fear extends Emotion{
     return '$colors';
     throw UnimplementedError();
   }
+  @override
+  String EmotionAmi() {
+    // TODO: implement EmotionAmi
+    return 'assets/face_screaming_in_fear.gif';
+  }
 
 
 }

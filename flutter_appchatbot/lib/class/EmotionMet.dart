@@ -5,5 +5,6 @@ abstract class EmotionMet{
   toString();
   EmotionDetail();
   Emotioncolor();
+  EmotionAmi();
   Typecolor();
 }

@@ -54,6 +54,11 @@ class Happy extends Emotion{
     return '$colors';
     throw UnimplementedError();
   }
+  @override
+  String EmotionAmi() {
+    // TODO: implement EmotionAmi
+    return 'assets/beaming_face_with_smiling_eyes.gif';
+  }
 
 
 }

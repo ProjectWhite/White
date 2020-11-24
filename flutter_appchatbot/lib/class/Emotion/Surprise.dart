@@ -43,6 +43,11 @@ class Surprise extends Emotion{
     return '$colors';
     throw UnimplementedError();
   }
+  @override
+  String EmotionAmi() {
+    // TODO: implement EmotionAmi
+    return 'assets/hushed_face.gif';
+  }
 
 
 }

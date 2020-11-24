@@ -47,6 +47,11 @@ class Love extends Emotion{
     return '$colors';
     throw UnimplementedError();
   }
+  @override
+  String EmotionAmi() {
+    // TODO: implement EmotionAmi
+    return 'assets/smiling_face_with_heart_eyes.gif';
+  }
 
 
 }

@@ -46,5 +46,11 @@ class Anger extends Emotion{
     throw UnimplementedError();
   }
 
+  @override
+  String EmotionAmi() {
+    // TODO: implement EmotionAmi
+    return 'assets/face_with_steam_from_nose.gif';
+  }
+
 
 }
