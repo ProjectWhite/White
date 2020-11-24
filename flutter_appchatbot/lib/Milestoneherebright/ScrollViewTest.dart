@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:flutter_appchatbot/Milestoneherebright/bartest.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
@@ -20,6 +20,9 @@ import 'package:flutter_appchatbot/class/Facade.dart';
 
 
 class Svt extends StatefulWidget {
+  Svt({Key key, this.title}) : super(key: key);
+  final String title;
+
   @override
   State<StatefulWidget> createState() => MilestonepageState();
 }
@@ -29,6 +32,15 @@ class MilestonepageState extends State {
   final Color barBackgroundColor = const Color(0xff72d8bf);
   final Duration animDuration = const Duration(milliseconds: 250);
   Facade facade = new Facade();
+
+  Choice _selectedChoice = choices[0]; // The app's "state".
+
+  void _select(Choice choice) {
+    setState(() { // Causes the app to rebuild with the new _selectedChoice.
+      _selectedChoice = choice;
+    });
+  }
+
 
   var dataus;
   Future<List> _readdiary() async {
@@ -43,52 +55,52 @@ class MilestonepageState extends State {
     for(int i=0;;i++){
       try{
         //ignore exception
-        if(dataus[i]['type']==null)
+        if(dataus[i]['type']==null&&dataus[i+1]['type']==null)
           break;
       }catch (Exception){
         print(Exception);
         break;
       }
 
-      if(dataus[i]['type']=='tone.annoyed'||dataus[i]['type']=='tone.frustrated'||dataus[i]['type']=='tone.offended'
-          ||dataus[i]['type']=='tone.mad'||dataus[i]['type']=='tone.threatened'){
+      if(dataus[i]['type']=='annoyed'||dataus[i]['type']=='frustrated'||dataus[i]['type']=='offended'
+          ||dataus[i]['type']=='mad'||dataus[i]['type']=='threatened'){
         setState(() {
             append(0.8);
         });
       }
-      else if(dataus[i]['type']=='tone.resentful'||dataus[i]['type']=='tone.shameful'||dataus[i]['type']=='tone.bitter'
-          ||dataus[i]['type']=='tone.disappointed'||dataus[i]['type']=='tone.averse'||dataus[i]['type']=='tone.contempt'){
+      else if(dataus[i]['type']=='resentful'||dataus[i]['type']=='shameful'||dataus[i]['type']=='bitter'
+          ||dataus[i]['type']=='disappointed'||dataus[i]['type']=='averse'||dataus[i]['type']=='contempt'){
         setState(() {
           append(1.8);
         });
       }
-      else if(dataus[i]['type']=='tone.embarrassed'||dataus[i]['type']=='tone.vulnerable' ||dataus[i]['type']=='tone.rejected'
-          ||dataus[i]['type']=='tone.insecure'||dataus[i]['type']=='tone.worried'){
+      else if(dataus[i]['type']=='embarrassed'||dataus[i]['type']=='vulnerable' ||dataus[i]['type']=='rejected'
+          ||dataus[i]['type']=='insecure'||dataus[i]['type']=='worried'){
         setState(() {
             append(2.8);
         });
       }
-      else if(dataus[i]['type']=='tone.confident'||dataus[i]['type']=='tone.grateful'||dataus[i]['type']=='tone.peaceful'
-          ||dataus[i]['type']=='tone.excited' ||dataus[i]['type']=='tone.playful'||dataus[i]['type']=='tone.relief'
-          ||dataus[i]['type']=='tone.pride' ||dataus[i]['type']=='tone.satisfaction'||dataus[i]['type']=='tone.triumph'){
+      else if(dataus[i]['type']=='confident'||dataus[i]['type']=='grateful'||dataus[i]['type']=='peaceful'
+          ||dataus[i]['type']=='excited' ||dataus[i]['type']=='playful'||dataus[i]['type']=='relief'
+          ||dataus[i]['type']=='pride' ||dataus[i]['type']=='satisfaction'||dataus[i]['type']=='triumph'){
         setState(() {
           append(3.8);
         });
       }
-      else if(dataus[i]['type']=='tone.accepted'||dataus[i]['type']=='tone.gentle'||dataus[i]['type']=='tone.affectionate'
-          ||dataus[i]['type']=='tone.passionate' ||dataus[i]['type']=='tone.trusted'||dataus[i]['type']=='tone.contentment'){
+      else if(dataus[i]['type']=='accepted'||dataus[i]['type']=='gentle'||dataus[i]['type']=='affectionate'
+          ||dataus[i]['type']=='passionate' ||dataus[i]['type']=='trusted'||dataus[i]['type']=='contentment'){
         setState(() {
           append(4.8);
         });
       }
-      else if(dataus[i]['type']=='tone.inadequate'||dataus[i]['type']=='tone.uninterested'||dataus[i]['type']=='tone.lonely'
-          ||dataus[i]['type']=='tone.guilty'||dataus[i]['type']=='tone.hurt'){
+      else if(dataus[i]['type']=='inadequate'||dataus[i]['type']=='uninterested'||dataus[i]['type']=='lonely'
+          ||dataus[i]['type']=='guilty'||dataus[i]['type']=='hurt'){
         setState(() {
           append(5.8);
         });
       }
-      else if(dataus[i]['type']=='tone.startled'||dataus[i]['type']=='tone.overwhelmed'||dataus[i]['type']=='tone.confused'
-          ||dataus[i]['type']=='tone.amazed'||dataus[i]['type']=='tone.shocked'){
+      else if(dataus[i]['type']=='startled'||dataus[i]['type']=='overwhelmed'||dataus[i]['type']=='confused'
+          ||dataus[i]['type']=='amazed'||dataus[i]['type']=='shocked'){
         setState(() {
           append(6.8);
         });
@@ -102,39 +114,46 @@ class MilestonepageState extends State {
   void push0(){
     setState(() {
       touchedIndex = 0 ;
+      _selectedChoice = choices[0];
     });
   }
   void push1(){
     setState(() {
       touchedIndex = 1 ;
+      _selectedChoice = choices[1];
     });
   }
   void push2(){
     setState(() {
       touchedIndex = 2 ;
+      _selectedChoice = choices[2];
     });
   }
   void push3(){
     setState(() {
       touchedIndex = 3 ;
+      _selectedChoice = choices[3];
     });
   }
   void push4(){
     setState(() {
       touchedIndex = 4 ;
+      _selectedChoice = choices[4];
     });
   }
   void push5(){
     setState(() {
       touchedIndex = 5 ;
+      _selectedChoice = choices[5];
     });
   }
   void push6(){
     setState(() {
       touchedIndex = 6 ;
+      _selectedChoice = choices[6];
     });
   }
-  double count = 2;
+  double count = 1;
   double delc= 20;
   List<FlSpot> allSpots = [
     FlSpot(0, 0.0),
@@ -160,7 +179,7 @@ class MilestonepageState extends State {
   var dataus2;
   double dPie=1;
   String dPieShow = 'No Data';
-
+  String angertext,disgusttext,feartext,happytext,lovetext,sadtext,surprisetext;
   Future<List> _readcountdiary() async{
     print('count diary');
     final response = await http.post("$uml/my_store/countdiary.php", body: {
@@ -173,7 +192,7 @@ class MilestonepageState extends State {
     for(int i=0;i<7;i++){
       try{
         //ignore exception
-        if(dataus2[i]['emotion']==null) {
+        if(dataus2[i]['emotion']==null&&dataus[i+1]['type']==null) {
           break;
         }
       }catch (Exception){
@@ -218,12 +237,60 @@ class MilestonepageState extends State {
         });
       }
     }
-
     countAllEmo = countAnger+countDisgust+countFear+countHappy+countLove+countSad+countSurprise;
+    angertext = ((countAnger/countAllEmo)*100).toStringAsFixed(0)+'%';
+    disgusttext = ((countDisgust/countAllEmo)*100).toStringAsFixed(0)+'%';
+    feartext = ((countFear/countAllEmo)*100).toStringAsFixed(0)+'%';
+    happytext = ((countHappy/countAllEmo)*100).toStringAsFixed(0)+'%';
+    lovetext = ((countLove/countAllEmo)*100).toStringAsFixed(0)+'%';
+    sadtext = ((countSad/countAllEmo)*100).toStringAsFixed(0)+'%';
+    surprisetext = ((countSurprise/countAllEmo)*100).toStringAsFixed(0)+'%';
     if(countAllEmo>0){
       setState(() {
         dPie = 0;
         dPieShow = '';
+      });
+    }
+    if(countAnger==0){
+      setState(() {
+        angertext = '';
+
+      });
+    }
+    if(countDisgust==0){
+      setState(() {
+        disgusttext = '';
+
+      });
+    }
+    if(countFear==0){
+      setState(() {
+        feartext = '';
+
+      });
+    }
+    if(countHappy==0){
+      setState(() {
+        happytext = '';
+
+      });
+    }
+    if(countLove==0){
+      setState(() {
+        lovetext = '';
+
+      });
+    }
+    if(countSad==0){
+      setState(() {
+        sadtext = '';
+
+      });
+    }
+    if(countSurprise==0){
+      setState(() {
+        surprisetext = '';
+
       });
     }
     print(countAllEmo);
@@ -386,86 +453,7 @@ class MilestonepageState extends State {
                             child: Container(
                               height: 300,
                               width: 188.5,
-                              child: AspectRatio(
-                                aspectRatio: 1,
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(18)),
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Color(0xff2c274c),
-                                        Color(0xff46426c),
-                                      ],
-                                      begin: Alignment.bottomCenter,
-                                      end: Alignment.topCenter,
-                                    ),
-                                    // color: Color.fromRGBO(220, 220, 220, 1),
-                                  ),
-                                  child: Stack(
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.all(16),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: <Widget>[
-                                            Text('Change Color',
-                                              style: TextStyle(
-                                                  color: const Color(0xff72d8bf), fontSize: 18, fontWeight: FontWeight.bold),
-                                            ),
-                                            const SizedBox(
-                                              height: 4,
-                                            ),
-                                            Text(
-                                              'Bar Chart',
-                                              style: TextStyle(
-                                                  color: const Color(0xff379982), fontSize: 18, fontWeight: FontWeight.bold),
-                                            ),
-                                            const SizedBox(
-                                              height: 38,
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                                child: BarChart(
-                                                  isPlaying ? randomData() : mainBarData(),
-                                                  swapAnimationDuration: animDuration,
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              height: 12,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Align(
-                                          alignment: Alignment.topRight,
-                                          child: IconButton(
-                                            icon: Icon(
-                                              isPlaying ? Icons.pause : Icons.play_arrow,
-                                              color: Colors.red ,
-                                            ),
-                                            onPressed: () {
-                                              setState(() {
-                                                isPlaying = !isPlaying;
-                                                if (isPlaying) {
-                                                  refreshState();
-                                                }
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
+                              child: ChoiceCard(choice: _selectedChoice),
                             ),
                           ),
                         ],
@@ -510,7 +498,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.deepPurple[500],
+                                            color: HexColor(facade.ecolorget(5)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -543,7 +531,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.indigo[500],
+                                            color: HexColor(facade.ecolorget(3)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -578,7 +566,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.blue[500],
+                                            color: HexColor(facade.ecolorget(6)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -613,7 +601,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.green[500],
+                                            color: HexColor(facade.ecolorget(2)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -658,7 +646,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.yellow[500],
+                                            color: HexColor(facade.ecolorget(4)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -694,7 +682,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.orange[500],
+                                            color: HexColor(facade.ecolorget(7)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -729,7 +717,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.red[500],
+                                            color: HexColor(facade.ecolorget(1)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -763,10 +751,20 @@ class MilestonepageState extends State {
               ),
             );
           }
+          //---------------------------------------------------------------------------------------------------------
+          //---------------------------------------------------------------------------------------------------------
+          //---------------------------------------------------------------------------------------------------------
+
+
           else if(snap.data == null){
             return SpinKitRotatingCircle(color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
               size: 80.0);
           }
+
+          //---------------------------------------------------------------------------------------------------------
+          //---------------------------------------------------------------------------------------------------------
+          //---------------------------------------------------------------------------------------------------------
+
           else{
             return Scaffold(
               backgroundColor: Colors.white,
@@ -901,85 +899,9 @@ class MilestonepageState extends State {
                             child: Container(
                               height: 300,
                               width: 188.5,
-                              child: AspectRatio(
-                                aspectRatio: 1,
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(18)),
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Color(0xff2c274c),
-                                        Color(0xff46426c),
-                                      ],
-                                      begin: Alignment.bottomCenter,
-                                      end: Alignment.topCenter,
-                                    ),
-                                    // color: Color.fromRGBO(220, 220, 220, 1),
-                                  ),
-                                  child: Stack(
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.all(16),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: <Widget>[
-                                            Text('Change Color',
-                                              style: TextStyle(
-                                                  color: const Color(0xff72d8bf), fontSize: 18, fontWeight: FontWeight.bold),
-                                            ),
-                                            const SizedBox(
-                                              height: 4,
-                                            ),
-                                            Text(
-                                              'Bar Chart',
-                                              style: TextStyle(
-                                                  color: const Color(0xff379982), fontSize: 18, fontWeight: FontWeight.bold),
-                                            ),
-                                            const SizedBox(
-                                              height: 38,
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                                child: BarChart(
-                                                  isPlaying ? randomData() : mainBarData(),
-                                                  swapAnimationDuration: animDuration,
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              height: 12,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Align(
-                                          alignment: Alignment.topRight,
-                                          child: IconButton(
-                                            icon: Icon(
-                                              isPlaying ? Icons.pause : Icons.play_arrow,
-                                              color: Colors.red ,
-                                            ),
-                                            onPressed: () {
-                                              setState(() {
-                                                isPlaying = !isPlaying;
-                                                if (isPlaying) {
-                                                  refreshState();
-                                                }
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
+                              child: Container(
+
+                                child: ChoiceCard(choice: _selectedChoice),
                               ),
                             ),
                           ),
@@ -1025,7 +947,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.deepPurple[500],
+                                            color: HexColor(facade.ecolorget(5)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -1058,7 +980,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.indigo[500],
+                                            color: HexColor(facade.ecolorget(3)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -1093,7 +1015,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.blue[500],
+                                            color: HexColor(facade.ecolorget(6)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -1128,7 +1050,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.green[500],
+                                            color: HexColor(facade.ecolorget(2)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -1173,7 +1095,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.yellow[500],
+                                            color: HexColor(facade.ecolorget(4)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -1209,7 +1131,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.orange[500],
+                                            color: HexColor(facade.ecolorget(7)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -1244,7 +1166,7 @@ class MilestonepageState extends State {
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: Colors.red[500],
+                                            color: HexColor(facade.ecolorget(1)),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -1283,6 +1205,13 @@ class MilestonepageState extends State {
     );
   }
 
+//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
 
   LineChartData sampleData1() {
     return LineChartData(
@@ -1514,7 +1443,7 @@ class MilestonepageState extends State {
             // color: const Color(0xff13d38e),
             color: HexColor(facade.ecolorget(5)),
             value: countLove.toDouble(),
-            title: countLove.toString(),
+            title: lovetext,
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -1524,7 +1453,7 @@ class MilestonepageState extends State {
             // color: const Color(0xff845bef),
             color: HexColor(facade.ecolorget(3)),
             value: countFear.toDouble(),
-            title: countFear.toString(),
+            title: feartext,
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -1534,7 +1463,7 @@ class MilestonepageState extends State {
             // color: const Color(0xff13d38e),
             color: HexColor(facade.ecolorget(6)),
             value: countSad.toDouble(),
-            title: countSad.toString().substring(0,3),
+            title: sadtext,
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -1544,7 +1473,7 @@ class MilestonepageState extends State {
             // color: const Color(0xfff8b250),
             color: HexColor(facade.ecolorget(2)),
             value: countDisgust.toDouble(),
-            title: countDisgust.toString(),
+            title: disgusttext,
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -1554,7 +1483,7 @@ class MilestonepageState extends State {
             // color: const Color(0xff13d38e),
             color: HexColor(facade.ecolorget(4)),
             value: countHappy.toDouble(),
-            title: countHappy.toString(),
+            title: happytext,
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -1565,7 +1494,7 @@ class MilestonepageState extends State {
             // color: const Color(0xff13d38e),
             color: HexColor(facade.ecolorget(7)),
             value: countSurprise.toDouble(),
-            title: countSurprise.toString(),
+            title: surprisetext,
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -1575,7 +1504,7 @@ class MilestonepageState extends State {
             // color: const Color(0xff0293ee),
             color: HexColor(facade.ecolorget(1)),
             value: countAnger.toDouble(),
-            title: countAnger.toString(),
+            title: angertext,
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
@@ -1595,12 +1524,845 @@ class MilestonepageState extends State {
     });
   }
 
-  BarChartGroupData makeGroupData(
-      int x,
+
+}
+
+
+class Choice {
+  const Choice({ this.title, this.icon });
+  final String title;
+  final IconData icon;
+}
+
+const List<Choice> choices = <Choice>[
+  Choice(title: 'Love', icon: Icons.directions_car),
+  Choice(title: 'Fear', icon: Icons.directions_bike),
+  Choice(title: 'Sad', icon: Icons.directions_boat),
+  Choice(title: 'Disgust', icon: Icons.directions_bus),
+  Choice(title: 'Happy', icon: Icons.directions_railway),
+  Choice(title: 'Surprise', icon: Icons.directions_walk),
+  Choice(title: 'Angry', icon: Icons.directions_ferry),
+];
+
+class ChoiceCard extends StatefulWidget {
+
+  const ChoiceCard({ Key key, this.choice }) : super(key: key);
+
+  final Choice choice;
+  static const List<Color> availableColors = [
+    Colors.purpleAccent,
+    Colors.yellow,
+    Colors.lightBlue,
+    Colors.orange,
+    Colors.pink,
+    Colors.redAccent,
+  ];
+
+  @override
+  _ChoiceCardState createState() => _ChoiceCardState();
+}
+
+final Color barBackgroundColor = const Color(0xff72d8bf);
+final Duration animDuration = const Duration(milliseconds: 250);
+
+int touchedIndex;
+
+bool isPlaying = false;
+
+
+class _ChoiceCardState extends State<ChoiceCard> {
+
+  double countangry1=0,countangry2=0,countangry3=0,countangry4=0,countangry5=0;
+  double counthappy1=0,counthappy2=0,counthappy3=0,counthappy4=0,counthappy5=0,counthappy6=0,counthappy7=0,counthappy8=0,counthappy9=0;
+  double countfear1=0,countfear2=0,countfear3=0,countfear4=0,countfear5=0;
+  double countlove1=0,countlove2=0,countlove3=0,countlove4=0,countlove5=0,countlove6=0;
+  double countsad1=0,countsad2=0,countsad3=0,countsad4=0,countsad5=0;
+  double countsur1=0,countsur2=0,countsur3=0,countsur4=0,countsur5=0;
+  double countdis1=0,countdis2=0,countdis3=0,countdis4=0,countdis5=0,countdis6=0;
+
+  var dataus;
+  Future<List> _countdiary() async {
+    print('read diary');
+    final response = await http.post("$uml/my_store/readdiary.php", body: {
+      "username": username,
+    });
+
+    dataus = json.decode(response.body);
+    print(dataus);
+// print(dataus[j]['diary'].toString());
+    for(int i=0;;i++){
+      try{
+        //ignore exception
+        if(dataus[i]['type']==null&&dataus[i+1]['type']==null)
+          break;
+      }catch (Exception){
+        print(Exception);
+        break;
+      }
+
+      if(dataus[i]['type']=='annoyed'){
+        setState(() {
+          countangry1++;
+        });
+      }
+      else if(dataus[i]['type']=='frustrated'){
+        setState(() {
+          countangry2++;
+        });
+      }
+      else if(dataus[i]['type']=='offended'){
+        setState(() {
+          countangry3++;
+        });
+      }
+      else if(dataus[i]['type']=='mad'){
+        setState(() {
+          countangry4++;
+        });
+      }
+      else if(dataus[i]['type']=='threatened'){
+        setState(() {
+          countangry5++;
+        });
+      }
+      else if(dataus[i]['type']=='resentful'){
+        setState(() {
+          countdis1++;
+        });
+      }
+      else if(dataus[i]['type']=='shameful'){
+        setState(() {
+          countdis2++;
+        });
+      }
+      else if(dataus[i]['type']=='bitter'){
+        setState(() {
+          countdis3++;
+        });
+      }
+      else if(dataus[i]['type']=='disappointed'){
+        setState(() {
+          countdis4++;
+        });
+      }
+      else if(dataus[i]['type']=='averse'){
+        setState(() {
+          countdis5++;
+        });
+      }
+      else if(dataus[i]['type']=='contempt'){
+        setState(() {
+          countdis6++;
+        });
+      }
+      else if(dataus[i]['type']=='embarrassed'){
+        setState(() {
+          countfear1++;
+        });
+      }
+      else if(dataus[i]['type']=='vulnerable'){
+        setState(() {
+          countfear2++;
+        });
+      }
+      else if(dataus[i]['type']=='rejected'){
+        setState(() {
+          countfear3++;
+        });
+      }
+      else if(dataus[i]['type']=='insecure'){
+        setState(() {
+          countfear4++;
+        });
+      }
+      else if(dataus[i]['type']=='worried'){
+        setState(() {
+          countfear5++;
+        });
+      }
+
+      else if(dataus[i]['type']=='confident'){
+        setState(() {
+          counthappy1++;
+        });
+      }
+      else if(dataus[i]['type']=='grateful'){
+        setState(() {
+          counthappy2++;
+        });
+      }
+      else if(dataus[i]['type']=='peaceful'){
+        setState(() {
+          counthappy3++;
+        });
+      }
+      else if(dataus[i]['type']=='excited'){
+        setState(() {
+          counthappy4++;
+        });
+      }
+      else if(dataus[i]['type']=='playful'){
+        setState(() {
+          counthappy5++;
+        });
+      }
+      else if(dataus[i]['type']=='relief'){
+        setState(() {
+          counthappy6++;
+        });
+      }
+      else if(dataus[i]['type']=='pride'){
+        setState(() {
+          counthappy7++;
+        });
+      }
+      else if(dataus[i]['type']=='satisfaction'){
+        setState(() {
+          counthappy8++;
+        });
+      }
+      else if(dataus[i]['type']=='triumph'){
+        setState(() {
+          counthappy9++;
+        });
+      }
+      else if(dataus[i]['type']=='accepted'){
+        setState(() {
+          countlove1++;
+        });
+      }
+      else if(dataus[i]['type']=='gentle'){
+        setState(() {
+          countlove2++;
+        });
+      }
+      else if(dataus[i]['type']=='affectionate'){
+        setState(() {
+          countlove3++;
+        });
+      }
+      else if(dataus[i]['type']=='passionate'){
+        setState(() {
+          countlove4++;
+        });
+      }
+      else if(dataus[i]['type']=='trusted'){
+        setState(() {
+          countlove5++;
+        });
+      }
+      else if(dataus[i]['type']=='contentment'){
+        setState(() {
+          countlove6++;
+        });
+      }
+      else if(dataus[i]['type']=='inadequate'){
+        setState(() {
+          countsad1++;
+        });
+      }
+      else if(dataus[i]['type']=='uninterested'){
+        setState(() {
+          countsad2++;
+        });
+      }
+      else if(dataus[i]['type']=='lonely'){
+        setState(() {
+          countsad3++;
+        });
+      }
+      else if(dataus[i]['type']=='guilty'){
+        setState(() {
+          countsad4++;
+        });
+      }
+      else if(dataus[i]['type']=='hurt'){
+        setState(() {
+          countsad5++;
+        });
+      }
+      else if(dataus[i]['type']=='startled'){
+        setState(() {
+          countsur1++;
+        });
+      }
+      else if(dataus[i]['type']=='overwhelmed'){
+        setState(() {
+          countsur2++;
+        });
+      }
+      else if(dataus[i]['type']=='confused'){
+        setState(() {
+          countsur3++;
+        });
+      }
+      else if(dataus[i]['type']=='amazed'){
+        setState(() {
+          countsur4++;
+        });
+      }
+      else if(dataus[i]['type']=='shocked'){
+        setState(() {
+          countsur5++;
+        });
+      }
+    }
+
+    print(dataus[0]['type']);
+    return dataus;
+  }
+  Choice _selectedChoice = choices[0];
+  void _select(Choice choice) {
+    setState(() { // Causes the app to rebuild with the new _selectedChoice.
+      _selectedChoice = choice;
+    });
+  }
+  int k=1;
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle textStyle = Theme
+        .of(context)
+        .textTheme
+        .headline4;
+    if (k == 1) {
+      _countdiary();
+      k++;
+    }
+    if (widget.choice.title == 'Love') {
+      return Container(
+        height: 300,
+        width: 188.5,
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(
+                  18)),
+              gradient: LinearGradient(
+                colors: [
+
+                  Color(0xff2c274c),
+                  Color(0xff46426c),
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+              // color: Color.fromRGBO(220, 220, 220, 1),
+            ),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        widget.choice.title,
+                        style: TextStyle(
+                            color: const Color(0xff72d8bf),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        'Bar Chart',
+                        style: TextStyle(
+                            color: const Color(0xff379982),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 38,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: BarChart(
+                            isPlaying ? 0 : mainBarData1(),
+                            swapAnimationDuration: animDuration,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+
+                    ],
+
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+    if (widget.choice.title == 'Fear') {
+      return Container(
+        height: 300,
+        width: 188.5,
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(
+                  18)),
+              gradient: LinearGradient(
+                colors: [
+
+                  Color(0xff2c274c),
+                  Color(0xff46426c),
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+              // color: Color.fromRGBO(220, 220, 220, 1),
+            ),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        widget.choice.title,
+                        style: TextStyle(
+                            color: const Color(0xff72d8bf),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        'Bar Chart',
+                        style: TextStyle(
+                            color: const Color(0xff379982),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 38,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0),
+                          child: BarChart(
+                            isPlaying ? 0 : mainBarData2(),
+                            swapAnimationDuration: animDuration,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+    if (widget.choice.title == 'Sad') {
+      return Container(
+        height: 300,
+        width: 188.5,
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(
+                  18)),
+              gradient: LinearGradient(
+                colors: [
+
+                  Color(0xff2c274c),
+                  Color(0xff46426c),
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+              // color: Color.fromRGBO(220, 220, 220, 1),
+            ),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        widget.choice.title,
+                        style: TextStyle(
+                            color: const Color(0xff72d8bf),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        'Bar Chart',
+                        style: TextStyle(
+                            color: const Color(0xff379982),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 38,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0),
+                          child: BarChart(
+                            isPlaying ? 0 : mainBarData3(),
+                            swapAnimationDuration: animDuration,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+    if (widget.choice.title == 'Disgust') {
+      return Container(
+        height: 300,
+        width: 188.5,
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(
+                  18)),
+              gradient: LinearGradient(
+                colors: [
+
+                  Color(0xff2c274c),
+                  Color(0xff46426c),
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+              // color: Color.fromRGBO(220, 220, 220, 1),
+            ),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        widget.choice.title,
+                        style: TextStyle(
+                            color: const Color(0xff72d8bf),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        'Bar Chart',
+                        style: TextStyle(
+                            color: const Color(0xff379982),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 38,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0),
+                          child: BarChart(
+                            isPlaying ? 0 : mainBarData4(),
+                            swapAnimationDuration: animDuration,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+    if (widget.choice.title == 'Happy') {
+      return Container(
+        height: 300,
+        width: 188.5,
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(
+                  18)),
+              gradient: LinearGradient(
+                colors: [
+
+                  Color(0xff2c274c),
+                  Color(0xff46426c),
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+              // color: Color.fromRGBO(220, 220, 220, 1),
+            ),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        widget.choice.title,
+                        style: TextStyle(
+                            color: const Color(0xff72d8bf),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        'Bar Chart',
+                        style: TextStyle(
+                            color: const Color(0xff379982),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 38,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0),
+                          child: BarChart(
+                            isPlaying ? 0 : mainBarData5(),
+                            swapAnimationDuration: animDuration,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+    if (widget.choice.title == 'Surprise') {
+      return Container(
+        height: 300,
+        width: 188.5,
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(
+                  18)),
+              gradient: LinearGradient(
+                colors: [
+
+                  Color(0xff2c274c),
+                  Color(0xff46426c),
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+              // color: Color.fromRGBO(220, 220, 220, 1),
+            ),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        widget.choice.title,
+                        style: TextStyle(
+                            color: const Color(0xff72d8bf),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        'Bar Chart',
+                        style: TextStyle(
+                            color: const Color(0xff379982),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 38,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0),
+                          child: BarChart(
+                            isPlaying ? 0 : mainBarData6(),
+                            swapAnimationDuration: animDuration,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+    if (widget.choice.title == 'Angry') {
+      return Container(
+        height: 300,
+        width: 188.5,
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(
+                  18)),
+              gradient: LinearGradient(
+                colors: [
+
+                  Color(0xff2c274c),
+                  Color(0xff46426c),
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+              // color: Color.fromRGBO(220, 220, 220, 1),
+            ),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        widget.choice.title,
+                        style: TextStyle(
+                            color: const Color(0xff72d8bf),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        'Bar Chart',
+                        style: TextStyle(
+                            color: const Color(0xff379982),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 38,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0),
+                          child: BarChart(
+                            isPlaying ? 0 : mainBarData7(),
+                            swapAnimationDuration: animDuration,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+  }
+
+
+
+  BarChartGroupData makeGroupData(int x,
       double y, {
         bool isTouched = false,
         Color barColor = Colors.white,
-        double width = 15,
+        double width = 10,
         List<int> showTooltips = const [],
       }) {
     return BarChartGroupData(
@@ -1621,61 +2383,176 @@ class MilestonepageState extends State {
     );
   }
 
-  List<BarChartGroupData> showingGroups() => List.generate(7, (i) {
-    switch (i) {
-      case 0:
-        return makeGroupData(0, countLove, isTouched: i == touchedIndex);
-      case 1:
-        return makeGroupData(1, countFear, isTouched: i == touchedIndex);
-      case 2:
-        return makeGroupData(2, countSad, isTouched: i == touchedIndex);
-      case 3:
-        return makeGroupData(3, countDisgust, isTouched: i == touchedIndex);
-      case 4:
-        return makeGroupData(4, countHappy, isTouched: i == touchedIndex);
-      case 5:
-        return makeGroupData(5, countSurprise, isTouched: i == touchedIndex);
-      case 6:
-        return makeGroupData(6, countAnger, isTouched: i == touchedIndex);
-      default:
-        return null;
-    }
-  });
+  List<BarChartGroupData> showingGroups1() =>
+      List.generate(6, (i) {
+        switch (i) {
+          case 0:
+            return makeGroupData(0, countlove1, isTouched: i == touchedIndex);
+          case 1:
+            return makeGroupData(1, countlove2, isTouched: i == touchedIndex);
+          case 2:
+            return makeGroupData(2, countlove3, isTouched: i == touchedIndex);
+          case 3:
+            return makeGroupData(3, countlove4, isTouched: i == touchedIndex);
+          case 4:
+            return makeGroupData(4, countlove5, isTouched: i == touchedIndex);
+          case 5:
+            return makeGroupData(5, countlove6, isTouched: i == touchedIndex);
+          default:
+            return null;
+        }
+      });
 
-  BarChartData mainBarData() {
+  List<BarChartGroupData> showingGroups2() =>
+      List.generate(5, (i) {
+        switch (i) {
+          case 0:
+            return makeGroupData(0, countfear1, isTouched: i == touchedIndex);
+          case 1:
+            return makeGroupData(1, countfear2, isTouched: i == touchedIndex);
+          case 2:
+            return makeGroupData(2, countfear3, isTouched: i == touchedIndex);
+          case 3:
+            return makeGroupData(3, countfear4, isTouched: i == touchedIndex);
+          case 4:
+            return makeGroupData(4, countfear5, isTouched: i == touchedIndex);
+          default:
+            return null;
+        }
+      });
+
+  List<BarChartGroupData> showingGroups3() =>
+      List.generate(5, (i) {
+        switch (i) {
+          case 0:
+            return makeGroupData(0, countsad1, isTouched: i == touchedIndex);
+          case 1:
+            return makeGroupData(1, countsad2, isTouched: i == touchedIndex);
+          case 2:
+            return makeGroupData(2, countsad3, isTouched: i == touchedIndex);
+          case 3:
+            return makeGroupData(3, countsad4, isTouched: i == touchedIndex);
+          case 4:
+            return makeGroupData(4, countsad5, isTouched: i == touchedIndex);
+          default:
+            return null;
+        }
+      });
+
+  List<BarChartGroupData> showingGroups4() =>
+      List.generate(6, (i) {
+        switch (i) {
+          case 0:
+            return makeGroupData(0, countdis1, isTouched: i == touchedIndex);
+          case 1:
+            return makeGroupData(1, countdis2, isTouched: i == touchedIndex);
+          case 2:
+            return makeGroupData(2, countdis3, isTouched: i == touchedIndex);
+          case 3:
+            return makeGroupData(3, countdis4, isTouched: i == touchedIndex);
+          case 4:
+            return makeGroupData(4, countdis5, isTouched: i == touchedIndex);
+          case 5:
+            return makeGroupData(5, countdis6, isTouched: i == touchedIndex);
+          default:
+            return null;
+        }
+      });
+
+  List<BarChartGroupData> showingGroups5() =>
+      List.generate(9, (i) {
+        switch (i) {
+          case 0:
+            return makeGroupData(0, counthappy1, isTouched: i == touchedIndex);
+          case 1:
+            return makeGroupData(1, counthappy2, isTouched: i == touchedIndex);
+          case 2:
+            return makeGroupData(2, counthappy3, isTouched: i == touchedIndex);
+          case 3:
+            return makeGroupData(3, counthappy4, isTouched: i == touchedIndex);
+          case 4:
+            return makeGroupData(4, counthappy5, isTouched: i == touchedIndex);
+          case 5:
+            return makeGroupData(5, counthappy6, isTouched: i == touchedIndex);
+          case 6:
+            return makeGroupData(6, counthappy7, isTouched: i == touchedIndex);
+          case 7:
+            return makeGroupData(7, counthappy8, isTouched: i == touchedIndex);
+          case 8:
+            return makeGroupData(8, counthappy9, isTouched: i == touchedIndex);
+          default:
+            return null;
+        }
+      });
+
+  List<BarChartGroupData> showingGroups6() =>
+      List.generate(5, (i) {
+        switch (i) {
+          case 0:
+            return makeGroupData(0, countsur1, isTouched: i == touchedIndex);
+          case 1:
+            return makeGroupData(1, countsur2, isTouched: i == touchedIndex);
+          case 2:
+            return makeGroupData(2, countsur3, isTouched: i == touchedIndex);
+          case 3:
+            return makeGroupData(3, countsur4, isTouched: i == touchedIndex);
+          case 4:
+            return makeGroupData(4, countsur5, isTouched: i == touchedIndex);
+          default:
+            return null;
+        }
+      });
+
+  List<BarChartGroupData> showingGroups7() =>
+      List.generate(5, (i) {
+        switch (i) {
+          case 0:
+            return makeGroupData(0, countangry1, isTouched: i == touchedIndex);
+          case 1:
+            return makeGroupData(1, countangry2, isTouched: i == touchedIndex);
+          case 2:
+            return makeGroupData(2, countangry3, isTouched: i == touchedIndex);
+          case 3:
+            return makeGroupData(3, countangry4, isTouched: i == touchedIndex);
+          case 4:
+            return makeGroupData(4, countangry5, isTouched: i == touchedIndex);
+          default:
+            return null;
+        }
+      });
+
+  BarChartData mainBarData1() {
     return BarChartData(
       barTouchData: BarTouchData(
         touchTooltipData: BarTouchTooltipData(
             tooltipBgColor: Colors.blueGrey,
             getTooltipItem: (group, groupIndex, rod, rodIndex) {
-              String emotionShow;
-              String emocolor;
+              String weekDay;
               switch (group.x.toInt()) {
                 case 0:
-                  emotionShow = 'Love';
+                  weekDay = 'Accepted';
                   break;
                 case 1:
-                  emotionShow = 'Fear';
+                  weekDay = 'Gentle';
                   break;
                 case 2:
-                  emotionShow = 'Sad';
+                  weekDay = 'Affectionate';
                   break;
                 case 3:
-                  emotionShow = 'Disgust';
+                  weekDay = 'Passionate';
                   break;
                 case 4:
-                  emotionShow = 'Happy';
+                  weekDay = 'Trusted';
                   break;
                 case 5:
-                  emotionShow = 'Surprise';
+                  weekDay = 'Contentment';
                   break;
-                case 6:
-                  emotionShow = 'Angry';
                   break;
               }
               return BarTooltipItem(
-              emotionShow + '\n' + (rod.y - 1).toString(), TextStyle(color: Colors.yellow[500]));
-                }),
+                  weekDay + '\n' + (rod.y - 1).toString(),
+                  TextStyle(color: Colors.yellow));
+            }),
         touchCallback: (barTouchResponse) {
           setState(() {
             if (barTouchResponse.spot != null &&
@@ -1693,24 +2570,23 @@ class MilestonepageState extends State {
         bottomTitles: SideTitles(
           showTitles: true,
           getTextStyles: (value) =>
-          const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+          const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
           margin: 16,
           getTitles: (double value) {
             switch (value.toInt()) {
               case 0:
-                return 'L';
-              case 1:
-                return 'F';
-              case 2:
-                return 'S';
-              case 3:
-                return 'D';
-              case 4:
-                return 'H';
-              case 5:
-                return 'Sur';
-              case 6:
                 return 'A';
+              case 1:
+                return 'G';
+              case 2:
+                return 'A';
+              case 3:
+                return 'P';
+              case 4:
+                return 'T';
+              case 5:
+                return 'C';
               default:
                 return '';
             }
@@ -1723,39 +2599,70 @@ class MilestonepageState extends State {
       borderData: FlBorderData(
         show: false,
       ),
-      barGroups: showingGroups(),
+      barGroups: showingGroups1(),
     );
   }
 
-  BarChartData randomData() {
+  BarChartData mainBarData2() {
     return BarChartData(
       barTouchData: BarTouchData(
-        enabled: false,
+        touchTooltipData: BarTouchTooltipData(
+            tooltipBgColor: Colors.blueGrey,
+            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+              String weekDay;
+              switch (group.x.toInt()) {
+                case 0:
+                  weekDay = 'Embarrassed';
+                  break;
+                case 1:
+                  weekDay = 'Vulnerable';
+                  break;
+                case 2:
+                  weekDay = 'Rejected';
+                  break;
+                case 3:
+                  weekDay = 'Insecure';
+                  break;
+                case 4:
+                  weekDay = 'Worried';
+                  break;
+              }
+              return BarTooltipItem(
+                  weekDay + '\n' + (rod.y - 1).toString(),
+                  TextStyle(color: Colors.yellow));
+            }),
+        touchCallback: (barTouchResponse) {
+          setState(() {
+            if (barTouchResponse.spot != null &&
+                barTouchResponse.touchInput is! FlPanEnd &&
+                barTouchResponse.touchInput is! FlLongPressEnd) {
+              touchedIndex = barTouchResponse.spot.touchedBarGroupIndex;
+            } else {
+              touchedIndex = -1;
+            }
+          });
+        },
       ),
       titlesData: FlTitlesData(
         show: true,
         bottomTitles: SideTitles(
           showTitles: true,
           getTextStyles: (value) =>
-          const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+          const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
           margin: 16,
           getTitles: (double value) {
-
             switch (value.toInt()) {
               case 0:
-                return 'A';
+                return 'E';
               case 1:
-                return 'D';
+                return 'V';
               case 2:
-                return 'F';
+                return 'R';
               case 3:
-                return 'H';
+                return 'I';
               case 4:
-                return 'L';
-              case 5:
-                return 'S';
-              case 6:
-                return 'Sur';
+                return 'W';
               default:
                 return '';
             }
@@ -1768,37 +2675,413 @@ class MilestonepageState extends State {
       borderData: FlBorderData(
         show: false,
       ),
-      barGroups: List.generate(7, (i) {
-        switch (i) {
-          case 0:
-            return makeGroupData(0,countLove,barColor: Colors.deepPurple[500]);
-          case 1:
-            return makeGroupData(1,countFear,barColor: Colors.indigo[500]);
-          case 2:
-            return makeGroupData(2,countSad,barColor: Colors.blue[500]);
-          case 3:
-            return makeGroupData(3,countDisgust,barColor: Colors.green[500]);
-          case 4:
-            return makeGroupData(4,countHappy,barColor: Colors.yellow[500]);
-          case 5:
-            return makeGroupData(5,countSurprise,barColor: Colors.orange[500]);
-          case 6:
-            return makeGroupData(6,countAnger,barColor: Colors.red[500]);
-          default:
-            return null;
-        }
-      }),
-
+      barGroups: showingGroups2(),
     );
   }
-  // makeGroupData(3, Random().nextInt(15).toDouble() + 6,
-  // barColor: widget.availableColors[Random().nextInt(widget.availableColors.length)])
-  Future<dynamic> refreshState() async {
-    setState(() {});
-    await Future<dynamic>.delayed(animDuration + const Duration(milliseconds: 50));
-    if (isPlaying) {
-      refreshState();
-    }
-  }
-}
 
+  BarChartData mainBarData3() {
+    return BarChartData(
+      barTouchData: BarTouchData(
+        touchTooltipData: BarTouchTooltipData(
+            tooltipBgColor: Colors.blueGrey,
+            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+              String weekDay;
+              switch (group.x.toInt()) {
+                case 0:
+                  weekDay = 'Inadequate';
+                  break;
+                case 1:
+                  weekDay = 'Uninterested';
+                  break;
+                case 2:
+                  weekDay = 'Lonely';
+                  break;
+                case 3:
+                  weekDay = 'Guilty';
+                  break;
+                case 4:
+                  weekDay = 'Hurt';
+                  break;
+              }
+              return BarTooltipItem(
+                  weekDay + '\n' + (rod.y - 1).toString(),
+                  TextStyle(color: Colors.yellow));
+            }),
+        touchCallback: (barTouchResponse) {
+          setState(() {
+            if (barTouchResponse.spot != null &&
+                barTouchResponse.touchInput is! FlPanEnd &&
+                barTouchResponse.touchInput is! FlLongPressEnd) {
+              touchedIndex = barTouchResponse.spot.touchedBarGroupIndex;
+            } else {
+              touchedIndex = -1;
+            }
+          });
+        },
+      ),
+      titlesData: FlTitlesData(
+        show: true,
+        bottomTitles: SideTitles(
+          showTitles: true,
+          getTextStyles: (value) =>
+          const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+          margin: 16,
+          getTitles: (double value) {
+            switch (value.toInt()) {
+              case 0:
+                return 'I';
+              case 1:
+                return 'U';
+              case 2:
+                return 'L';
+              case 3:
+                return 'G';
+              case 4:
+                return 'H';
+              default:
+                return '';
+            }
+          },
+        ),
+        leftTitles: SideTitles(
+          showTitles: false,
+        ),
+      ),
+      borderData: FlBorderData(
+        show: false,
+      ),
+      barGroups: showingGroups3(),
+    );
+  }
+
+  BarChartData mainBarData4() {
+    return BarChartData(
+      barTouchData: BarTouchData(
+        touchTooltipData: BarTouchTooltipData(
+            tooltipBgColor: Colors.blueGrey,
+            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+              String weekDay;
+              switch (group.x.toInt()) {
+                case 0:
+                  weekDay = 'Resentful';
+                  break;
+                case 1:
+                  weekDay = 'Shameful';
+                  break;
+                case 2:
+                  weekDay = 'Bitter';
+                  break;
+                case 3:
+                  weekDay = 'Disappointed';
+                  break;
+                case 4:
+                  weekDay = 'Averse';
+                  break;
+                case 5:
+                  weekDay = 'Contempt';
+                  break;
+              }
+              return BarTooltipItem(
+                  weekDay + '\n' + (rod.y - 1).toString(),
+                  TextStyle(color: Colors.yellow));
+            }),
+        touchCallback: (barTouchResponse) {
+          setState(() {
+            if (barTouchResponse.spot != null &&
+                barTouchResponse.touchInput is! FlPanEnd &&
+                barTouchResponse.touchInput is! FlLongPressEnd) {
+              touchedIndex = barTouchResponse.spot.touchedBarGroupIndex;
+            } else {
+              touchedIndex = -1;
+            }
+          });
+        },
+      ),
+      titlesData: FlTitlesData(
+        show: true,
+        bottomTitles: SideTitles(
+          showTitles: true,
+          getTextStyles: (value) =>
+          const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+          margin: 16,
+          getTitles: (double value) {
+            switch (value.toInt()) {
+              case 0:
+                return 'R';
+              case 1:
+                return 'S';
+              case 2:
+                return 'B';
+              case 3:
+                return 'D';
+              case 4:
+                return 'A';
+              case 5:
+                return 'C';
+              default:
+                return '';
+            }
+          },
+        ),
+        leftTitles: SideTitles(
+          showTitles: false,
+        ),
+      ),
+      borderData: FlBorderData(
+        show: false,
+      ),
+      barGroups: showingGroups4(),
+    );
+  }
+
+  BarChartData mainBarData5() {
+    return BarChartData(
+      barTouchData: BarTouchData(
+        touchTooltipData: BarTouchTooltipData(
+            tooltipBgColor: Colors.blueGrey,
+            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+              String weekDay;
+              switch (group.x.toInt()) {
+                case 0:
+                  weekDay = 'Confident';
+                  break;
+                case 1:
+                  weekDay = 'Grateful';
+                  break;
+                case 2:
+                  weekDay = 'Peaceful';
+                  break;
+                case 3:
+                  weekDay = 'Excited';
+                  break;
+                case 4:
+                  weekDay = 'Playful';
+                  break;
+                case 5:
+                  weekDay = 'Relief';
+                  break;
+                case 6:
+                  weekDay = 'Pride';
+                  break;
+                case 7:
+                  weekDay = 'Satisfaction';
+                  break;
+                case 8:
+                  weekDay = 'Triumph';
+                  break;
+              }
+              return BarTooltipItem(
+                  weekDay + '\n' + (rod.y - 1).toString(),
+                  TextStyle(color: Colors.yellow));
+            }),
+        touchCallback: (barTouchResponse) {
+          setState(() {
+            if (barTouchResponse.spot != null &&
+                barTouchResponse.touchInput is! FlPanEnd &&
+                barTouchResponse.touchInput is! FlLongPressEnd) {
+              touchedIndex = barTouchResponse.spot.touchedBarGroupIndex;
+            } else {
+              touchedIndex = -1;
+            }
+          });
+        },
+      ),
+      titlesData: FlTitlesData(
+        show: true,
+        bottomTitles: SideTitles(
+          showTitles: true,
+          getTextStyles: (value) =>
+          const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+          margin: 16,
+          getTitles: (double value) {
+            switch (value.toInt()) {
+              case 0:
+                return 'C';
+              case 1:
+                return 'G';
+              case 2:
+                return 'P';
+              case 3:
+                return 'E';
+              case 4:
+                return 'P';
+              case 5:
+                return 'R';
+              case 6:
+                return 'P';
+              case 7:
+                return 'S';
+              case 8:
+                return 'T';
+              default:
+                return '';
+            }
+          },
+        ),
+        leftTitles: SideTitles(
+          showTitles: false,
+        ),
+      ),
+      borderData: FlBorderData(
+        show: false,
+      ),
+      barGroups: showingGroups5(),
+    );
+  }
+
+  BarChartData mainBarData6() {
+    return BarChartData(
+      barTouchData: BarTouchData(
+        touchTooltipData: BarTouchTooltipData(
+            tooltipBgColor: Colors.blueGrey,
+            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+              String weekDay;
+              switch (group.x.toInt()) {
+                case 0:
+                  weekDay = 'Startled';
+                  break;
+                case 1:
+                  weekDay = 'Overwhelmed';
+                  break;
+                case 2:
+                  weekDay = 'Confused';
+                  break;
+                case 3:
+                  weekDay = 'Amazed';
+                  break;
+                case 4:
+                  weekDay = 'Shocked';
+                  break;
+              }
+              return BarTooltipItem(
+                  weekDay + '\n' + (rod.y - 1).toString(),
+                  TextStyle(color: Colors.yellow));
+            }),
+        touchCallback: (barTouchResponse) {
+          setState(() {
+            if (barTouchResponse.spot != null &&
+                barTouchResponse.touchInput is! FlPanEnd &&
+                barTouchResponse.touchInput is! FlLongPressEnd) {
+              touchedIndex = barTouchResponse.spot.touchedBarGroupIndex;
+            } else {
+              touchedIndex = -1;
+            }
+          });
+        },
+      ),
+      titlesData: FlTitlesData(
+        show: true,
+        bottomTitles: SideTitles(
+          showTitles: true,
+          getTextStyles: (value) =>
+          const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+          margin: 16,
+          getTitles: (double value) {
+            switch (value.toInt()) {
+              case 0:
+                return 'S';
+              case 1:
+                return 'O';
+              case 2:
+                return 'C';
+              case 3:
+                return 'A';
+              case 4:
+                return 'S';
+              default:
+                return '';
+            }
+          },
+        ),
+        leftTitles: SideTitles(
+          showTitles: false,
+        ),
+      ),
+      borderData: FlBorderData(
+        show: false,
+      ),
+      barGroups: showingGroups6(),
+    );
+  }
+
+  BarChartData mainBarData7() {
+    return BarChartData(
+      barTouchData: BarTouchData(
+        touchTooltipData: BarTouchTooltipData(
+            tooltipBgColor: Colors.blueGrey,
+            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+              String weekDay;
+              switch (group.x.toInt()) {
+                case 0:
+                  weekDay = 'Annoyed';
+                  break;
+                case 1:
+                  weekDay = 'Frustrated';
+                  break;
+                case 2:
+                  weekDay = 'Offended';
+                  break;
+                case 3:
+                  weekDay = 'Mad';
+                  break;
+                case 4:
+                  weekDay = 'Threatened';
+                  break;
+              }
+              return BarTooltipItem(
+                  weekDay + '\n' + (rod.y - 1).toString(),
+                  TextStyle(color: Colors.yellow));
+            }),
+        touchCallback: (barTouchResponse) {
+          setState(() {
+            if (barTouchResponse.spot != null &&
+                barTouchResponse.touchInput is! FlPanEnd &&
+                barTouchResponse.touchInput is! FlLongPressEnd) {
+              touchedIndex = barTouchResponse.spot.touchedBarGroupIndex;
+            } else {
+              touchedIndex = -1;
+            }
+          });
+        },
+      ),
+      titlesData: FlTitlesData(
+        show: true,
+        bottomTitles: SideTitles(
+          showTitles: true,
+          getTextStyles: (value) =>
+          const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+          margin: 16,
+          getTitles: (double value) {
+            switch (value.toInt()) {
+              case 0:
+                return 'A';
+              case 1:
+                return 'F';
+              case 2:
+                return 'O';
+              case 3:
+                return 'M';
+              case 4:
+                return 'T';
+              default:
+                return '';
+            }
+          },
+        ),
+        leftTitles: SideTitles(
+          showTitles: false,
+        ),
+      ),
+      borderData: FlBorderData(
+        show: false,
+      ),
+      barGroups: showingGroups7(),
+    );
+  }
+
+}
