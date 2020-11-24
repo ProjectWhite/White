@@ -385,6 +385,7 @@ class _chatbotState extends State<chatbot> {
                 IconButton(
                     icon: Image.asset('assets/crying_face.gif'),
                     iconSize: 40,
+                    tooltip: 'Sad',
                     onPressed: (){
                       showModalBottomSheet(
                           context: context,
@@ -519,6 +520,7 @@ class _chatbotState extends State<chatbot> {
                 IconButton(
                     icon: Image.asset('assets/hushed_face.gif'),
                     iconSize: 40,
+                    tooltip: 'Surprise',
                     onPressed: (){
                       showModalBottomSheet(
                           context: context,
@@ -648,6 +650,7 @@ class _chatbotState extends State<chatbot> {
                 IconButton(
                     icon: Image.asset('assets/smiling_face_with_heart_eyes.gif'),
                     iconSize: 40,
+                    tooltip: 'Love',
                     onPressed: (){
                         showModalBottomSheet(
                             context: context,
@@ -806,6 +809,7 @@ class _chatbotState extends State<chatbot> {
                 IconButton(
                     icon: Image.asset('assets/face_with_steam_from_nose.gif'),
                     iconSize: 40,
+                    tooltip: 'Anger',
                     onPressed: (){
                       showModalBottomSheet(
                             context: context,
@@ -940,6 +944,7 @@ class _chatbotState extends State<chatbot> {
                 IconButton(
                     icon: Image.asset('assets/face_vomiting.gif'),
                     iconSize: 40,
+                    tooltip: 'Disgust',
                     onPressed: (){
                       showModalBottomSheet(
                             context: context,
@@ -1098,6 +1103,7 @@ class _chatbotState extends State<chatbot> {
                 IconButton(
                     icon: Image.asset('assets/face_screaming_in_fear.gif'),
                     iconSize: 40,
+                    tooltip: 'Fear',
                     onPressed: (){
                         showModalBottomSheet(
                             context: context,
