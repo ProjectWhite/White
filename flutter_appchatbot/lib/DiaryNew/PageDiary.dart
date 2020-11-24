@@ -3,9 +3,8 @@ import 'dart:io';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/DiaryNew/Defaultdiary.dart';
+import 'package:flutter_appchatbot/DiaryNew/CustomDialog.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Pages.dart';
-import 'package:flutter_appchatbot/PageDiary/defaultpage.dart';
 import 'package:flutter_appchatbot/class/Emotion.dart';
 import 'package:flutter_appchatbot/class/Emotion/Happy.dart';
 import 'package:flutter_appchatbot/class/Facade.dart';
@@ -19,8 +18,6 @@ import '../main.dart';
 import 'recipe_model.dart';
 import 'recipe_view.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-int l = 0;
 
 class Diary extends StatefulWidget {
   @override
@@ -36,6 +33,7 @@ class _HomeState extends State<Diary> {
   final emo = TextEditingController();
   final type = TextEditingController();
   List<Map> messsages = List();
+  int _check = 0;
 
   Future<List> _readdiary() async {
     final response = await http.post("$uml/my_store/readdiary.php", body: {
@@ -47,16 +45,13 @@ class _HomeState extends State<Diary> {
 
     dataus = json.decode(response.body);
 
-    print('read diary');
-
     print(dataus);
+    print(dataus[0]['milestoneID']);
 
     for(j=0;;j++){
       try{
         //ignore exception
-        if(dataus[j]["diary"]==null){
-          break;
-        }
+        if(dataus[j]["diary"]==null)break;
       }catch (Exception){
         print(Exception);
         break;
@@ -73,47 +68,82 @@ class _HomeState extends State<Diary> {
             {"data": 1, "message": msg.text, "date": date.text,"emo": emo.text,"type": type.text});
       });
     }
+    _check = 1;
     return dataus;
   }
 
   @override
-  Widget build(BuildContext context){
-    if(k==1){
+  Widget build(BuildContext context) {
+    if (k == 1) {
       _readdiary();
-      k=2;
+      k = 2;
     }
-    int _currentIndex=0;
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-              colors: [HexColor('#FFFFFF'), HexColor('#FFFFFF')]
+    int _currentIndex = 0;
+
+    if (_check == 0) {
+      return Container(
+        color: Colors.white,
+        child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+
+                SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: Icon(
+                    Icons.menu_book_rounded,
+                    size: 50,
+                    color: Colors.grey,
+                  ),
+                ),
+                Text(
+                  'Write diary now',
+                  style: TextStyle(color: Colors.grey),
+                )
+              ],
+            )),
+      );
+    }
+    else {
+      return Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                colors: [HexColor('#FFFFFF'), HexColor('#FFFFFF')]
+            ),
+          ),
+          child: Column(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(top: 35, bottom: 10),
+                child: Text("$name ${DateFormat("Hm").format(DateTime.now())}",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontFamily: 'RobotoCondensed',
+                    fontWeight: FontWeight.bold,
+                  ),),
+              ),
+              Flexible(
+                  child: ListView.builder(
+                      reverse: true,
+                      itemCount: messsages.length,
+                      itemBuilder: (context, index) =>
+                          chat(
+                            messsages[index]["message"].toString(),
+                            messsages[index]["date"].toString(),
+                            messsages[index]["emo"].toString(),
+                            messsages[index]["type"].toString(),
+                          ))),
+            ],
           ),
         ),
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(top: 35, bottom: 10),
-              child: Text("$name ${DateFormat("Hm").format(DateTime.now())}", style: TextStyle(
-                fontSize: 20, color: Colors.black,fontFamily: 'RobotoCondensed',fontWeight: FontWeight.bold,
-              ),),
-            ),
-            Flexible(
-                child: ListView.builder(
-                    reverse: true,
-                    itemCount: messsages.length,
-                    itemBuilder: (context, index) => chat(
-                        messsages[index]["message"].toString(),
-                        messsages[index]["date"].toString(),
-                        messsages[index]["emo"].toString(),
-                      messsages[index]["type"].toString(),
-                        ))),
-          ],
-        ),
-      ),
-    );
+      );
+    }
   }
   Widget chat(String message,String date,String emotionxx,String type) {
     // emotion x = EnumToString.fromString(emotion.values,emotionxx);
@@ -123,10 +153,9 @@ class _HomeState extends State<Diary> {
     emotion emotionfromstring(String value){
       return emotion.values.firstWhere((e) => e.toString().split('.')[1]==value);
     }
-
     Facade obj = new Facade();
     // print(x);
-    var emoji = 'assets/smiling_face_with_heart_eyes.gif';
+    // var emoji = 'assets/smiling_face_with_heart_eyes.gif';
     // if(emotion == 'emotion.love'){
     //   emoji = 'assets/smiling_face_with_heart_eyes.gif';
     // }else if(emotion == 'emotion.happy'){
@@ -137,6 +166,7 @@ class _HomeState extends State<Diary> {
     //   emoji = 'assets/face_with_steam_from_nose.gif';
     // }
 
+
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -144,7 +174,7 @@ class _HomeState extends State<Diary> {
           children: <Widget>[
             InkWell(
               child: Container(
-                  height: 100,
+                  height: 150,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       gradient: LinearGradient(
@@ -161,72 +191,81 @@ class _HomeState extends State<Diary> {
                   )
               ),
               onTap: (){
-                print('ssss');
+                showDialog(context: context,builder: (context) => CustomDialog(
+                  title: emotionxx,
+                  // ignore: missing_return
+                  description: message,
+                  buttonText: 'cAancel',
+
+                ),
+                );
               },
             ),
-           Positioned.fill(
-             child:  Row(
-               children: <Widget>[
-                 Expanded(
-                   child: new IconButton(
-                     icon: new Icon(Icons.circle),
-                     color: HexColor(obj.find(emotionfromstring(emotionxx),tonefromstring(type))),
-                     onPressed: () {
-                     },
-                   ),
-                   // child: IconButton(
-                   //   icon: Image.asset(emoji),
-                   //   iconSize: 20,
-                   // ),
-                   flex: 1,
-                 ),
-                 SizedBox(width: 10,),
-                 Expanded(
-                   flex: 4,
-                   child: Column(
-                     mainAxisSize: MainAxisSize.min,
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     children: <Widget>[
-                       Text(
-                         message,
-                         style: TextStyle(
-                           color: Colors.white,
-                           fontWeight: FontWeight.w500,
-                         ),
-                       )
-                     ],
-                   ),
-                 ),
-                 Expanded(
-                   flex: 2,
-                   child: Column(
-                     mainAxisSize: MainAxisSize.min,
-                     children: <Widget>[
-                       Row(
-                         children: [
-                           Icon(Icons.date_range_outlined,
-                           color: Colors.black,),
-                           SizedBox(width: 10,),
-                           Text('Date',
-                             style: TextStyle(
-                               color: Colors.white,
-                               fontWeight: FontWeight.w500,
-                             ),),
-                         ],
-                       ),
-                       SizedBox(height: 10,),
-                       Text(date,
-                         style: TextStyle(
-                           color: Colors.white,
-                           fontWeight: FontWeight.w500,
-                         ),
-                       )
-                     ],
-                   ),
-                 ),
-               ],
-             ),
-           )
+            Positioned.fill(
+              child:  Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new IconButton(
+                      icon: new Icon(Icons.circle),
+                      color: HexColor(obj.find(emotionfromstring(emotionxx),tonefromstring(type))),
+                      onPressed: () {
+                      },
+                    ),
+
+                    // child: IconButton(
+                    //   icon: Image.asset(emoji),
+                    //   iconSize: 20,
+                    // ),
+                    flex: 1,
+                  ),
+                  SizedBox(width: 5,),
+                  Expanded(
+                    flex: 4,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          message,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 5,),
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Row(
+                          children: [
+                            Icon(Icons.date_range_outlined,
+                              color: Colors.black,),
+                            SizedBox(width: 10,),
+                            Text('Date',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),),
+                          ],
+                        ),
+                        SizedBox(height: 10,),
+                        Text(date,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
