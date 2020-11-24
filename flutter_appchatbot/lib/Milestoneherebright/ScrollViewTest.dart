@@ -28,7 +28,6 @@ class Svt extends StatefulWidget {
 class MilestonepageState extends State {
   final Color barBackgroundColor = const Color(0xff72d8bf);
   final Duration animDuration = const Duration(milliseconds: 250);
-
   Facade facade = new Facade();
 
   var dataus;
@@ -162,11 +161,13 @@ class MilestonepageState extends State {
       allSpots.add(FlSpot(count,x));
       count ++;
   }
+
+  Future<List<dynamic>> _future;
   @override
   void initState() {
     super.initState();
     isShowingMainData = true;
-   final _future = _readcountdiary();
+   _future = _readcountdiary();
   }
 
 
@@ -253,7 +254,7 @@ class MilestonepageState extends State {
       j++;
     }
     return FutureBuilder(
-        future: _readcountdiary(), // the function to get your data from firebase or firestore
+        future: _future, // the function to get your data from firebase or firestore
         builder : (BuildContext context, AsyncSnapshot snap){
           if(snap.data == null){
             return SpinKitRotatingCircle(color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
