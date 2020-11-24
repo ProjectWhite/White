@@ -22,7 +22,7 @@ abstract class Emotion implements EmotionMet{
 
   Emotion.empty(){
     _type = emotion.fine;
-    _colors = '#FFFFFFF';
+    _colors = '#FEF9EF';
     _category = tone.fine;
   }
   String get mothercolors => _mothercolors;

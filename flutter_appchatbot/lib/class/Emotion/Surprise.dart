@@ -5,29 +5,24 @@ class Surprise extends Emotion{
   Surprise(tone category) : super.empty(){
     super.category = category;
     this.type = emotion.surprise;
+    this.mothercolors = '#FF4800';
     if (category == tone.startled) {
-      this.colors = '#1b4332';
+      this.colors = '#873312';
     }
     else if (category == tone.overwhelmed) {
-      this.colors = '#2d6a4f';
+      this.colors = '#FC5A19';
     }
     else if (category == tone.confused) {
-      this.colors = '#40916c';
+      this.colors = '#A6593A';
     }
     else if (category == tone.amazed) {
-      this.colors = '#52b788';
+      this.colors = '#F76D36';
     }
     else if (category == tone.shocked) {
-      this.colors = '#74c69d';
+      this.colors = '#DB480D';
     }
   }
 
-  @override
-  String CalculateColor() {
-
-    // TODO: implement CalculateColor
-    throw UnimplementedError();
-  }
 
   @override
   EmotionDetail() {
@@ -36,8 +31,16 @@ class Surprise extends Emotion{
   }
 
   @override
-  EstimateEmotion() {
-    // TODO: implement EstimateEmotion
+  Emotioncolor() {
+    // TODO: implement Emotioncolor
+    return '$mothercolors';
+    throw UnimplementedError();
+  }
+
+  @override
+  Typecolor() {
+    // TODO: implement Typecolor
+    return '$colors';
     throw UnimplementedError();
   }
 

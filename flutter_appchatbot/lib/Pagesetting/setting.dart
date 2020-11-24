@@ -84,7 +84,7 @@ class _SettingPageState extends State<SettingPage> {
                   'Settings',
                   style: TextStyle(
                     fontSize: 30,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w700,
                     fontFamily: 'RobotoCondensed',
                   ),
                 ),
@@ -98,7 +98,7 @@ class _SettingPageState extends State<SettingPage> {
             buildListTile('Account & Password', Icons.vpn_key, AccountPasswordPage()),
             buildListTile('Theme', Icons.color_lens, ThemePage()),
             SwitchListTile(
-              title: Text('Notification', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,fontFamily: 'RobotoCondensed',),),
+              title: Text('Notification', style: TextStyle(fontSize: 20,fontFamily: 'RobotoCondensed',),),
               secondary: Icon(Icons.notifications, color: Colors.blue[300]),
               value: _notification,
               onChanged: (value){
@@ -157,7 +157,6 @@ class _SettingPageState extends State<SettingPage> {
               labelText,
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
                   fontFamily: 'RobotoCondensed',
               ),
             ),

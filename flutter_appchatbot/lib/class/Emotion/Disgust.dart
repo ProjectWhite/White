@@ -4,31 +4,28 @@ class Disgust extends Emotion{
 
   Disgust(tone category) : super.empty(){
     super.category = category;
-    this.mothercolors = 'gggg';
+    this.mothercolors = '#007A00';
     this.type = emotion.disgust;
     if (category == tone.resentful) {
-      this.colors = '#1b4332';
+      this.colors = '#3FA63F';
     }
     else if (category == tone.shameful) {
-      this.colors = '#2d6a4f';
+      this.colors = '#16B516';
     }
     else if (category == tone.bitter) {
-      this.colors = '#40916c';
+      this.colors = '#35B835';
     }
     else if (category == tone.disappointed) {
-      this.colors = '#52b788';
+      this.colors = '#23A123';
     }
     else if (category == tone.averse) {
-      this.colors = '#74c69d';
+      this.colors = '#306E30';
+    }
+    else if (category == tone.contempt) {
+      this.colors = '#034503';
     }
   }
 
-  @override
-  String CalculateColor() {
-
-    // TODO: implement CalculateColor
-    throw UnimplementedError();
-  }
 
   @override
   EmotionDetail() {
@@ -37,8 +34,16 @@ class Disgust extends Emotion{
   }
 
   @override
-  EstimateEmotion() {
-    // TODO: implement EstimateEmotion
+  Emotioncolor() {
+    // TODO: implement Emotioncolor
+    return '$mothercolors';
+    throw UnimplementedError();
+  }
+
+  @override
+  Typecolor() {
+    // TODO: implement Typecolor
+    return '$colors';
     throw UnimplementedError();
   }
 

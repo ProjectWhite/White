@@ -5,30 +5,28 @@ class Love extends Emotion{
   Love(tone category) : super.empty(){
     super.category = category;
     this.type = emotion.love;
+    this.mothercolors = '#FF5A91';
     if (category == tone.accepted) {
-      this.colors = '#1b4332';
+      this.colors = '#F0C9D6';
     }
     else if (category == tone.gentle) {
-      this.colors = '#2d6a4f';
+      this.colors = '#CF7895';
     }
     else if (category == tone.affectionate) {
-      this.colors = '#40916c';
+      this.colors = '#B5003C';
     }
     else if (category == tone.passionate) {
-      this.colors = '#52b788';
+      this.colors = '#E0A6BA';
     }
     else if (category == tone.trusted) {
-      this.colors = '#74c69d';
+      this.colors = '#E05885';
+    }
+    else if (category == tone.contentment) {
+      this.colors = '#F74882';
     }
   }
 
 
-  @override
-  String CalculateColor() {
-
-    // TODO: implement CalculateColor
-    throw UnimplementedError();
-  }
 
   @override
   EmotionDetail() {
@@ -37,8 +35,16 @@ class Love extends Emotion{
   }
 
   @override
-  EstimateEmotion() {
-    // TODO: implement EstimateEmotion
+  Emotioncolor() {
+    // TODO: implement Emotioncolor
+    return '$mothercolors';
+    throw UnimplementedError();
+  }
+
+  @override
+  Typecolor() {
+    // TODO: implement Typecolor
+    return '$colors';
     throw UnimplementedError();
   }
 

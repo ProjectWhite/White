@@ -158,11 +158,15 @@ class _chatbotState extends State<chatbot> {
                               children: [
                                 Dismissible(
                                   key: Key("0"),
-                                  child: ListTile(
-                                      title: Text("Confident")
-                                  ),
-                                  background: Container(
-                                    color: Colors.yellow,
+                                  child: Ink(
+                                    color: HexColor(obj.start(4,tone.confident)),
+                                    child: ListTile(
+                                        title: Text("Confident",
+                                        style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -178,11 +182,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("1"),
-                                  child: ListTile(
-                                      title: Text("Grateful")
-                                  ),
-                                  background: Container(
-                                    color: Colors.yellow,
+                                  child: Ink(
+                                    color: HexColor(obj.start(4,tone.grateful)),
+                                    child: ListTile(
+                                        title: Text("Grateful",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -198,11 +206,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("2"),
-                                  child: ListTile(
-                                      title: Text("Peaceful")
-                                  ),
-                                  background: Container(
-                                    color: Colors.yellow,
+                                  child: Ink(
+                                    color: HexColor(obj.start(4,tone.peaceful)),
+                                    child: ListTile(
+                                        title: Text("Peaceful",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -218,11 +230,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("3"),
-                                  child: ListTile(
-                                      title: Text("Excited")
-                                  ),
-                                  background: Container(
-                                    color: Colors.yellow,
+                                  child: Ink(
+                                    color: HexColor(obj.start(4,tone.excited)),
+                                    child: ListTile(
+                                        title: Text("Excited",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -238,11 +254,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("4"),
-                                  child: ListTile(
-                                      title: Text("Playful"/*,textAlign: TextAlign.center,*/)
-                                  ),
-                                  background: Container(
-                                    color: Colors.yellow,
+                                  child: Ink(
+                                    color: HexColor(obj.start(4,tone.playful)),
+                                    child: ListTile(
+                                        title: Text("Playful",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -1249,8 +1269,6 @@ class _chatbotState extends State<chatbot> {
 
     );
   }
-  void ChangeEmo(String x){
-  }
 
   Widget chat(String message, int data) {
     return Container(
@@ -1325,7 +1343,7 @@ class _chatbotState extends State<chatbot> {
 //             constraints: BoxConstraints(
 //               maxWidth: MediaQuery.of(context).size.width * 0.7,
 //             ),
-//             child: Text(
+//             child: Text(ป
 //               message,
 //               style: TextStyle(
 //                   color: Colors.white, fontWeight: FontWeight.bold),

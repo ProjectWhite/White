@@ -4,31 +4,26 @@ class Sad extends Emotion{
 
   Sad(tone category) : super.empty(){
     super.category = category;
+    this.mothercolors = '#3F37C9';
     this.type = emotion.sad;
     if (category == tone.inadequate) {
-      this.colors = '#1b4332';
+      this.colors = '#4F48E0';
     }
     else if (category == tone.uninterested) {
-      this.colors = '#2d6a4f';
+      this.colors = '#5F5C96';
     }
     else if (category == tone.lonely) {
-      this.colors = '#40916c';
+      this.colors = '#565399';
     }
     else if (category == tone.guilty) {
-      this.colors = '#52b788';
+      this.colors = '#312E69';
     }
     else if (category == tone.hurt) {
-      this.colors = '#74c69d';
+      this.colors = '#5D57D4';
     }
   }
 
 
-  @override
-  String CalculateColor() {
-
-    // TODO: implement CalculateColor
-    throw UnimplementedError();
-  }
 
   @override
   EmotionDetail() {
@@ -37,8 +32,16 @@ class Sad extends Emotion{
   }
 
   @override
-  EstimateEmotion() {
-    // TODO: implement EstimateEmotion
+  Emotioncolor() {
+    // TODO: implement Emotioncolor
+    return '$mothercolors';
+    throw UnimplementedError();
+  }
+
+  @override
+  Typecolor() {
+    // TODO: implement Typecolor
+    return '$colors';
     throw UnimplementedError();
   }
 

@@ -3,43 +3,37 @@ class Happy extends Emotion{
   tone category;
   Happy(tone category) : super.empty(){
     super.category = category;
+    this.mothercolors = '#FFB600';
     this.type = emotion.happy;
     if (category == tone.confident) {
-      this.colors = '#1b4332';
+      this.colors = '#E3AC22';
     }
     else if (category == tone.grateful) {
-      this.colors = '#2d6a4f';
+      this.colors = '#B88A16';
     }
     else if (category == tone.peaceful) {
-      this.colors = '#40916c';
+      this.colors = '#D9B762';
     }
     else if (category == tone.excited) {
-      this.colors = '#52b788';
+      this.colors = '#DBA00B';
     }
     else if (category == tone.playful) {
-      this.colors = '#74c69d';
+      this.colors = '#967111';
     }
     else if (category == tone.relief) {
-      this.colors = '#74c69d';
+      this.colors = '#E0B546';
     }
     else if (category == tone.pride) {
-      this.colors = '#74c69d';
+      this.colors = '#8C7438';
     }
     else if (category == tone.satisfaction) {
-      this.colors = '#74c69d';
+      this.colors = '#FAB70C';
     }
     else if (category == tone.triumph) {
-      this.colors = '#74c69d';
+      this.colors = '#FCC53A';
     }
   }
 
-
-  @override
-  String CalculateColor() {
-
-    // TODO: implement CalculateColor
-    throw UnimplementedError();
-  }
 
   @override
   EmotionDetail() {
@@ -48,8 +42,16 @@ class Happy extends Emotion{
   }
 
   @override
-  EstimateEmotion() {
-    // TODO: implement EstimateEmotion
+  Emotioncolor() {
+    // TODO: implement Emotioncolor
+    return '$mothercolors';
+    throw UnimplementedError();
+  }
+
+  @override
+  Typecolor() {
+    // TODO: implement Typecolor
+    return '$colors';
     throw UnimplementedError();
   }
 

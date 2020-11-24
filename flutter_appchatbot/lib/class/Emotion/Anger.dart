@@ -8,29 +8,23 @@ class Anger extends Emotion{
     this.type = emotion.anger;
     this.mothercolors = '#B40000';
     if (category == tone.annoyed) {
-      this.colors = '#1b4332';
+      this.colors = '#DB4B4B';
     }
     else if (category == tone.frustrated) {
-      this.colors = '#2d6a4f';
+      this.colors = '#994242';
     }
     else if (category == tone.offended) {
-      this.colors = '#40916c';
+      this.colors = '#D42C2C';
     }
     else if (category == tone.mad) {
-      this.colors = '#52b788';
+      this.colors = '#D11313';
     }
     else if (category == tone.threatened) {
-      this.colors = '#74c69d';
+      this.colors = '#A10202';
     }
   }
 
 
-  @override
-  String CalculateColor() {
-
-    // TODO: implement CalculateColor
-    throw UnimplementedError();
-  }
 
   @override
   EmotionDetail() {
@@ -39,8 +33,16 @@ class Anger extends Emotion{
   }
 
   @override
-  EstimateEmotion() {
-    // TODO: implement EstimateEmotion
+  Emotioncolor() {
+    // TODO: implement Emotioncolor
+    return '$mothercolors';
+    throw UnimplementedError();
+  }
+
+  @override
+  Typecolor() {
+    // TODO: implement Typecolor
+    return '$colors';
     throw UnimplementedError();
   }
 

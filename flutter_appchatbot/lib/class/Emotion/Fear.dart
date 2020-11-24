@@ -5,30 +5,25 @@ class Fear extends Emotion{
   Fear(tone category) : super.empty(){
     super.category = category;
     this.type = emotion.fear;
+    this.mothercolors = '#7209B7';
     if (category == tone.embarrassed) {
-      this.colors = '#1b4332';
+      this.colors = '#4B186E';
     }
     else if (category == tone.vulnerable) {
-      this.colors = '#2d6a4f';
+      this.colors = '#9C48D4';
     }
     else if (category == tone.rejected) {
-      this.colors = '#40916c';
+      this.colors = '#5A2280';
     }
     else if (category == tone.insecure) {
-      this.colors = '#52b788';
+      this.colors = '#9E36E3';
     }
     else if (category == tone.worried) {
-      this.colors = '#74c69d';
+      this.colors = '#A85ADB';
     }
   }
 
 
-  @override
-  String CalculateColor() {
-
-    // TODO: implement CalculateColor
-    throw UnimplementedError();
-  }
 
   @override
   EmotionDetail() {
@@ -37,8 +32,16 @@ class Fear extends Emotion{
   }
 
   @override
-  EstimateEmotion() {
-    // TODO: implement EstimateEmotion
+  Emotioncolor() {
+    // TODO: implement Emotioncolor
+    return '$mothercolors';
+    throw UnimplementedError();
+  }
+
+  @override
+  Typecolor() {
+    // TODO: implement Typecolor
+    return '$colors';
     throw UnimplementedError();
   }
 

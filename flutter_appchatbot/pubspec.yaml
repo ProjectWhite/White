@@ -104,6 +104,22 @@ flutter:
       - asset: fonts/RobotoCondensed-BoldItalic.ttf
       - asset: fonts/RobotoCondensed-Italic.ttf
       - asset: fonts/RobotoCondensed-Light.ttf
+   - family: Rubik
+     fonts:
+       - asset: font/Rubik-Black.ttf
+       - asset: font/Rubik-BlackItalic.ttf
+       - asset: font/Rubik-Bold.ttf
+       - asset: font/Rubik-BoldItalic.ttf
+       - asset: font/Rubik-ExtraBoldItalic.ttf
+       - asset: font/Rubik-ExtraBold.ttf
+       - asset: font/Rubik-Italic.ttf
+       - asset: font/Rubik-Light.ttf
+       - asset: font/Rubik-LightItalic.ttf
+       - asset: font/Rubik-Medium.ttf
+       - asset: font/Rubik-MediumItalic.ttf
+       - asset: font/Rubik-Regular.ttf
+       - asset: font/Rubik-SemiBold.ttf
+       - asset: font/Rubik-SemiBoldItalic.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
