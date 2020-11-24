@@ -61,10 +61,10 @@ class _wellcomeState extends State<wellcome> {
           http.post(url,body:{
             'username' : username,
             'name': name.text,
-
           });
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
           setState(() {
+            name;
           });
         },
         padding: EdgeInsets.all(15.0),

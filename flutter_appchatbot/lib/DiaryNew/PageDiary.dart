@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/DiaryNew/Defaultdiary.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Pages.dart';
+import 'package:flutter_appchatbot/PageDiary/defaultpage.dart';
 import 'package:flutter_appchatbot/class/Emotion.dart';
 import 'package:flutter_appchatbot/class/Emotion/Happy.dart';
 import 'package:flutter_appchatbot/class/Facade.dart';
@@ -17,6 +19,8 @@ import '../main.dart';
 import 'recipe_model.dart';
 import 'recipe_view.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+int l = 0;
 
 class Diary extends StatefulWidget {
   @override
@@ -43,13 +47,16 @@ class _HomeState extends State<Diary> {
 
     dataus = json.decode(response.body);
 
+    print('read diary');
+
     print(dataus);
-    print(dataus[0]['milestoneID']);
 
     for(j=0;;j++){
       try{
         //ignore exception
-        if(dataus[j]["diary"]==null)break;
+        if(dataus[j]["diary"]==null){
+          break;
+        }
       }catch (Exception){
         print(Exception);
         break;
@@ -116,9 +123,10 @@ class _HomeState extends State<Diary> {
     emotion emotionfromstring(String value){
       return emotion.values.firstWhere((e) => e.toString().split('.')[1]==value);
     }
+
     Facade obj = new Facade();
     // print(x);
-    // var emoji = 'assets/smiling_face_with_heart_eyes.gif';
+    var emoji = 'assets/smiling_face_with_heart_eyes.gif';
     // if(emotion == 'emotion.love'){
     //   emoji = 'assets/smiling_face_with_heart_eyes.gif';
     // }else if(emotion == 'emotion.happy'){
@@ -134,29 +142,38 @@ class _HomeState extends State<Diary> {
         padding: const EdgeInsets.all(8.0),
         child: Stack(
           children: <Widget>[
-            Container(
-              height: 150,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                gradient: LinearGradient(
-                  colors: [Colors.grey,Colors.grey],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey[300],
-                    blurRadius: 12,
-                    offset: Offset(0,6),
+            InkWell(
+              child: Container(
+                  height: 100,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      gradient: LinearGradient(
+                          colors: [Colors.grey,Colors.grey],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey[300],
+                          blurRadius: 12,
+                          offset: Offset(0,6),
+                        )
+                      ]
                   )
-                ]
-                )
               ),
+              onTap: (){
+                print('ssss');
+              },
+            ),
            Positioned.fill(
              child:  Row(
                children: <Widget>[
                  Expanded(
-                   child: Icon(Icons.circle,
-                   color: HexColor(obj.find(emotionfromstring(emotionxx),tonefromstring(type))),),
+                   child: new IconButton(
+                     icon: new Icon(Icons.circle),
+                     color: HexColor(obj.find(emotionfromstring(emotionxx),tonefromstring(type))),
+                     onPressed: () {
+                     },
+                   ),
                    // child: IconButton(
                    //   icon: Image.asset(emoji),
                    //   iconSize: 20,

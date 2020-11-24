@@ -142,10 +142,10 @@ class LoginScreen extends StatelessWidget {
                 textColor: Colors.white,
                 fontSize: 16.0
             );
-            Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => wellcome2(),),);
             username = datauser[0]['username'];
             name = datauser[0]['nickname'];
+            Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => wellcome2(),),);
             // setState(() {
             //   username = datauser[0]['username'];
             //   name = datauser[0]['nickname'];
