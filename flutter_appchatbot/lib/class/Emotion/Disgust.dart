@@ -7,16 +7,16 @@ class Disgust extends Emotion{
     this.mothercolors = '#007A00';
     this.type = emotion.disgust;
     if (category == tone.resentful) {
-      this.colors = '#3FA63F';
+      this.colors = '#23A123';
     }
     else if (category == tone.shameful) {
-      this.colors = '#16B516';
+      this.colors = '#3FA63F';
     }
     else if (category == tone.bitter) {
       this.colors = '#35B835';
     }
     else if (category == tone.disappointed) {
-      this.colors = '#23A123';
+      this.colors = '#16B516';
     }
     else if (category == tone.averse) {
       this.colors = '#306E30';

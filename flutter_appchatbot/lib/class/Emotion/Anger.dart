@@ -8,19 +8,19 @@ class Anger extends Emotion{
     this.type = emotion.anger;
     this.mothercolors = '#B40000';
     if (category == tone.annoyed) {
-      this.colors = '#DB4B4B';
+      this.colors = '#994242';
     }
     else if (category == tone.frustrated) {
-      this.colors = '#994242';
+      this.colors = '#DB4B4B';
     }
     else if (category == tone.offended) {
       this.colors = '#D42C2C';
     }
     else if (category == tone.mad) {
-      this.colors = '#D11313';
+      this.colors = '#AB1B1B';
     }
     else if (category == tone.threatened) {
-      this.colors = '#A10202';
+      this.colors = '#9E1919';
     }
   }
 

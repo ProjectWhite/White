@@ -10,19 +10,19 @@ class Love extends Emotion{
       this.colors = '#F0C9D6';
     }
     else if (category == tone.gentle) {
-      this.colors = '#CF7895';
-    }
-    else if (category == tone.affectionate) {
-      this.colors = '#B5003C';
-    }
-    else if (category == tone.passionate) {
       this.colors = '#E0A6BA';
     }
-    else if (category == tone.trusted) {
+    else if (category == tone.affectionate) {
+      this.colors = '#CF7895';
+    }
+    else if (category == tone.passionate) {
       this.colors = '#E05885';
     }
-    else if (category == tone.contentment) {
+    else if (category == tone.trusted) {
       this.colors = '#F74882';
+    }
+    else if (category == tone.contentment) {
+      this.colors = '#B5003C';
     }
   }
 

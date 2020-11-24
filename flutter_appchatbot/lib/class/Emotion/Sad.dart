@@ -7,19 +7,19 @@ class Sad extends Emotion{
     this.mothercolors = '#3F37C9';
     this.type = emotion.sad;
     if (category == tone.inadequate) {
-      this.colors = '#4F48E0';
+      this.colors = '#7771F5';
     }
     else if (category == tone.uninterested) {
-      this.colors = '#5F5C96';
+      this.colors = '#5D57D4';
     }
     else if (category == tone.lonely) {
-      this.colors = '#565399';
+      this.colors = '#4F48E0';
     }
     else if (category == tone.guilty) {
-      this.colors = '#312E69';
+      this.colors = '#554CFC';
     }
     else if (category == tone.hurt) {
-      this.colors = '#5D57D4';
+      this.colors = '#312E69';
     }
   }
 

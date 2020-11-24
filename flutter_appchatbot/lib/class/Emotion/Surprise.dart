@@ -7,19 +7,19 @@ class Surprise extends Emotion{
     this.type = emotion.surprise;
     this.mothercolors = '#FF4800';
     if (category == tone.startled) {
-      this.colors = '#873312';
+      this.colors = '#F76D36';
     }
     else if (category == tone.overwhelmed) {
       this.colors = '#FC5A19';
     }
     else if (category == tone.confused) {
-      this.colors = '#A6593A';
+      this.colors = '#DB480D';
     }
     else if (category == tone.amazed) {
-      this.colors = '#F76D36';
+      this.colors = '#873312';
     }
     else if (category == tone.shocked) {
-      this.colors = '#DB480D';
+      this.colors = '#A6593A';
     }
   }
 

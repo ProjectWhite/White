@@ -136,8 +136,8 @@ class _chatbotState extends State<chatbot> {
     Facade obj = new Facade();
     // Disgust s = new Disgust(tone.bitter);
     // s.test();
-    String Xemotion = "emotion.fine";
-    String Xtype = "tone.fine";
+    String Xemotion = "fine";
+    String Xtype = "fine";
     if(i==1){
       await http.post("$uml/my_store/insertdiary.php", body: {
         "username": username,
@@ -153,8 +153,9 @@ class _chatbotState extends State<chatbot> {
                     icon: Image.asset('assets/beaming_face_with_smiling_eyes.gif'),
                     iconSize: 40,
                     tooltip: 'Happy',
-                    onPressed: (){
+                    onPressed: () {
                       showModalBottomSheet(
+                        isScrollControlled: true,
                           context: context,
                           builder: (index){
                             return Wrap(
@@ -552,7 +553,7 @@ class _chatbotState extends State<chatbot> {
                     child: Ink(
                       color: HexColor(obj.start(7,tone.overwhelmed)),
                       child: ListTile(
-                          title: Text("Startled",
+                          title: Text("Overwhelmed",
                             style: TextStyle(fontFamily: 'Rubik',
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600),
@@ -816,7 +817,7 @@ class _chatbotState extends State<chatbot> {
                             child: Ink(
                               color: HexColor(obj.start(1,tone.annoyed)),
                               child: ListTile(
-                                  title: Text("Accepted",
+                                  title: Text("Annoyed",
                                     style: TextStyle(fontFamily: 'Rubik',
                                         color: Colors.white,
                                         fontWeight: FontWeight.w600),
@@ -1233,6 +1234,8 @@ class _chatbotState extends State<chatbot> {
             );
           });
     }
+
+
     i=0;
 
     }

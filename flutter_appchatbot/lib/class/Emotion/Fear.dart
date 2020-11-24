@@ -7,19 +7,19 @@ class Fear extends Emotion{
     this.type = emotion.fear;
     this.mothercolors = '#7209B7';
     if (category == tone.embarrassed) {
-      this.colors = '#4B186E';
+      this.colors = '#A85ADB';
     }
     else if (category == tone.vulnerable) {
       this.colors = '#9C48D4';
     }
     else if (category == tone.rejected) {
-      this.colors = '#5A2280';
-    }
-    else if (category == tone.insecure) {
       this.colors = '#9E36E3';
     }
+    else if (category == tone.insecure) {
+      this.colors = '#5A2280';
+    }
     else if (category == tone.worried) {
-      this.colors = '#A85ADB';
+      this.colors = '#4B186E';
     }
   }
 

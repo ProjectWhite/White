@@ -86,7 +86,10 @@ class Facade {
       Surprise x = new Surprise(categoryin);
       return x.Typecolor();
     }
-
+    if (emotionin==emotion.fine){
+      Emotion x = new Happy(categoryin);
+      return x.Typecolor();
+    }
 
   }
   String ecolorget(int type){
