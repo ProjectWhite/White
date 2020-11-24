@@ -57,6 +57,38 @@ class Facade {
 
 
   }
+  String find(emotion emotionin,tone categoryin) {
+    if (emotionin==emotion.anger) {
+      Anger x = new Anger(categoryin);
+      return x.Typecolor();
+    }
+    if (emotionin==emotion.disgust){
+      Disgust x = new Disgust(categoryin);
+      return x.Typecolor();
+    }
+    if (emotionin==emotion.fear){
+      Fear x = new Fear(categoryin);
+      return x.Typecolor();
+    }
+    if (emotionin==emotion.happy){
+      Happy x = new Happy(categoryin);
+      return x.Typecolor();
+    }
+    if (emotionin==emotion.love){
+      Love x = new Love(categoryin);
+      return x.Typecolor();
+    }
+    if (emotionin==emotion.sad){
+      Sad x = new Sad(categoryin);
+      return x.Typecolor();
+    }
+    if (emotionin==emotion.surprise){
+      Surprise x = new Surprise(categoryin);
+      return x.Typecolor();
+    }
+
+
+  }
   String ecolorget(int type){
     if (type==1) {
       Anger x = new Anger(tone.fine);

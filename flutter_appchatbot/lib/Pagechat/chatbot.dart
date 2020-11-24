@@ -280,11 +280,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("5"),
-                                  child: ListTile(
-                                      title: Text("Relief")
-                                  ),
-                                  background: Container(
-                                    color: Colors.yellow,
+                                  child: Ink(
+                                    color: HexColor(obj.start(4,tone.relief)),
+                                    child: ListTile(
+                                        title: Text("Relief",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -300,11 +304,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("6"),
-                                  child: ListTile(
-                                      title: Text("Pride")
-                                  ),
-                                  background: Container(
-                                    color: Colors.yellow,
+                                  child: Ink(
+                                    color: HexColor(obj.start(4,tone.pride)),
+                                    child: ListTile(
+                                        title: Text("Pride",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -320,11 +328,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("7"),
-                                  child: ListTile(
-                                      title: Text("Satisfaction")
-                                  ),
-                                  background: Container(
-                                    color: Colors.yellow,
+                                  child: Ink(
+                                    color: HexColor(obj.start(4,tone.satisfaction)),
+                                    child: ListTile(
+                                        title: Text("Satisfaction",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -340,11 +352,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("8"),
-                                  child: ListTile(
-                                      title: Text("Triumph")
-                                  ),
-                                  background: Container(
-                                    color: Colors.yellow,
+                                  child: Ink(
+                                    color: HexColor(obj.start(4,tone.triumph)),
+                                    child: ListTile(
+                                        title: Text("Triumph",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -375,11 +391,15 @@ class _chatbotState extends State<chatbot> {
                               children: [
                                 Dismissible(
                                   key: Key("0"),
-                                  child: ListTile(
-                                      title: Text("Inadequate")
-                                  ),
-                                  background: Container(
-                                    color: Colors.blue,
+                                  child: Ink(
+                                    color: HexColor(obj.start(6,tone.inadequate)),
+                                    child: ListTile(
+                                        title: Text("Inadequate",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -395,11 +415,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("1"),
-                                  child: ListTile(
-                                      title: Text("Uninterested")
-                                  ),
-                                  background: Container(
-                                    color: Colors.blue,
+                                  child: Ink(
+                                    color: HexColor(obj.start(6,tone.uninterested)),
+                                    child: ListTile(
+                                        title: Text("Uninterested",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -415,11 +439,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("2"),
-                                  child: ListTile(
-                                      title: Text("Lonely")
-                                  ),
-                                  background: Container(
-                                    color: Colors.blue,
+                                  child: Ink(
+                                    color: HexColor(obj.start(6,tone.lonely)),
+                                    child: ListTile(
+                                        title: Text("Lonely",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -435,11 +463,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("3"),
-                                  child: ListTile(
-                                      title: Text("Guilty")
-                                  ),
-                                  background: Container(
-                                    color: Colors.blue,
+                                  child: Ink(
+                                    color: HexColor(obj.start(6,tone.guilty)),
+                                    child: ListTile(
+                                        title: Text("Guilty",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -455,11 +487,15 @@ class _chatbotState extends State<chatbot> {
                                 ),
                                 Dismissible(
                                   key: Key("4"),
-                                  child: ListTile(
-                                      title: Text("Hurt")
-                                  ),
-                                  background: Container(
-                                    color: Colors.blue,
+                                  child: Ink(
+                                    color: HexColor(obj.start(6,tone.hurt)),
+                                    child: ListTile(
+                                        title: Text("Hurt",
+                                          style: TextStyle(fontFamily: 'Rubik',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                    ),
                                   ),
                                   onDismissed: (direction){
                                     Navigator.pop(context);
@@ -489,11 +525,15 @@ class _chatbotState extends State<chatbot> {
                 children: [
                   Dismissible(
                     key: Key("0"),
-                    child: ListTile(
-                        title: Text("Startled")
-                    ),
-                    background: Container(
-                      color: Colors.orange,
+                    child: Ink(
+                      color: HexColor(obj.start(7,tone.startled)),
+                      child: ListTile(
+                          title: Text("Startled",
+                            style: TextStyle(fontFamily: 'Rubik',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          )
+                      ),
                     ),
                     onDismissed: (direction) {
                       Navigator.pop(context);
@@ -508,11 +548,15 @@ class _chatbotState extends State<chatbot> {
                   ),
                   Dismissible(
                     key: Key("1"),
-                    child: ListTile(
-                        title: Text("Overwhelmed")
-                    ),
-                    background: Container(
-                      color: Colors.orange,
+                    child: Ink(
+                      color: HexColor(obj.start(7,tone.overwhelmed)),
+                      child: ListTile(
+                          title: Text("Startled",
+                            style: TextStyle(fontFamily: 'Rubik',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          )
+                      ),
                     ),
                     onDismissed: (direction) {
                       Navigator.pop(context);
@@ -527,11 +571,15 @@ class _chatbotState extends State<chatbot> {
                   ),
                   Dismissible(
                     key: Key("2"),
-                    child: ListTile(
-                        title: Text("Confused")
-                    ),
-                    background: Container(
-                      color: Colors.orange,
+                    child: Ink(
+                      color: HexColor(obj.start(7,tone.confused)),
+                      child: ListTile(
+                          title: Text("Confused",
+                            style: TextStyle(fontFamily: 'Rubik',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          )
+                      ),
                     ),
                     onDismissed: (direction) {
                       Navigator.pop(context);
@@ -546,11 +594,15 @@ class _chatbotState extends State<chatbot> {
                   ),
                   Dismissible(
                     key: Key("3"),
-                    child: ListTile(
-                        title: Text("Amazed")
-                    ),
-                    background: Container(
-                      color: Colors.orange,
+                    child: Ink(
+                      color: HexColor(obj.start(7,tone.amazed)),
+                      child: ListTile(
+                          title: Text("Amazed",
+                            style: TextStyle(fontFamily: 'Rubik',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          )
+                      ),
                     ),
                     onDismissed: (direction) {
                       Navigator.pop(context);
@@ -565,11 +617,15 @@ class _chatbotState extends State<chatbot> {
                   ),
                   Dismissible(
                     key: Key("4"),
-                    child: ListTile(
-                        title: Text("Shocked")
-                    ),
-                    background: Container(
-                      color: Colors.orange,
+                    child: Ink(
+                      color: HexColor(obj.start(7,tone.shocked)),
+                      child: ListTile(
+                          title: Text("Shocked",
+                            style: TextStyle(fontFamily: 'Rubik',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          )
+                      ),
                     ),
                     onDismissed: (direction) {
                       Navigator.pop(context);
@@ -598,11 +654,15 @@ class _chatbotState extends State<chatbot> {
                         children: [
                           Dismissible(
                             key: Key("0"),
-                            child: ListTile(
-                                title: Text("Accepted")
-                            ),
-                            background: Container(
-                              color: Colors.pink,
+                            child: Ink(
+                              color: HexColor(obj.start(5,tone.accepted)),
+                              child: ListTile(
+                                  title: Text("Accepted",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -618,11 +678,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("1"),
-                            child: ListTile(
-                                title: Text("Gentle")
-                            ),
-                            background: Container(
-                              color: Colors.pink,
+                            child: Ink(
+                              color: HexColor(obj.start(5,tone.gentle)),
+                              child: ListTile(
+                                  title: Text("Gentle",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -638,11 +702,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("2"),
-                            child: ListTile(
-                                title: Text("Affectionate")
-                            ),
-                            background: Container(
-                              color: Colors.pink,
+                            child: Ink(
+                              color: HexColor(obj.start(5,tone.affectionate)),
+                              child: ListTile(
+                                  title: Text("Affectionate",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -658,11 +726,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("3"),
-                            child: ListTile(
-                                title: Text("Passionate")
-                            ),
-                            background: Container(
-                              color: Colors.pink,
+                            child: Ink(
+                              color: HexColor(obj.start(5,tone.passionate)),
+                              child: ListTile(
+                                  title: Text("Passionate",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -678,11 +750,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("4"),
-                            child: ListTile(
-                                title: Text("Trusted")
-                            ),
-                            background: Container(
-                              color: Colors.pink,
+                            child: Ink(
+                              color: HexColor(obj.start(5,tone.trusted)),
+                              child: ListTile(
+                                  title: Text("Trusted",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -698,11 +774,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("5"),
-                            child: ListTile(
-                                title: Text("contentment")
-                            ),
-                            background: Container(
-                              color: Colors.pink,
+                            child: Ink(
+                              color: HexColor(obj.start(5,tone.contentment)),
+                              child: ListTile(
+                                  title: Text("Contentment",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -732,11 +812,15 @@ class _chatbotState extends State<chatbot> {
                         children: [
                           Dismissible(
                             key: Key("0"),
-                            child: ListTile(
-                                title: Text("Annoyed")
-                            ),
-                            background: Container(
-                              color: Colors.red,
+                            child: Ink(
+                              color: HexColor(obj.start(1,tone.annoyed)),
+                              child: ListTile(
+                                  title: Text("Accepted",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -752,11 +836,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("1"),
-                            child: ListTile(
-                                title: Text("Frustrated")
-                            ),
-                            background: Container(
-                              color: Colors.red,
+                            child: Ink(
+                              color: HexColor(obj.start(1,tone.frustrated)),
+                              child: ListTile(
+                                  title: Text("Frustrated",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -772,11 +860,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("2"),
-                            child: ListTile(
-                                title: Text("Offended")
-                            ),
-                            background: Container(
-                              color: Colors.red,
+                            child: Ink(
+                              color: HexColor(obj.start(1,tone.offended)),
+                              child: ListTile(
+                                  title: Text("Offended",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -792,11 +884,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("3"),
-                            child: ListTile(
-                                title: Text("Mad")
-                            ),
-                            background: Container(
-                              color: Colors.red,
+                            child: Ink(
+                              color: HexColor(obj.start(1,tone.mad)),
+                              child: ListTile(
+                                  title: Text("Mad",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -812,17 +908,21 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("4"),
-                            child: ListTile(
-                                title: Text("Threatened")
-                            ),
-                            background: Container(
-                              color: Colors.red,
+                            child: Ink(
+                              color: HexColor(obj.start(1,tone.threatened)),
+                              child: ListTile(
+                                  title: Text("Threatened",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
                               Navigator.pop(context);
                               setState(() {
-                                obj.start(1,tone.mad);
+                                obj.start(1,tone.threatened);
                                 Xemotion = obj.theEmotion;
                                 Xtype = obj.theType;
                                 _insertemo(msg,Xemotion,Xtype);
@@ -846,11 +946,15 @@ class _chatbotState extends State<chatbot> {
                         children: [
                           Dismissible(
                             key: Key("0"),
-                            child: ListTile(
-                                title: Text("Resentful")
-                            ),
-                            background: Container(
-                              color: Colors.green,
+                            child: Ink(
+                              color: HexColor(obj.start(2,tone.resentful)),
+                              child: ListTile(
+                                  title: Text("Resentful",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -866,11 +970,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("1"),
-                            child: ListTile(
-                                title: Text("Shameful")
-                            ),
-                            background: Container(
-                              color: Colors.green,
+                            child: Ink(
+                              color: HexColor(obj.start(2,tone.shameful)),
+                              child: ListTile(
+                                  title: Text("Shameful",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -886,11 +994,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("2"),
-                            child: ListTile(
-                                title: Text("Bitter")
-                            ),
-                            background: Container(
-                              color: Colors.green,
+                            child: Ink(
+                              color: HexColor(obj.start(2,tone.bitter)),
+                              child: ListTile(
+                                  title: Text("Bitter",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -906,11 +1018,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("3"),
-                            child: ListTile(
-                                title: Text("Disappointed")
-                            ),
-                            background: Container(
-                              color: Colors.green,
+                            child: Ink(
+                              color: HexColor(obj.start(2,tone.disappointed)),
+                              child: ListTile(
+                                  title: Text("Disappointed",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -926,11 +1042,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("4"),
-                            child: ListTile(
-                                title: Text("Averse")
-                            ),
-                            background: Container(
-                              color: Colors.green,
+                            child: Ink(
+                              color: HexColor(obj.start(2,tone.averse)),
+                              child: ListTile(
+                                  title: Text("Averse",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -946,11 +1066,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("5"),
-                            child: ListTile(
-                                title: Text("Contempt")
-                            ),
-                            background: Container(
-                              color: Colors.green,
+                            child: Ink(
+                              color: HexColor(obj.start(2,tone.contempt)),
+                              child: ListTile(
+                                  title: Text("Contempt",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -980,11 +1104,15 @@ class _chatbotState extends State<chatbot> {
                         children: [
                           Dismissible(
                             key: Key("0"),
-                            child: ListTile(
-                                title: Text("Embarrassed")
-                            ),
-                            background: Container(
-                              color: Colors.purple,
+                            child: Ink(
+                              color: HexColor(obj.start(3,tone.embarrassed)),
+                              child: ListTile(
+                                  title: Text("Embarrassed",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -1000,11 +1128,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("1"),
-                            child: ListTile(
-                                title: Text("Vulnerable")
-                            ),
-                            background: Container(
-                              color: Colors.purple,
+                            child: Ink(
+                              color: HexColor(obj.start(3,tone.vulnerable)),
+                              child: ListTile(
+                                  title: Text("Vulnerable",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -1020,11 +1152,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("2"),
-                            child: ListTile(
-                                title: Text("Rejected")
-                            ),
-                            background: Container(
-                              color: Colors.purple,
+                            child: Ink(
+                              color: HexColor(obj.start(3,tone.rejected)),
+                              child: ListTile(
+                                  title: Text("Rejected",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -1040,11 +1176,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("3"),
-                            child: ListTile(
-                                title: Text("Insecure")
-                            ),
-                            background: Container(
-                              color: Colors.purple,
+                            child: Ink(
+                              color: HexColor(obj.start(3,tone.insecure)),
+                              child: ListTile(
+                                  title: Text("Insecure",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
@@ -1060,11 +1200,15 @@ class _chatbotState extends State<chatbot> {
                           ),
                           Dismissible(
                             key: Key("4"),
-                            child: ListTile(
-                                title: Text("Worried")
-                            ),
-                            background: Container(
-                              color: Colors.purple,
+                            child: Ink(
+                              color: HexColor(obj.start(3,tone.worried)),
+                              child: ListTile(
+                                  title: Text("Worried",
+                                    style: TextStyle(fontFamily: 'Rubik',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                              ),
                             ),
                             onDismissed: (direction){
                               Navigator.pop(context);
