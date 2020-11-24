@@ -9,6 +9,7 @@ import 'package:flutter_appchatbot/Milestoneherebright/Pages.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_appchatbot/class/Emotion.dart';
+import 'package:flutter_appchatbot/class/Emotion/Disgust.dart';
 import 'package:flutter_appchatbot/class/Facade.dart';
 import 'package:flutter_chat_bubble/bubble_type.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
@@ -133,6 +134,8 @@ class _chatbotState extends State<chatbot> {
 
   Future<List> _insertdiary(msg) async{
     Facade obj = new Facade();
+    // Disgust s = new Disgust(tone.bitter);
+    // s.test();
     String Xemotion = "emotion.fine";
     String Xtype = "tone.fine";
     if(i==1){

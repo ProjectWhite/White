@@ -1,4 +1,5 @@
 
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter_appchatbot/class/EmotionMet.dart';
 enum emotion {
   happy,surprise,sad,anger,fear,love,disgust,fine
@@ -51,10 +52,13 @@ abstract class Emotion implements EmotionMet{
   }
 
   String toString1() {
-    return '$_type';
+    // return '$_type';
+    return EnumToString.convertToString(this._type);
   }
 
   String toString2() {
-    return '$_category';
+    // return '$_category';
+    return EnumToString.convertToString(this._category);
   }
+
 }

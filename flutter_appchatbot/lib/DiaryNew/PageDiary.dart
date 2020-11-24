@@ -116,11 +116,9 @@ class _HomeState extends State<Diary> {
     emotion emotionfromstring(String value){
       return emotion.values.firstWhere((e) => e.toString().split('.')[1]==value);
     }
-
-
     Facade obj = new Facade();
     // print(x);
-    var emoji = 'assets/smiling_face_with_heart_eyes.gif';
+    // var emoji = 'assets/smiling_face_with_heart_eyes.gif';
     // if(emotion == 'emotion.love'){
     //   emoji = 'assets/smiling_face_with_heart_eyes.gif';
     // }else if(emotion == 'emotion.happy'){
