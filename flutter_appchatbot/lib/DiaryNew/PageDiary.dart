@@ -38,6 +38,7 @@ class _HomeState extends State<Diary> {
   Future<List> _readdiary() async {
     final response = await http.post("$uml/my_store/readdiary.php", body: {
       "username": username,
+
     });
 
     var dataus;
@@ -71,7 +72,6 @@ class _HomeState extends State<Diary> {
     return dataus;
   }
 
-
   @override
   Widget build(BuildContext context) {
     if (k == 1) {
@@ -79,70 +79,72 @@ class _HomeState extends State<Diary> {
       k = 2;
     }
     int _currentIndex = 0;
+
     if (_check == 0) {
       return Container(
         color: Colors.white,
-                child: Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: Icon(
-                            Icons.menu_book_rounded,
-                            size: 50,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Text(
-                          'Write diary now',
-                          style: TextStyle(color: Colors.grey),
-                        )
-                      ],
-                    )),
-              );
-            } else if (_check == 1) {
-              return Scaffold(
-                body: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.bottomLeft,
-                        end: Alignment.topRight,
-                        colors: [HexColor('#FFFFFF'), HexColor('#FFFFFF')]
-                    ),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.only(top: 35, bottom: 10),
-                        child: Text("$name ${DateFormat("Hm").format(DateTime
-                            .now())}",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: 'RobotoCondensed',
-                            fontWeight: FontWeight.bold,
-                          ),),
-                      ),
-                      Flexible(
-                          child: ListView.builder(
-                              reverse: false,
-                              itemCount: messsages.length,
-                              itemBuilder: (context, index) =>
-                                  chat(
-                                    messsages[index]["message"].toString(),
-                                    messsages[index]["date"].toString(),
-                                    messsages[index]["emo"].toString(),
-                                    messsages[index]["type"].toString(),
-                                  ))),
-                    ],
+        child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+
+                SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: Icon(
+                    Icons.menu_book_rounded,
+                    size: 50,
+                    color: Colors.grey,
                   ),
                 ),
-              );
-            }
-          }
+                Text(
+                  'Write diary now',
+                  style: TextStyle(color: Colors.grey),
+                )
+              ],
+            )),
+      );
+    }
+    else {
+      return Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                colors: [HexColor('#FFFFFF'), HexColor('#FFFFFF')]
+            ),
+          ),
+          child: Column(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(top: 35, bottom: 10),
+                child: Text("$name ${DateFormat("Hm").format(DateTime.now())}",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontFamily: 'RobotoCondensed',
+                    fontWeight: FontWeight.bold,
+                  ),),
+              ),
+              Flexible(
+                  child: ListView.builder(
+                      reverse: true,
+                      itemCount: messsages.length,
+                      itemBuilder: (context, index) =>
+                          chat(
+                            messsages[index]["message"].toString(),
+                            messsages[index]["date"].toString(),
+                            messsages[index]["emo"].toString(),
+                            messsages[index]["type"].toString(),
+                          ))),
+            ],
+          ),
+        ),
+      );
+    }
+  }
   Widget chat(String message,String date,String emotionxx,String type) {
     // emotion x = EnumToString.fromString(emotion.values,emotionxx);
     tone tonefromstring(String value){
@@ -173,7 +175,7 @@ class _HomeState extends State<Diary> {
           children: <Widget>[
             InkWell(
               child: Container(
-                  height: 110,
+                  height: 150,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       gradient: LinearGradient(
@@ -219,6 +221,7 @@ class _HomeState extends State<Diary> {
                     // ),
                     flex: 1,
                   ),
+
                   Expanded(
                     flex: 4,
                     child: Column(

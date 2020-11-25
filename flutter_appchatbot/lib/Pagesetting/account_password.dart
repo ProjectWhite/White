@@ -93,36 +93,18 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: Text('Delete Account : '+ username),
+                        title: Text('Are you sure to delete account'),
                         actions: <Widget>[
-                          Row(
-                            children: [
-                              Align(
-                                child: FlatButton(
-                                  child: Text('cancel',),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ),
-                              SizedBox(width: 6,),
-                              Align(
-                                child: FlatButton(
-                                  child: Text(
-                                    'confirm',
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  onPressed: () async {
-                                    var url = "$uml/my_store/delete.php";
-                                    print(username);
-                                    await http.post(url, body: {
-                                      "username": username,
-                                    });
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
-                                  },
-                                ),
-                              ),
-                            ],
+                          new FlatButton(
+                            child: new Text('yes'),
+                            onPressed: ()  async {
+                              var url = "$uml/my_store/delete.php";
+                              print(username);
+                              await http.post(url, body: {
+                                "username": username,
+                              });
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+                            },
                           )
                         ],
                       );
