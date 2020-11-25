@@ -62,49 +62,44 @@ class GridDashboard extends StatelessWidget {
           children: myList.map((data) {
             return InkWell(
               onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => data.page));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => data.page,),);
               },
               child: Material(
-                elevation: 10,
                 color: color,
+                elevation: 5,
                 borderRadius: BorderRadius.circular(30),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: color, borderRadius: BorderRadius.circular(30)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Center(
-                            child: data.ics
-                      ),
-                      SizedBox(
-                        height: 14,
-                      ),
-                      Text(
-                        data.title,
-                        style: GoogleFonts.robotoCondensed(
-                            textStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15.8,
-                                fontWeight: FontWeight.w600)),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        data.subtitle,
-                        style: GoogleFonts.robotoCondensed(
-                            textStyle: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600)),
-                      ),
-                      SizedBox(
-                        height: 14,
-                      ),
-                    ],
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Center(
+                          child: data.ics
+                    ),
+                    SizedBox(
+                      height: 14,
+                    ),
+                    Text(
+                      data.title,
+                      style: GoogleFonts.robotoCondensed(
+                          textStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15.8,
+                              fontWeight: FontWeight.w600)),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      data.subtitle,
+                      style: GoogleFonts.robotoCondensed(
+                          textStyle: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600)),
+                    ),
+                    SizedBox(
+                      height: 14,
+                    ),
+                  ],
                 ),
               ),
             );
@@ -119,4 +114,27 @@ class Items {
   String subtitle;
   Icon ics;
   Items({this.title, this.subtitle, this.ics, this.page});
+}
+
+class SlideFromLeftPageRoute extends PageRouteBuilder {
+  Widget widget;
+
+  SlideFromLeftPageRoute({this.widget}) : super(
+    pageBuilder: (context, animation, secondaryAnimation) => widget,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(-1.0, 0.0),
+          end: Offset.zero,
+        ).animate(animation),
+        child: SlideTransition(
+          position: Tween<Offset>(
+            begin: Offset.zero,
+            end: const Offset(-1.0, 0.0),
+          ).animate(secondaryAnimation),
+          child: child,
+        ),
+      );
+    },
+  );
 }

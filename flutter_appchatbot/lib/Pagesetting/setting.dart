@@ -105,6 +105,7 @@ class _SettingPageState extends State<SettingPage> {
                       "Account",
                       style: GoogleFonts.robotoCondensed(
                           textStyle: TextStyle(
+                              shadows: [Shadow(color: Colors.black, offset: Offset(2,3), blurRadius: 10)],
                               color: Colors.white,
                               fontSize: 36,
                               fontWeight: FontWeight.bold)),

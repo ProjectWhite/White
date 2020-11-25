@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'HelpCenterPage2.dart';
-import 'HelpCenterPage3.dart';
 
 
 class HelpCenterPage extends StatefulWidget {
@@ -14,11 +13,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Help Center'),
-          backgroundColor: Colors.blueGrey,
-          centerTitle: true,
-        ),
+      backgroundColor: Colors.blue[300],
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -75,33 +70,35 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
             },
           ),
         ),
-        bottomSheet: InkWell(
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 15.0),
-            width: double.infinity,
-            child: RaisedButton(
-              elevation: 5.0,
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => chathelp(),),);
-              },
-              padding: EdgeInsets.all(15.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              color: Colors.white,
-              child: Text(
-                'Report message',
-                style: TextStyle(
-                  color: Color(0xFF527DAA),
-                  letterSpacing: 1.5,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'OpenSans',
-                ),
-              ),
-            ),
-          ),
-        )
+
     );
   }
 }
+
+// InkWell(
+// child: Container(
+// padding: EdgeInsets.symmetric(vertical: 15.0),
+// width: double.infinity,
+// child: RaisedButton(
+// elevation: 5.0,
+// onPressed: () {
+// Navigator.push(context, MaterialPageRoute(builder: (context) => chathelp(),),);
+// },
+// padding: EdgeInsets.all(15.0),
+// shape: RoundedRectangleBorder(
+// borderRadius: BorderRadius.circular(30.0),
+// ),
+// color: Colors.white,
+// child: Text(
+// 'Report message',
+// style: TextStyle(
+// color: Color(0xFF527DAA),
+// letterSpacing: 1.5,
+// fontSize: 18.0,
+// fontWeight: FontWeight.bold,
+// fontFamily: 'OpenSans',
+// ),
+// ),
+// ),
+// ),
+// )
