@@ -29,6 +29,9 @@ import '../main.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
 import 'package:flutter_appchatbot/Pages/testm.dart';
+import 'dart:math' as math;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 
 int counter=0;
 class chatbot extends StatefulWidget {
@@ -104,6 +107,9 @@ class _chatbotState extends State<chatbot> {
     return dataus;
   }
 
+
+  int checkmsg=0;
+  
   Future<List> _readmsg() async{
     final response = await http.post("$uml/my_store/readchat.php", body: {
       "username": username,
@@ -126,11 +132,13 @@ class _chatbotState extends State<chatbot> {
         setState(() {
           messsages.insert(0,
               {"data": 1, "message": msg.text});});
+        checkmsg=1;
       }
       if(j%2==1){
         setState(() {
           messsages.insert(0,
               {"data": 0, "message": msg.text});});
+        checkmsg=1;
       }
     }
 
@@ -1309,11 +1317,13 @@ class _chatbotState extends State<chatbot> {
   }
   String _timeString;
 
+  Future<List<dynamic>> _future;
   @override
   void initState(){
     _timeString = "${DateTime.now().hour.toString().padLeft(2, '0')} : ${DateTime.now().minute.toString().padLeft(2, '0')}";
     Timer.periodic(Duration(seconds:1), (Timer t)=>_getCurrentTime());
     super.initState();
+    _future = _readmsg();
   }
 
   void _getCurrentTime()  {
@@ -1330,7 +1340,6 @@ class _chatbotState extends State<chatbot> {
   Widget build(BuildContext context){
     if(k==1){
       _readcountdiary();
-      _readmsg();
       k=2;
     }
     int _currentIndex=0;
@@ -1351,18 +1360,30 @@ class _chatbotState extends State<chatbot> {
                 fontSize: 20, color: Colors.black,fontFamily: 'RobotoCondensed',fontWeight: FontWeight.bold,
               ),),
             ),
-            Flexible(
+            FutureBuilder(
+            future: _future, // the function to get your data from firebase or firestore
+            builder : (BuildContext context, AsyncSnapshot snap){
+              if(checkmsg==0){
+               return Expanded(
+                 child: SpinKitFadingCube(color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
+                      size: 50.0,duration: Duration(seconds: 1)),
+               );
+              }
+           return Flexible(
                 child: ListView.builder(
 
                     reverse: true,
                     itemCount: messsages.length,
                     itemBuilder: (context, index) => chat(
                         messsages[index]["message"].toString(),
-                        messsages[index]["data"]))),
+                        messsages[index]["data"]))
+           );
+
+}
+            ),
             SizedBox(
               height: 20,
             ),
-
             Divider(
               height: 5.0,
               color: Colors.grey,
