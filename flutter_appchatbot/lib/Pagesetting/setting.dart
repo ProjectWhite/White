@@ -31,7 +31,7 @@ class SettingUI extends StatelessWidget {
             ),
         ),
         debugShowCheckedModeBanner: false,
-        title: 'Setting UI',
+        title: 'White',
         home: SettingPage(),
 
       ),

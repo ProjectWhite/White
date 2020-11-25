@@ -24,6 +24,7 @@ import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_9.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
+import 'package:list_tile_more_customizable/list_tile_more_customizable.dart';
 import '../main.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
@@ -1345,26 +1346,24 @@ class _chatbotState extends State<chatbot> {
                         messsages[index]["message"].toString(),
                         messsages[index]["data"]))),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
 
             Divider(
-              height: 5.0,
+              height: 10.0,
               color: Colors.grey,
             ),
-            SizedBox(
-              height: 5,
-            ),
             Container(
-              child: ListTile(
-                leading: IconButton(
-                  icon: Icon(Icons.add, color: Colors.purple, size: 35,),
-                  onPressed: () {
-                    _readmsg();
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) => Bar7z()));
-                  },
-                ),
+              child: ListTileMoreCustomizable(
+                horizontalTitleGap: 0.0,
+                // leading: IconButton(
+                //   icon: Icon(Icons.add, color: Colors.purple, size: 35,),
+                //   onPressed: () {
+                //     _readmsg();
+                //     Navigator.of(context).push(MaterialPageRoute(
+                //         builder: (BuildContext context) => Bar7z()));
+                //   },
+                // ),
                 title: Container(
                   height: 40,
                   decoration: BoxDecoration(
@@ -1395,31 +1394,34 @@ class _chatbotState extends State<chatbot> {
                     },
                   ),
                 ),
-                trailing: IconButton(
-                    icon: Icon(
-                      Icons.send,
-                      size: 30.0,
-                      color: Colors.deepPurple,
-                    ),
-                    onPressed: () {
-                      if (messageInsert.text.isEmpty) {
-                        print("empty message");
-                      } else {
-                        setState(() {
-                          messsages.insert(0,
-                              {"data": 1, "message": messageInsert.text});
-                        });
-                        print(i);
-                        response(messageInsert.text);
-                        _insertdiary(messageInsert.text);
-                        messageInsert.clear();
-                      }
-                      FocusScopeNode currentFocus = FocusScope.of(context);
-                      if (!currentFocus.hasPrimaryFocus) {
-                        currentFocus.unfocus();
-                      }
-                      // print (messsages);
-                    }),
+                trailing: SizedBox(
+                  width: 30,
+                  child: IconButton(
+                      icon: Icon(
+                        Icons.send,
+                        size: 30.0,
+                        color: Colors.deepPurple,
+                      ),
+                      onPressed: () {
+                        if (messageInsert.text.isEmpty) {
+                          print("empty message");
+                        } else {
+                          setState(() {
+                            messsages.insert(0,
+                                {"data": 1, "message": messageInsert.text});
+                          });
+                          print(i);
+                          response(messageInsert.text);
+                          _insertdiary(messageInsert.text);
+                          messageInsert.clear();
+                        }
+                        FocusScopeNode currentFocus = FocusScope.of(context);
+                        if (!currentFocus.hasPrimaryFocus) {
+                          currentFocus.unfocus();
+                        }
+                        // print (messsages);
+                      }),
+                ),
               ),
             ),
             SizedBox(

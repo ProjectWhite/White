@@ -101,7 +101,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
      return MaterialApp(
-       title: 'Login Demo',
+       debugShowCheckedModeBanner: false,
+       title: 'White',
        theme: ThemeData(
          // brightness: Brightness.dark,
          primarySwatch: Colors.deepPurple,
