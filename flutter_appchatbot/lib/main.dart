@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Pagechat/chatbot.dart';
+import 'Pages/intro.dart';
 import 'Pages/wellcome1.dart';
 import 'Pages/wellcome2.dart';
 import 'constrants.dart';
@@ -29,7 +30,7 @@ void main() async{
   SharedPreferences preferences = await SharedPreferences.getInstance();
   var u = preferences.getString('us');
   username = u;
-  runApp(MaterialApp(home: u == null ? MyHomePage() : Nav(),
+  runApp(MaterialApp(home: u == null ? intro() : Nav(),
     debugShowCheckedModeBanner: false,));
 }
 
@@ -76,6 +77,7 @@ class MyApp extends StatelessWidget {
         '/chat' : (BuildContext context)=> new chatbot(username: username),
         '/Navi' : (BuildContext context)=> new Nav(),
         '/Diary' : (BuildContext context)=> new Diary(),
+        '/intro' : (BuildContext context)=> new intro(),
       },
     );
   }
