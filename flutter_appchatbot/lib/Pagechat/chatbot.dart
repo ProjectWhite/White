@@ -1364,6 +1364,7 @@ class _chatbotState extends State<chatbot> {
             future: _future, // the function to get your data from firebase or firestore
             builder : (BuildContext context, AsyncSnapshot snap){
               if(checkmsg==0){
+                checkmsg=2;
                return Expanded(
                  child: SpinKitFadingCube(color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
                       size: 50.0,duration: Duration(seconds: 1)),
