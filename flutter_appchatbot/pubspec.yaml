@@ -52,6 +52,7 @@ dependencies:
   flutter_launcher_icons: ^0.8.1
   flutter_splash_screen: ^0.1.0
   flutter_spinkit: ^4.1.2
+  flutter_cupertino_date_picker:
 
 
 dev_dependencies:

@@ -323,10 +323,7 @@ class MilestonepageState extends State {
       _readdiary();
       j++;
     }
-     addaoy(){
-       return SpinKitRotatingCircle(color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
-            size: 80.0,duration: Duration(seconds: 1));
-    }
+
     return FutureBuilder(
         future: _future, // the function to get your data from firebase or firestore
         builder : (BuildContext context, AsyncSnapshot snap){
@@ -335,8 +332,8 @@ class MilestonepageState extends State {
          if(dPie == 1){
            dPie=2;
             return
-              SpinKitRotatingCircle(color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
-                    size: 80.0,duration: Duration(seconds: 1));
+              SpinKitFadingCube(color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
+                    size: 50.0,duration: Duration(seconds: 1));
           }
           //---------------------------------------------------------------------------------------------------------
           //---------------------------------------------------------------------------------------------------------
@@ -359,86 +356,85 @@ class MilestonepageState extends State {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-
                       SizedBox(height: 50,),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(5,0,0,0),
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: SizedBox(
-                              height: 300,
-                              width: 50*(count+delc),
-                              child: AspectRatio(
-                                aspectRatio: 1.23,
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(18)),
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Color(0xff2c274c),
-                                        Color(0xff46426c),
-                                      ],
-                                      begin: Alignment.bottomCenter,
-                                      end: Alignment.topCenter,
-                                    ),
-                                  ),
-                                  child: Stack(
-                                    children: <Widget>[
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                                            child: Column(
-
-                                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.max,
-
-                                              children: <Widget>[
-                                                Text(
-                                                  'Line Chart',
-                                                  style: TextStyle(
-                                                      color: const Color(0xff72d8bf),
-                                                      fontSize: 24,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-
-                                              ],
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 15,
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(right: 16.0, left: 6.0),
-                                              child: LineChart(
-                                                isShowingMainData ? sampleData1() : sampleData2(),
-                                                swapAnimationDuration: const Duration(milliseconds: 250),
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                        ],
-                                      ),
-                                      // IconButton(
-                                      //   icon: Icon(
-                                      //     Icons.refresh,
-                                      //     color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
-                                      //   ),
-                                      //   onPressed: () {
-                                      //     setState(() {
-                                      //       isShowingMainData =! isShowingMainData;
-                                      //     });
-                                      //   },
-                                      // )
+                            height: 300,
+                            width: 50*(count+delc),
+                            child: AspectRatio(
+                              aspectRatio: 1.23,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(18)),
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Color(0xff2c274c),
+                                      Color(0xff46426c),
                                     ],
+                                    begin: Alignment.bottomCenter,
+                                    end: Alignment.topCenter,
                                   ),
                                 ),
+                                child: Stack(
+                                  children: <Widget>[
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                                          child: Column(
+
+                                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.max,
+
+                                            children: <Widget>[
+                                              Text(
+                                                'Line Chart',
+                                                style: TextStyle(
+                                                    color: const Color(0xff72d8bf),
+                                                    fontSize: 24,
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+
+                                            ],
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 15,
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(right: 16.0, left: 6.0),
+                                            child: LineChart(
+                                              isShowingMainData ? sampleData1() : sampleData2(),
+                                              swapAnimationDuration: const Duration(milliseconds: 250),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                      ],
+                                    ),
+                                    // IconButton(
+                                    //   icon: Icon(
+                                    //     Icons.refresh,
+                                    //     color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+                                    //   ),
+                                    //   onPressed: () {
+                                    //     setState(() {
+                                    //       isShowingMainData =! isShowingMainData;
+                                    //     });
+                                    //   },
+                                    // )
+                                  ],
+                                ),
                               ),
+                            ),
                           ),
                         ),
                       ),
@@ -469,35 +465,35 @@ class MilestonepageState extends State {
                                   ),
                                   child: Column(
                                     children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                                    child: Column(
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                                        child: Column(
 
-                                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.max,
 
-                                      children: <Widget>[
-                                        Text(
-                                          'Emotions',
-                                          style: TextStyle(
-                                              color: const Color(0xff72d8bf),
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
+                                          children: <Widget>[
+                                            Text(
+                                              'Emotions',
+                                              style: TextStyle(
+                                                  color: const Color(0xff72d8bf),
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            const SizedBox(
+                                              height: 4,
+                                            ),
+                                            Text(
+                                              'Pie Chart',
+                                              style: TextStyle(
+                                                  color: const Color(0xff379982),
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
                                         ),
-                                        const SizedBox(
-                                          height: 4,
-                                        ),
-                                        Text(
-                                          'Pie Chart',
-                                          style: TextStyle(
-                                              color: const Color(0xff379982),
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                    ],
-                                ),
-                                  ),
+                                      ),
                                       SizedBox(
                                         height: 10,
                                       ),
@@ -525,7 +521,7 @@ class MilestonepageState extends State {
                                       ),
                                     ],
                                   ),
-                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -535,10 +531,7 @@ class MilestonepageState extends State {
                             child: Container(
                               height: 300,
                               width: 188.5,
-                              child: Container(
-
-                                child: ChoiceCard(choice: _selectedChoice),
-                              ),
+                              child: ChoiceCard(choice: _selectedChoice),
                             ),
                           ),
                         ],
@@ -564,7 +557,7 @@ class MilestonepageState extends State {
                           ),
                           child: Column(
                             children: [
-                              SizedBox(height: 15,),
+                              SizedBox(height: 16.67,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -572,18 +565,22 @@ class MilestonepageState extends State {
                                   Column(
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.fromLTRB(20,0,0,0),
+                                        padding: const EdgeInsets.fromLTRB(12.53175,0,0,0),
                                         child: Container(
                                           child: FlatButton(onPressed: () {
                                             push0();
                                           },
+                                            child: Text('Love',style: TextStyle(
+                                                color: Colors.white.withOpacity(touchedIndex == 0 ? 0.2:1),
+                                                fontSize: touchedIndex == 0 ? 12 : 12
+                                            ),),
                                           ),
-                                          height: touchedIndex == 0 ? 10 : 25,
-                                          width: touchedIndex == 0 ? 10 : 25,
+                                          height: touchedIndex == 0 ? 25 : 25,
+                                          width: touchedIndex == 0 ? 80 : 80,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(
                                                 7)),
-                                            color: HexColor(facade.ecolorget(5)),
+                                            color: HexColor(facade.ecolorget(5)).withOpacity(touchedIndex == 0 ? 0.2:1),
                                             // color: Color.fromRGBO(220, 220, 220, 1),
                                           ),
                                         ),
@@ -591,237 +588,174 @@ class MilestonepageState extends State {
                                       SizedBox(width: 55,),
                                     ],
                                   ),
-                                  Row(
-                                    children: [
-                                      SizedBox(height: 34,),
-                                      Container(
-                                        child: Text('Love',style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: touchedIndex == 0 ? 14 : 10
-                                        ),),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(width: 32,),
+                                  // Row(
+                                  //   children: [
+                                  //     SizedBox(height: 34,),
+                                  //     Container(
+                                  //       child: Text('',style: TextStyle(
+                                  //           color: Colors.white,
+                                  //           fontSize: touchedIndex == 0 ? 14 : 10
+                                  //       ),),
+                                  //     ),
+                                  //   ],
+                                  // ),
+                                  SizedBox(width: 12.53175,),
                                   Column(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(8,0,0,0),
-                                        child: Container(
-                                          child: FlatButton(onPressed: () {
-                                            push1();
-                                          },),
-                                          height: touchedIndex == 1 ? 10 : 25,
-                                          width: touchedIndex == 1 ? 10 : 25,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(
-                                                7)),
-                                            color: HexColor(facade.ecolorget(3)),
-                                            // color: Color.fromRGBO(220, 220, 220, 1),
-                                          ),
+                                      Container(
+                                        child: FlatButton(onPressed: () {
+                                          push1();
+                                        },
+                                          child: Text('Fear',style: TextStyle(
+                                              color: Colors.white.withOpacity(touchedIndex == 1 ? 0.2:1),
+                                              fontSize: touchedIndex == 1 ? 12 : 12
+                                          ),),
+                                        ),
+                                        height: touchedIndex == 1 ? 25 : 25,
+                                        width: touchedIndex == 1 ? 80 : 80,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(
+                                              7)),
+                                          color: HexColor(facade.ecolorget(3)).withOpacity(touchedIndex == 1 ? 0.2:1),
+                                          // color: Color.fromRGBO(220, 220, 220, 1),
                                         ),
                                       ),
                                     ],
 
                                   ),
-                                  SizedBox(width: 5,),
-                                  Row(
-                                    children: [
-                                      SizedBox(height: 34,),
-                                      Container(
-                                        child: Text('Fear',style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: touchedIndex == 1 ? 14 : 10
-                                        ),),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(width: 35,),
+                                  SizedBox(width: 12.53175,),
                                   Column(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(8,0,0,0),
-                                        child: Container(
-                                          child: FlatButton(onPressed: () {
-                                            push2();
-                                          },
-                                          ),
-                                          height: touchedIndex == 2 ? 10 : 25,
-                                          width: touchedIndex == 2 ? 10 : 25,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(
-                                                7)),
-                                            color: HexColor(facade.ecolorget(6)),
-                                            // color: Color.fromRGBO(220, 220, 220, 1),
-                                          ),
+                                      Container(
+                                        child: FlatButton(onPressed: () {
+                                          push2();
+                                        },
+                                          child: Text('Sad',style: TextStyle(
+                                              color: Colors.white.withOpacity(touchedIndex == 2 ? 0.2:1),
+                                              fontSize: touchedIndex == 2 ? 12 : 12
+                                          ),),
+                                        ),
+                                        height: touchedIndex == 2 ? 25 : 25,
+                                        width: touchedIndex == 2 ? 80 : 80,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(
+                                              7)),
+                                          color: HexColor(facade.ecolorget(6)).withOpacity(touchedIndex == 2 ? 0.2:1),
+                                          // color: Color.fromRGBO(220, 220, 220, 1),
                                         ),
                                       ),
 
                                     ],
                                   ),
-                                  SizedBox(width: 5,),
-                                  Row(
-                                    children: [
-                                      SizedBox(height: 34,),
-                                      Container(
-                                        child: Text('Sad',style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: touchedIndex == 2 ? 14 : 10
-                                        ),),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(width: 20,),
+
+                                  SizedBox(width: 12.53175),
                                   Column(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(8,0,0,0),
-                                        child: Container(
-                                          child: FlatButton(onPressed: () {
-                                            push3();
-                                          },
-                                          ),
-                                          height: touchedIndex == 3 ? 10 : 25,
-                                          width: touchedIndex == 3 ? 10 : 25,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(
-                                                7)),
-                                            color: HexColor(facade.ecolorget(2)),
-                                            // color: Color.fromRGBO(220, 220, 220, 1),
-                                          ),
-                                        ),
-                                      ),
-
-                                    ],
-                                  ),
-                                  SizedBox(width: 5,),
-                                  Row(
-                                    children: [
-                                      SizedBox(height: 34,),
                                       Container(
-                                        child: Text('Disgust',style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: touchedIndex == 3 ? 14 : 10
-
+                                        child: FlatButton(onPressed: () {
+                                          push3();
+                                        },
+                                          child: Text('Disgust',style: TextStyle(
+                                              color: Colors.white.withOpacity(touchedIndex == 3 ? 0.2:1),
+                                              fontSize: touchedIndex == 3 ? 12 : 12
+                                          ),),
                                         ),
+                                        height: touchedIndex == 3 ? 25 : 25,
+                                        width: touchedIndex == 3 ? 80 : 80,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(
+                                              7)),
+                                          color: HexColor(facade.ecolorget(2)).withOpacity(touchedIndex == 3 ? 0.2:1),
+                                          // color: Color.fromRGBO(220, 220, 220, 1),
                                         ),
                                       ),
+
                                     ],
                                   ),
+                                  SizedBox(width: 12.53175,),
                                 ],
                               ),
-
+                              SizedBox(height: 16.67,),
 
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(width: 19,),
+                                  SizedBox(width: 12.53175+46.265875,),
                                   Column(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(8,8,0,0),
-                                        child: Container(
-                                          child: FlatButton(onPressed: () {
-                                            push4();
-                                          },
-                                          ),
-                                          height: touchedIndex == 4 ? 10 : 25,
-                                          width: touchedIndex == 4 ? 10 : 25,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(
-                                                7)),
-                                            color: HexColor(facade.ecolorget(4)),
-                                            // color: Color.fromRGBO(220, 220, 220, 1),
-                                          ),
+                                      Container(
+                                        child: FlatButton(onPressed: () {
+                                          push4();
+                                        },
+                                          child: Text('Happy',style: TextStyle(
+                                              color: Colors.white.withOpacity(touchedIndex == 4 ? 0.2:1),
+                                              fontSize: touchedIndex == 4 ? 12 : 12
+                                          ),),
+                                        ),
+                                        height: touchedIndex == 4 ? 25 : 25,
+                                        width: touchedIndex == 4 ? 80 : 80,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(
+                                              7)),
+                                          color: HexColor(facade.ecolorget(4)).withOpacity(touchedIndex == 4 ? 0.2:1),
+                                          // color: Color.fromRGBO(220, 220, 220, 1),
                                         ),
                                       ),
 
                                     ],
                                   ),
-                                  SizedBox(width: 5,),
-                                  Row(
-                                    children: [
-                                      SizedBox(height: 50,),
-                                      Container(
-                                        child: Text('Happy',style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: touchedIndex == 4 ? 14 : 10
-                                        ),),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(width: 24,),
+                                  SizedBox(width: 12.53175,),
                                   Column(
                                     children: [
-                                      Padding(
-
-                                        padding: const EdgeInsets.fromLTRB(8,8,0,0),
-                                        child: Container(
-                                          child: FlatButton(onPressed: () {
-                                            push5();
-                                          },
-                                          ),
-                                          height: touchedIndex == 5 ? 10 : 25,
-                                          width: touchedIndex == 5 ? 10 : 25,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(
-                                                7)),
-                                            color: HexColor(facade.ecolorget(7)),
-                                            // color: Color.fromRGBO(220, 220, 220, 1),
-                                          ),
+                                      Container(
+                                        child: FlatButton(onPressed: () {
+                                          push5();
+                                        },
+                                          child: Text('Surprise',style: TextStyle(
+                                              color: Colors.white.withOpacity(touchedIndex == 5 ? 0.2:1),
+                                              fontSize: touchedIndex == 5 ? 12 : 12
+                                          ),),
+                                        ),
+                                        height: touchedIndex == 5 ? 25 : 25,
+                                        width: touchedIndex == 5 ? 80 : 80,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(
+                                              7)),
+                                          color: HexColor(facade.ecolorget(7)).withOpacity(touchedIndex == 5 ? 0.2:1),
+                                          // color: Color.fromRGBO(220, 220, 220, 1),
                                         ),
                                       ),
 
                                     ],
                                   ),
-                                  SizedBox(width: 5,),
-                                  Row(
-                                    children: [
-                                      SizedBox(height: 50,),
-                                      Container(
-                                        child: Text('Surprise',style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: touchedIndex == 5 ? 14 : 10
-                                        ),),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(width: 18,),
+
+                                  SizedBox(width: 12.53175,),
                                   Column(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(8,8,0,0),
-                                        child: Container(
-                                          child: FlatButton(onPressed: () {
-                                            push6();
-                                          },
-                                          ),
-                                          height: touchedIndex == 6 ? 10 : 25,
-                                          width: touchedIndex == 6 ? 10 : 25,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(
-                                                7)),
-                                            color: HexColor(facade.ecolorget(1)),
-                                            // color: Color.fromRGBO(220, 220, 220, 1),
-                                          ),
+                                      Container(
+                                        child: FlatButton(onPressed: () {
+                                          push6();
+                                        },
+                                          child: Text('Angry',style: TextStyle(
+                                              color: Colors.white.withOpacity(touchedIndex == 6 ? 0.2:1),
+                                              fontSize: touchedIndex == 6 ? 12 : 12
+                                          ),),
+                                        ),
+                                        height: touchedIndex == 6 ? 25 : 25,
+                                        width: touchedIndex == 6 ? 80 : 80,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(
+                                              7)),
+                                          color: HexColor(facade.ecolorget(1)).withOpacity(touchedIndex == 6 ? 0.2:1),
+                                          // color: Color.fromRGBO(220, 220, 220, 1),
                                         ),
                                       ),
 
                                     ],
                                   ),
-                                  SizedBox(width: 5,),
-                                  Row(
-                                    children: [
-                                      SizedBox(height: 50,),
-                                      Container(
-                                        child: Text('Angry',style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: touchedIndex == 6 ? 14 : 10
-                                        ),),
-                                      ),
-                                    ],
-                                  ),
+                                  SizedBox(width: 12.53175,),
+
 
 
                                 ],

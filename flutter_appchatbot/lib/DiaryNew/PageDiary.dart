@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math' as math;
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import '../main.dart';
+
 import 'recipe_model.dart';
 import 'recipe_view.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -96,8 +98,8 @@ class _HomeState extends State<Diary> {
         print(check);
         return
           SpinKitFadingCube(
-            color: Colors.green,
-            size: 50.0,
+              color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
+            size: 50.0,duration: Duration(seconds: 1)
           );
       }
       if(check==2){

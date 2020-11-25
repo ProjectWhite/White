@@ -17,7 +17,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
     return Scaffold(
       backgroundColor: Colors.blue[300],
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(80.0),
+          preferredSize: Size.fromHeight(120.0),
           child: Column(
             children: [
               SizedBox(height: 90,),
