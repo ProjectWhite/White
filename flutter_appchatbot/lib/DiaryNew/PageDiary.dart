@@ -4,7 +4,6 @@ import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/DiaryNew/CustomDialog.dart';
-import 'package:flutter_appchatbot/DiaryNew/item_card.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Pages.dart';
 import 'package:flutter_appchatbot/class/Emotion.dart';
 import 'package:flutter_appchatbot/class/Emotion/Happy.dart';
@@ -12,7 +11,6 @@ import 'package:flutter_appchatbot/class/Facade.dart';
 import 'package:flutter_chat_bubble/bubble_type.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_8.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
@@ -78,7 +76,6 @@ class _HomeState extends State<Diary> {
             {"data": 1, "message": msg.text, "date": date.text,"emo": emo.text,"type": type.text});
       });
       check=1;
-
     }
     return dataus;
   }
@@ -90,84 +87,85 @@ class _HomeState extends State<Diary> {
     print('check');
     print(check);
     int _currentIndex = 0;
-    if(c==0){
-      check=2;
-    }
-   if(check == 1) {
-     print('have data');
-     return Scaffold(
-       body: Container(
-         decoration: BoxDecoration(
-           gradient: LinearGradient(
-               begin: Alignment.bottomLeft,
-               end: Alignment.topRight,
-               colors: [HexColor('#FFFFFF'), HexColor('#FFFFFF')]
-           ),
-         ),
-         child: Column(
-           children: <Widget>[
-             Container(
-               padding: EdgeInsets.only(top: 35, bottom: 10),
-               child: Text("$name ${DateFormat("Hm").format(DateTime
-                   .now())}",
-                 style: TextStyle(
-                   fontSize: 20,
-                   color: Colors.black,
-                   fontFamily: 'RobotoCondensed',
-                   fontWeight: FontWeight.bold,
-                 ),),
-             ),
-             Flexible(
-                 child: ListView.builder(
-                     reverse: false,
-                     itemCount: messsages.length,
-                     itemBuilder: (context, index) =>
-                         chat(
-                           messsages[index]["message"].toString(),
-                           messsages[index]["date"].toString(),
-                           messsages[index]["emo"].toString(),
-                           messsages[index]["type"].toString(),
-                         )
-                 )),
-           ],
-         ),
-       ),
-     );
-   }if(check==0) {
-        _readdiary();
-       print('loading');
-       print(check);
-       return
-         SpinKitFadingCube(
-           color: Colors.green,
-           size: 50.0,
-         );
-     }
-    if(check==2){
-      return Container(
-        color: Colors.white,
-        child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: Icon(
-                    Icons.menu_book_rounded,
-                    size: 50,
-                    color: Colors.grey,
+    return FutureBuilder(
+      future: _future,
+      builder: (BuildContext context,AsyncSnapshot snap){
+        if(check==0) {
+          check=2;
+        print('loading');
+        print(check);
+        return
+          SpinKitFadingCube(
+            color: Colors.green,
+            size: 50.0,
+          );
+      }
+      if(check==2){
+        return Container(
+          color: Colors.white,
+          child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Icon(
+                      Icons.menu_book_rounded,
+                      size: 50,
+                      color: Colors.grey,
+                    ),
                   ),
-                ),
-                Text(
-                  'Write diary now',
-                  style: TextStyle(color: Colors.grey),
-                )
-              ],
-            )),
+                  Text(
+                    'Write diary now',
+                    style: TextStyle(color: Colors.grey),
+                  )
+                ],
+              )),
+        );
+      }
+      return Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                colors: [HexColor('#FFFFFF'), HexColor('#FFFFFF')]
+            ),
+          ),
+          child: Column(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(top: 35, bottom: 10),
+                child: Text("$name ${DateFormat("Hm").format(DateTime
+                    .now())}",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontFamily: 'RobotoCondensed',
+                    fontWeight: FontWeight.bold,
+                  ),),
+              ),
+              Flexible(
+                  child: ListView.builder(
+                      reverse: false,
+                      itemCount: messsages.length,
+                      itemBuilder: (context, index) =>
+                          chat(
+                            messsages[index]["message"].toString(),
+                            messsages[index]["date"].toString(),
+                            messsages[index]["emo"].toString(),
+                            messsages[index]["type"].toString(),
+                          )
+                  )),
+            ],
+          ),
+        ),
       );
-    }
+      },
+
+    );
 
    }
 
