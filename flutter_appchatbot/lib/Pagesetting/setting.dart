@@ -95,10 +95,15 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                   ],
                 ),
-                IconButton(
-                  alignment: Alignment.topRight,
-                  icon: Icon(Icons.logout, size: 35, color: Colors.white),
-                  onPressed: () {logOut(context);},
+                Material(
+                  borderRadius: BorderRadius.circular(30),
+                  elevation: 5,
+                  color: Colors.blue[400],
+                  child: IconButton(
+                    alignment: Alignment.centerRight,
+                    icon: Icon(Icons.logout, size: 30, color: Colors.white),
+                    onPressed: () {logOut(context);},
+                  ),
                 )
               ],
             ),

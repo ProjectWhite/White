@@ -65,41 +65,46 @@ class GridDashboard extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (BuildContext context) => data.page));
               },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: color, borderRadius: BorderRadius.circular(10)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Center(
-                          child: data.ics
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                    Text(
-                      data.title,
-                      style: GoogleFonts.openSans(
-                          textStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15.8,
-                              fontWeight: FontWeight.w600)),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      data.subtitle,
-                      style: GoogleFonts.openSans(
-                          textStyle: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600)),
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                  ],
+              child: Material(
+                elevation: 10,
+                color: color,
+                borderRadius: BorderRadius.circular(30),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: color, borderRadius: BorderRadius.circular(30)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Center(
+                            child: data.ics
+                      ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        data.title,
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15.8,
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        data.subtitle,
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                color: Colors.white70,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );
