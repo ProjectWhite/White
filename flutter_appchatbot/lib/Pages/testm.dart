@@ -1,16 +1,19 @@
 
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/DiaryNew/PageDiary.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Pages.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/ShowStatMileStone.dart';
-import 'package:flutter_appchatbot/PageDiary/DiaryPage.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/ShowStatMileStone.dart';
 import 'package:flutter_appchatbot/DiaryNew/CustomDialog.dart';
+import 'package:http/http.dart' as http;
 
 class Nav extends StatefulWidget {
   @override
@@ -18,6 +21,7 @@ class Nav extends StatefulWidget {
 }
 
 class _NavState extends State<Nav> {
+
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     Showmilestone(),
@@ -27,6 +31,7 @@ class _NavState extends State<Nav> {
   ];
 
   void _onItemTap(int index) {
+
     setState(() {
       _selectedIndex = index;
     });
@@ -39,6 +44,7 @@ class _NavState extends State<Nav> {
     }
     l=0;
     k=1;
+    check=0;
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

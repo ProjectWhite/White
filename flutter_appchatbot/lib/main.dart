@@ -37,7 +37,7 @@ void main() async{
 String username='';
 String name='';
 String uml='https://e283a556408f.ngrok.io';
-int k;
+int k=2;
 
 class MyApp extends StatelessWidget {
   @override

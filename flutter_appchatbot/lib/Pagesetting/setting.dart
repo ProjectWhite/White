@@ -1,9 +1,6 @@
 import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
-import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../main.dart';
@@ -47,12 +44,39 @@ class _SettingPageState extends State<SettingPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Are you sure to logout'),
+            title: Text('Are you sure to logout', style:
+              GoogleFonts.robotoCondensed(
+                textStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                )),
+            ),
             actions: <Widget>[
               new FlatButton(
-                child: new Text('Yes'),
+                child: new Text('Yes',
+                  style: GoogleFonts.robotoCondensed(
+                      textStyle: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                      )),
+                ),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+                },
+              ),
+              new FlatButton(
+                child: new Text('Cancel',
+                  style: GoogleFonts.robotoCondensed(
+                      textStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                      )),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
                 },
               )
             ],
@@ -63,7 +87,7 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: Color(0xff392850),
+      backgroundColor: Colors.blue[400],
       body: Column(
         children: <Widget>[
           SizedBox(
@@ -79,8 +103,9 @@ class _SettingPageState extends State<SettingPage> {
                   children: <Widget>[
                     Text(
                       "Account",
-                      style: GoogleFonts.openSans(
+                      style: GoogleFonts.robotoCondensed(
                           textStyle: TextStyle(
+                              shadows: [Shadow(color: Colors.black, offset: Offset(2,3), blurRadius: 10)],
                               color: Colors.white,
                               fontSize: 36,
                               fontWeight: FontWeight.bold)),
@@ -90,18 +115,23 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     Text(
                       "Setting",
-                      style: GoogleFonts.openSans(
+                      style: GoogleFonts.robotoCondensed(
                           textStyle: TextStyle(
-                              color: Color(0xffa29aac),
+                              color: Colors.blue[100],
                               fontSize: 20,
                               fontWeight: FontWeight.w600)),
                     ),
                   ],
                 ),
-                IconButton(
-                  alignment: Alignment.topRight,
-                  icon: Icon(Icons.logout, size: 35, color: Colors.white),
-                  onPressed: () {logOut(context);},
+                Material(
+                  borderRadius: BorderRadius.circular(30),
+                  elevation: 5,
+                  color: Colors.blue[400],
+                  child: IconButton(
+                    alignment: Alignment.centerRight,
+                    icon: Icon(Icons.logout, size: 30, color: Colors.white),
+                    onPressed: () {logOut(context);},
+                  ),
                 )
               ],
             ),
@@ -116,24 +146,4 @@ class _SettingPageState extends State<SettingPage> {
 
     );
   }
-
-  ListTile buildListTile(String labelText, icon, page  ) {
-    return ListTile(
-            title: Text(
-              labelText,
-              style: TextStyle(
-                fontSize: 20,
-                  fontFamily: 'RobotoCondensed',
-              ),
-            ),
-            leading: Icon(icon, color: Colors.blue[300],),
-            trailing: Icon(Icons.keyboard_arrow_right, color: Colors.black,),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => page));
-            },
-          );
-  }
-
-
 }

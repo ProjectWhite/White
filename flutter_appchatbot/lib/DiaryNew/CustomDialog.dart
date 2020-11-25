@@ -44,7 +44,7 @@ class CustomDialog extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          padding:  EdgeInsets.only(top: 80, bottom: 16, right: 16, left: 16),
+          padding:  EdgeInsets.only(top: 70, bottom: 16, right: 16, left: 16),
           margin: EdgeInsets.only(top: 16),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -62,7 +62,7 @@ class CustomDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                title.toUpperCase(),
+                type.toUpperCase(),
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w700,

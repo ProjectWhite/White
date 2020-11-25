@@ -12,38 +12,38 @@ class GridDashboard extends StatelessWidget {
   Items item1 = new Items(
     title: "Account & Password",
     subtitle: "Edit your account & password",
-    ics: Icon(Icons.vpn_key_rounded, size: 60, color: Colors.deepPurple[400]),
+    ics: Icon(Icons.vpn_key_rounded, size: 60, color: Colors.blue),
     page: AccountPasswordPage(),
   );
 
   Items item2 = new Items(
     title: "Theme",
     subtitle: "Change theme app",
-    ics: Icon(Icons.color_lens_rounded, size: 60, color: Colors.deepPurple[400]),
+    ics: Icon(Icons.color_lens_rounded, size: 60, color: Colors.blue),
     page: ThemePage(),
   );
   Items item3 = new Items(
     title: "Preferred Hours",
     subtitle: "Select your preferred hours",
-    ics: Icon(Icons.access_time_rounded, size: 60, color: Colors.deepPurple[400]),
+    ics: Icon(Icons.access_time_rounded, size: 60, color: Colors.blue),
     page: PreferedHoursPage(),
   );
   Items item4 = new Items(
     title: "Security",
     subtitle: "Set PIN",
-    ics: Icon(Icons.lock_rounded, size: 60, color: Colors.deepPurple[400]),
+    ics: Icon(Icons.lock_rounded, size: 60, color: Colors.blue),
     page: SecurityPage(),
   );
   Items item5 = new Items(
     title: "Rate Us",
     subtitle: "",
-    ics: Icon(Icons.star_rate_rounded, size: 60, color: Colors.deepPurple[400]),
+    ics: Icon(Icons.star_rate_rounded, size: 60, color: Colors.blue),
     page: RatePage(),
   );
   Items item6 = new Items(
     title: "Help Center",
     subtitle: "",
-    ics: Icon(Icons.live_help_rounded, size: 60, color: Colors.deepPurple[400]),
+    ics: Icon(Icons.live_help_rounded, size: 60, color: Colors.blue),
     page: HelpCenterPage(),
   );
 
@@ -51,7 +51,7 @@ class GridDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Items> myList = [item1, item2, item3, item4, item5, item6];
-    var color = 0xff453658;
+    var color = Colors.blue[300];
     return Flexible(
       child: GridView.count(
           childAspectRatio: 1.0,
@@ -62,12 +62,12 @@ class GridDashboard extends StatelessWidget {
           children: myList.map((data) {
             return InkWell(
               onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => data.page));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => data.page,),);
               },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Color(color), borderRadius: BorderRadius.circular(10)),
+              child: Material(
+                color: color,
+                elevation: 5,
+                borderRadius: BorderRadius.circular(30),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -79,10 +79,10 @@ class GridDashboard extends StatelessWidget {
                     ),
                     Text(
                       data.title,
-                      style: GoogleFonts.openSans(
+                      style: GoogleFonts.robotoCondensed(
                           textStyle: TextStyle(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 15.8,
                               fontWeight: FontWeight.w600)),
                     ),
                     SizedBox(
@@ -90,9 +90,9 @@ class GridDashboard extends StatelessWidget {
                     ),
                     Text(
                       data.subtitle,
-                      style: GoogleFonts.openSans(
+                      style: GoogleFonts.robotoCondensed(
                           textStyle: TextStyle(
-                              color: Colors.white38,
+                              color: Colors.white70,
                               fontSize: 10,
                               fontWeight: FontWeight.w600)),
                     ),
@@ -114,4 +114,27 @@ class Items {
   String subtitle;
   Icon ics;
   Items({this.title, this.subtitle, this.ics, this.page});
+}
+
+class SlideFromLeftPageRoute extends PageRouteBuilder {
+  Widget widget;
+
+  SlideFromLeftPageRoute({this.widget}) : super(
+    pageBuilder: (context, animation, secondaryAnimation) => widget,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(-1.0, 0.0),
+          end: Offset.zero,
+        ).animate(animation),
+        child: SlideTransition(
+          position: Tween<Offset>(
+            begin: Offset.zero,
+            end: const Offset(-1.0, 0.0),
+          ).animate(secondaryAnimation),
+          child: child,
+        ),
+      );
+    },
+  );
 }
