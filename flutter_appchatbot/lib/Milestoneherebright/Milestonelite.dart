@@ -5,7 +5,7 @@ import 'indicator.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/LineChart.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/ScrollViewTest.dart';
+import 'package:flutter_appchatbot/Milestoneherebright/ShowStatMileStone.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_appchatbot/class/Emotion/Anger.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
@@ -360,7 +360,7 @@ class _MileStoneLiteState extends State<MileStoneLite> {
                           Container(
                             child: IconButton(onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (BuildContext context) => Svt()));
+                                  builder: (BuildContext context) => Showmilestone()));
                             },
                               icon: Icon(Icons.settings),
                             ),

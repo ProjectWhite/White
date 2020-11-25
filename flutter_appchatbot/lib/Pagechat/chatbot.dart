@@ -1362,7 +1362,7 @@ class _chatbotState extends State<chatbot> {
                   onPressed: () {
                     _readmsg();
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) => Bar7z()));
+                        builder: (BuildContext context) => LineChartSample1()));
                   },
                 ),
                 title: Container(
