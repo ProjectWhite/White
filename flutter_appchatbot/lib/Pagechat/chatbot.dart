@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_appchatbot/Milestoneherebright/bartest.dart';
 import 'package:animate_icons/animate_icons.dart';
@@ -1306,6 +1307,20 @@ class _chatbotState extends State<chatbot> {
       print(except);
     }
   }
+  String _timeString;
+
+  @override
+  void initState(){
+    _timeString = "${DateTime.now().hour.toString().padLeft(2, '0')} : ${DateTime.now().minute.toString().padLeft(2, '0')}";
+    Timer.periodic(Duration(seconds:1), (Timer t)=>_getCurrentTime());
+    super.initState();
+  }
+
+  void _getCurrentTime()  {
+    setState(() {
+      _timeString = "${DateTime.now().hour.toString().padLeft(2, '0')} : ${DateTime.now().minute.toString().padLeft(2, '0')}";
+    });
+  }
 
   final messageInsert = TextEditingController();
   final msg = TextEditingController();
@@ -1332,7 +1347,7 @@ class _chatbotState extends State<chatbot> {
           children: <Widget>[
             Container(
               padding: EdgeInsets.only(top: 35, bottom: 10),
-              child: Text("$name ${DateFormat("Hm").format(DateTime.now())}", style: TextStyle(
+              child: Text("$name $_timeString", style: TextStyle(
                 fontSize: 20, color: Colors.black,fontFamily: 'RobotoCondensed',fontWeight: FontWeight.bold,
               ),),
             ),
@@ -1431,6 +1446,7 @@ class _chatbotState extends State<chatbot> {
 
     );
   }
+
 
   Widget chat(String message, int data) {
     return Container(

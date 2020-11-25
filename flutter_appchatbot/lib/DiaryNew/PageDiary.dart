@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math' as math;
@@ -34,10 +35,21 @@ class Diary extends StatefulWidget {
 class _HomeState extends State<Diary> {
 
   Future<List<dynamic>> _future;
+
+  String _timeString;
   @override
   void initState() {
     super.initState();
     _future = _readdiary();
+    _timeString = "${DateTime.now().hour.toString().padLeft(2, '0')} : ${DateTime.now().minute.toString().padLeft(2, '0')}";
+    Timer.periodic(Duration(seconds:1), (Timer t)=>_getCurrentTime());
+    super.initState();
+  }
+
+  void _getCurrentTime()  {
+    setState(() {
+      _timeString = "${DateTime.now().hour.toString().padLeft(2, '0')} : ${DateTime.now().minute.toString().padLeft(2, '0')}";
+    });
   }
 
   final messageInsert = TextEditingController();
@@ -81,6 +93,8 @@ class _HomeState extends State<Diary> {
     }
     return dataus;
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -140,8 +154,7 @@ class _HomeState extends State<Diary> {
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(top: 35, bottom: 10),
-                child: Text("$name ${DateFormat("Hm").format(DateTime
-                    .now())}",
+                child: Text("$name $_timeString",
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
