@@ -96,6 +96,7 @@ class Facade {
     }
     if (emotionin==emotion.fine){
       Emotion x = new Happy(categoryin);
+      Emo = x.EmotionAmi();
       return x.Typecolor();
     }
 

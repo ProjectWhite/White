@@ -8,7 +8,6 @@ import '../constrants.dart';
 import 'package:http/http.dart' as http;
 
 
-
 class wellcome extends StatefulWidget {
   @override
   _wellcomeState createState() => _wellcomeState();
