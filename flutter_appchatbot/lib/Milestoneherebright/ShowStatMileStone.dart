@@ -19,8 +19,8 @@ import 'dart:math' as math;
 import 'package:flutter_appchatbot/class/Facade.dart';
 
 
-class Svt extends StatefulWidget {
-  Svt({Key key, this.title}) : super(key: key);
+class Showmilestone extends StatefulWidget {
+  Showmilestone({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
@@ -33,7 +33,7 @@ class MilestonepageState extends State {
   final Duration animDuration = const Duration(milliseconds: 250);
   Facade facade = new Facade();
 
-  Choice _selectedChoice = choices[0]; // The app's "state".
+  Choice _selectedChoice = choices[4]; // The app's "state".
 
   void _select(Choice choice) {
     setState(() { // Causes the app to rebuild with the new _selectedChoice.
@@ -65,44 +65,44 @@ class MilestonepageState extends State {
       if(dataus[i]['type']=='annoyed'||dataus[i]['type']=='frustrated'||dataus[i]['type']=='offended'
           ||dataus[i]['type']=='mad'||dataus[i]['type']=='threatened'){
         setState(() {
-            append(0.8);
+            append(1);
         });
       }
       else if(dataus[i]['type']=='resentful'||dataus[i]['type']=='shameful'||dataus[i]['type']=='bitter'
           ||dataus[i]['type']=='disappointed'||dataus[i]['type']=='averse'||dataus[i]['type']=='contempt'){
         setState(() {
-          append(1.8);
+          append(2);
         });
       }
       else if(dataus[i]['type']=='embarrassed'||dataus[i]['type']=='vulnerable' ||dataus[i]['type']=='rejected'
           ||dataus[i]['type']=='insecure'||dataus[i]['type']=='worried'){
         setState(() {
-            append(2.8);
+            append(3);
         });
       }
       else if(dataus[i]['type']=='confident'||dataus[i]['type']=='grateful'||dataus[i]['type']=='peaceful'
           ||dataus[i]['type']=='excited' ||dataus[i]['type']=='playful'||dataus[i]['type']=='relief'
           ||dataus[i]['type']=='pride' ||dataus[i]['type']=='satisfaction'||dataus[i]['type']=='triumph'){
         setState(() {
-          append(3.8);
+          append(4);
         });
       }
       else if(dataus[i]['type']=='accepted'||dataus[i]['type']=='gentle'||dataus[i]['type']=='affectionate'
           ||dataus[i]['type']=='passionate' ||dataus[i]['type']=='trusted'||dataus[i]['type']=='contentment'){
         setState(() {
-          append(4.8);
+          append(5);
         });
       }
       else if(dataus[i]['type']=='inadequate'||dataus[i]['type']=='uninterested'||dataus[i]['type']=='lonely'
           ||dataus[i]['type']=='guilty'||dataus[i]['type']=='hurt'){
         setState(() {
-          append(5.8);
+          append(6);
         });
       }
       else if(dataus[i]['type']=='startled'||dataus[i]['type']=='overwhelmed'||dataus[i]['type']=='confused'
           ||dataus[i]['type']=='amazed'||dataus[i]['type']=='shocked'){
         setState(() {
-          append(6.8);
+          append(7);
         });
       }
     }
@@ -371,17 +371,17 @@ class MilestonepageState extends State {
                                         ),
                                       ],
                                     ),
-                                    IconButton(
-                                      icon: Icon(
-                                        Icons.refresh,
-                                        color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          isShowingMainData =! isShowingMainData;
-                                        });
-                                      },
-                                    )
+                                    // IconButton(
+                                    //   icon: Icon(
+                                    //     Icons.refresh,
+                                    //     color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+                                    //   ),
+                                    //   onPressed: () {
+                                    //     setState(() {
+                                    //       isShowingMainData =! isShowingMainData;
+                                    //     });
+                                    //   },
+                                    // )
                                   ],
                                 ),
                               ),
@@ -801,7 +801,7 @@ class MilestonepageState extends State {
                                         crossAxisAlignment: CrossAxisAlignment.stretch,
                                         children: <Widget>[
                                           const SizedBox(
-                                            height: 57,
+                                            height: 30,
                                           ),
                                           Expanded(
                                             child: Padding(
@@ -817,17 +817,17 @@ class MilestonepageState extends State {
                                           ),
                                         ],
                                       ),
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.refresh,
-                                          color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
-                                        ),
-                                        onPressed: () {
-                                          setState(() {
-                                            isShowingMainData =! isShowingMainData;
-                                          });
-                                        },
-                                      )
+                                      // IconButton(
+                                      //   icon: Icon(
+                                      //     Icons.refresh,
+                                      //     color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+                                      //   ),
+                                      //   onPressed: () {
+                                      //     setState(() {
+                                      //       isShowingMainData =! isShowingMainData;
+                                      //     });
+                                      //   },
+                                      // )
                                     ],
                                   ),
                                 ),
@@ -1217,22 +1217,23 @@ class MilestonepageState extends State {
     return LineChartData(
       lineTouchData: LineTouchData(
         touchTooltipData: LineTouchTooltipData(
-          tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
+          tooltipBgColor: Colors.red.withOpacity(0.8),
         ),
         touchCallback: (LineTouchResponse touchResponse) {},
         handleBuiltInTouches: false,
       ),
       gridData: FlGridData(
-        show: false,
+        show: true,drawHorizontalLine: true,horizontalInterval: 0.99857142857
       ),
+
       titlesData: FlTitlesData(
         bottomTitles: SideTitles(
           showTitles: true,
-          reservedSize: 22,
+          reservedSize: 20,
           getTextStyles: (value) => const TextStyle(
             color: Color(0xff72719b),
             fontWeight: FontWeight.bold,
-            fontSize: 16,
+            fontSize: 15,
           ),
           margin: 10,
           // getTitles: (value) {
@@ -1257,27 +1258,27 @@ class MilestonepageState extends State {
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
+          margin: 10,
+          reservedSize: 60,
           getTitles: (value) {
             switch (value.toInt()) {
               case 1:
-                return 'A';
+                return 'Angry';
               case 2:
-                return 'D';
+                return 'Disgust';
               case 3:
-                return 'F';
+                return 'Fear';
               case 4:
-                return 'H';
+                return 'Happy';
               case 5:
-                return 'L';
+                return 'Love';
               case 6:
-                return 'S';
+                return 'Sad';
               case 7:
-                return 'Sur';
+                return 'Surprise';
             }
             return '';
           },
-          margin: 10,
-          reservedSize: 25,
         ),
       ),
       borderData: FlBorderData(
@@ -1312,7 +1313,7 @@ class MilestonepageState extends State {
       spots: allSpots,
       isCurved: true,
       colors: const [
-        Color(0xff27b6fc),
+        Colors.white,
       ],
       barWidth: 1,
       isStrokeCapRound: true,
@@ -1320,7 +1321,7 @@ class MilestonepageState extends State {
         show: true,
       ),
       belowBarData: BarAreaData(
-        show: false,
+        show: true,
       ),
     );
     return [
@@ -1334,7 +1335,7 @@ class MilestonepageState extends State {
         enabled: false,
       ),
       gridData: FlGridData(
-        show: false,
+        show: true,
       ),
       titlesData: FlTitlesData(
         bottomTitles: SideTitles(
@@ -1402,7 +1403,7 @@ class MilestonepageState extends State {
             ),
           )),
       minX: 0,
-      maxX: 50,
+      maxX: 30+count,
       maxY: 7,
       minY: 0,
       lineBarsData: linesBarData2(),
@@ -2894,28 +2895,30 @@ class _ChoiceCardState extends State<ChoiceCard> {
           showTitles: true,
           getTextStyles: (value) =>
           const TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
-          margin: 16,
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10),
+          margin: 10,
+          reservedSize: 30,
+          rotateAngle: 90,
           getTitles: (double value) {
             switch (value.toInt()) {
               case 0:
-                return 'C';
+                return '  Confident';
               case 1:
-                return 'G';
+                return '  Grateful';
               case 2:
-                return 'P';
+                return '  Peaceful';
               case 3:
-                return 'E';
+                return ' Excited';
               case 4:
-                return 'P';
+                return ' Playful';
               case 5:
-                return 'R';
+                return 'Relief';
               case 6:
-                return 'P';
+                return 'Pride';
               case 7:
-                return 'S';
+                return '    Satisfaction';
               case 8:
-                return 'T';
+                return ' Triumph';
               default:
                 return '';
             }
