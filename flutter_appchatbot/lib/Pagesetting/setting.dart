@@ -1,9 +1,6 @@
 import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
-import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../main.dart';
@@ -63,7 +60,7 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: Color(0xff392850),
+      backgroundColor: Colors.blue[400],
       body: Column(
         children: <Widget>[
           SizedBox(
@@ -92,7 +89,7 @@ class _SettingPageState extends State<SettingPage> {
                       "Setting",
                       style: GoogleFonts.openSans(
                           textStyle: TextStyle(
-                              color: Color(0xffa29aac),
+                              color: Colors.blue[100],
                               fontSize: 20,
                               fontWeight: FontWeight.w600)),
                     ),
