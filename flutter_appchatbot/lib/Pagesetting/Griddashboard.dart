@@ -83,7 +83,7 @@ class GridDashboard extends StatelessWidget {
                       ),
                       Text(
                         data.title,
-                        style: GoogleFonts.openSans(
+                        style: GoogleFonts.robotoCondensed(
                             textStyle: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15.8,
@@ -94,7 +94,7 @@ class GridDashboard extends StatelessWidget {
                       ),
                       Text(
                         data.subtitle,
-                        style: GoogleFonts.openSans(
+                        style: GoogleFonts.robotoCondensed(
                             textStyle: TextStyle(
                                 color: Colors.white70,
                                 fontSize: 10,
