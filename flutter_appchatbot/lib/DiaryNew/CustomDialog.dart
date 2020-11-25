@@ -33,7 +33,6 @@ class CustomDialog extends StatelessWidget {
     }
     Facade obj = new Facade();
     obj.find(emotionfromstring(emotions),tonefromstring(type));
-    print(obj.Emo);
     return Stack(
       children: [
         Container(
@@ -66,7 +65,6 @@ class CustomDialog extends StatelessWidget {
               SizedBox(height: 20,),
               Text(description, style: TextStyle(fontSize: 16),),
               SizedBox(height: 24,),
-
              Row(
                children: [
                  Align(
