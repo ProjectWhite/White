@@ -10,8 +10,9 @@ import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'package:flutter_appchatbot/Milestoneherebright/ScrollViewTest.dart';
-class Nav extends StatefulWidget {
+import 'package:flutter_appchatbot/DiaryNew/CustomDialog.dart';
 
+class Nav extends StatefulWidget {
   @override
   _NavState createState() => _NavState();
 }
@@ -33,6 +34,10 @@ class _NavState extends State<Nav> {
 
   @override
   Widget build(BuildContext context) {
+    if(l==1){
+      _selectedIndex = 1;
+    }
+    l=0;
     k=1;
     return Scaffold(
       body: Center(

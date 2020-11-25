@@ -15,8 +15,12 @@ import 'package:flutter_appchatbot/class/Facade.dart';
 import 'package:flutter_chat_bubble/bubble_type.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_1.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_10.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_5.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_6.dart';
 import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_7.dart';
 import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_8.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_9.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
@@ -134,6 +138,7 @@ class _chatbotState extends State<chatbot> {
 
 
   Future<List> _insertdiary(msg) async{
+    msg = msg.toString().replaceAll("\'", "\\\'");
     Facade obj = new Facade();
     // Disgust s = new Disgust(tone.bitter);
     // s.test();
@@ -1445,7 +1450,7 @@ class _chatbotState extends State<chatbot> {
             child:
             data == 1 ?
             ChatBubble(
-                clipper: ChatBubbleClipper8(type: BubbleType.sendBubble),
+                clipper: ChatBubbleClipper5(type: BubbleType.sendBubble),
                 alignment: Alignment.topRight,
                 margin: EdgeInsets.only(top: 8,right: 20),
                 backGroundColor: Colors.blue,
@@ -1460,7 +1465,7 @@ class _chatbotState extends State<chatbot> {
                 ),
             )
                 : ChatBubble(
-                  clipper: ChatBubbleClipper8(type: BubbleType.receiverBubble),
+                  clipper: ChatBubbleClipper5(type: BubbleType.receiverBubble),
                   backGroundColor: Color(0xffE7E7ED),
                   margin: EdgeInsets.only(top: 8,left: 20),
                   child: Container(

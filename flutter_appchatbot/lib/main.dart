@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter_appchatbot/DiaryNew/PageDiary.dart';
 import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
         '/MyHomePage': (BuildContext context)=> new MyHomePage(),
         '/chat' : (BuildContext context)=> new chatbot(username: username),
         '/Navi' : (BuildContext context)=> new Nav(),
+        '/Diary' : (BuildContext context)=> new Diary(),
       },
     );
   }

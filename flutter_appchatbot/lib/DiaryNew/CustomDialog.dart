@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_appchatbot/DiaryNew/PageDiary.dart';
+import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'package:flutter_appchatbot/class/Emotion.dart';
 import 'package:flutter_appchatbot/class/Facade.dart';
 import 'package:flutter_appchatbot/login/constants.dart';
+import 'package:http/http.dart' as http;
+
+import '../main.dart';
+
+
+int l=0;
 
 class CustomDialog extends StatelessWidget {
   final String title, description, buttonText, date,emotions,type;
@@ -74,20 +82,51 @@ class CustomDialog extends StatelessWidget {
                        textAlign: TextAlign.center,
                      ),
                      onPressed: () {
-                       Navigator.pop(context);
+                       showDialog(
+                           context: context,
+                           builder: (context) {
+                             return AlertDialog(
+                               title: Text('Delete Diary'),
+                               actions: <Widget>[
+                                 Row(
+                                   children: [
+                                     Align(
+                                       child: FlatButton(
+                                         child: Text('Cancel',
+                                           textAlign: TextAlign.left,),
+                                         onPressed: () {
+                                           Navigator.pop(context);
+                                         },
+                                       ),
+                                     ),
+                                     SizedBox(width: 6,),
+                                     Align(
+                                       child: FlatButton(
+                                         child: Text(
+                                           'Confirm',
+                                           textAlign: TextAlign.center,
+                                         ),
+                                         onPressed: () async {
+                                           var url = "$uml/my_store/deletediary.php";
+                                           print(username);
+                                           l=1;
+                                           await http.post(url, body: {
+                                             "username": username,
+                                             "date": date,
+                                           });
+                                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Nav(),),);
+                                         },
+                                       ),
+                                     ),
+                                   ],
+                                 )
+                               ],
+                             );
+                           });
                      },
                    ),
                  ),
-                 SizedBox(width: 6,),
-                 Align(
-                   child: FlatButton(
-                     child: Text('Edit',),
-                     onPressed: () {
-                       Navigator.pop(context);
-                     },
-                   ),
-                 ),
-                 SizedBox(width: 10),
+                 SizedBox(width: 100),
                  Align(
                    child: FlatButton(
                      child: Text('Done'),
