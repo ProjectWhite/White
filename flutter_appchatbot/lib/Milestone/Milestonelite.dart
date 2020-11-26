@@ -1,16 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'indicator.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/LineChart.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/ShowStatMileStone.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:flutter_appchatbot/class/Emotion/Anger.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
-import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/BarChart.dart';
+import 'package:flutter_appchatbot/Milestone/LineChart.dart';
+import 'package:flutter_appchatbot/Milestone/PieChart2.dart';
+import 'package:flutter_appchatbot/Milestone/ShowStatMileStone.dart';
+import 'package:flutter_appchatbot/Milestone/BarChart.dart';
+
 class MileStoneLite extends StatefulWidget {
   @override
   _MileStoneLiteState createState() => _MileStoneLiteState();

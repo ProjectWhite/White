@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/class/Emotion.dart';
-import 'package:flutter_appchatbot/class/Emotion/Happy.dart';
+
 class Emotiontest extends StatefulWidget {
   @override
   _EmotiontestState createState() => _EmotiontestState();

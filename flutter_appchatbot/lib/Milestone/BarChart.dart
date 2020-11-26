@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:math';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -21,9 +19,7 @@ class BarChartEmotion extends StatefulWidget {
 class BarChartEmotionState extends State<BarChartEmotion> {
   final Color barBackgroundColor = const Color(0xff72d8bf);
   final Duration animDuration = const Duration(milliseconds: 250);
-
   int touchedIndex;
-
   bool isPlaying = false;
 
   @override
@@ -35,7 +31,6 @@ class BarChartEmotionState extends State<BarChartEmotion> {
         aspectRatio: 1,
         child: Card(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-
           child: Container(
             height: 50,
             width: 50,
@@ -51,7 +46,6 @@ class BarChartEmotionState extends State<BarChartEmotion> {
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
               ),
-              // color: Color.fromRGBO(220, 220, 220, 1),
             ),
             child: Stack(
               children: <Widget>[
@@ -313,11 +307,9 @@ class BarChartEmotionState extends State<BarChartEmotion> {
             return null;
         }
       }),
-
     );
   }
-  // makeGroupData(3, Random().nextInt(15).toDouble() + 6,
-  // barColor: widget.availableColors[Random().nextInt(widget.availableColors.length)])
+
   Future<dynamic> refreshState() async {
     setState(() {});
     await Future<dynamic>.delayed(animDuration + const Duration(milliseconds: 50));

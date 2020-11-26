@@ -19,6 +19,7 @@ class _introState extends State<intro> {
     super.initState();
     slides = getSlides();
   }
+
   Widget pageIndexIndicator(bool isCurrentPage){
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 2),
@@ -30,6 +31,7 @@ class _introState extends State<intro> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +91,6 @@ class _introState extends State<intro> {
                 pageBuilder: (BuildContext context,Animation<double> animation,Animation<double> secAnimation){
                   return MyHomePage();
               }
-
               ));
             },
         child: Container(
@@ -106,6 +107,7 @@ class _introState extends State<intro> {
     );
   }
 }
+
 class SliderTile extends StatelessWidget {
   String imageAssetPath,title, desc;
   SliderTile(this.imageAssetPath,this.title,this.desc);

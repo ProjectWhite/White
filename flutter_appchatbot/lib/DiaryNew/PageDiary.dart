@@ -1,27 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'dart:math' as math;
-import 'package:enum_to_string/enum_to_string.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/DiaryNew/CustomDialog.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Pages.dart';
 import 'package:flutter_appchatbot/class/Emotion.dart';
-import 'package:flutter_appchatbot/class/Emotion/Happy.dart';
 import 'package:flutter_appchatbot/class/Facade.dart';
-import 'package:flutter_chat_bubble/bubble_type.dart';
-import 'package:flutter_chat_bubble/chat_bubble.dart';
-import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_8.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 import '../main.dart';
-
-import 'recipe_model.dart';
-import 'recipe_view.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 int c;
 int check = 0;
@@ -40,7 +27,6 @@ class _HomeState extends State<Diary> {
     super.initState();
     _aoyler = _readdiary();
   }
-
 
   final messageInsert = TextEditingController();
   final msg = TextEditingController();
@@ -63,18 +49,18 @@ class _HomeState extends State<Diary> {
     for(c=0;;c++){
       try{
         //ignore exception
-        if(dataus[c]["diary"]==null)
+        if(dataus[c]["MILESTONE_DIARY"]==null)
           break;
       }catch (Exception){
         print(Exception);
         break;
       }
-      print(dataus[c]["diary"]);
-      print(dataus[c]["date"]);
-      msg.text = dataus[c]["diary"];
-      date.text = dataus[c]["date"];
-      emo.text = dataus[c]["emotion"];
-      type.text = dataus[c]["type"];
+      print(dataus[c]["MILESTONE_DIARY"]);
+      print(dataus[c]["MILESTONE_DIARY"]);
+      msg.text = dataus[c]["MILESTONE_DIARY"];
+      date.text = dataus[c]["MILESTONE_DATE"];
+      emo.text = dataus[c]["MILESTONE_EMOTION"];
+      type.text = dataus[c]["MILESTONE_TYPE"];
       setState(() {
         messsages.insert(0,
             {"data": 1, "message": msg.text, "date": date.text,"emo": emo.text,"type": type.text});
@@ -84,17 +70,8 @@ class _HomeState extends State<Diary> {
     return dataus;
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-
-    print('c');
-    print(c);
-    print('check');
-    print(check);
-    int _currentIndex = 0;
-
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -111,8 +88,6 @@ class _HomeState extends State<Diary> {
                 builder: (BuildContext context,AsyncSnapshot snap) {
                   if (check == 0) {
                     check = 2;
-                    print('loading');
-                    print(check);
                     return
                       Expanded(
                         child: SpinKitFadingCube(

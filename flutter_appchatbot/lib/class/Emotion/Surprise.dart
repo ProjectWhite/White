@@ -1,11 +1,12 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-class Surprise extends Emotion{
+class Surprise extends Emotion {
   tone category;
 
-  Surprise(tone category) : super.empty(){
+  Surprise(tone category) : super.empty() {
     super.category = category;
     this.type = emotion.surprise;
     this.mothercolors = '#FF4800';
+
     if (category == tone.startled) {
       this.colors = '#F76D36';
     }
@@ -22,7 +23,6 @@ class Surprise extends Emotion{
       this.colors = '#A6593A';
     }
   }
-
 
   @override
   EmotionDetail() {
@@ -48,6 +48,4 @@ class Surprise extends Emotion{
     // TODO: implement EmotionAmi
     return 'assets/hushed_face.gif';
   }
-
-
 }

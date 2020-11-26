@@ -6,7 +6,6 @@ class Indicator extends StatelessWidget {
   final bool isSquare;
   final double size;
   final Color textColor;
-
   const Indicator({
     Key key,
     this.color,

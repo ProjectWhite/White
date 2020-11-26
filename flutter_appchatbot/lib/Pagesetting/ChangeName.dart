@@ -65,7 +65,6 @@ class _ChangeNameState extends State<ChangeName> {
         ),
       ),
     );
-
   }
 
   @override

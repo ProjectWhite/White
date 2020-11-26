@@ -1,10 +1,11 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-class Happy extends Emotion{
+class Happy extends Emotion {
   tone category;
-  Happy(tone category) : super.empty(){
+  Happy(tone category) : super.empty() {
     super.category = category;
     this.mothercolors = '#FFB600';
     this.type = emotion.happy;
+
     if (category == tone.confident) {
       this.colors = '#D9B762';
     }
@@ -34,7 +35,6 @@ class Happy extends Emotion{
     }
   }
 
-
   @override
   EmotionDetail() {
     // TODO: implement EmotionDetail
@@ -59,6 +59,4 @@ class Happy extends Emotion{
     // TODO: implement EmotionAmi
     return 'assets/beaming_face_with_smiling_eyes.gif';
   }
-
-
 }

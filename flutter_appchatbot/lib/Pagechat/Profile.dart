@@ -124,7 +124,6 @@ class _AboutPageState extends State<AboutPage> {
                 },
               ),
             ),
-
           ],
         ),
       ),

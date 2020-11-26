@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Pagesetting/help_center.dart';
-import 'package:flutter_appchatbot/Pagesetting/prefered_hours.dart';
-import 'package:flutter_appchatbot/Pagesetting/rate_us.dart';
-import 'package:flutter_appchatbot/Pagesetting/security.dart';
-import 'package:flutter_appchatbot/Pagesetting/theme.dart';
+import 'package:flutter_appchatbot/Pagesetting/HelpCenter.dart';
+import 'package:flutter_appchatbot/Pagesetting/PreferredHours.dart';
+import 'package:flutter_appchatbot/Pagesetting/RateUs.dart';
+import 'package:flutter_appchatbot/Pagesetting/Security.dart';
+import 'package:flutter_appchatbot/Pagesetting/Theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'account_password.dart';
-
+import 'AccountPassword.dart';
 
 class GridDashboard extends StatelessWidget {
   Items item1 = new Items(
@@ -46,7 +45,6 @@ class GridDashboard extends StatelessWidget {
     ics: Icon(Icons.live_help_rounded, size: 60, color: Colors.white),
     page: HelpCenterPage(),
   );
-
 
   @override
   Widget build(BuildContext context) {

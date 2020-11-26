@@ -1,8 +1,8 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-class Sad extends Emotion{
+class Sad extends Emotion {
   tone category;
 
-  Sad(tone category) : super.empty(){
+  Sad(tone category) : super.empty() {
     super.category = category;
     this.mothercolors = '#3F37C9';
     this.type = emotion.sad;
@@ -22,8 +22,6 @@ class Sad extends Emotion{
       this.colors = '#312E69';
     }
   }
-
-
 
   @override
   EmotionDetail() {
@@ -49,6 +47,4 @@ class Sad extends Emotion{
     // TODO: implement EmotionAmi
     return 'assets/crying_face.gif';
   }
-
-
 }

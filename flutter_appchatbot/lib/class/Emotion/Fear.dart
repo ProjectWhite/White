@@ -1,11 +1,12 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-class Fear extends Emotion{
+class Fear extends Emotion {
   tone category;
 
-  Fear(tone category) : super.empty(){
+  Fear(tone category) : super.empty() {
     super.category = category;
     this.type = emotion.fear;
     this.mothercolors = '#7209B7';
+
     if (category == tone.embarrassed) {
       this.colors = '#A85ADB';
     }
@@ -22,8 +23,6 @@ class Fear extends Emotion{
       this.colors = '#4B186E';
     }
   }
-
-
 
   @override
   EmotionDetail() {
@@ -49,6 +48,4 @@ class Fear extends Emotion{
     // TODO: implement EmotionAmi
     return 'assets/face_screaming_in_fear.gif';
   }
-
-
 }

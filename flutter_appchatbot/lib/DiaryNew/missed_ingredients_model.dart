@@ -1,4 +1,4 @@
-class MissedIngredientsModel{
+class MissedIngredientsModel {
 
   final String aisle;
   final String amount;
@@ -7,5 +7,4 @@ class MissedIngredientsModel{
   final String original;
 
   MissedIngredientsModel({this.image, this.name, this.aisle, this.amount, this.original});
-
 }

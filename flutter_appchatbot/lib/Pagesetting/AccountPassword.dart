@@ -17,7 +17,6 @@ class AccountPasswordPage extends StatefulWidget {
 
 class _AccountPasswordPageState extends State<AccountPasswordPage> {
 
-
   @override
   Widget build(BuildContext context) {
     var headline = GoogleFonts.rubik(
@@ -175,7 +174,6 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
           ],
         ),
       ),
-
     );
   }
 
@@ -209,8 +207,7 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
               children: [
                 Text(textBehide, style: body1),
                 SizedBox(width: 10),
-                Icon(Icons.arrow_forward_ios_rounded, color: Colors.black38,
-                    size: 18)
+                Icon(Icons.arrow_forward_ios_rounded, color: Colors.black38, size: 18)
               ],
             ),
           ],

@@ -1,19 +1,13 @@
-import 'package:flutter_login/widgets.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'constants.dart';
-import 'custom_route.dart';
-import 'dashboard_screen.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_appchatbot/Pages/wellcome1.dart';
 import 'package:flutter_appchatbot/main.dart';
 
@@ -63,7 +57,6 @@ class LoginScreen extends StatelessWidget {
             fontSize: 16.0
         );
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),),);
-        // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
       } else {
         Fluttertoast.showToast(
             msg: "Register Successful",
@@ -75,16 +68,6 @@ class LoginScreen extends StatelessWidget {
             fontSize: 16.0
         );
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
-        // Fluttertoast.showToast(
-        //   msg: "Register Success",
-        //   toastLength: Toast.LENGTH_SHORT,
-        //   gravity: ToastGravity.CENTER,
-        //   timeInSecForIosWeb: 1,
-        //   backgroundColor: Colors.green,
-        //   textColor: Colors.white,
-        //   fontSize: 16.0,
-        // );
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
       }
     }
 
@@ -98,6 +81,7 @@ class LoginScreen extends StatelessWidget {
         });
 
         var datauser = json.decode(response.body);
+        print(datauser[0]['NICKNAME']);
 
         if (datauser.length == 0) {
           Fluttertoast.showToast(
@@ -112,7 +96,7 @@ class LoginScreen extends StatelessWidget {
           Navigator.push(
             context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
         } else {
-          if (datauser[0]['nickname'] == null) {
+          if (datauser[0]['NICKNAME'] == null) {
             save(data);
             print('success');
             Fluttertoast.showToast(
@@ -124,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                 textColor: Colors.white,
                 fontSize: 16.0
             );
-            username = datauser[0]['username'];
+            username = datauser[0]['NICKNAME'];
             Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => wellcome(),),);
           }
@@ -140,14 +124,10 @@ class LoginScreen extends StatelessWidget {
                 textColor: Colors.white,
                 fontSize: 16.0
             );
-            username = datauser[0]['username'];
-            name = datauser[0]['nickname'];
+            username = datauser[0]['USERNAME'];
+            name = datauser[0]['USERNAME'];
             Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Nav(),),);
-            // setState(() {
-            //   username = datauser[0]['username'];
-            //   name = datauser[0]['nickname'];
-            // });
           }
         }
         return datauser;
@@ -171,82 +151,7 @@ class LoginScreen extends StatelessWidget {
         recoverPasswordDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         recoverPasswordSuccess: 'Password rescued successfully',
       ),
-      // theme: LoginTheme(
-      //   primaryColor: Colors.teal,
-      //   accentColor: Colors.yellow,
-      //   errorColor: Colors.red,
-      //   pageColorLight: Colors.blue,
-      //   pageColorDark: Colors.indigo.shade500,
-      //   titleStyle: TextStyle(
-      //     color: Colors.greenAccent,
-      //     fontFamily: 'Quicksand',
-      //     letterSpacing: 4,
-      //   ),
-      //   // beforeHeroFontSize: 50,
-      //   // afterHeroFontSize: 20,
-      //   bodyStyle: TextStyle(
-      //     fontStyle: FontStyle.italic,
-      //     decoration: TextDecoration.underline,
-      //   ),
-      //   textFieldStyle: TextStyle(
-      //     color: Colors.black,
-      //     shadows: [Shadow(color: Colors.yellow, blurRadius: 2)],
-      //   ),
-      //   buttonStyle: TextStyle(
-      //     fontWeight: FontWeight.w800,
-      //     color: Colors.yellow,
-      //   ),
-      //   cardTheme: CardTheme(
-      //     color: Colors.yellow.shade100,
-      //     elevation: 5,
-      //     margin: EdgeInsets.only(top: 15),
-      //     shape: ContinuousRectangleBorder(
-      //         borderRadius: BorderRadius.circular(100.0)),
-      //   ),
-      //   inputTheme: InputDecorationTheme(
-      //     filled: true,
-      //     fillColor: Colors.purple.withOpacity(.1),
-      //     contentPadding: EdgeInsets.zero,
-      //     errorStyle: TextStyle(
-      //       backgroundColor: Colors.orange,
-      //       color: Colors.white,
-      //     ),
-      //     labelStyle: TextStyle(fontSize: 12),
-      //     enabledBorder: UnderlineInputBorder(
-      //       borderSide: BorderSide(color: Colors.blue.shade700, width: 4),
-      //       borderRadius: inputBorder,
-      //     ),
-      //     focusedBorder: UnderlineInputBorder(
-      //       borderSide: BorderSide(color: Colors.blue.shade400, width: 5),
-      //       borderRadius: inputBorder,
-      //     ),
-      //     errorBorder: UnderlineInputBorder(
-      //       borderSide: BorderSide(color: Colors.red.shade700, width: 7),
-      //       borderRadius: inputBorder,
-      //     ),
-      //     focusedErrorBorder: UnderlineInputBorder(
-      //       borderSide: BorderSide(color: Colors.red.shade400, width: 8),
-      //       borderRadius: inputBorder,
-      //     ),
-      //     disabledBorder: UnderlineInputBorder(
-      //       borderSide: BorderSide(color: Colors.grey, width: 5),
-      //       borderRadius: inputBorder,
-      //     ),
-      //   ),
-      //   buttonTheme: LoginButtonTheme(
-      //     splashColor: Colors.purple,
-      //     backgroundColor: Colors.pinkAccent,
-      //     highlightColor: Colors.lightGreen,
-      //     elevation: 9.0,
-      //     highlightElevation: 6.0,
-      //     shape: BeveledRectangleBorder(
-      //       borderRadius: BorderRadius.circular(10),
-      //     ),
-      //     // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-      //     // shape: CircleBorder(side: BorderSide(color: Colors.green)),
-      //     // shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(55.0)),
-      //   ),
-      // ),
+
       emailValidator: (value) {
         if (value.isEmpty) {
           return 'Username is empty';
@@ -259,6 +164,7 @@ class LoginScreen extends StatelessWidget {
         }
         return null;
       },
+
       onLogin: (loginData) {
         print('Login info');
         print('Name: ${loginData.name}');
@@ -269,7 +175,6 @@ class LoginScreen extends StatelessWidget {
           _loginUser(loginData);
           return null;
         });
-
       },
 
       onSignup: (loginData) {
@@ -283,13 +188,13 @@ class LoginScreen extends StatelessWidget {
             return null;
           });
       },
+
       onRecoverPassword: (name) {
         print('Recover password info');
         print('Name: $name');
         return _recoverPassword(name);
         // Show new password dialog
       },
-      // showDebugButtons: true,
     );
   }
 }

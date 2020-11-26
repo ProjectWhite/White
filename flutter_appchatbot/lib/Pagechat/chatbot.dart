@@ -1,35 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter_appchatbot/Milestoneherebright/bartest.dart';
-import 'package:animate_icons/animate_icons.dart';
-import 'package:bubble/bubble.dart';
-import 'package:emojis/emojis.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Pages.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/PieChart2.dart';
-import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:flutter_appchatbot/class/Emotion.dart';
-import 'package:flutter_appchatbot/class/Emotion/Disgust.dart';
 import 'package:flutter_appchatbot/class/Facade.dart';
 import 'package:flutter_chat_bubble/bubble_type.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
-import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_1.dart';
-import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_10.dart';
 import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_5.dart';
-import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_6.dart';
-import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_7.dart';
-import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_8.dart';
-import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_9.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:intl/intl.dart';
 import 'package:list_tile_more_customizable/list_tile_more_customizable.dart';
 import '../main.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_appchatbot/Milestoneherebright/Graph.dart';
-import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'dart:math' as math;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -58,12 +39,11 @@ class _chatbotState extends State<chatbot> {
     dataus2 = json.decode(response.body);
 
     print(dataus2);
-    print(dataus2[0]['emotion']);
-    print(dataus2[0]['count(emotion)']);
+    print(dataus2[0]['MILESTONE_EMOTION']);
+    print(dataus2[0]['count(MILESTONE_EMOTION)']);
 
     return dataus2;
   }
-
 
   Future<List> _insertai(String ms) async {
     print(ms);
@@ -81,33 +61,11 @@ class _chatbotState extends State<chatbot> {
         "username": username,
         "message": query,
       });
-      // if(i==1){
-      //   await http.post("$uml/my_store/insertdiary.php", body: {
-      //     "username": username,
-      //     "message" : messageInsert.text
-      //   });
-      //   i=0;
-      // }
     }catch(e)
     {
       print (e);
     }
   }
-
-  Future<List> _readdiary() async {
-    final response = await http.post("$uml/my_store/readdiary.php", body: {
-      "username": username,
-
-    });
-
-    dataus = json.decode(response.body);
-
-    print(dataus);
-    print(dataus[0]['milestoneID']);
-
-    return dataus;
-  }
-
 
   int checkmsg=0;
   
@@ -121,14 +79,14 @@ class _chatbotState extends State<chatbot> {
     for(j=0;;j++){
       try{
         //ignore exception
-        if(datauser[j]["text"]==null)break;
+        if(datauser[j]["MESSAGE_TEXT"]==null)break;
       }catch (Exception){
         print(Exception);
         break;
       }
       print(j);
-      print(datauser[j]["text"]);
-      msg.text = datauser[j]["text"];
+      print(datauser[j]["MESSAGE_TEXT"]);
+      msg.text = datauser[j]["MESSAGE_TEXT"];
       if(j%2==0){
         setState(() {
           messsages.insert(0,
@@ -1272,15 +1230,6 @@ class _chatbotState extends State<chatbot> {
       "type": Xtype
   });
   }
-  // Future<List> _insertdiary(String m) async{
-  //   print('insert diary');
-  //   print(messageInsert.text);
-  //       final res = await http.post("$uml/my_store/insertdiary.php", body: {
-  //         "username": username,
-  //         "diary" : messageInsert.text
-  //       });
-  // }
-
   void response(query) async {
     try {
       query = query.toString().replaceAll("\'", "\\\'");
@@ -1529,28 +1478,3 @@ class _chatbotState extends State<chatbot> {
   }
 
 }
-
-// color: data == 0 ? Color.fromRGBO(23, 157, 139, 1) : Colors.blue,
-// elevation: 0.0,
-// child: Padding(
-//   padding: EdgeInsets.only(top:2,left:0,right:10,bottom:2),
-//   child: Row(
-//     mainAxisSize: MainAxisSize.min,
-//     children: <Widget>[
-//       SizedBox(
-//         width: 10.0,
-//       ),
-//       Flexible(
-//           child: Container(
-//             constraints: BoxConstraints(
-//               maxWidth: MediaQuery.of(context).size.width * 0.7,
-//             ),
-//             child: Text(ป
-//               message,
-//               style: TextStyle(
-//                   color: Colors.white, fontWeight: FontWeight.bold),
-//             ),
-//           ))
-//     ],
-//   ),
-// )

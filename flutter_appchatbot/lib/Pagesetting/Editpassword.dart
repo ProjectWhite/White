@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_appchatbot/Pages/testm.dart';
-import 'package:flutter_appchatbot/Pagesetting/edit_profile.dart';
-import 'package:flutter_appchatbot/Pagesetting/setting.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../constrants.dart';
 import '../main.dart';
 import 'package:http/http.dart' as http;
-
-import 'account_password.dart';
 
 class editpassword extends StatefulWidget {
   @override

@@ -1,11 +1,12 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-class Disgust extends Emotion{
+class Disgust extends Emotion {
   tone category;
 
-  Disgust(tone category) : super.empty(){
+  Disgust(tone category) : super.empty() {
     super.category = category;
     this.mothercolors = '#007A00';
     this.type = emotion.disgust;
+
     if (category == tone.resentful) {
       this.colors = '#23A123';
     }
@@ -25,7 +26,6 @@ class Disgust extends Emotion{
       this.colors = '#034503';
     }
   }
-
 
   @override
   EmotionDetail() {
@@ -52,6 +52,4 @@ class Disgust extends Emotion{
     // TODO: implement EmotionAmi
     return 'assets/face_vomiting.gif';
   }
-
-
 }

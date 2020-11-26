@@ -6,7 +6,6 @@ import '../main.dart';
 import 'HelpCenterPage2.dart';
 import 'package:http/http.dart' as http;
 
-
 class HelpCenterPage extends StatefulWidget {
   @override
   _HelpCenterPageState createState() => _HelpCenterPageState();
@@ -280,6 +279,7 @@ class _ReportBottomSheetState extends State<ReportBottomSheet> {
         elevation: 5.0,
         onPressed: () {
           _insertreport();
+
         },
         padding: EdgeInsets.all(10.0),
         shape: RoundedRectangleBorder(

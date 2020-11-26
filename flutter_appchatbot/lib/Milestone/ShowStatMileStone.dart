@@ -1,24 +1,14 @@
 import 'dart:ui';
-import 'package:dash_chat/dash_chat.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/bartest.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
-import 'package:flutter_appchatbot/class/Emotion.dart';
-import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:async';
-import 'indicator.dart';
 import 'package:flutter_appchatbot/class/Facade.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/LineChart.dart';
-import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:math' as math;
-import 'package:flutter_appchatbot/class/Facade.dart';
-
 
 class Showmilestone extends StatefulWidget {
   Showmilestone({Key key, this.title}) : super(key: key);
@@ -27,7 +17,6 @@ class Showmilestone extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => MilestonepageState();
 }
-
 
 class MilestonepageState extends State {
   final Color barBackgroundColor = const Color(0xff72d8bf);
@@ -42,75 +31,72 @@ class MilestonepageState extends State {
     });
   }
 
-
   var dataus;
   Future<List> _readdiary() async {
     print('read diary');
     final response = await http.post("$uml/my_store/readdiary.php", body: {
       "username": username,
     });
-
     dataus = json.decode(response.body);
-  print(dataus);
-// print(dataus[j]['diary'].toString());
+    print(dataus);
+
     for(int i=0;;i++){
       try{
         //ignore exception
-        if(dataus[i]['type']==null&&dataus[i+1]['type']==null)
+        if(dataus[i]['MILESTONE_TYPE']==null&&dataus[i+1]['MILESTONE_TYPE']==null)
           break;
       }catch (Exception){
         print(Exception);
         break;
       }
 
-      if(dataus[i]['type']=='annoyed'||dataus[i]['type']=='frustrated'||dataus[i]['type']=='offended'
-          ||dataus[i]['type']=='mad'||dataus[i]['type']=='threatened'){
+      if(dataus[i]['MILESTONE_TYPE']=='annoyed'||dataus[i]['MILESTONE_TYPE']=='frustrated'||dataus[i]['MILESTONE_TYPE']=='offended'
+          ||dataus[i]['MILESTONE_TYPE']=='mad'||dataus[i]['MILESTONE_TYPE']=='threatened'){
         setState(() {
             append(1);
         });
       }
-      else if(dataus[i]['type']=='resentful'||dataus[i]['type']=='shameful'||dataus[i]['type']=='bitter'
-          ||dataus[i]['type']=='disappointed'||dataus[i]['type']=='averse'||dataus[i]['type']=='contempt'){
+      else if(dataus[i]['MILESTONE_TYPE']=='resentful'||dataus[i]['MILESTONE_TYPE']=='shameful'||dataus[i]['MILESTONE_TYPE']=='bitter'
+          ||dataus[i]['MILESTONE_TYPE']=='disappointed'||dataus[i]['MILESTONE_TYPE']=='averse'||dataus[i]['MILESTONE_TYPE']=='contempt'){
         setState(() {
           append(2);
         });
       }
-      else if(dataus[i]['type']=='embarrassed'||dataus[i]['type']=='vulnerable' ||dataus[i]['type']=='rejected'
-          ||dataus[i]['type']=='insecure'||dataus[i]['type']=='worried'){
+      else if(dataus[i]['MILESTONE_TYPE']=='embarrassed'||dataus[i]['MILESTONE_TYPE']=='vulnerable' ||dataus[i]['MILESTONE_TYPE']=='rejected'
+          ||dataus[i]['MILESTONE_TYPE']=='insecure'||dataus[i]['MILESTONE_TYPE']=='worried'){
         setState(() {
             append(3);
         });
       }
-      else if(dataus[i]['type']=='confident'||dataus[i]['type']=='grateful'||dataus[i]['type']=='peaceful'
-          ||dataus[i]['type']=='excited' ||dataus[i]['type']=='playful'||dataus[i]['type']=='relief'
-          ||dataus[i]['type']=='pride' ||dataus[i]['type']=='satisfaction'||dataus[i]['type']=='triumph'){
+      else if(dataus[i]['MILESTONE_TYPE']=='confident'||dataus[i]['MILESTONE_TYPE']=='grateful'||dataus[i]['MILESTONE_TYPE']=='peaceful'
+          ||dataus[i]['MILESTONE_TYPE']=='excited' ||dataus[i]['MILESTONE_TYPE']=='playful'||dataus[i]['MILESTONE_TYPE']=='relief'
+          ||dataus[i]['MILESTONE_TYPE']=='pride' ||dataus[i]['MILESTONE_TYPE']=='satisfaction'||dataus[i]['MILESTONE_TYPE']=='triumph'){
         setState(() {
           append(4);
         });
       }
-      else if(dataus[i]['type']=='accepted'||dataus[i]['type']=='gentle'||dataus[i]['type']=='affectionate'
-          ||dataus[i]['type']=='passionate' ||dataus[i]['type']=='trusted'||dataus[i]['type']=='contentment'){
+      else if(dataus[i]['MILESTONE_TYPE']=='accepted'||dataus[i]['MILESTONE_TYPE']=='gentle'||dataus[i]['MILESTONE_TYPE']=='affectionate'
+          ||dataus[i]['MILESTONE_TYPE']=='passionate' ||dataus[i]['MILESTONE_TYPE']=='trusted'||dataus[i]['MILESTONE_TYPE']=='contentment'){
         setState(() {
           append(5);
         });
       }
-      else if(dataus[i]['type']=='inadequate'||dataus[i]['type']=='uninterested'||dataus[i]['type']=='lonely'
-          ||dataus[i]['type']=='guilty'||dataus[i]['type']=='hurt'){
+      else if(dataus[i]['MILESTONE_TYPE']=='inadequate'||dataus[i]['MILESTONE_TYPE']=='uninterested'||dataus[i]['MILESTONE_TYPE']=='lonely'
+          ||dataus[i]['MILESTONE_TYPE']=='guilty'||dataus[i]['MILESTONE_TYPE']=='hurt'){
         setState(() {
           append(6);
         });
       }
-      else if(dataus[i]['type']=='startled'||dataus[i]['type']=='overwhelmed'||dataus[i]['type']=='confused'
-          ||dataus[i]['type']=='amazed'||dataus[i]['type']=='shocked'){
+      else if(dataus[i]['MILESTONE_TYPE']=='startled'||dataus[i]['MILESTONE_TYPE']=='overwhelmed'||dataus[i]['MILESTONE_TYPE']=='confused'
+          ||dataus[i]['MILESTONE_TYPE']=='amazed'||dataus[i]['MILESTONE_TYPE']=='shocked'){
         setState(() {
           append(7);
         });
       }
     }
-    print(dataus[0]['type']);
+    print(dataus[0]['MILESTONE_TYPE']);
     return dataus;
   }
-
 
   void push0(){
     setState(() {
@@ -190,52 +176,52 @@ class MilestonepageState extends State {
     dataus2 = json.decode(response.body);
 
     print(dataus2);
-    print(dataus2[0]['emotion']);
+    print(dataus2[0]['MILESTONE_EMOTION']);
     for(int i=0;i<7;i++){
       try{
         //ignore exception
-        if(dataus2[i]['emotion']==null&&dataus[i+1]['type']==null) {
+        if(dataus2[i]['MILESTONE_EMOTION']==null&&dataus[i+1]['MILESTONE_TYPE']==null) {
           break;
         }
       }catch (Exception){
         print(Exception);
         break;
       }
-      if(dataus2[i]['emotion']=='anger'){
+      if(dataus2[i]['MILESTONE_EMOTION']=='anger'){
         setState(() {
-          countAnger = double.parse(dataus2[i]['count(emotion)']);
+          countAnger = double.parse(dataus2[i]['count(MILESTONE_EMOTION)']);
 
         });
       }
-      else if(dataus2[i]['emotion']=='disgust'){
+      else if(dataus2[i]['MILESTONE_EMOTION']=='disgust'){
         setState(() {
-          countDisgust = double.parse(dataus2[i]['count(emotion)']);
+          countDisgust = double.parse(dataus2[i]['count(MILESTONE_EMOTION)']);
 
         });
       }
-      else if(dataus2[i]['emotion']=='fear'){
+      else if(dataus2[i]['MILESTONE_EMOTION']=='fear'){
         setState(() {
-          countFear = double.parse(dataus2[i]['count(emotion)']);
+          countFear = double.parse(dataus2[i]['count(MILESTONE_EMOTION)']);
         });
       }
-      else if(dataus2[i]['emotion']=='happy'){
+      else if(dataus2[i]['MILESTONE_EMOTION']=='happy'){
         setState(() {
-          countHappy = double.parse(dataus2[i]['count(emotion)']);
+          countHappy = double.parse(dataus2[i]['count(MILESTONE_EMOTION)']);
         });
       }
-      else if(dataus2[i]['emotion']=='love'){
+      else if(dataus2[i]['MILESTONE_EMOTION']=='love'){
         setState(() {
-          countLove = double.parse(dataus2[i]['count(emotion)']);
+          countLove = double.parse(dataus2[i]['count(MILESTONE_EMOTION)']);
         });
       }
-      else if(dataus2[i]['emotion']=='sad'){
+      else if(dataus2[i]['MILESTONE_EMOTION']=='sad'){
         setState(() {
-          countSad = double.parse(dataus2[i]['count(emotion)']);
+          countSad = double.parse(dataus2[i]['count(MILESTONE_EMOTION)']);
         });
       }
-      else if(dataus2[i]['emotion']=='surprise'){
+      else if(dataus2[i]['MILESTONE_EMOTION']=='surprise'){
         setState(() {
-          countSurprise = double.parse(dataus2[i]['count(emotion)']);
+          countSurprise = double.parse(dataus2[i]['count(MILESTONE_EMOTION)']);
         });
       }
     }
@@ -303,8 +289,8 @@ class MilestonepageState extends State {
     print(countAllEmo);
     return dataus2;
   }
-  int j=1;
 
+  int j=1;
   double countAnger = 0; //ตัวนับจำนวนโกรฑ = dataus[0]['Emotion'] //test
   double countDisgust = 0; //ตัวนับจำนวนขยะแขยง
   double countFear = 0; //ตัวนับจำนวนกลัว
@@ -327,8 +313,6 @@ class MilestonepageState extends State {
     return FutureBuilder(
         future: _future, // the function to get your data from firebase or firestore
         builder : (BuildContext context, AsyncSnapshot snap){
-
-
          if(dPie == 1){
            dPie=2;
             return
@@ -384,7 +368,6 @@ class MilestonepageState extends State {
                                                   fontSize: 24,
                                                   fontWeight: FontWeight.bold),
                                             ),
-
                                           ],
                                         ),
                                       ),
@@ -405,17 +388,6 @@ class MilestonepageState extends State {
                                       ),
                                     ],
                                   ),
-                                  // IconButton(
-                                  //   icon: Icon(
-                                  //     Icons.refresh,
-                                  //     color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
-                                  //   ),
-                                  //   onPressed: () {
-                                  //     setState(() {
-                                  //       isShowingMainData =! isShowingMainData;
-                                  //     });
-                                  //   },
-                                  // )
                                 ],
                               ),
                             ),
@@ -435,8 +407,7 @@ class MilestonepageState extends State {
                               aspectRatio: 1.3,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(
-                                      18)),
+                                  borderRadius: BorderRadius.all(Radius.circular(18)),
                                   gradient: LinearGradient(
                                     colors: [
 
@@ -446,18 +417,15 @@ class MilestonepageState extends State {
                                     begin: Alignment.bottomCenter,
                                     end: Alignment.topCenter,
                                   ),
-                                  // color: Color.fromRGBO(220, 220, 220, 1),
                                 ),
                                 child: Column(
                                   children: <Widget>[
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                                       child: Column(
-
                                         crossAxisAlignment: CrossAxisAlignment.stretch,
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         mainAxisSize: MainAxisSize.max,
-
                                         children: <Widget>[
                                           Text(
                                             'Emotions',
@@ -527,18 +495,15 @@ class MilestonepageState extends State {
                         height: 100,
                         width: 400,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(
-                              18)),
+                          borderRadius: BorderRadius.all(Radius.circular(18)),
                           gradient: LinearGradient(
                             colors: [
-
                               Color(0xff2c274c),
                               Color(0xff46426c),
                             ],
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
                           ),
-                          // color: Color.fromRGBO(220, 220, 220, 1),
                         ),
                         child: Column(
                           children: [
@@ -552,9 +517,7 @@ class MilestonepageState extends State {
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(12.53175,0,0,0),
                                       child: Container(
-                                        child: FlatButton(onPressed: () {
-                                          push0();
-                                        },
+                                        child: FlatButton(onPressed: () {push0();},
                                           child: Text('Love',style: TextStyle(
                                               color: Colors.white.withOpacity(touchedIndex == 0 ? 0.2:1),
                                               fontSize: touchedIndex == 0 ? 12 : 12
@@ -563,34 +526,19 @@ class MilestonepageState extends State {
                                         height: touchedIndex == 0 ? 25 : 25,
                                         width: touchedIndex == 0 ? 80 : 80,
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(
-                                              7)),
+                                          borderRadius: BorderRadius.all(Radius.circular(7)),
                                           color: HexColor(facade.ecolorget(5)).withOpacity(touchedIndex == 0 ? 0.2:1),
-                                          // color: Color.fromRGBO(220, 220, 220, 1),
                                         ),
                                       ),
                                     ),
                                     SizedBox(width: 55,),
                                   ],
                                 ),
-                                // Row(
-                                //   children: [
-                                //     SizedBox(height: 34,),
-                                //     Container(
-                                //       child: Text('',style: TextStyle(
-                                //           color: Colors.white,
-                                //           fontSize: touchedIndex == 0 ? 14 : 10
-                                //       ),),
-                                //     ),
-                                //   ],
-                                // ),
                                 SizedBox(width: 12.53175,),
                                 Column(
                                   children: [
                                     Container(
-                                      child: FlatButton(onPressed: () {
-                                        push1();
-                                      },
+                                      child: FlatButton(onPressed: () {push1();},
                                         child: Text('Fear',style: TextStyle(
                                             color: Colors.white.withOpacity(touchedIndex == 1 ? 0.2:1),
                                             fontSize: touchedIndex == 1 ? 12 : 12
@@ -599,22 +547,17 @@ class MilestonepageState extends State {
                                       height: touchedIndex == 1 ? 25 : 25,
                                       width: touchedIndex == 1 ? 80 : 80,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(
-                                            7)),
+                                        borderRadius: BorderRadius.all(Radius.circular(7)),
                                         color: HexColor(facade.ecolorget(3)).withOpacity(touchedIndex == 1 ? 0.2:1),
-                                        // color: Color.fromRGBO(220, 220, 220, 1),
                                       ),
                                     ),
                                   ],
-
                                 ),
                                 SizedBox(width: 12.53175,),
                                 Column(
                                   children: [
                                     Container(
-                                      child: FlatButton(onPressed: () {
-                                        push2();
-                                      },
+                                      child: FlatButton(onPressed: () {push2();},
                                         child: Text('Sad',style: TextStyle(
                                             color: Colors.white.withOpacity(touchedIndex == 2 ? 0.2:1),
                                             fontSize: touchedIndex == 2 ? 12 : 12
@@ -623,10 +566,8 @@ class MilestonepageState extends State {
                                       height: touchedIndex == 2 ? 25 : 25,
                                       width: touchedIndex == 2 ? 80 : 80,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(
-                                            7)),
+                                        borderRadius: BorderRadius.all(Radius.circular(7)),
                                         color: HexColor(facade.ecolorget(6)).withOpacity(touchedIndex == 2 ? 0.2:1),
-                                        // color: Color.fromRGBO(220, 220, 220, 1),
                                       ),
                                     ),
 
@@ -637,9 +578,7 @@ class MilestonepageState extends State {
                                 Column(
                                   children: [
                                     Container(
-                                      child: FlatButton(onPressed: () {
-                                        push3();
-                                      },
+                                      child: FlatButton(onPressed: () {push3();},
                                         child: Text('Disgust',style: TextStyle(
                                             color: Colors.white.withOpacity(touchedIndex == 3 ? 0.2:1),
                                             fontSize: touchedIndex == 3 ? 12 : 12
@@ -648,20 +587,16 @@ class MilestonepageState extends State {
                                       height: touchedIndex == 3 ? 25 : 25,
                                       width: touchedIndex == 3 ? 80 : 80,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(
-                                            7)),
+                                        borderRadius: BorderRadius.all(Radius.circular(7)),
                                         color: HexColor(facade.ecolorget(2)).withOpacity(touchedIndex == 3 ? 0.2:1),
-                                        // color: Color.fromRGBO(220, 220, 220, 1),
                                       ),
                                     ),
-
                                   ],
                                 ),
                                 SizedBox(width: 12.53175,),
                               ],
                             ),
                             SizedBox(height: 16.67,),
-
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -670,9 +605,7 @@ class MilestonepageState extends State {
                                 Column(
                                   children: [
                                     Container(
-                                      child: FlatButton(onPressed: () {
-                                        push4();
-                                      },
+                                      child: FlatButton(onPressed: () {push4();},
                                         child: Text('Happy',style: TextStyle(
                                             color: Colors.white.withOpacity(touchedIndex == 4 ? 0.2:1),
                                             fontSize: touchedIndex == 4 ? 12 : 12
@@ -681,22 +614,17 @@ class MilestonepageState extends State {
                                       height: touchedIndex == 4 ? 25 : 25,
                                       width: touchedIndex == 4 ? 80 : 80,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(
-                                            7)),
+                                        borderRadius: BorderRadius.all(Radius.circular(7)),
                                         color: HexColor(facade.ecolorget(4)).withOpacity(touchedIndex == 4 ? 0.2:1),
-                                        // color: Color.fromRGBO(220, 220, 220, 1),
                                       ),
                                     ),
-
                                   ],
                                 ),
                                 SizedBox(width: 12.53175,),
                                 Column(
                                   children: [
                                     Container(
-                                      child: FlatButton(onPressed: () {
-                                        push5();
-                                      },
+                                      child: FlatButton(onPressed: () {push5();},
                                         child: Text('Surprise',style: TextStyle(
                                             color: Colors.white.withOpacity(touchedIndex == 5 ? 0.2:1),
                                             fontSize: touchedIndex == 5 ? 12 : 12
@@ -705,23 +633,17 @@ class MilestonepageState extends State {
                                       height: touchedIndex == 5 ? 25 : 25,
                                       width: touchedIndex == 5 ? 80 : 80,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(
-                                            7)),
+                                        borderRadius: BorderRadius.all(Radius.circular(7)),
                                         color: HexColor(facade.ecolorget(7)).withOpacity(touchedIndex == 5 ? 0.2:1),
-                                        // color: Color.fromRGBO(220, 220, 220, 1),
                                       ),
                                     ),
-
                                   ],
                                 ),
-
                                 SizedBox(width: 12.53175,),
                                 Column(
                                   children: [
                                     Container(
-                                      child: FlatButton(onPressed: () {
-                                        push6();
-                                      },
+                                      child: FlatButton(onPressed: () {push6();},
                                         child: Text('Angry',style: TextStyle(
                                             color: Colors.white.withOpacity(touchedIndex == 6 ? 0.2:1),
                                             fontSize: touchedIndex == 6 ? 12 : 12
@@ -730,19 +652,13 @@ class MilestonepageState extends State {
                                       height: touchedIndex == 6 ? 25 : 25,
                                       width: touchedIndex == 6 ? 80 : 80,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(
-                                            7)),
+                                        borderRadius: BorderRadius.all(Radius.circular(7)),
                                         color: HexColor(facade.ecolorget(1)).withOpacity(touchedIndex == 6 ? 0.2:1),
-                                        // color: Color.fromRGBO(220, 220, 220, 1),
                                       ),
                                     ),
-
                                   ],
                                 ),
                                 SizedBox(width: 12.53175,),
-
-
-
                               ],
                             ),
                           ],
@@ -757,14 +673,6 @@ class MilestonepageState extends State {
         }
     );
   }
-
-//---------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------
 
   LineChartData sampleData1() {
     return LineChartData(
@@ -789,21 +697,8 @@ class MilestonepageState extends State {
             fontSize: 15,
           ),
           margin: 10,
-          // getTitles: (value) {
-          //   // switch (value.toInt()) {
-          //   //   case 0:
-          //   //     return 'S';
-          //   //   case 1:
-          //   //     return 'O';
-          //   //   case 2:
-          //   //     return 'D';
-          //   // }
-          //   for(int o = 0 ;o<2;o++){
-          //     return 'b';
-          //   }
-          //   return 'a';
-          // },
         ),
+
         leftTitles: SideTitles(
           showTitles: true,
           getTextStyles: (value) => const TextStyle(
@@ -811,6 +706,7 @@ class MilestonepageState extends State {
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
+
           margin: 10,
           reservedSize: 67,
           getTitles: (value) {
@@ -833,6 +729,7 @@ class MilestonepageState extends State {
             return '';
           },
         ),
+
         rightTitles: SideTitles(
           showTitles: true,
           getTextStyles: (value) => const TextStyle(
@@ -863,6 +760,7 @@ class MilestonepageState extends State {
           },
         ),
       ),
+
       borderData: FlBorderData(
         show: true,
         border: const Border(
@@ -994,7 +892,6 @@ class MilestonepageState extends State {
 
   List<LineChartBarData> linesBarData2() {
     return [
-
       LineChartBarData(
         spots: allSpots,
 
@@ -1106,8 +1003,6 @@ class MilestonepageState extends State {
       }
     });
   }
-
-
 }
 
 
@@ -1176,222 +1071,222 @@ class _ChoiceCardState extends State<ChoiceCard> {
     for(int i=0;;i++){
       try{
         //ignore exception
-        if(dataus[i]['type']==null&&dataus[i+1]['type']==null)
+        if(dataus[i]['MILESTONE_TYPE']==null&&dataus[i+1]['MILESTONE_TYPE']==null)
           break;
       }catch (Exception){
         print(Exception);
         break;
       }
 
-      if(dataus[i]['type']=='annoyed'){
+      if(dataus[i]['MILESTONE_TYPE']=='annoyed'){
         setState(() {
           countangry1++;
         });
       }
-      else if(dataus[i]['type']=='frustrated'){
+      else if(dataus[i]['MILESTONE_TYPE']=='frustrated'){
         setState(() {
           countangry2++;
         });
       }
-      else if(dataus[i]['type']=='offended'){
+      else if(dataus[i]['MILESTONE_TYPE']=='offended'){
         setState(() {
           countangry3++;
         });
       }
-      else if(dataus[i]['type']=='mad'){
+      else if(dataus[i]['MILESTONE_TYPE']=='mad'){
         setState(() {
           countangry4++;
         });
       }
-      else if(dataus[i]['type']=='threatened'){
+      else if(dataus[i]['MILESTONE_TYPE']=='threatened'){
         setState(() {
           countangry5++;
         });
       }
-      else if(dataus[i]['type']=='resentful'){
+      else if(dataus[i]['MILESTONE_TYPE']=='resentful'){
         setState(() {
           countdis1++;
         });
       }
-      else if(dataus[i]['type']=='shameful'){
+      else if(dataus[i]['MILESTONE_TYPE']=='shameful'){
         setState(() {
           countdis2++;
         });
       }
-      else if(dataus[i]['type']=='bitter'){
+      else if(dataus[i]['MILESTONE_TYPE']=='bitter'){
         setState(() {
           countdis3++;
         });
       }
-      else if(dataus[i]['type']=='disappointed'){
+      else if(dataus[i]['MILESTONE_TYPE']=='disappointed'){
         setState(() {
           countdis4++;
         });
       }
-      else if(dataus[i]['type']=='averse'){
+      else if(dataus[i]['MILESTONE_TYPE']=='averse'){
         setState(() {
           countdis5++;
         });
       }
-      else if(dataus[i]['type']=='contempt'){
+      else if(dataus[i]['MILESTONE_TYPE']=='contempt'){
         setState(() {
           countdis6++;
         });
       }
-      else if(dataus[i]['type']=='embarrassed'){
+      else if(dataus[i]['MILESTONE_TYPE']=='embarrassed'){
         setState(() {
           countfear1++;
         });
       }
-      else if(dataus[i]['type']=='vulnerable'){
+      else if(dataus[i]['MILESTONE_TYPE']=='vulnerable'){
         setState(() {
           countfear2++;
         });
       }
-      else if(dataus[i]['type']=='rejected'){
+      else if(dataus[i]['MILESTONE_TYPE']=='rejected'){
         setState(() {
           countfear3++;
         });
       }
-      else if(dataus[i]['type']=='insecure'){
+      else if(dataus[i]['MILESTONE_TYPE']=='insecure'){
         setState(() {
           countfear4++;
         });
       }
-      else if(dataus[i]['type']=='worried'){
+      else if(dataus[i]['MILESTONE_TYPE']=='worried'){
         setState(() {
           countfear5++;
         });
       }
 
-      else if(dataus[i]['type']=='confident'){
+      else if(dataus[i]['MILESTONE_TYPE']=='confident'){
         setState(() {
           counthappy1++;
         });
       }
-      else if(dataus[i]['type']=='grateful'){
+      else if(dataus[i]['MILESTONE_TYPE']=='grateful'){
         setState(() {
           counthappy2++;
         });
       }
-      else if(dataus[i]['type']=='peaceful'){
+      else if(dataus[i]['MILESTONE_TYPE']=='peaceful'){
         setState(() {
           counthappy3++;
         });
       }
-      else if(dataus[i]['type']=='excited'){
+      else if(dataus[i]['MILESTONE_TYPE']=='excited'){
         setState(() {
           counthappy4++;
         });
       }
-      else if(dataus[i]['type']=='playful'){
+      else if(dataus[i]['MILESTONE_TYPE']=='playful'){
         setState(() {
           counthappy5++;
         });
       }
-      else if(dataus[i]['type']=='relief'){
+      else if(dataus[i]['MILESTONE_TYPE']=='relief'){
         setState(() {
           counthappy6++;
         });
       }
-      else if(dataus[i]['type']=='pride'){
+      else if(dataus[i]['MILESTONE_TYPE']=='pride'){
         setState(() {
           counthappy7++;
         });
       }
-      else if(dataus[i]['type']=='satisfaction'){
+      else if(dataus[i]['MILESTONE_TYPE']=='satisfaction'){
         setState(() {
           counthappy8++;
         });
       }
-      else if(dataus[i]['type']=='triumph'){
+      else if(dataus[i]['MILESTONE_TYPE']=='triumph'){
         setState(() {
           counthappy9++;
         });
       }
-      else if(dataus[i]['type']=='accepted'){
+      else if(dataus[i]['MILESTONE_TYPE']=='accepted'){
         setState(() {
           countlove1++;
         });
       }
-      else if(dataus[i]['type']=='gentle'){
+      else if(dataus[i]['MILESTONE_TYPE']=='gentle'){
         setState(() {
           countlove2++;
         });
       }
-      else if(dataus[i]['type']=='affectionate'){
+      else if(dataus[i]['MILESTONE_TYPE']=='affectionate'){
         setState(() {
           countlove3++;
         });
       }
-      else if(dataus[i]['type']=='passionate'){
+      else if(dataus[i]['MILESTONE_TYPE']=='passionate'){
         setState(() {
           countlove4++;
         });
       }
-      else if(dataus[i]['type']=='trusted'){
+      else if(dataus[i]['MILESTONE_TYPE']=='trusted'){
         setState(() {
           countlove5++;
         });
       }
-      else if(dataus[i]['type']=='contentment'){
+      else if(dataus[i]['MILESTONE_TYPE']=='contentment'){
         setState(() {
           countlove6++;
         });
       }
-      else if(dataus[i]['type']=='inadequate'){
+      else if(dataus[i]['MILESTONE_TYPE']=='inadequate'){
         setState(() {
           countsad1++;
         });
       }
-      else if(dataus[i]['type']=='uninterested'){
+      else if(dataus[i]['MILESTONE_TYPE']=='uninterested'){
         setState(() {
           countsad2++;
         });
       }
-      else if(dataus[i]['type']=='lonely'){
+      else if(dataus[i]['MILESTONE_TYPE']=='lonely'){
         setState(() {
           countsad3++;
         });
       }
-      else if(dataus[i]['type']=='guilty'){
+      else if(dataus[i]['MILESTONE_TYPE']=='guilty'){
         setState(() {
           countsad4++;
         });
       }
-      else if(dataus[i]['type']=='hurt'){
+      else if(dataus[i]['MILESTONE_TYPE']=='hurt'){
         setState(() {
           countsad5++;
         });
       }
-      else if(dataus[i]['type']=='startled'){
+      else if(dataus[i]['MILESTONE_TYPE']=='startled'){
         setState(() {
           countsur1++;
         });
       }
-      else if(dataus[i]['type']=='overwhelmed'){
+      else if(dataus[i]['MILESTONE_TYPE']=='overwhelmed'){
         setState(() {
           countsur2++;
         });
       }
-      else if(dataus[i]['type']=='confused'){
+      else if(dataus[i]['MILESTONE_TYPE']=='confused'){
         setState(() {
           countsur3++;
         });
       }
-      else if(dataus[i]['type']=='amazed'){
+      else if(dataus[i]['MILESTONE_TYPE']=='amazed'){
         setState(() {
           countsur4++;
         });
       }
-      else if(dataus[i]['type']=='shocked'){
+      else if(dataus[i]['MILESTONE_TYPE']=='shocked'){
         setState(() {
           countsur5++;
         });
       }
     }
 
-    print(dataus[0]['type']);
+    print(dataus[0]['MILESTONE_TYPE']);
     return dataus;
   }
   Choice _selectedChoice = choices[0];
@@ -1432,7 +1327,6 @@ class _ChoiceCardState extends State<ChoiceCard> {
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
               ),
-              // color: Color.fromRGBO(220, 220, 220, 1),
             ),
             child: Stack(
               children: <Widget>[
@@ -1485,18 +1379,16 @@ class _ChoiceCardState extends State<ChoiceCard> {
                       const SizedBox(
                         height: 12,
                       ),
-
                     ],
-
                   ),
                 ),
-
               ],
             ),
           ),
         ),
       );
     }
+
     if (widget.choice.title == 'Fear') {
       return Container(
         height: 300,
@@ -1511,7 +1403,6 @@ class _ChoiceCardState extends State<ChoiceCard> {
                   18)),
               gradient: LinearGradient(
                 colors: [
-
                   Color(0xff2c274c),
                   Color(0xff46426c),
                 ],
@@ -1592,18 +1483,15 @@ class _ChoiceCardState extends State<ChoiceCard> {
             height: 50,
             width: 50,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(
-                  18)),
+              borderRadius: BorderRadius.all(Radius.circular(18)),
               gradient: LinearGradient(
                 colors: [
-
                   Color(0xff2c274c),
                   Color(0xff46426c),
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
               ),
-              // color: Color.fromRGBO(220, 220, 220, 1),
             ),
             child: Stack(
               children: <Widget>[
@@ -1628,9 +1516,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            const SizedBox(
-                              height: 4,
-                            ),
+                            const SizedBox(height: 4),
                             Text(
                               'Bar Chart',
                               style: TextStyle(
@@ -1641,9 +1527,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                          height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
@@ -1667,6 +1551,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
         ),
       );
     }
+
     if (widget.choice.title == 'Disgust') {
       return Container(
         height: 300,
@@ -1681,14 +1566,12 @@ class _ChoiceCardState extends State<ChoiceCard> {
                   18)),
               gradient: LinearGradient(
                 colors: [
-
                   Color(0xff2c274c),
                   Color(0xff46426c),
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
               ),
-              // color: Color.fromRGBO(220, 220, 220, 1),
             ),
             child: Stack(
               children: <Widget>[
@@ -1713,9 +1596,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            const SizedBox(
-                              height: 4,
-                            ),
+                            const SizedBox(height: 4),
                             Text(
                               'Bar Chart',
                               style: TextStyle(
@@ -1726,9 +1607,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                          height: 20,
-                      ),
+                      const SizedBox(height: 20,),
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
@@ -1739,19 +1618,17 @@ class _ChoiceCardState extends State<ChoiceCard> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 12,
-                      ),
+                      const SizedBox(height: 12,),
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
         ),
       );
     }
+
     if (widget.choice.title == 'Happy') {
       return Container(
         height: 300,
@@ -1762,18 +1639,15 @@ class _ChoiceCardState extends State<ChoiceCard> {
             height: 50,
             width: 50,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(
-                  18)),
+              borderRadius: BorderRadius.all(Radius.circular(18)),
               gradient: LinearGradient(
                 colors: [
-
                   Color(0xff2c274c),
                   Color(0xff46426c),
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
               ),
-              // color: Color.fromRGBO(220, 220, 220, 1),
             ),
             child: Stack(
               children: <Widget>[
@@ -1798,9 +1672,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            const SizedBox(
-                              height: 4,
-                            ),
+                            const SizedBox(height: 4,),
                             Text(
                               'Bar Chart',
                               style: TextStyle(
@@ -1811,9 +1683,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
@@ -1824,13 +1694,10 @@ class _ChoiceCardState extends State<ChoiceCard> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 12,
-                      ),
+                      const SizedBox(height: 12),
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
@@ -1847,11 +1714,9 @@ class _ChoiceCardState extends State<ChoiceCard> {
             height: 50,
             width: 50,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(
-                  18)),
+              borderRadius: BorderRadius.all(Radius.circular(18)),
               gradient: LinearGradient(
                 colors: [
-
                   Color(0xff2c274c),
                   Color(0xff46426c),
                 ],
@@ -1883,9 +1748,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            const SizedBox(
-                              height: 4,
-                            ),
+                            const SizedBox(height: 4,),
                             Text(
                               'Bar Chart',
                               style: TextStyle(
@@ -1896,9 +1759,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                          height: 20,
-                      ),
+                      const SizedBox(height: 20,),
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
@@ -1909,13 +1770,10 @@ class _ChoiceCardState extends State<ChoiceCard> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 12,
-                      ),
+                      const SizedBox(height: 12,),
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
@@ -1932,18 +1790,15 @@ class _ChoiceCardState extends State<ChoiceCard> {
             height: 50,
             width: 50,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(
-                  18)),
+              borderRadius: BorderRadius.all(Radius.circular(18)),
               gradient: LinearGradient(
                 colors: [
-
                   Color(0xff2c274c),
                   Color(0xff46426c),
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
               ),
-              // color: Color.fromRGBO(220, 220, 220, 1),
             ),
             child: Stack(
               children: <Widget>[
@@ -1968,9 +1823,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            const SizedBox(
-                              height: 4,
-                            ),
+                            const SizedBox(height: 4),
                             Text(
                               'Bar Chart',
                               style: TextStyle(
@@ -1981,9 +1834,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                          height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
@@ -2000,7 +1851,6 @@ class _ChoiceCardState extends State<ChoiceCard> {
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
@@ -2008,8 +1858,6 @@ class _ChoiceCardState extends State<ChoiceCard> {
       );
     }
   }
-
-
 
   BarChartGroupData makeGroupData(int x,
       double y, {
@@ -2750,5 +2598,4 @@ class _ChoiceCardState extends State<ChoiceCard> {
       barGroups: showingGroups7(),
     );
   }
-
 }

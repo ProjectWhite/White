@@ -1,11 +1,12 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
-class Love extends Emotion{
+class Love extends Emotion {
   tone category;
 
-  Love(tone category) : super.empty(){
+  Love(tone category) : super.empty() {
     super.category = category;
     this.type = emotion.love;
     this.mothercolors = '#FF5A91';
+
     if (category == tone.accepted) {
       this.colors = '#F0C9D6';
     }
@@ -25,8 +26,6 @@ class Love extends Emotion{
       this.colors = '#B5003C';
     }
   }
-
-
 
   @override
   EmotionDetail() {
@@ -52,6 +51,4 @@ class Love extends Emotion{
     // TODO: implement EmotionAmi
     return 'assets/smiling_face_with_heart_eyes.gif';
   }
-
-
 }

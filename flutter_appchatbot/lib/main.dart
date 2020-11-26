@@ -1,21 +1,13 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter_appchatbot/DiaryNew/PageDiary.dart';
 import 'package:flutter_appchatbot/Pages/testm.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Pagechat/chatbot.dart';
 import 'Pages/intro.dart';
 import 'Pages/wellcome1.dart';
-import 'constrants.dart';
 import 'package:flutter/services.dart';
-import 'login/dashboard_screen.dart';
 import 'login/login_screen.dart';
-import 'login/transition_route_observer.dart';
-import 'register.dart';
 import 'package:flutter_appchatbot/Pages/wellcome1.dart';
 
 void main() async{
@@ -35,7 +27,7 @@ void main() async{
 
 String username='';
 String name='';
-String uml='https://778a74022e1e.ngrok.io';
+String uml='https://a0f21483d26f.ngrok.io';
 int k=2;
 
 class MyApp extends StatelessWidget {

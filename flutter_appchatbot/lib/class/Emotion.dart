@@ -1,6 +1,6 @@
-
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter_appchatbot/class/EmotionMet.dart';
+
 enum emotion {
   happy,surprise,sad,anger,fear,love,disgust,fine
 }
@@ -15,13 +15,13 @@ enum tone {
   resentful,shameful,bitter,disappointed,averse,contempt //disgust
 }
 
-abstract class Emotion implements EmotionMet{
+abstract class Emotion implements EmotionMet {
   emotion _type;
   String _colors;
   String _mothercolors;
   tone _category;
 
-  Emotion.empty(){
+  Emotion.empty() {
     _type = emotion.fine;
     _colors = '#FEF9EF';
     _category = tone.fine;
@@ -60,5 +60,4 @@ abstract class Emotion implements EmotionMet{
     // return '$_category';
     return EnumToString.convertToString(this._category);
   }
-
 }

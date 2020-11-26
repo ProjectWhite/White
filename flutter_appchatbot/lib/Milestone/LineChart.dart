@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/class/Emotion.dart';
 
 class LineChartEmotion extends StatefulWidget {
   @override
@@ -20,7 +19,6 @@ class LineChartEmotionState extends State<LineChartEmotion> {
     FlSpot(5, 5),
     FlSpot(6, 8),
   ];
-
 
   void append(double x){
     for(int i=1;i<3;i++){
@@ -191,8 +189,6 @@ class LineChartEmotionState extends State<LineChartEmotion> {
         FlSpot(5, 2.5),
         FlSpot(6, 2),
         FlSpot(7, 6),
-
-
       ],
       isCurved: true,
       colors: const [

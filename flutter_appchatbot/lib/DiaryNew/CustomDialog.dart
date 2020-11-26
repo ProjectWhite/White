@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_appchatbot/DiaryNew/PageDiary.dart';
 import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'package:flutter_appchatbot/class/Emotion.dart';
 import 'package:flutter_appchatbot/class/Facade.dart';
-import 'package:flutter_appchatbot/login/constants.dart';
 import 'package:http/http.dart' as http;
-
 import '../main.dart';
-
 
 int l=0;
 
 class CustomDialog extends StatelessWidget {
   final String title, description, buttonText, date,emotions,type;
-
-
   CustomDialog({this.title, this.description, this.buttonText, this.date,this.emotions,this.type});
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +24,18 @@ class CustomDialog extends StatelessWidget {
     );
   }
 
-  dialogContent(BuildContext context){
-    tone tonefromstring(String value){
-      return tone.values.firstWhere((e) => e.toString().split('.')[1]==value);
+  dialogContent(BuildContext context) {
+    tone tonefromstring(String value) {
+      return tone.values.firstWhere((e) => e.toString().split('.')[1] == value);
     }
-    emotion emotionfromstring(String value){
-      return emotion.values.firstWhere((e) => e.toString().split('.')[1]==value);
+
+    emotion emotionfromstring(String value) {
+      return emotion.values.firstWhere((e) => e.toString().split('.')[1] == value);
     }
+
     Facade obj = new Facade();
     obj.find(emotionfromstring(emotions),tonefromstring(type));
+
     return Stack(
       children: [
         Container(
@@ -108,13 +103,12 @@ class CustomDialog extends StatelessWidget {
                                          ),
                                          onPressed: () async {
                                            var url = "$uml/my_store/deletediary.php";
-                                           print(username);
                                            l=1;
                                            await http.post(url, body: {
                                              "username": username,
                                              "date": date,
                                            });
-                                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Nav(),),);
+                                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Nav(),),);
                                          },
                                        ),
                                      ),
@@ -154,15 +148,3 @@ class CustomDialog extends StatelessWidget {
     );
   }
 }
-// Center(
-// child: ClipOval(
-// child: Container(
-// height: 100,
-// width: 100,
-// color: Colors.grey ,
-// child: Image.asset(
-// 'assets/face_with_steam_from_nose.gif',
-// ),
-// ),
-// ),
-// )

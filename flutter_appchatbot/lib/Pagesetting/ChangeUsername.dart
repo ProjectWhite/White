@@ -65,7 +65,6 @@ class _ChangeUsernameState extends State<ChangeUsername> {
         ),
       ),
     );
-
   }
 
   @override

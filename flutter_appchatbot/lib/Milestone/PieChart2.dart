@@ -1,8 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_appchatbot/Milestoneherebright/Indicator.dart';
-
 class PieChartEmotion extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => PieChart2State();
@@ -37,7 +35,6 @@ class PieChart2State extends State {
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                   ),
-                  // color: Color.fromRGBO(220, 220, 220, 1),
                 ),
                 child: AspectRatio(
                   aspectRatio: 1,
@@ -65,8 +62,6 @@ class PieChart2State extends State {
               ),
             ],
           ),
-
-
         ],
       ),
     );

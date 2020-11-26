@@ -26,6 +26,7 @@ class SliderModel{
 List<SliderModel> getSlides(){
   List<SliderModel> slides = new List<SliderModel>();
   SliderModel sliderModel = new SliderModel();
+
   sliderModel.setImageAssetPath("assets/1.png");
   sliderModel.setTitle("Fuck");
   sliderModel.setDesc("Aoy fuck you");

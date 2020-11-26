@@ -1,19 +1,10 @@
-
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/DiaryNew/PageDiary.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Milestone.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Milestonelite.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/Pages.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/ShowStatMileStone.dart';
-import 'package:flutter_appchatbot/Pagesetting/setting.dart';
+import 'package:flutter_appchatbot/Milestone/ShowStatMileStone.dart';
+import 'package:flutter_appchatbot/Pagesetting/Setting.dart';
 import 'package:flutter_appchatbot/Pagechat/chatbot.dart';
 import 'package:flutter_appchatbot/main.dart';
-import 'package:flutter_appchatbot/Milestoneherebright/ShowStatMileStone.dart';
 import 'package:flutter_appchatbot/DiaryNew/CustomDialog.dart';
-import 'package:http/http.dart' as http;
 
 class Nav extends StatefulWidget {
   @override

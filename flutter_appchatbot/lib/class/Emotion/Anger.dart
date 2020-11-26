@@ -1,9 +1,9 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
 
-class Anger extends Emotion{
+class Anger extends Emotion {
   tone category;
 
-  Anger(tone category) : super.empty(){
+  Anger(tone category) : super.empty() {
     super.category = category;
     this.type = emotion.anger;
     this.mothercolors = '#B40000';
@@ -23,8 +23,6 @@ class Anger extends Emotion{
       this.colors = '#9E1919';
     }
   }
-
-
 
   @override
   EmotionDetail() {
@@ -51,6 +49,4 @@ class Anger extends Emotion{
     // TODO: implement EmotionAmi
     return 'assets/face_with_steam_from_nose.gif';
   }
-
-
 }
