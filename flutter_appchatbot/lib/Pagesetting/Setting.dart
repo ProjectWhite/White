@@ -38,8 +38,7 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
 
   Future logOut(BuildContext context)async{
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.remove('us');
+
     showDialog(
         context: context,
         builder: (context) {
@@ -62,8 +61,10 @@ class _SettingPageState extends State<SettingPage> {
                         fontWeight: FontWeight.w400,
                       )),
                 ),
-                onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+                onPressed: () async {
+                  SharedPreferences preferences = await SharedPreferences.getInstance();
+                  preferences.remove('us');
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
                 },
               ),
               new FlatButton(

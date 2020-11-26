@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/Pages/Navigator.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import '../main.dart';
 
 class ChangeName extends StatefulWidget {
   @override
@@ -7,7 +10,7 @@ class ChangeName extends StatefulWidget {
 }
 
 class _ChangeNameState extends State<ChangeName> {
-  TextEditingController message = TextEditingController();
+  TextEditingController newnickname = TextEditingController();
 
   Widget buildmessage() {
     return Column(
@@ -27,6 +30,7 @@ class _ChangeNameState extends State<ChangeName> {
               width: 280,
               height: 60,
               child: TextField(
+                controller: newnickname,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Enter your nickname',
@@ -47,7 +51,16 @@ class _ChangeNameState extends State<ChangeName> {
 
   Widget buildsentBtn() {
     return RaisedButton(
-      onPressed: () {
+      onPressed: () async {
+        var url= await "$uml/my_store/updatenickname.php";
+        http.post(url,body:{
+          'username' : username,
+          'name': newnickname.text,
+        });
+        Navigator.pop(context, );
+        setState(() {
+          name = newnickname.text;
+        });
       },
       padding: EdgeInsets.all(10.0),
       shape: RoundedRectangleBorder(
