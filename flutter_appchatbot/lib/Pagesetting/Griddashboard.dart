@@ -12,38 +12,38 @@ class GridDashboard extends StatelessWidget {
   Items item1 = new Items(
     title: "Account & Password",
     subtitle: "Edit your account & password",
-    ics: Icon(Icons.vpn_key_rounded, size: 60, color: Colors.blue),
+    ics: Icon(Icons.vpn_key_rounded, size: 60, color: Colors.white),
     page: AccountPasswordPage(),
   );
 
   Items item2 = new Items(
     title: "Theme",
     subtitle: "Change theme app",
-    ics: Icon(Icons.color_lens_rounded, size: 60, color: Colors.blue),
+    ics: Icon(Icons.color_lens_rounded, size: 60, color: Colors.white),
     page: ThemePage(),
   );
   Items item3 = new Items(
     title: "Preferred Hours",
     subtitle: "Select your preferred hours",
-    ics: Icon(Icons.access_time_rounded, size: 60, color: Colors.blue),
+    ics: Icon(Icons.access_time_rounded, size: 60, color: Colors.white),
     page: PreferedHoursPage(),
   );
   Items item4 = new Items(
     title: "Security",
     subtitle: "Set PIN",
-    ics: Icon(Icons.lock_rounded, size: 60, color: Colors.blue),
+    ics: Icon(Icons.lock_rounded, size: 60, color: Colors.white),
     page: SecurityPage(),
   );
   Items item5 = new Items(
     title: "Rate Us",
     subtitle: "",
-    ics: Icon(Icons.star_rate_rounded, size: 60, color: Colors.blue),
+    ics: Icon(Icons.star_rate_rounded, size: 60, color: Colors.white),
     page: RatePage(),
   );
   Items item6 = new Items(
     title: "Help Center",
     subtitle: "",
-    ics: Icon(Icons.live_help_rounded, size: 60, color: Colors.blue),
+    ics: Icon(Icons.live_help_rounded, size: 60, color: Colors.white),
     page: HelpCenterPage(),
   );
 
@@ -79,7 +79,7 @@ class GridDashboard extends StatelessWidget {
                     ),
                     Text(
                       data.title,
-                      style: GoogleFonts.robotoCondensed(
+                      style: GoogleFonts.rubik(
                           textStyle: TextStyle(
                               color: Colors.white,
                               fontSize: 15.8,
@@ -90,7 +90,7 @@ class GridDashboard extends StatelessWidget {
                     ),
                     Text(
                       data.subtitle,
-                      style: GoogleFonts.robotoCondensed(
+                      style: GoogleFonts.rubik(
                           textStyle: TextStyle(
                               color: Colors.white70,
                               fontSize: 10,

@@ -45,17 +45,17 @@ class _SettingPageState extends State<SettingPage> {
         builder: (context) {
           return AlertDialog(
             title: Text('Are you sure to logout', style:
-              GoogleFonts.robotoCondensed(
+              GoogleFonts.rubik(
                 textStyle: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w400,
                 )),
             ),
             actions: <Widget>[
               new FlatButton(
                 child: new Text('Yes',
-                  style: GoogleFonts.robotoCondensed(
+                  style: GoogleFonts.rubik(
                       textStyle: TextStyle(
                         color: Colors.blue,
                         fontSize: 18,
@@ -68,7 +68,7 @@ class _SettingPageState extends State<SettingPage> {
               ),
               new FlatButton(
                 child: new Text('Cancel',
-                  style: GoogleFonts.robotoCondensed(
+                  style: GoogleFonts.rubik(
                       textStyle: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
@@ -87,7 +87,7 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: Colors.blue[400],
+      backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
           SizedBox(
@@ -103,21 +103,20 @@ class _SettingPageState extends State<SettingPage> {
                   children: <Widget>[
                     Text(
                       "Account",
-                      style: GoogleFonts.robotoCondensed(
+                      style: GoogleFonts.rubik(
                           textStyle: TextStyle(
-                              shadows: [Shadow(color: Colors.black, offset: Offset(2,3), blurRadius: 10)],
-                              color: Colors.white,
+                              color: Colors.blue[400],
                               fontSize: 36,
-                              fontWeight: FontWeight.bold)),
+                              fontWeight: FontWeight.w600)),
                     ),
                     SizedBox(
                       height: 4,
                     ),
                     Text(
                       "Setting",
-                      style: GoogleFonts.robotoCondensed(
+                      style: GoogleFonts.rubik(
                           textStyle: TextStyle(
-                              color: Colors.blue[100],
+                              color: Colors.blue[200],
                               fontSize: 20,
                               fontWeight: FontWeight.w600)),
                     ),

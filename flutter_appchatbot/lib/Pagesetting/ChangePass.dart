@@ -1,52 +1,70 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_appchatbot/Pages/testm.dart';
-import 'package:flutter_appchatbot/Pagesetting/edit_profile.dart';
-import 'package:flutter_appchatbot/Pagesetting/setting.dart';
+import 'package:flutter_appchatbot/Pagesetting/BottomSheet.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../constrants.dart';
 import '../main.dart';
 import 'package:http/http.dart' as http;
+import 'editpassword.dart';
 
-import 'account_password.dart';
 
-class editpassword extends StatefulWidget {
+
+class ChangePass extends StatefulWidget {
   @override
-  _editpasswordState createState() => _editpasswordState();
+  _ChangepassState createState() => _ChangepassState();
 }
 
-class _editpasswordState extends State<editpassword> {
-
+class _ChangepassState extends State<ChangePass> {
   TextEditingController message = TextEditingController();
 
-  Future _editpassword() async {
-    var url = "$uml/my_store/updatepassword.php";
+  Future checkpass() async {
+    var url = "$uml/my_store/login.php";
     print(username);
     print(message.text);
+
     var response = await http.post(url, body: {
       "username": username,
       "password": message.text,
     });
-    showDialog(
+
+    var data = json.decode(response.body);
+
+    if (data.length == 0) {
+      Fluttertoast.showToast(
+          msg: "password incorrect",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.black,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    }
+    else {
+      showModalBottomSheet(
+        shape: BottomSheetShape(),
+        backgroundColor: Colors.blue[300],
         context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('password have change'),
-            actions: <Widget>[
-              new FlatButton(
-                child: new Text('ok'),
-                onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Nav(),),);
-                },
-              )
-            ],
-          );
-        });
+        builder: (context) => Container(
+          height: 280,
+          padding: const EdgeInsets.only(top: 30, left: 48, right: 48),
+          child: editpassword(),
+        ),
+      );
+      Fluttertoast.showToast(
+          msg: "correct",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.black,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    }
   }
 
   bool _obscureText = true;
+
   Widget buildmessage() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +87,7 @@ class _editpasswordState extends State<editpassword> {
                 obscureText: _obscureText,
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: 'Enter new password',
+                  hintText: 'Enter your password',
                   hintStyle: GoogleFonts.rubik(
                       textStyle: TextStyle(
                         fontSize: 18,
@@ -81,19 +99,19 @@ class _editpasswordState extends State<editpassword> {
                         ? Icons.visibility_off_rounded
                         : Icons.visibility_rounded,
                       color: _obscureText
-                          ? Colors.black54
-                          : Colors.blue[400],
-                    ),
+                        ? Colors.black54
+                        : Colors.blue[400],
+                        ),
                     onPressed: (){
                       setState(() {
                         _obscureText = !_obscureText;
                       });
                     },
                   ),
-                ),
               ),
             ),
           ),
+        ),
         )
       ],
     );
@@ -101,16 +119,16 @@ class _editpasswordState extends State<editpassword> {
 
   Widget buildsentBtn() {
     return RaisedButton(
-      onPressed: (){
-        _editpassword();
+      onPressed: () {
+        checkpass();
       },
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+      padding: EdgeInsets.all(10.0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30.0),
       ),
       color: Colors.blue[500],
       child: Text(
-        'Change',
+        'Next',
         style: GoogleFonts.rubik(
             textStyle: TextStyle(
                 fontSize: 18,
@@ -121,31 +139,6 @@ class _editpasswordState extends State<editpassword> {
       ),
     );
 
-    // return Container(
-    //   padding: EdgeInsets.symmetric(vertical: 15.0),
-    //   width: double.infinity,
-    //   child: RaisedButton(
-    //     elevation: 5.0,
-    //     onPressed: () {
-    //       _editpassword();
-    //     },
-    //     padding: EdgeInsets.all(15.0),
-    //     shape: RoundedRectangleBorder(
-    //       borderRadius: BorderRadius.circular(30.0),
-    //     ),
-    //     color: Colors.white,
-    //     child: Text(
-    //       'change',
-    //       style: TextStyle(
-    //         color: Color(0xFF527DAA),
-    //         letterSpacing: 1.5,
-    //         fontSize: 18.0,
-    //         fontWeight: FontWeight.bold,
-    //         fontFamily: 'OpenSans',
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 
   @override
@@ -162,3 +155,4 @@ class _editpasswordState extends State<editpassword> {
     );
   }
 }
+

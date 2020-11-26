@@ -27,14 +27,14 @@ class _PreferedHoursPageState extends State<PreferedHoursPage> {
   }
 
   Widget build(BuildContext context) {
-    var headline = GoogleFonts.robotoCondensed(
-        textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.white)
+    var headline = GoogleFonts.rubik(
+        textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.blue[400])
     );
-    var body = GoogleFonts.robotoCondensed(
-        textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.white)
+    var body = GoogleFonts.rubik(
+        textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.blue[400])
     );
     return Scaffold(
-      backgroundColor: Colors.blue[300] ,
+      backgroundColor: Colors.white ,
       body: Container(
         padding: EdgeInsets.only(left: 14, right: 14, top: 25),
         child: ListView(
@@ -58,27 +58,17 @@ class _PreferedHoursPageState extends State<PreferedHoursPage> {
                   children: [
                     Text(
                       "Preferred Hours",
-                      style: GoogleFonts.robotoCondensed(
+                      style: GoogleFonts.rubik(
                           textStyle: TextStyle(
-                              shadows: [Shadow(color: Colors.black, offset: Offset(2,3), blurRadius: 10)],
-                              color: Colors.white,
+                              color: Colors.blue[400],
                               fontSize: 24,
-                              fontWeight: FontWeight.bold)),
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: -0.6
+                          )),
                     ),
                     SizedBox(width: 8,),
-                    Stack(
-                        children: [
-                          Positioned(
-                            left: 2,
-                            top: 3,
-                            child: Icon(
-                              Icons.access_time_rounded, color: Colors.black38, size: 40,
-                            ),
-                          ),
-                          Icon(
-                            Icons.access_time_rounded, color: Colors.blue[500], size: 40,
-                          ),
-                        ]
+                    Icon(
+                      Icons.access_time_rounded, color: Colors.blue[500], size: 40,
                     )
                   ],
                 ),
@@ -108,7 +98,7 @@ class _PreferedHoursPageState extends State<PreferedHoursPage> {
   }
 
   void _showTimePicker() {
-    var body1 = GoogleFonts.robotoCondensed(
+    var body1 = GoogleFonts.rubik(
         textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w400, color: Colors.black54)
     );
     DatePicker.showDatePicker(
@@ -118,7 +108,7 @@ class _PreferedHoursPageState extends State<PreferedHoursPage> {
       pickerMode: DateTimePickerMode.time, // show TimePicker
       pickerTheme: DateTimePickerTheme(
         title: Container(
-          decoration: BoxDecoration(color: Colors.white70),
+          decoration: BoxDecoration(color: Colors.blue[400]),
           width: double.infinity,
           height: 56.0,
           alignment: Alignment.center,
