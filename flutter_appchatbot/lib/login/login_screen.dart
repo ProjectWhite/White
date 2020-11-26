@@ -75,13 +75,15 @@ class LoginScreen extends StatelessWidget {
     Future<List> _login(LoginData data) async {
         print('login');
         print(data.name);
+        print(data.password);
         final response = await http.post("$uml/my_store/login.php", body: {
           "username": data.name,
           "password": data.password,
         });
 
         var datauser = json.decode(response.body);
-        print(datauser[0]['USERNAME']);
+        // print(datauser[0]['USERNAME']);
+        // print(datauser[0]['PASSWORD']);
 
         if (datauser.length == 0) {
           Fluttertoast.showToast(
@@ -94,7 +96,7 @@ class LoginScreen extends StatelessWidget {
               fontSize: 16.0
           );
           Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+            context, MaterialPageRoute(builder: (context) => LoginScreen(),),);
         } else {
           if (datauser[0]['NICKNAME'] == null) {
             save(data);

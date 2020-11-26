@@ -7,6 +7,7 @@ import 'package:flutter_appchatbot/Pagesetting/ChangePass.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountPasswordPage extends StatefulWidget {
   @override
@@ -139,6 +140,8 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
                                         await http.post(url, body: {
                                           "username": username,
                                         });
+                                        SharedPreferences preferences = await SharedPreferences.getInstance();
+                                        preferences.remove('us');
                                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
                                       },
                                     ),
