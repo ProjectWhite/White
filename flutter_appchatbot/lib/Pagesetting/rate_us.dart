@@ -10,7 +10,7 @@ class _RatePageState extends State<RatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[300] ,
+      backgroundColor: Colors.white ,
       body: Container(
         padding: EdgeInsets.only(left: 14, right: 14, top: 25),
         child: ListView(
@@ -34,27 +34,17 @@ class _RatePageState extends State<RatePage> {
                   children: [
                     Text(
                       "Rate Us",
-                      style: GoogleFonts.robotoCondensed(
+                      style: GoogleFonts.rubik(
                           textStyle: TextStyle(
-                              shadows: [Shadow(color: Colors.black, offset: Offset(2,3), blurRadius: 10)],
-                              color: Colors.white,
+                              color: Colors.blue[400],
                               fontSize: 24,
-                              fontWeight: FontWeight.bold)),
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: -0.6
+                          )),
                     ),
                     SizedBox(width: 8,),
-                    Stack(
-                        children: [
-                          Positioned(
-                            left: 2,
-                            top: 3,
-                            child: Icon(
-                              Icons.star_rate_rounded, color: Colors.black38, size: 40,
-                            ),
-                          ),
-                          Icon(
-                            Icons.star_rate_rounded, color: Colors.blue[500], size: 40,
-                          ),
-                        ]
+                    Icon(
+                      Icons.star_rate_rounded, color: Colors.blue[500], size: 40,
                     )
                   ],
                 ),
