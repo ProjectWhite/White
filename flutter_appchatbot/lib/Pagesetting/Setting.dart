@@ -63,7 +63,7 @@ class _SettingPageState extends State<SettingPage> {
                       )),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
                 },
               ),
               new FlatButton(

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Pages/Navigator.dart';
+import 'package:flutter_appchatbot/Pages/tutorial.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'package:flutter/services.dart';
 import '../constrants.dart';
 import 'package:http/http.dart' as http;
 
-class wellcome extends StatefulWidget {
+class welcome extends StatefulWidget {
   @override
-  _wellcomeState createState() => _wellcomeState();
+  _welcomeState createState() => _welcomeState();
 }
 
-class _wellcomeState extends State<wellcome> {
+class _welcomeState extends State<welcome> {
 
   TextEditingController nickname = new TextEditingController();
 
@@ -55,6 +56,7 @@ class _wellcomeState extends State<wellcome> {
     );
   }
 
+
   Widget _buildok() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -67,7 +69,7 @@ class _wellcomeState extends State<wellcome> {
             'username' : username,
             'name': nickname.text,
           });
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Nav(),),);
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>tutorial(),),);
           setState(() {
             name = nickname.text;
           });

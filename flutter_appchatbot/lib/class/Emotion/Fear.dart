@@ -1,6 +1,5 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
 class Fear extends Emotion {
-  tone category;
 
   Fear(tone category) : super.empty() {
     super.category = category;
@@ -22,12 +21,6 @@ class Fear extends Emotion {
     else if (category == tone.worried) {
       this.colors = '#4B186E';
     }
-  }
-
-  @override
-  EmotionDetail() {
-    // TODO: implement EmotionDetail
-    throw UnimplementedError();
   }
 
   @override

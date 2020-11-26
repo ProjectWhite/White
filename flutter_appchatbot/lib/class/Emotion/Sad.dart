@@ -1,6 +1,5 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
 class Sad extends Emotion {
-  tone category;
 
   Sad(tone category) : super.empty() {
     super.category = category;
@@ -23,11 +22,6 @@ class Sad extends Emotion {
     }
   }
 
-  @override
-  EmotionDetail() {
-    // TODO: implement EmotionDetail
-    throw UnimplementedError();
-  }
 
   @override
   Emotioncolor() {

@@ -1,6 +1,5 @@
 import 'package:flutter_appchatbot/class/Emotion.dart';
 class Surprise extends Emotion {
-  tone category;
 
   Surprise(tone category) : super.empty() {
     super.category = category;
@@ -24,11 +23,6 @@ class Surprise extends Emotion {
     }
   }
 
-  @override
-  EmotionDetail() {
-    // TODO: implement EmotionDetail
-    throw UnimplementedError();
-  }
 
   @override
   Emotioncolor() {

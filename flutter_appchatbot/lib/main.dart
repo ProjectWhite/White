@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter_appchatbot/DiaryNew/PageDiary.dart';
 import 'package:flutter_appchatbot/Pages/Navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/Pages/tutorial.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Pagechat/chatbot.dart';
 import 'Pages/intro.dart';
@@ -62,12 +63,13 @@ class MyApp extends StatelessWidget {
       ),
       title: 'White',
       routes: <String,WidgetBuilder>{
-        '/wellcome1': (BuildContext context)=> new wellcome(),
+        '/wellcome1': (BuildContext context)=> new welcome(),
         '/MyHomePage': (BuildContext context)=> new MyHomePage(),
         '/chat' : (BuildContext context)=> new chatbot(username: username),
         '/Navi' : (BuildContext context)=> new Nav(),
         '/Diary' : (BuildContext context)=> new Diary(),
         '/intro' : (BuildContext context)=> new intro(),
+        '/tutorial' : (BuildContext context)=> new tutorial(),
       },
     );
   }

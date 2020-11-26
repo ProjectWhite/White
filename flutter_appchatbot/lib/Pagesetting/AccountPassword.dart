@@ -139,6 +139,7 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
                                         await http.post(url, body: {
                                           "username": username,
                                         });
+                                        Navigator.pop(context);
                                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
                                       },
                                     ),

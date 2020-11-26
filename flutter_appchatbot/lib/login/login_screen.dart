@@ -110,7 +110,7 @@ class LoginScreen extends StatelessWidget {
             );
             username = datauser[0]['USERNAME'];
             Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => wellcome(),),);
+              context, MaterialPageRoute(builder: (context) => welcome(),),);
           }
           else {
             save(data);

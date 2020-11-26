@@ -1,17 +1,18 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Pages/data.dart';
+import 'package:flutter_appchatbot/Pages/tutorialdata.dart';
 import 'package:flutter_appchatbot/main.dart';
-import 'package:dcdg/dcdg.dart';
 
-class intro extends StatefulWidget {
+import 'Navigator.dart';
+
+class tutorial extends StatefulWidget {
   @override
-  _introState createState() => _introState();
+  _tutorialState createState() => _tutorialState();
 }
 
-class _introState extends State<intro> {
+class _tutorialState extends State<tutorial> {
 
-  List<SliderModel> slides = new List<SliderModel>();
+  List<TutorialModel> slides = new List<TutorialModel>();
   int currentIndex = 0;
   PageController pageController = new PageController(initialPage: 0);
   @override
@@ -27,8 +28,8 @@ class _introState extends State<intro> {
       height: isCurrentPage ? 10 : 8,
       width:  isCurrentPage ? 10 : 6,
       decoration: BoxDecoration(
-        color: isCurrentPage ? Colors.grey : Colors.grey[300],
-        borderRadius: BorderRadius.circular(12)
+          color: isCurrentPage ? Colors.grey : Colors.grey[300],
+          borderRadius: BorderRadius.circular(12)
       ),
     );
   }
@@ -38,6 +39,7 @@ class _introState extends State<intro> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: PageView.builder(
+        scrollDirection: Axis.vertical,
         controller: pageController,
         itemCount: slides.length,
         onPageChanged: (val){
@@ -47,9 +49,10 @@ class _introState extends State<intro> {
           currentIndex = val;
         } ,
         itemBuilder: (context, index){
-          return SliderTile(slides[index].getImageAssetPath());
+          return TutorialTile(slides[index].getImageAssetPath());
         },),
       bottomSheet: currentIndex != slides.length - 1 ? Container(
+
         height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -77,31 +80,31 @@ class _introState extends State<intro> {
           ],
         ),
       )
-      : GestureDetector(
+          : GestureDetector(
         onTap: (){
-              Navigator.pushReplacement(context,PageRouteBuilder(
-                transitionDuration: Duration(milliseconds: 1500),
-                transitionsBuilder: (BuildContext context,Animation<double> animation,Animation<double> secAnimation,Widget child){
-                  animation = CurvedAnimation(parent: animation,curve: Curves.easeInOutQuint);
-                  return ScaleTransition(
-                    alignment: Alignment.bottomCenter,
-                      scale : animation,
-                    child: child,
-                  );
-                },
-                pageBuilder: (BuildContext context,Animation<double> animation,Animation<double> secAnimation){
-                  return MyHomePage();
+          Navigator.pushReplacement(context,PageRouteBuilder(
+              transitionDuration: Duration(milliseconds: 1500),
+              transitionsBuilder: (BuildContext context,Animation<double> animation,Animation<double> secAnimation,Widget child){
+                animation = CurvedAnimation(parent: animation,curve: Curves.easeInOutQuint);
+                return ScaleTransition(
+                  alignment: Alignment.bottomCenter,
+                  scale : animation,
+                  child: child,
+                );
+              },
+              pageBuilder: (BuildContext context,Animation<double> animation,Animation<double> secAnimation){
+                return Nav();
               }
-              ));
-            },
+          ));
+        },
         child: Container(
           alignment: Alignment.center,
           height: 60,
           color: Colors.deepPurple,
-            child: Text("GET STARTED",
+          child: Text("GET STARTED",
             style: TextStyle(
                 color: Colors.white,
-              fontWeight:FontWeight.w600
+                fontWeight:FontWeight.w600
             ),),
         ),
       ),
@@ -109,12 +112,20 @@ class _introState extends State<intro> {
   }
 }
 
-class SliderTile extends StatelessWidget {
+class TutorialTile extends StatelessWidget {
   String imageAssetPath;
-  SliderTile(this.imageAssetPath);
+  TutorialTile(this.imageAssetPath);
   @override
   Widget build(BuildContext context) {
-    return Image.asset(imageAssetPath);
+    return Container(
+      width: 20,
+      height: 30,
+      child: Image.asset(
+        imageAssetPath,
+        fit: BoxFit.contain,
+        semanticLabel: 'Hi'
+        ,),
+    );
   }
 }
 
