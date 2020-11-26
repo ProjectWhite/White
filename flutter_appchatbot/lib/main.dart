@@ -29,13 +29,13 @@ void main() async{
   SharedPreferences preferences = await SharedPreferences.getInstance();
   var u = preferences.getString('us');
   username = u;
-  runApp(MaterialApp(home: u == null ? MyHomePage() : Nav(),
+  runApp(MaterialApp(home: u == null ? MyHomePage() :Nav(),
     debugShowCheckedModeBanner: false,));
 }
 
 String username='';
 String name='';
-String uml='https://e283a556408f.ngrok.io';
+String uml='https://a0f21483d26f.ngrok.io';
 int k=2;
 
 class MyApp extends StatelessWidget {

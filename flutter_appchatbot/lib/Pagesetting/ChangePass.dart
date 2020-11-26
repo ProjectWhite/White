@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_appchatbot/Pagesetting/BottomSheet.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../main.dart';
@@ -40,8 +41,16 @@ class _ChangepassState extends State<ChangePass> {
       );
     }
     else {
-      Navigator.push(
-        context, MaterialPageRoute(builder: (context) => editpassword(),),);
+      showModalBottomSheet(
+        shape: BottomSheetShape(),
+        backgroundColor: Colors.blue[300],
+        context: context,
+        builder: (context) => Container(
+          height: 280,
+          padding: const EdgeInsets.only(top: 30, left: 48, right: 48),
+          child: editpassword(),
+        ),
+      );
       Fluttertoast.showToast(
           msg: "correct",
           toastLength: Toast.LENGTH_SHORT,
@@ -74,6 +83,7 @@ class _ChangepassState extends State<ChangePass> {
               width: 280,
               height: 60,
               child: TextField(
+                controller: message,
                 obscureText: _obscureText,
                 decoration: InputDecoration(
                   border: InputBorder.none,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'package:flutter_appchatbot/Pagesetting/edit_profile.dart';
 import 'package:flutter_appchatbot/Pagesetting/setting.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../constrants.dart';
 import '../main.dart';
@@ -36,7 +38,7 @@ class _editpasswordState extends State<editpassword> {
               new FlatButton(
                 child: new Text('ok'),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SettingUI(),),);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Nav(),),);
                 },
               )
             ],
@@ -44,33 +46,55 @@ class _editpasswordState extends State<editpassword> {
         });
   }
 
+  bool _obscureText = true;
   Widget buildmessage() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'password',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            controller: message,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.report_gmailerrorred_outlined,
-                color: Colors.white,
+        SizedBox(height: 20.0),
+        Material(
+          elevation: 3,
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            width: 320,
+            height: 60,
+            alignment: Alignment.center,
+            child: Container(
+              alignment: Alignment.center,
+              width: 280,
+              height: 60,
+              child: TextField(
+                controller: message,
+                obscureText: _obscureText,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Enter new password',
+                  hintStyle: GoogleFonts.rubik(
+                      textStyle: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey[700],
+                      )),
+                  suffixIcon: IconButton(
+                    icon: Icon(_obscureText
+                        ? Icons.visibility_off_rounded
+                        : Icons.visibility_rounded,
+                      color: _obscureText
+                          ? Colors.black54
+                          : Colors.blue[400],
+                    ),
+                    onPressed: (){
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                  ),
+                ),
               ),
-              hintText: 'Enter new password',
-              hintStyle: kHintTextStyle,
             ),
           ),
-        ),
+        )
       ],
     );
   }
@@ -80,27 +104,19 @@ class _editpasswordState extends State<editpassword> {
       onPressed: (){
         _editpassword();
       },
-      color: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
-      padding: EdgeInsets.symmetric(horizontal: 50),
-      child: SizedBox(
-        width: 70,
-        child: Row(
-          children: [
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              'change',
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-                fontFamily: 'RobotoCondensed',
-              ),
-            ),
-            SizedBox(width: 8),
-          ],
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      color: Colors.blue[500],
+      child: Text(
+        'Change',
+        style: GoogleFonts.rubik(
+            textStyle: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.white
+            )
         ),
       ),
     );
@@ -134,63 +150,14 @@ class _editpasswordState extends State<editpassword> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFF73AEF5),
-                      Color(0xFF61A4F1),
-                      Color(0xFF478DE0),
-                      Color(0xFF398AE5),
-                    ],
-                    stops: [0.1, 0.4, 0.7, 0.9],
-                  ),
-                ),
-              ),
-              Container(
-                height: double.infinity,
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 100.0,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        '',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'OpenSans',
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 30.0),
-                      buildmessage(),
-                      SizedBox(
-                        height: 50.0,
-                      ),
-                      buildsentBtn(),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
+    return Container(
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 30.0),
+          buildmessage(),
+          SizedBox(height: 50.0,),
+          buildsentBtn(),
+        ],
       ),
     );
   }
