@@ -10,7 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Pagechat/chatbot.dart';
 import 'Pages/intro.dart';
 import 'Pages/wellcome1.dart';
-import 'Pages/wellcome2.dart';
 import 'constrants.dart';
 import 'package:flutter/services.dart';
 import 'login/dashboard_screen.dart';
@@ -36,7 +35,7 @@ void main() async{
 
 String username='';
 String name='';
-String uml='https://e283a556408f.ngrok.io';
+String uml='https://778a74022e1e.ngrok.io';
 int k=2;
 
 class MyApp extends StatelessWidget {
@@ -72,7 +71,6 @@ class MyApp extends StatelessWidget {
       title: 'White',
       routes: <String,WidgetBuilder>{
         '/wellcome1': (BuildContext context)=> new wellcome(),
-        '/wellcome2': (BuildContext context)=> new wellcome2(),
         '/MyHomePage': (BuildContext context)=> new MyHomePage(),
         '/chat' : (BuildContext context)=> new chatbot(username: username),
         '/Navi' : (BuildContext context)=> new Nav(),
@@ -144,7 +142,6 @@ class _MyHomePageState extends State<MyHomePage> {
        // navigatorObservers: [TransitionRouteObserver()],
        routes: {
          LoginScreen.routeName: (context) => LoginScreen(),
-         DashboardScreen.routeName: (context) => DashboardScreen(),
        },
      );
   }

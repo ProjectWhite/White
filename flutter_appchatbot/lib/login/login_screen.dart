@@ -1,7 +1,6 @@
 import 'package:flutter_login/widgets.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Pages/wellcome2.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'constants.dart';
 import 'custom_route.dart';
@@ -16,7 +15,6 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_appchatbot/Pages/wellcome1.dart';
-import 'package:flutter_appchatbot/Pages/wellcome2.dart';
 import 'package:flutter_appchatbot/main.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -145,7 +143,7 @@ class LoginScreen extends StatelessWidget {
             username = datauser[0]['username'];
             name = datauser[0]['nickname'];
             Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => wellcome2(),),);
+              context, MaterialPageRoute(builder: (context) => Nav(),),);
             // setState(() {
             //   username = datauser[0]['username'];
             //   name = datauser[0]['nickname'];

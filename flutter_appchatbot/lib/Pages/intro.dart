@@ -1,3 +1,4 @@
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Pages/data.dart';
 import 'package:flutter_appchatbot/main.dart';
@@ -65,7 +66,7 @@ class _introState extends State<intro> {
             ),
             GestureDetector(
               onTap: (){
-                pageController.animateToPage(currentIndex+1,duration: Duration(milliseconds: 400),curve: Curves.linear);
+                pageController.animateToPage(currentIndex+1,duration: Duration(milliseconds: 600),curve: Curves.linearToEaseOut);
               },
               child: Text("Next"),
             ),
@@ -73,19 +74,33 @@ class _introState extends State<intro> {
           ],
         ),
       )
-      : Container(
-        alignment: Alignment.center,
-        height: 60,
-        color: Colors.deepPurple,
-        child: GestureDetector(
-          onTap: (){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyHomePage(),),);
-          },
-          child: Text("GET STARTED",
-          style: TextStyle(
-              color: Colors.white,
-            fontWeight:FontWeight.w600
-          ),),
+      : GestureDetector(
+        onTap: (){
+              Navigator.pushReplacement(context,PageRouteBuilder(
+                transitionDuration: Duration(milliseconds: 1500),
+                transitionsBuilder: (BuildContext context,Animation<double> animation,Animation<double> secAnimation,Widget child){
+                  animation = CurvedAnimation(parent: animation,curve: Curves.easeInOutQuint);
+                  return ScaleTransition(
+                    alignment: Alignment.bottomCenter,
+                      scale : animation,
+                    child: child,
+                  );
+                },
+                pageBuilder: (BuildContext context,Animation<double> animation,Animation<double> secAnimation){
+                  return MyHomePage();
+              }
+
+              ));
+            },
+        child: Container(
+          alignment: Alignment.center,
+          height: 60,
+          color: Colors.deepPurple,
+            child: Text("GET STARTED",
+            style: TextStyle(
+                color: Colors.white,
+              fontWeight:FontWeight.w600
+            ),),
         ),
       ),
     );
@@ -96,8 +111,7 @@ class SliderTile extends StatelessWidget {
   SliderTile(this.imageAssetPath,this.title,this.desc);
   @override
   Widget build(BuildContext context) {
-    return Image.asset(imageAssetPath,
-    width: 10,);
+    return Image.asset(imageAssetPath);
   }
 }
 

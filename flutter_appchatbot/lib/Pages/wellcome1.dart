@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Pages/wellcome2.dart';
+import 'package:flutter_appchatbot/Pages/testm.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'package:flutter/services.dart';
 import '../constrants.dart';
@@ -61,7 +61,7 @@ class _wellcomeState extends State<wellcome> {
             'username' : username,
             'name': name.text,
           });
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>wellcome2(),),);
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Nav(),),);
           setState(() {
             name;
           });
@@ -96,19 +96,7 @@ class _wellcomeState extends State<wellcome> {
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFF73AEF5),
-                      Color(0xFF61A4F1),
-                      Color(0xFF478DE0),
-                      Color(0xFF398AE5),
-                    ],
-                    stops: [0.1, 0.4, 0.7, 0.9],
-                  ),
-                ),
+                color: Colors.white,
               ),
               Container(
                 height: double.infinity,
