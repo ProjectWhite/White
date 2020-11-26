@@ -24,11 +24,6 @@ class Surprise extends Emotion {
     }
   }
 
-  @override
-  EmotionDetail() {
-    // TODO: implement EmotionDetail
-    throw UnimplementedError();
-  }
 
   @override
   Emotioncolor() {

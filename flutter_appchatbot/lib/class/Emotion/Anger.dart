@@ -25,12 +25,6 @@ class Anger extends Emotion {
   }
 
   @override
-  EmotionDetail() {
-    // TODO: implement EmotionDetail
-    throw UnimplementedError();
-  }
-
-  @override
   Emotioncolor() {
     // TODO: implement Emotioncolor
     return '$mothercolors';
