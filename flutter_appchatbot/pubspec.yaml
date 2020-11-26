@@ -95,6 +95,8 @@ flutter:
     - assets/2.png
     - assets/3.png
     - assets/4.png
+    - assets/LASTTHING.png
+    - assets/Let.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

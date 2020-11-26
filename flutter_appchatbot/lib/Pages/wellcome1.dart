@@ -12,32 +12,42 @@ class wellcome extends StatefulWidget {
 
 class _wellcomeState extends State<wellcome> {
 
-  TextEditingController name = new TextEditingController();
+  TextEditingController nickname = new TextEditingController();
 
   Widget _buildname() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Name',
-          style: kLabelStyle,
-        ),
+        Image.asset('assets/Let.png',scale:4,),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
+          decoration: BoxDecoration(
+            color: Colors.white54,
+            borderRadius: BorderRadius.circular(15.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 6.0,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
           height: 60.0,
           child: TextField(
-            controller: name,
+            controller: nickname,
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.drive_file_rename_outline,
-                color: Colors.white,
+                color: Colors.grey[700],
               ),
               hintText: 'Enter your name',
-              hintStyle: kHintTextStyle,
+              hintStyle: TextStyle(
+                color: Colors.grey[700],
+                fontFamily: 'RobotoCondensed',
+              ),
             ),
           ),
         ),
@@ -50,31 +60,31 @@ class _wellcomeState extends State<wellcome> {
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
       child: RaisedButton(
-        elevation: 5.0,
+        elevation: 3.0,
         onPressed: () async {
           var url= await "$uml/my_store/updatenickname.php";
           http.post(url,body:{
             'username' : username,
-            'name': name.text,
+            'name': nickname.text,
           });
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Nav(),),);
           setState(() {
-            name;
+            name = nickname.text;
           });
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Colors.white,
+        color: Colors.black,
         child: Text(
-          'Ok',
+          'FINISH',
           style: TextStyle(
-            color: Color(0xFF527DAA),
+            color: Colors.white,
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
+            fontFamily: 'RobotoCondensed',
           ),
         ),
       ),
@@ -83,48 +93,33 @@ class _wellcomeState extends State<wellcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                color: Colors.white,
-              ),
-              Container(
-                height: double.infinity,
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 120.0,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Wellcome',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'OpenSans',
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 30,),
-                      _buildname(),
-                      SizedBox(height: 30,),
-                      _buildok()
-                    ],
-                  ),
-                ),
-              )
-            ],
+      body: Stack(
+        children: <Widget>[
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            color: Colors.white,
           ),
-        ),
+          Container(
+            height: double.infinity,
+            child: SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              padding: EdgeInsets.symmetric(
+                horizontal: 40.0,
+                vertical: 120.0,
+              ),
+              child: Wrap(
+                children: <Widget>[
+                  Image.asset("assets/LASTTHING.png"),
+                  SizedBox(height: 30,),
+                  _buildname(),
+                  SizedBox(height: 200,),
+                  _buildok()
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

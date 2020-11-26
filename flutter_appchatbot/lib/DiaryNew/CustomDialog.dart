@@ -103,6 +103,7 @@ class CustomDialog extends StatelessWidget {
                                          ),
                                          onPressed: () async {
                                            var url = "$uml/my_store/deletediary.php";
+                                           print('delete');
                                            l=1;
                                            await http.post(url, body: {
                                              "username": username,

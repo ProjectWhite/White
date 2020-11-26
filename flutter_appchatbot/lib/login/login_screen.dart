@@ -81,7 +81,7 @@ class LoginScreen extends StatelessWidget {
         });
 
         var datauser = json.decode(response.body);
-        print(datauser[0]['NICKNAME']);
+        print(datauser[0]['USERNAME']);
 
         if (datauser.length == 0) {
           Fluttertoast.showToast(
@@ -108,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                 textColor: Colors.white,
                 fontSize: 16.0
             );
-            username = datauser[0]['NICKNAME'];
+            username = datauser[0]['USERNAME'];
             Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => wellcome(),),);
           }
@@ -125,7 +125,7 @@ class LoginScreen extends StatelessWidget {
                 fontSize: 16.0
             );
             username = datauser[0]['USERNAME'];
-            name = datauser[0]['USERNAME'];
+            name = datauser[0]['NICKNAME'];
             Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Nav(),),);
           }

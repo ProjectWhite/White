@@ -1254,13 +1254,13 @@ class _chatbotState extends State<chatbot> {
       String ms = aiResponse.getListMessage()[0]["text"]["text"][0]
           .toString()
           .replaceAll("\'", "\\\'");
+      _insertai(ms);
       if (diary == 'Diarycommand') {
         i = 1;
         print(i);
         Facade fuck = new Facade();
         fuck.start(1, tone.mad);
       }
-      _insertai(ms);
     } catch (except){
       print(except);
     }
@@ -1342,14 +1342,6 @@ class _chatbotState extends State<chatbot> {
             Container(
               child: ListTileMoreCustomizable(
                 horizontalTitleGap: 0.0,
-                // leading: IconButton(
-                //   icon: Icon(Icons.add, color: Colors.purple, size: 35,),
-                //   onPressed: () {
-                //     _readmsg();
-                //     Navigator.of(context).push(MaterialPageRoute(
-                //         builder: (BuildContext context) => Bar7z()));
-                //   },
-                // ),
                 title: Container(
                   height: 40,
                   decoration: BoxDecoration(

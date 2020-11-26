@@ -146,6 +146,8 @@ class _HomeState extends State<Diary> {
 
   Widget chat(String message,String date,String emotionxx,String type) {
     // emotion x = EnumToString.fromString(emotion.values,emotionxx);
+    String msgnew ;
+    msgnew = message;
     tone tonefromstring(String value){
       return tone.values.firstWhere((e) => e.toString().split('.')[1]==value);
     }
@@ -154,6 +156,9 @@ class _HomeState extends State<Diary> {
     }
     Facade obj = new Facade();
     obj.find(emotionfromstring(emotionxx),tonefromstring(type));
+    if(message.length>=30){
+      msgnew = message.substring(0,30)+'...';
+    }
     // print(x);
     // var emoji = 'assets/smiling_face_with_heart_eyes.gif';
     // if(emotion == 'emotion.love'){
@@ -217,25 +222,27 @@ class _HomeState extends State<Diary> {
                     //   icon: Image.asset(emoji),
                     //   iconSize: 20,
                     // ),
-                    flex: 1,
+                    flex: 2,
                   ),
+                  SizedBox(height: 50,),
                   Expanded(
-                    flex: 4,
+                    flex: 3,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          message,
+                          msgnew,
                           style: TextStyle(
                             color: Colors.white,
+                            fontFamily: 'RobotoCondensed',
                             fontWeight: FontWeight.w500,
                           ),
                         )
                       ],
                     ),
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(width: 50,),
                   Expanded(
                     flex: 2,
                     child: Column(
@@ -245,10 +252,11 @@ class _HomeState extends State<Diary> {
                           children: [
                             Icon(Icons.date_range_outlined,
                               color: Colors.black,),
-                            SizedBox(width: 10,),
+                            SizedBox(width: 7,),
                             Text('Date',
                               style: TextStyle(
                                 color: Colors.white,
+                                fontFamily: 'RobotoCondensed',
                                 fontWeight: FontWeight.w500,
                               ),),
                           ],
@@ -257,6 +265,7 @@ class _HomeState extends State<Diary> {
                         Text(date,
                           style: TextStyle(
                             color: Colors.white,
+                            fontFamily: 'RobotoCondensed',
                             fontWeight: FontWeight.w500,
                           ),
                         )
