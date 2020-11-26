@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'package:flutter_appchatbot/DiaryNew/PageDiary.dart';
-import 'package:flutter_appchatbot/Pages/testm.dart';
+import 'package:flutter_appchatbot/Pages/Navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Pagechat/chatbot.dart';
 import 'Pages/intro.dart';
-import 'Pages/wellcome1.dart';
+import 'Pages/FirstLogin.dart';
 import 'package:flutter/services.dart';
 import 'login/login_screen.dart';
-import 'package:flutter_appchatbot/Pages/wellcome1.dart';
+import 'package:flutter_appchatbot/Pages/FirstLogin.dart';
 
 void main() async{
   SystemChrome.setSystemUIOverlayStyle(

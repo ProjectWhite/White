@@ -6,8 +6,6 @@ import 'package:flutter_appchatbot/Pagesetting/ChangeName.dart';
 import 'package:flutter_appchatbot/Pagesetting/ChangePass.dart';
 import 'package:flutter_appchatbot/main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'ChangeUsername.dart';
-import 'VerifyEmail.dart';
 import 'package:http/http.dart' as http;
 
 class AccountPasswordPage extends StatefulWidget {
@@ -79,9 +77,7 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
             ),
             SizedBox(height: 8),
             Divider(thickness: 2, color: Colors.black12),
-            buildInkWell('Nickname', ChangeName(), name),
-            buildInkWell('Email', VerifyEmail(), 'Unverified'),
-            buildInkWell('Username', ChangeUsername(), username),
+            buildInkWell('Change Nickname', ChangeName(), name),
             SizedBox(height: 30),
             Row(
               children: [
@@ -100,77 +96,89 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
             Divider(thickness: 2, color: Colors.black12),
             buildInkWell('Change Password', ChangePass(), ''),
             SizedBox(height: 40,),
-            RaisedButton(
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text('Delete Account '+ username + ' ?',
-                        style: GoogleFonts.rubik(
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20,
-                            color: Colors.black,
-                            letterSpacing: -0.5,
-                          )),
-                        ),
-                        actions: <Widget>[
-                          Row(
-                            children: [
-                              FlatButton(
-                                child: new Text(
-                                  'Yes',
-                                  style: GoogleFonts.rubik(
-                                      textStyle: TextStyle(
-                                        color: Colors.blue,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w400,
-                                      )),
-                                ),
-                                onPressed: () async {
-                                  var url = "$uml/my_store/delete.php";
-                                  print(username);
-                                  await http.post(url, body: {
-                                    "username": username,
-                                  });
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
-                                },
-                              ),
-                              FlatButton(
-                                child: new Text(
-                                  'Cancel',
-                                  style: GoogleFonts.rubik(
-                                      textStyle: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w400,
-                                      )),
-                                ),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                }
-                              ),
-                            ],
-                          )
-                        ],
-                      );
-                    });
-              },
-              color: Colors.blue[500],
-              padding: EdgeInsets.only(top: 12, bottom: 12, left: 30, right: 30),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-              child: Text(
-                ' Delete Account ',
-                style: GoogleFonts.rubik(
-                  textStyle: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                )
-              ),
-            ),
 
+
+            Column(
+              children: [
+                Container(
+                  width: 180,
+                  height: 50,
+                  child: RaisedButton(
+                    color: Colors.blue[500],
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text('Delete Account '+ username + ' ?',
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  letterSpacing: -0.5,
+                                )),
+                              ),
+                              actions: <Widget>[
+                                Row(
+                                  children: [
+                                    FlatButton(
+                                      child: new Text(
+                                        'Yes',
+                                        style: GoogleFonts.rubik(
+                                            textStyle: TextStyle(
+                                              color: Colors.blue,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w400,
+                                            )),
+                                      ),
+                                      onPressed: () async {
+                                        var url = "$uml/my_store/delete.php";
+                                        print(username);
+                                        await http.post(url, body: {
+                                          "username": username,
+                                        });
+                                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+                                      },
+                                    ),
+                                    FlatButton(
+                                      child: new Text(
+                                        'Cancel',
+                                        style: GoogleFonts.rubik(
+                                            textStyle: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w400,
+                                            )),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      }
+                                    ),
+                                  ],
+                                )
+                              ],
+                            );
+                          });
+                    },
+                    child: Text(
+                      ' Delete Account ',
+                      style: GoogleFonts.rubik(
+                        textStyle: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      )
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    color: Colors.blue[500],
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

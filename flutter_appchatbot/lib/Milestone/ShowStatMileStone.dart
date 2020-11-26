@@ -640,6 +640,7 @@ class MilestonepageState extends State {
                                   ],
                                 ),
                                 SizedBox(width: 12.53175,),
+
                                 Column(
                                   children: [
                                     Container(

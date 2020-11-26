@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Pagesetting/HelpCenter.dart';
-import 'package:flutter_appchatbot/Pagesetting/PreferredHours.dart';
 import 'package:flutter_appchatbot/Pagesetting/RateUs.dart';
-import 'package:flutter_appchatbot/Pagesetting/Security.dart';
-import 'package:flutter_appchatbot/Pagesetting/Theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'AccountPassword.dart';
 
@@ -16,30 +13,12 @@ class GridDashboard extends StatelessWidget {
   );
 
   Items item2 = new Items(
-    title: "Theme",
-    subtitle: "Change theme app",
-    ics: Icon(Icons.color_lens_rounded, size: 60, color: Colors.white),
-    page: ThemePage(),
-  );
-  Items item3 = new Items(
-    title: "Preferred Hours",
-    subtitle: "Select your preferred hours",
-    ics: Icon(Icons.access_time_rounded, size: 60, color: Colors.white),
-    page: PreferedHoursPage(),
-  );
-  Items item4 = new Items(
-    title: "Security",
-    subtitle: "Set PIN",
-    ics: Icon(Icons.lock_rounded, size: 60, color: Colors.white),
-    page: SecurityPage(),
-  );
-  Items item5 = new Items(
     title: "Rate Us",
     subtitle: "",
     ics: Icon(Icons.star_rate_rounded, size: 60, color: Colors.white),
     page: RatePage(),
   );
-  Items item6 = new Items(
+  Items item3 = new Items(
     title: "Help Center",
     subtitle: "",
     ics: Icon(Icons.live_help_rounded, size: 60, color: Colors.white),
@@ -48,7 +27,7 @@ class GridDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Items> myList = [item1, item2, item3, item4, item5, item6];
+    List<Items> myList = [item1, item2, item3];
     var color = Colors.blue[300];
     return Flexible(
       child: GridView.count(

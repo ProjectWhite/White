@@ -1,6 +1,6 @@
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter/material.dart';
-import 'package:flutter_appchatbot/Pages/testm.dart';
+import 'package:flutter_appchatbot/Pages/Navigator.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'constants.dart';
 import 'dart:async';
@@ -8,7 +8,7 @@ import 'dart:convert';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_appchatbot/Pages/wellcome1.dart';
+import 'package:flutter_appchatbot/Pages/FirstLogin.dart';
 import 'package:flutter_appchatbot/main.dart';
 
 class LoginScreen extends StatelessWidget {
