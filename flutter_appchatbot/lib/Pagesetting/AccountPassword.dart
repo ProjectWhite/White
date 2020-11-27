@@ -142,6 +142,7 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
                                         });
                                         SharedPreferences preferences = await SharedPreferences.getInstance();
                                         preferences.remove('us');
+                                        Navigator.of(context).popUntil((route) => route.isFirst);
                                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
                                       },
                                     ),

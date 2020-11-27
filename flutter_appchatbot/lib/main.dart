@@ -70,6 +70,7 @@ class MyApp extends StatelessWidget {
         '/Diary' : (BuildContext context)=> new Diary(),
         '/intro' : (BuildContext context)=> new intro(),
         '/tutorial' : (BuildContext context)=> new tutorial(),
+        'LoginScreen' : (BuildContext context)=> new LoginScreen()
       },
     );
   }

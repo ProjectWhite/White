@@ -57,7 +57,21 @@ class _ChangeNameState extends State<ChangeName> {
           'username' : username,
           'name': newnickname.text,
         });
-        Navigator.pop(context, );
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Nickname have change'),
+                actions: <Widget>[
+                  new FlatButton(
+                    child: new Text('ok'),
+                    onPressed: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Nav(),),);
+                    },
+                  )
+                ],
+              );
+            });
         setState(() {
           name = newnickname.text;
         });

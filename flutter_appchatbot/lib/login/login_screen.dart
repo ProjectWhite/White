@@ -35,6 +35,7 @@ class LoginScreen extends StatelessWidget {
     }
 
     Future save(LoginData data) async{
+
       SharedPreferences preferences = await SharedPreferences.getInstance();
       preferences.setString('us', data.name);
     }
@@ -99,6 +100,7 @@ class LoginScreen extends StatelessWidget {
             context, MaterialPageRoute(builder: (context) => LoginScreen(),),);
         } else {
           if (datauser[0]['NICKNAME'] == null) {
+
             save(data);
             print('success');
             Fluttertoast.showToast(
@@ -113,6 +115,7 @@ class LoginScreen extends StatelessWidget {
             username = datauser[0]['USERNAME'];
             Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => welcome(),),);
+
           }
           else {
             save(data);
@@ -145,7 +148,6 @@ class LoginScreen extends StatelessWidget {
         confirmPasswordHint: 'Confirm',
         loginButton: 'LOG IN',
         signupButton: 'REGISTER',
-        forgotPasswordButton: 'Forgot password',
         recoverPasswordButton: 'HELP ME',
         goBackButton: 'GO BACK',
         confirmPasswordError: 'Not match!',

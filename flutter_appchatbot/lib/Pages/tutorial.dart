@@ -1,4 +1,5 @@
 import 'package:flutter/animation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appchatbot/Pages/tutorialdata.dart';
 import 'package:flutter_appchatbot/main.dart';
@@ -49,7 +50,7 @@ class _tutorialState extends State<tutorial> {
           currentIndex = val;
         } ,
         itemBuilder: (context, index){
-          return TutorialTile(slides[index].getImageAssetPath());
+          return TutorialTile(slides[index].getImageAssetPath(),slides[index].getWordString());
         },),
       bottomSheet: currentIndex != slides.length - 1 ? Container(
 
@@ -83,11 +84,11 @@ class _tutorialState extends State<tutorial> {
           : GestureDetector(
         onTap: (){
           Navigator.pushReplacement(context,PageRouteBuilder(
-              transitionDuration: Duration(milliseconds: 1500),
+              transitionDuration: Duration(milliseconds: 600),
               transitionsBuilder: (BuildContext context,Animation<double> animation,Animation<double> secAnimation,Widget child){
-                animation = CurvedAnimation(parent: animation,curve: Curves.easeInOutQuint);
+                animation = CurvedAnimation(parent: animation,curve: Curves.linear);
                 return ScaleTransition(
-                  alignment: Alignment.bottomCenter,
+                  alignment: Alignment.center,
                   scale : animation,
                   child: child,
                 );
@@ -100,8 +101,8 @@ class _tutorialState extends State<tutorial> {
         child: Container(
           alignment: Alignment.center,
           height: 60,
-          color: Colors.deepPurple,
-          child: Text("GET STARTED",
+          color: Colors.red,
+          child: Text("Let's Rock!",
             style: TextStyle(
                 color: Colors.white,
                 fontWeight:FontWeight.w600
@@ -113,18 +114,40 @@ class _tutorialState extends State<tutorial> {
 }
 
 class TutorialTile extends StatelessWidget {
-  String imageAssetPath;
-  TutorialTile(this.imageAssetPath);
+  String imageAssetPath,word;
+  TutorialTile(this.imageAssetPath,this.word);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 20,
-      height: 30,
-      child: Image.asset(
-        imageAssetPath,
-        fit: BoxFit.contain,
-        semanticLabel: 'Hi'
-        ,),
+    return
+      Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          height:20
+        ),
+        Card(
+          semanticContainer: true,
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          shadowColor: Colors.black,
+          elevation: 9,
+          shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15)
+        ),
+          child: new Image.asset(
+            imageAssetPath,fit: BoxFit.fill, height: 600,width:300
+            ),
+        ),
+        Container(
+          child: Text((word) as String,style: TextStyle(
+            fontFamily: 'RobotoCondensed',
+            fontSize: 18
+          ),
+           textAlign: TextAlign.center,
+          ),
+          height: 100,
+        )
+      ],
     );
   }
 }

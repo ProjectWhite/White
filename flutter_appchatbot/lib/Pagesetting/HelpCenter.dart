@@ -21,7 +21,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
       resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.0),
+          preferredSize: Size.fromHeight(120.0),
           child: Column(
             children: [
               SizedBox(height: 90,),
@@ -137,7 +137,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
             alignment: Alignment.center,
             margin: EdgeInsets.only(bottom: 20, right: 15, left: 15),
             width: double.infinity,
-            height: 70.0,
+            height: 120.0,
             decoration: BoxDecoration(
               color: _selectedOption == index - 1
                   ? Colors.blue[400]

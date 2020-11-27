@@ -64,7 +64,8 @@ class _SettingPageState extends State<SettingPage> {
                 onPressed: () async {
                   SharedPreferences preferences = await SharedPreferences.getInstance();
                   preferences.remove('us');
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),),);
+                  Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(builder:(context) => MyHomePage()), (Route<dynamic> route) => false );
                 },
               ),
               new FlatButton(
